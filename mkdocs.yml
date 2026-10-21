@@ -44,8 +44,105 @@ theme:
 plugins:
 # Explicitly call out search ahead of time, because if you use other plugins this has to be done.
   - search:
-    # Only English for now
-      lang: en
+      lang:
+        - en
+        - ja
+  # Multilingual support: English (default) + Japanese.
+  # Japanese pages live next to English ones as *.ja.md; untranslated pages fall back to English.
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+        - locale: ja
+          name: 日本語
+          build: true
+          site_name: MiSTer FPGA ドキュメント（編集改善フォーク・日本語版）
+          theme:
+            language: ja
+          nav_translations:
+            Home: ホーム
+            First-time Setup: 初めてのセットアップ
+            Requirements: 必要なもの
+            Setup MicroSD Card: microSDカードのセットアップ
+            Running the Updater: アップデーターの実行
+            Define Your Gamepad: ゲームパッドの設定
+            Transferring Games: ゲームの転送
+            Play a Game: ゲームを遊ぶ
+            The Basics: 基本編
+            FAQ: よくある質問
+            Troubleshooting: トラブルシューティング
+            Game Saves: セーブデータ
+            Addon Boards: 拡張ボード
+            Cases: ケース
+            Hotkeys: ホットキー
+            Controllers: コントローラー
+            Keyboards: キーボード
+            WiFi: Wi-Fi
+            Bluetooth: Bluetooth
+            Video Configuration: 映像設定
+            CD-based ROMs: CDベースのROM
+            Links: リンク集
+            Cores: コア
+            What Is a Core: コアとは
+            Common Core Features: コア共通機能
+            Cheats: チート
+            RTC Support: RTC対応
+            Core Highlights: 注目のコア
+            Game Boy 2 Player: Game Boy 2人プレイ
+            Console Cores: コンソールコア
+            Computer Cores: コンピューターコア
+            Arcade Cores: アーケードコア
+            Other Cores: その他のコア
+            Core Paths: コアのパス
+            Advanced Configuration: 詳細設定
+            Video Modes: ビデオモード
+            Video Scaling: ビデオスケーリング
+            Add-On Boards: 拡張ボード
+            RTC Board: RTCボード
+            Networking: ネットワーク
+            Advanced Networking: 高度なネットワーク
+            Computer Core Networking: コンピューターコアのネットワーク
+            CRT Displays: CRTディスプレイ
+            CRT Configuration Table: CRT設定表
+            Using Your CRT With MiSTer: CRTをMiSTerで使う
+            Direct Video Adapter: Direct Videoアダプター
+            Core Default Resolutions: コアのデフォルト解像度
+            Audio Filters: オーディオフィルター
+            MIDI Features: MIDI機能
+            Multi-Button Mapping: 複数ボタンマッピング
+            DIY 2-Player Arcade: 自作2人用アーケード
+            INI Settings: INI設定
+            Lag Explained: ラグの解説
+            MGL Files: MGLファイル
+            Console Connection: コンソール接続
+            Developer Reference: 開発者リファレンス
+            Compiling for MiSTer: MiSTer向けコンパイル
+            Porting Cores: コアの移植
+            Core Configuration String: コア設定文字列
+            Top-level of Cores: コアのトップレベル
+            overview of emu module: emuモジュール概要
+            sys - hps_io: sys - hps_io
+            sys - video_freak: sys - video_freak
+            sys - video_mixer: sys - video_mixer
+            sys - arcade_video: sys - arcade_video
+            Useful Snippets: 便利なスニペット
+            Savestates: セーブステート
+            Core Names: コア名
+            MRA Setnames: MRAセット名
+            Arcade ROMS and MRA Files: アーケードROMとMRAファイル
+            Debugging (USB Blaster): デバッグ（USB Blaster）
+            Core Components Where Used: コアのコンポーネント対応表
+            Developer Journeys: 開発記録
+            Analog Simulation: アナログシミュレーション
+            Head On Sound PCB Implementation: Head OnサウンドPCB実装
+            Template Core: テンプレートコア
+            Useful Links: 便利なリンク
+            Tips and Guidelines: ヒントとガイドライン
+            Editing These Docs: このドキュメントの編集方法
   # https://squidfunk.github.io/mkdocs-material/tutorials/social/basic/
   - social
   # mkdocs-rss-plugin

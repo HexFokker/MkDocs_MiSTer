@@ -7,6 +7,7 @@ mkdocs-material-extensions
 mkdocs-minify-plugin
 mkdocs-redirects
 mkdocs-rss-plugin
+mkdocs-static-i18n
 mkdocs-material[imaging]
 
 # restriction to fix live preview
