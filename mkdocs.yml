@@ -5,8 +5,8 @@ site_description: >-
   MiSTer FPGA is an open source project that aims to recreate various classic computers, game consoles, and arcade machines, using modern hardware.
 copyright: Copyright &copy; 2022-2025 MiSTer FPGA
 
-repo_name: MkDocs_MiSTer
-repo_url: https://github.com/MiSTer-devel/MkDocs_MiSTer/
+repo_name: HexFokker/MkDocs_MiSTer
+repo_url: https://github.com/HexFokker/MkDocs_MiSTer/
 edit_uri: edit/main/docs/
 
 theme:
