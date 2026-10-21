@@ -49,8 +49,8 @@ plugins:
   # https://squidfunk.github.io/mkdocs-material/tutorials/social/basic/
   - social
   # mkdocs-rss-plugin
-  # https://MiSTer-devel.github.io/MkDocs_MiSTer/feed_rss_updated.xml
-  # https://MiSTer-devel.github.io/MkDocs_MiSTer/feed_rss_created.xml
+  # https://hexfokker.github.io/MkDocs_MiSTer/feed_rss_updated.xml
+  # https://hexfokker.github.io/MkDocs_MiSTer/feed_rss_created.xml
   - rss:
       image: assets/mister_kun_bw.svg
   # Permits the use of embedded videos
@@ -68,7 +68,7 @@ plugins:
 # Customization
 extra:
   # Subject to change later when incorporated into the project, potentially https://docs.misterfpga.org/
-  homepage: https://MiSTer-devel.github.io/MkDocs_MiSTer/
+  homepage: https://hexfokker.github.io/MkDocs_MiSTer/
   # Placeholder for analytics configuration, modify values and uncomment when ready
   # analytics:
   #   provider: google

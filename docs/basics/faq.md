@@ -86,15 +86,15 @@ A number of complex cores (like ao486) benefit from a cooler chip, because heat 
 
 ### My fan is very loud, is there anything I can do about that?
 
-Probably. Many I/O boards, though not all, have a [jumper](https://en.wikipedia.org/wiki/Jumper_(computing)){target=_blank} near the fan connector that switches the fan's voltage from 5 V to 3 V. It is most likely either next to the fan power connector (you may have to remove the [mezzanine board](https://mister-devel.github.io/MkDocs_MiSTer/assets/92_av_board.png){target=_blank} to reach it) or on the underside of the board.
+Probably. Many I/O boards, though not all, have a [jumper](https://en.wikipedia.org/wiki/Jumper_(computing)){target=_blank} near the fan connector that switches the fan's voltage from 5 V to 3 V. It is most likely either next to the fan power connector (you may have to remove the [mezzanine board](../assets/92_av_board.png){target=_blank} to reach it) or on the underside of the board.
 
 Jumper on the top side of the board:
 
-![I/O board with the 5v jumper on the top side](https://mister-devel.github.io/MkDocs_MiSTer/assets/jumper_top.png)
+![I/O board with the 5v jumper on the top side](../assets/jumper_top.png)
 
 Jumper on the underside of the board:
 
-![I/O board with the 5v jumper on the bottom side](https://mister-devel.github.io/MkDocs_MiSTer/assets/jumper_bottom.png)
+![I/O board with the 5v jumper on the bottom side](../assets/jumper_bottom.png)
 
 Moving the jumper to the other position should slow the fan down and make it quieter.
 

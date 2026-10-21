@@ -1,8 +1,8 @@
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/MiSTer-devel/MkDocs_MiSTer)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/HexFokker/MkDocs_MiSTer)
 
 # MkDocs_MiSTer
 
-https://MiSTer-devel.github.io/MkDocs_MiSTer/
+https://hexfokker.github.io/MkDocs_MiSTer/
 
 MiSTer FPGA Documentation built in Material for MkDocs.
 

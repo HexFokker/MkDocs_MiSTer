@@ -9,7 +9,7 @@ Make sure the DIP switches are configured as shown:
 
 ### Lower DIP Switches
 
-If your I/O board is based on the 9.2 [I/O board](https://mister-devel.github.io/MkDocs_MiSTer/assets/92_io_board.png) and [AV mezzanine board](https://mister-devel.github.io/MkDocs_MiSTer/assets/92_av_board.png), you don't need to set any of the lower switches: the framework detects the configuration of these boards automatically. Settings for earlier boards are below.
+If your I/O board is based on the 9.2 [I/O board](../assets/92_io_board.png) and [AV mezzanine board](../assets/92_av_board.png), you don't need to set any of the lower switches: the framework detects the configuration of these boards automatically. Settings for earlier boards are below.
 
 ??? note "I/O boards before 9.2"
 
@@ -40,7 +40,7 @@ If your MiSTer seems to boot but there is no video from the HDMI port:
 2. Try another cable, just in case.
 3. Remove the SD card and insert it again. If the MiSTer can't read the card, or the card is empty, it fails to boot completely.
 
-To check whether the MiSTer has booted, try connecting to it via [SSH or FTP](https://mister-devel.github.io/MkDocs_MiSTer/advanced/network/?h=ip#network-access). If you can connect, it has booted.
+To check whether the MiSTer has booted, try connecting to it via [SSH or FTP](../advanced/network.md#network-access). If you can connect, it has booted.
 
 ## Fixing missing certs
 
