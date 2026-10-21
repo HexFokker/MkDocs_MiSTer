@@ -3,18 +3,18 @@ hide:
   - toc
 ---
 
-Here's a table that shows you what options correlate to what video connection, to make it a bit easier to decide what you need in order to connect to your CRT, and what settings are required in the MiSTer.ini to get it to work. There is also a physical switch on the Analog IO board, in this table it is referred to as "SoG Switch".
+This table shows the `MiSTer.ini` settings required for each analog video output mode when connecting to a CRT.
 
 ## CRT Configuration Table
 
-| Analog Video Out     | composite_sync= | vga_mode= | vga_sog= | direct_video= | vga_scaler= | forced_scandoubler= | SoG Switch |
+| Analog Video Out     | composite_sync= | vga_mode= | vga_sog= | direct_video= | vga_scaler= | forced_scandoubler= | SoG Switch⁷ |
 | -------------------- | :-------------: | :-------: | :------: | :-----------: | :---------: | :-----------------: | :--------: |
 | RGBS Native          | 1               | rgb       | 0        | 0             | 0           | 0                   | AUTO       |
 | RGBS Scan-doubled¹   | 1               | rgb       | 0        | 0             | 0           | 1                   | AUTO       |
 | RGBS Upscaled²       | 1               | rgb       | 0        | 0             | 1           | 0                   | AUTO       |
 | RGBS Direct³         | 1               | rgb       | 0        | 1             | 0           | 0                   | N/A        |
 | RGBHV Native         | 0               | rgb       | 0        | 0             | 0           | 0                   | AUTO       |
-| RGBHV Scan-doubled   | 0               | rgb       | 0        | 0             | 0           | 1                   | AUTO       |
+| RGBHV Scan-doubled¹  | 0               | rgb       | 0        | 0             | 0           | 1                   | AUTO       |
 | RGBHV Upscaled²      | 0               | rgb       | 0        | 0             | 1           | 0                   | AUTO       |
 | RGBHV Direct³        | 0               | rgb       | 0        | 1             | 0           | 0                   | N/A        |
 | RGsB Native          | 1               | rgb       | 1        | 0             | 0           | 0                   | AUTO       |
@@ -30,11 +30,12 @@ Here's a table that shows you what options correlate to what video connection, t
 | Composite Native⁵    | 1               | svideo    | 0        | 0             | 0           | 0                   | N/A        |
 | Composite Converted⁶ | 1               | rgb       | 0        | 0             | 0           | 0                   | N/A        |
 
-¹ Scan-doubled = 2x resolution (e.g. 240p > 480p)  
+¹ Scan-doubled = 2x resolution (e.g. 240p → 480p)  
 ² Upscaled resolution = video_mode  
-³ External "direct video" (HDMI to VGA) adapter required - native resolution only (no upscaling or scan-doubling  
+³ External "direct video" (HDMI-to-VGA) adapter required — native resolution only (no upscaling or scan-doubling)  
 ⁴ External "direct video" adapter requires modification to pass Sync on Green (SoG)  
 ⁵ Active Y/C converter required  
-⁶ External RGB to NTSC/PAL converter required
+⁶ External RGB to NTSC/PAL converter required  
+⁷ The physical switch on the Analog I/O board
  
 Credit: [Porkchop Express](https://twitter.com/MisterAddons){target=_blank}

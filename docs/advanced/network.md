@@ -1,31 +1,29 @@
-There are multiple advanced networking features that the MiSTer can utilize. Here we will go over quite a few of them.
+The MiSTer has several advanced networking features.
 
 ## Network access
-MiSTer board can be access through on-board Ethernet port. System has **FTP**, **SSH**, **SFTP** services running.
+The MiSTer board can be accessed through the on-board Ethernet port. The system has **FTP**, **SSH**, and **SFTP** services running.
 
 User name: **root**  Password: **1**
 
 If you connect to your MiSTer over the network frequently,
 consider [Setting up a hostname](#hostname-configuration) for your MiSTer 
-so you don't have to lookup and/or remember your MiSTers IP address.
+so you don't have to look up or remember your MiSTer's IP address.
 
 ### FTP/SFTP
-The File Transfer Protocol (FTP) is a standardized network protocol that allows computers on a network to transfer files between each other. 
-It can be used to upload or download files to your MiSTer from another computer on the network without having to remove the SD card.
-SFTP is simply FTP with an encrypted connection, however; it should be noted that not all FTP clients support SFTP.
+FTP lets you upload files to or download files from your MiSTer over the network, without removing the SD card.
+SFTP is a similar file transfer protocol that runs over SSH; note that not all FTP clients support it.
 
-You can use whatever FTP or SFTP client you prefer
-so long as you make sure your file transfers are in binary and not ASCII.
-ASCII-type transfers will result in corruption of that data.
+You can use any FTP or SFTP client, as long as transfers are in binary mode, not ASCII.
+ASCII transfers will corrupt the data.
 
-Once connected to the MiSTer your SDCard content will be in the `/media/fat` path.
+Once connected to the MiSTer, your SD card's contents will be at `/media/fat`.
 
-If you don't have a compatible FTP client already, then try [FileZilla](https://filezilla-project.org/download.php?type=client){target=blank}. 
+If you don't have a compatible FTP client already, then try [FileZilla](https://filezilla-project.org/download.php?type=client){target=_blank}. 
 It is a solid choice for all modern operating systems (Linux, MacOS and Windows). 
-Older version of FileZilla such as `2.1.9a` are compatible with Windows 95/NT3.5+
-and can be used inside [ao486 core with a PPP connection](computer.md#ppp-connection-in-windows-9598-on-ao486).
+Older versions of FileZilla such as `2.1.9a` are compatible with Windows 95/NT3.5+
+and can be used inside the [ao486 core with a PPP connection](computer.md#ppp-connection-in-windows-9598-on-ao486).
 
-Another good FTP client for modern Windows operating systems is [WinSCP](https://winscp.net/eng/download.php){target=blank}.
+Another good FTP client for modern Windows operating systems is [WinSCP](https://winscp.net/eng/download.php){target=_blank}.
 
 Once one of these clients is installed, run the program and open the **Site Manager** dialog.
 
@@ -35,96 +33,81 @@ Once one of these clients is installed, run the program and open the **Site Mana
 | WinSCP     | **Tabs** -> **Sites** -> **Site Manager** |
 
 Set **Protocol** to either `FTP` or `SFTP` and fill out the **Host**, **User** and **Password** fields.
-For example: if the MiSTers IP address is `192.168.2.8` and you wanted to login as the `root` user,
-then **Host** would be `192.168.2.8`, user would be `root` and password would be the user password.
+For example: if the MiSTer's IP address is `192.168.2.8` and you want to log in as `root`,
+then **Host** is `192.168.2.8`, **User** is `root`, and **Password** is the user password.
 
-You can optionally set the **Default Remote Directory** for this site to `/media/fat`.
-This will make the FTP automatically navigate to the SD Card on the MiSTer after connecting. 
-Furthermore, if you have an organized folder on your computer for MiSTer content, 
-you may want to set the **Default Local Directory** to that path.
+Optionally set the **Default Remote Directory** to `/media/fat` so the client opens the SD card directly after connecting.
+Likewise, you can set the **Default Local Directory** to your local MiSTer folder.
 
 | FTP Client | Remote Directory Location                                                    |
 |------------|------------------------------------------------------------------------------|
 | FileZilla  | **Site Manager** -> **Advanced** -> **Default Remote Directory:**            |
 | WinSCP     | **Site Manager** -> **Advanced** -> **Directories** -> **Remote Directory:** |
 
-After the settings have been set click **Connect** or **Login**.
-
-You should connect to your MiSTer and be able to upload or download files. 
+Click **Connect** or **Login** — you should now be able to upload and download files.
 
 ### SSH
-Secure shell (SSH) is a standardized network protocol for remotely operating computers over a network.
-It can be used to operate a text terminal on a computer (including the one on your MiSTer) remotely from another computer on the network.
+Secure Shell (SSH) is a standardized network protocol for remotely operating computers over a network; it gives you a remote text terminal to your MiSTer.
 
-To connect on Linux and MacOS open a terminal emulator and type `ssh` followed by the user and address. 
-For example if the MiSTers IP address is `192.168.2.8` and you wanted to login as the `root` user,
-then the command to connect would be `ssh root@192.168.2.8`.
+On Linux and macOS, open a terminal and run `ssh <user>@<MiSTer IP>` — for example `ssh root@192.168.2.8` to log in as `root`.
 
-If your Windows machine does not have `ssh` installed in Command Prompt you can download and run [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html){target=blank} instead.
+If your Windows machine doesn't have `ssh` in Command Prompt, you can download and run [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html){target=_blank} instead.
 Using the same example as above type `root@192.168.2.8` into the **Host Name** text field.
 Ensure **Port** is set to `22` and **Connection type** is set to **SSH** then click **Open**.
 
-You should now connect to your MiSTer and be asked for the password.
-After which you'll be able to run commands as if you were in front of your MiSTer.
+Enter the password when prompted; you can then run commands as if at the MiSTer console.
 
 ## Share Mounting
-The MiSTer can mount a network share from another computer or server as if it were storage. CIFS and NFS shares are supported. The following helper scripts are provided to simplify this process, if you want to use them download to them to /media/fat/Scripts
+The MiSTer can mount a network share from another computer or server as if it were local storage. CIFS and NFS shares are supported. If you want to use them, download the following helper scripts to `/media/fat/Scripts`; each `*_umount.sh` script unmounts the share again.
 
-### CIFS mounting and unmounting
+| Share type | Mount script | Unmount script |
+|------------|--------------|----------------|
+| CIFS | [cifs_mount.sh](https://raw.githubusercontent.com/MiSTer-devel/Scripts_MiSTer/master/cifs_mount.sh){target=_blank} | [cifs_umount.sh](https://raw.githubusercontent.com/MiSTer-devel/Scripts_MiSTer/master/cifs_umount.sh){target=_blank} |
+| NFS | [nfs_mount.sh](https://raw.githubusercontent.com/MiSTer-devel/Scripts_MiSTer/master/nfs_mount.sh){target=_blank} | [nfs_umount.sh](https://raw.githubusercontent.com/MiSTer-devel/Scripts_MiSTer/master/nfs_umount.sh){target=_blank} |
 
-[cifs_mount.sh](https://raw.githubusercontent.com/MiSTer-devel/Scripts_MiSTer/master/cifs_mount.sh){target=_blank}
-
-This script mounts the desired network share to the MiSTer in `/media/fat/cifs`  MiSTer will give preference to the folders mounted in that path. See [Core Paths](../cores/paths.md) for more specific information as to how this hierarchy functions.
-
-[cifs_umount.sh](https://raw.githubusercontent.com/MiSTer-devel/Scripts_MiSTer/master/cifs_umount.sh){target=_blank}
-
-This script will unmount the network share when ran.
-
-### NFS mounting and unmounting.
-
-[nfs_mount.sh](https://raw.githubusercontent.com/MiSTer-devel/Scripts_MiSTer/master/nfs_mount.sh){target=_blank}
-
-This script mounts the desired network share to the MiSTer in such a way that any identical folders from `/media/fat` will be put on a lower priority and you will see the ones from the network share in place of the ones on your MicroSD. See [Core Paths](../cores/paths.md) for more specific information as to how this hierarchy functions.
-
-[nfs_umount.sh](https://raw.githubusercontent.com/MiSTer-devel/Scripts_MiSTer/master/nfs_umount.sh){target=_blank}
-
-This script will unmount the network share when ran.
+`cifs_mount.sh` mounts the share at `/media/fat/cifs`, and MiSTer gives the folders mounted there preference. `nfs_mount.sh` mounts the share so that its folders take priority over identically named folders in `/media/fat` on the MicroSD card, which you will then no longer see. See [Core Paths](../cores/paths.md) for how this priority order works.
 
 ### CIFS Share Troubleshooting
-There is a known problem with certain cores (ao486 and NeoGeo, at least) and certain CIFS Share configurations, caused by [some open bugs](https://bugzilla.samba.org/show_bug.cgi?id=12783) in Samba.
+There is a known problem with certain cores (at least ao486 and NeoGeo) and certain CIFS share configurations, caused by [some open bugs](https://bugzilla.samba.org/show_bug.cgi?id=12783) in Samba.
 
-If certain cores doesn't start when loading games from CIFS share but work OK when loading from SD or USB, check if Kernel Oplocks are enabled on the CIFS share. If they are, either disable them, enable them globally on your Samba server, or move your MiSTer files to a different share exclusively used for MiSTer and without Kernel Oplocks enabled. It is up to you to decide which one fits better your use case: Kernel Oplocks are enabled by default in many NAS for good reason, as this should prevent bad file synchronization, corruption, and data loss when the shared folder is used by different protocols (i.e. CIFS and NFS) or by network clients and software running in the NAS like a torrent client.
+If certain cores don't start when loading games from a CIFS share, but work fine from SD or USB, check whether Kernel Oplocks are enabled on the share. If they are, do one of the following:
+
+* Disable them.
+* Enable them globally on your Samba server.
+* Move your MiSTer files to a separate share used only by the MiSTer, without Kernel Oplocks.
+
+Choose whichever suits your use case best. Many NAS devices enable Kernel Oplocks by default for good reason: they should prevent bad file synchronization, corruption, and data loss when a share is used through different protocols (e.g. CIFS and NFS) or by software running on the NAS, such as a torrent client.
 
 ## RetroNAS
-A project was launched by Dan Mons that makes it easier to get a network attached storage (NAS) device up and running which was focused solely on retro gaming device compatibility. The MiSTer platform is one of the project's primary focuses and it works quite well. All you need is a Raspberry Pi4 or Pi5 and some kind of external hard drive storage device. Remember: NAS IS NOT BACKUP! You could lose data if you rely solely on a NAS for important data. They have a good [installation guide](https://github.com/danmons/retronas/wiki/Installing-RetroNAS){target=_blank} that is simple to follow and [MiSTer-specific instructions](https://github.com/danmons/retronas/wiki/MiSTer-FPGA){target=_blank} to help get you started. They also have video guides available on Youtube for [installation](https://www.youtube.com/watch?v=szA-MSabplc){target=_blank} and [MiSTer FPGA-specific configuration](https://www.youtube.com/watch?v=OrTctA-5kqk){target=_blank} if you prefer.
+RetroNAS, a project by Dan Mons, makes it easy to set up a network attached storage (NAS) device focused solely on compatibility with retro gaming devices. MiSTer is one of its primary focuses, and it works quite well. All you need is a Raspberry Pi 4 or 5 and an external storage drive. Remember: a NAS is not a backup! You could lose data if a NAS is the only place you keep important data. The project has a simple [installation guide](https://github.com/danmons/retronas/wiki/Installing-RetroNAS){target=_blank}, [MiSTer-specific instructions](https://github.com/danmons/retronas/wiki/MiSTer-FPGA){target=_blank}, and YouTube video guides for [installation](https://www.youtube.com/watch?v=szA-MSabplc){target=_blank} and [MiSTer FPGA-specific configuration](https://www.youtube.com/watch?v=OrTctA-5kqk){target=_blank}.
 
 ## Tailscale Networking
 
-Adding your MiSTer to a Tailnet has a lot of benefits: being able to travel with it while still retaining access to a NAS with games hosted on it, being able to remotely administer a less-technical friends MiSTer and being able to remotely SSH/SFTP in to your MiSTer to run scripts and install cores to name a few.
+Adding your MiSTer to a Tailnet has a lot of benefits: keeping access to a NAS with your games while traveling, remotely administering a less-technical friend's MiSTer, and remote SSH/SFTP for running scripts and installing cores, to name a few.
 
-If you do not already have a Tailnet, follow the instructions [here](https://tailscale.com/kb/1017/install){target=blank} to get started. Make sure you add at least one computer/NAS/phone to the Tailnet once it's created.
+If you do not already have a Tailnet, follow the instructions [here](https://tailscale.com/kb/1017/install){target=_blank} to get started. Make sure you add at least one computer/NAS/phone to the Tailnet once it's created.
 
-To install Tailscale onto your MiSTer you can either use [this easier scripted install method](https://github.com/davewongillies/MiSTer-tailscale#setup) or follow the manual steps below.
+To install Tailscale on your MiSTer, you can either use [this easier scripted install method](https://github.com/davewongillies/MiSTer-tailscale#setup) or follow the manual steps below.
 
-Go to the [Tailscale Package Repository](https://pkgs.tailscale.com/stable/#static){target=blank} and download the ARMv7 binary package (It will look something like `arm: tailscale_x.xx.x_arm.tgz`).
+Go to the [Tailscale Package Repository](https://pkgs.tailscale.com/stable/#static){target=_blank} and download the ARMv7 binary package (it will look something like `arm: tailscale_x.xx.x_arm.tgz`).
 
-Extract the archive on your computer and SFTP the files (`tailscaled` and `tailscale`) to your MiSTer. In this documentation we use the path `/media/fat/linux/tailscale/` but you can use any directory under `/media/fat/` just make sure you edit all the paths in the examples and scripts that follow.
+Extract the archive on your computer and SFTP the files (`tailscaled` and `tailscale`) to your MiSTer. The examples below use `/media/fat/linux/tailscale/`, but any directory under `/media/fat/` works — adjust the paths accordingly.
 
-SSH into your MiSTer and change directory to where you put the extracted Tailscale files. Create a directory to house the Tailscale state on boot with `mkdir .state`. Now start the Tailscale Daemon with the following command:
+SSH into your MiSTer and change to the directory where you put the extracted Tailscale files. Create a directory to house the Tailscale state on boot with `mkdir .state`. Now start the Tailscale Daemon with the following command:
 ```
 # /media/fat/linux/tailscale/tailscaled --tun=userspace-networking --statedir=/media/fat/linux/tailscale/.state/
 ```
-`--tun=userspace-networking` is added because the MiSTer Linux Kernel is not compiled with TUN support, so running it in the userspace allows the daemon to start. `--statedir=/media/fat/linux/tailscale/.state/` is to prevent the daemon from erroring out on a cold boot when the OS root directory is mounted as Read Only.
+`--tun=userspace-networking` is added because the MiSTer Linux kernel is not compiled with TUN support, so running it in userspace allows the daemon to start. `--statedir=/media/fat/linux/tailscale/.state/` prevents the daemon from erroring on a cold boot, when the OS root directory is mounted read-only.
 
-Once the Dameon starts, you can then run the the following command to get your MiSTer joined to your tailnet:
+Once the daemon starts, run the following command to join your MiSTer to your tailnet:
 ```
 # /media/fat/linux/tailscale/tailscale up --accept-routes
 ```
-The `--accept-routes` is only needed if you have a machine on your tailnet set up as a subnet router.
+`--accept-routes` is only needed if you have a machine on your Tailnet set up as a subnet router.
 
-When that command finishes you will see a URL at the bottom of it's output. This is the URL that you will need to paste into your browser to join the device to your Tailnet. Do that now.
+When that command finishes, paste the URL at the bottom of its output into your browser to join the device to your Tailnet.
 
-Once you have the MiSTer joined to the Tailnet, create a `tailstart.sh` file in the tailscale directory and put the following into it (with your preferred command line editor):
+Once the MiSTer is joined to the Tailnet, create a `tailstart.sh` file in the tailscale directory with the following contents:
 ```
 #/bin/sh
 
@@ -132,11 +115,11 @@ Once you have the MiSTer joined to the Tailnet, create a `tailstart.sh` file in 
 /media/fat/linux/tailscale/tailscale up --accept-routes > /dev/null 2>&1 &
 ```
 
-Once the file is created and has the script in it, run:
+Once the file is created, run:
 ```
 # chmod +x tailstart.sh
 ```
-Now to have Tailscale start when your MiSTer boots, edit the `user-startup.sh` file in `/media/fat/linux/` and add the following line to the bottom of it:
+To have Tailscale start at boot, edit the `user-startup.sh` file in `/media/fat/linux/` and add the following line to the bottom:
 ```
 /media/fat/linux/tailscale/tailstart.sh
 ```
@@ -145,42 +128,39 @@ Now your MiSTer will connect to your Tailnet after every reboot.
 
 ## Network settings and configuration
 By default, MiSTer uses `dhcpcd` (not to be confused with `dhcpd`) to acquire a local network IP address from a DHCP server.
-It is a powerful DHCP client with a lot of control and customization options in its configuration file (`dhcpcd.conf`),
-too many to be discussed here.
-Instead, will cover the most likely reasons you would want to modify the way `dhcpcd` behaves on a MiSTer.
-For full documentation read [dhcpcd.conf (5)](https://man.archlinux.org/man/dhcpcd.conf.5){target=blank}.
+It is a powerful DHCP client with too many configuration options (`dhcpcd.conf`) to cover here,
+so this section covers only the most likely reasons to modify its behavior on a MiSTer.
+For full documentation read [dhcpcd.conf (5)](https://man.archlinux.org/man/dhcpcd.conf.5){target=_blank}.
 
 ### MAC address configuration
-A MAC address (medium access control address) is a network address assigned 
-to the hardware of every network interface. 
-It allows network switches to learn where traffic should be routed to.
-It can be thought of like an IP address but statically assigned to hardware and only relevant within your local network.
+A MAC address (Media Access Control address) is a network address assigned
+to the hardware of every network interface.
+It lets network switches learn where to route traffic — like an IP address, but statically assigned to hardware and only relevant within your local network.
 
 Much like IP addresses, MAC addresses have to be unique for the network to function properly,  
-but unlike IP addresses, they cannot be dynamically assigned by a DHCP server, MAC addresses are static by design.
+but unlike IP addresses, they cannot be dynamically assigned by a DHCP server — MAC addresses are static by design.
 
-Some installers like [Mr Fusion](../setup/software.md#flash-mr-fusion-to-your-microsd) 
-will randomize the MiSTers MAC address during setup, but others will use the same MAC address everytime.
-Therefore, it is common that two or more MiSTers will have the exact same MAC address on their onboard ethernet port.
+Some installers like [Mr Fusion](../setup/software.md#flash-mr-fusion-to-your-microsd-card) 
+randomize the MiSTer's MAC address during setup, but others use the same MAC address every time.
+As a result, it is common for two or more MiSTers to have the exact same MAC address on their onboard Ethernet port.
 
 If two MiSTers with the same MAC address are on the same network at the same time,  
 the network switches may start sending packets to the wrong MiSTer and cause connections to fail.
 Fortunately, if this is the case, it's possible to override the default MAC address.
 
-#### Login to Linux terminal on the MiSTer
-From the MiSTers startup menu, press ++F9++ to get a Linux terminal then
-login as root (see [Network Access](#network-access) for the default credentials).
+#### Log in to the Linux terminal on the MiSTer
+From the MiSTer's startup menu, press ++F9++ to get a Linux terminal, then
+log in as root (see [Network Access](#network-access) for the default credentials).
 
 #### Change MAC address
-Open u-boot.txt file for editing by running the command `nano /media/fat/linux/u-boot.txt`
-by typing it and pressing ++Enter++.
-The file should contain a line that looks somewhat like this:
+Open u-boot.txt for editing by running `nano /media/fat/linux/u-boot.txt`.
+The file should contain a line similar to this:
 ```
 ethaddr=EA:C8:21:56:E3:43
 ```
 
 Edit the MAC address so that no MiSTers on your network share the same address.
-MAC addresses are made up of six sets of two characters that range between `00`-`FF` and are seperated by `:`.
+MAC addresses are made up of six sets of two characters that range between `00`-`FF` and are separated by `:`.
 When changing the MAC address, avoid these addresses that have special meaning:
 
 * Multicast (any address where the first set ends in `1`, `3`, `5`, `7`, `9`, `B`, `D` or `F`):
@@ -189,17 +169,15 @@ When changing the MAC address, avoid these addresses that have special meaning:
 * Broadcast (`FF:FF:FF:FF:FF:FF`)
 * All zeros (`00:00:00:00:00:00`)
 
-Once done, press ++Ctrl+o++ to make `nano` save `u-boot.txt` then ++Ctrl+x++ to exit `nano` then
-run the command `reboot` to restart the MiSTer back to the startup menu with the new MAC address applied.
+Once done, save with ++Ctrl+o++ and exit with ++Ctrl+x++, then
+run `reboot` to restart the MiSTer with the new MAC address applied.
 
 ### Hostname configuration
 `dhcpcd` can be configured so that MiSTer offers its preferred name to your DHCP server, but it's disabled by default.
-Enabling it will allow you to connect to your MiSTer by a designated name
-instead of having to look up and remember an IP address.
+Enabling it lets you connect to your MiSTer by name instead of looking up its IP address.
 
-#### Login to Linux terminal on the MiSTer
-From the MiSTers startup menu, press ++F9++ to get a Linux terminal then
-login as root (see [Network Access](#network-access) for the default credentials).
+#### Log in to the Linux terminal on the MiSTer
+Log in to the MiSTer's Linux terminal as described [above](#log-in-to-the-linux-terminal-on-the-mister).
 
 Alternatively, you can log in remotely with [SSH](#ssh).
 This is recommended if possible as you will be able to copy and paste the commands instead of typing them out by hand.
@@ -208,8 +186,8 @@ This is recommended if possible as you will be able to copy and paste the comman
 Before enabling this feature, you should be sure
 that your network router supports top-level domains (TLDs) in the local network.
 
-To do this, run the command `dhcpcd -U | less` by typing it and pressing ++Enter++
-then use the ++Down++ and ++Up++ keys to search for at least one `domain_name` entry that looks somewhat like this:
+To do this, run `dhcpcd -U | less`
+and look for at least one `domain_name` entry that looks like this:
 ```
 domain_name=lan
 ```
@@ -218,19 +196,17 @@ If you find more than one `domain_name` value, remember them all.
 If you have no `domain_name` value in the results then your network router is not offering a top level domain
 and there's no point in proceeding.
 
-Alternatively, you can run this more complex command:
+Alternatively, run this command to find and filter `domain_name` values for you:
 ```bash
 dhcpcd -U 2>/dev/null | grep domain_name= | cut -c13-
 ```
-...which will find and filter `domain_name` values for you.
-The result of which would look like this instead:
+It produces output like:
 ```
 lan
 ```
 
 #### Enable sending preferred name to DHCP server
-Open dhcpcd configuration file for editing by running the command `nano /etc/dhcpcd.conf` 
-by typing it and pressing ++Enter++.
+Open the dhcpcd configuration file for editing by running `nano /etc/dhcpcd.conf`.
 
 Press ++Down++ until you find this text:
 ```
@@ -242,71 +218,65 @@ Uncomment the option by removing the `#` in front of it so it looks like this:
 # Request a hostname from the network
 option host_name
 ```
-Once done, press ++Ctrl+o++ to make `nano` save `dhcpcd.conf` then ++Ctrl+x++ to exit `nano`.
+Once done, save with ++Ctrl+o++ and exit with ++Ctrl+x++.
 
-#### Set the MiSTers preferred name
-To set the name itself run the command `nano /etc/hostname`.
+#### Set the MiSTer's preferred name
+To set the name itself, run `nano /etc/hostname`.
 You should see a word in the file (likely `MiSTer`).
-Change this text to whatever you want your MiSTers name to be.
-You can choose any name you like but for best compatibility with other network devices follow these restraints:
+Change it to whatever you want your MiSTer's name to be.
+You can choose any name, but for best compatibility with other network devices follow these constraints:
 
-* Only use alphanumeric (A to Z) characters, (no Kanji or Cyrillic)
-    * The name will be case-insensitive, mix uppercase and lowercase as you please
-* Avoid using symbols (`!`, `?`, `#`, `%` etc...) and especially not a period (`.`)
+* Only use alphanumeric characters (A–Z; no kanji or Cyrillic)
+    * The name is case-insensitive; mix uppercase and lowercase as you like
+* Avoid symbols (`!`, `?`, `#`, `%` etc.) and especially periods (`.`)
 * Avoid starting the name with a number (0 to 9)
 * Avoid using spaces and multiple words
 * Try to choose a name that is no more than 15 characters total
 
-Once done, press ++Ctrl+o++ to make `nano` save `hostname` then ++Ctrl+x++ to exit `nano`.
+Once done, save with ++Ctrl+o++ and exit with ++Ctrl+x++.
 
-Run the command `hostname` to confirm that the MiSTers name has changed then
-run the command `reboot` to restart the MiSTer back to the startup menu with the new network settings applied.
+Run `hostname` to confirm the MiSTer's name has changed, then
+run `reboot` to restart the MiSTer with the new network settings applied.
 
 #### Test the name change
-> Let's assume you set your MiSTers name to be `timemachine` and your top level domain is `.home`.
-Replace this value with the top level domain you found earlier and the name you actually set your MiSTer to be.
+> Assume you set your MiSTer's name to `timemachine` and your top-level domain is `.home`.
+Replace these with the domain you found earlier and the name you actually set.
 
-The MiSTer should now be accessible from at least one of the top level domains you found earlier.
-From another computer on the network, open a terminal emulator or command prompt and type `ping timemachine.home`.
-You should see replies, if you do then you can now use `timemachine.home`
-within your local network to connect to your MiSTer.
+From another computer on the network, run `ping timemachine.home`.
+If you see replies, you can now use `timemachine.home`
+to reach your MiSTer on your local network. The MiSTer should now be accessible from at least one of the top-level domains you found earlier.
 
 ### Static IP Address configuration
-Before proceeding with configuring a static IP address, consider if it's really necessary.
-Setting a static IP address could result in a conflict with another network device
-if one is given the same address while setting an address outside the range
-of the networks subnet will result in your MiSTer not being able to connect to anything.
+Before configuring a static IP address, consider whether it's really necessary.
+A static IP can conflict with another network device assigned the same address,
+and an address outside the network's subnet range will leave your MiSTer unable to connect to anything.
 If in doubt, try [Hostname configuration](#hostname-configuration) first.
 
-#### Login to Linux terminal on the MiSTer
-From the MiSTers startup menu, press ++F9++ to get a Linux terminal then
-login as root (see [Network Access](#network-access) for the default credentials).
+#### Log in to the Linux terminal on the MiSTer
+Log in to the MiSTer's Linux terminal as described [above](#log-in-to-the-linux-terminal-on-the-mister).
 
-While you can use SSH to access the MiSTers Linux terminal remotely and configure a static IP address that way;
-it is not recommended as you may lose network access (and therefore your SSH connection) to your MiSTer
-after the IP address changes.
+You can do this over SSH, but it is not recommended: once the IP address changes,
+you may lose network access (and therefore your SSH connection) to the MiSTer.
 
-#### Get the name of the network interface to assign a static IP address
-There will always be at least two network interfaces on DE-10 Nano MiSTer:
+#### Find the network interface name
+A DE10-Nano MiSTer always has at least two network interfaces:
 
 | Interface Name | Description                                             |
 |----------------|---------------------------------------------------------|
 | `lo`           | Linux virtual network loopback device (not interesting) |
-| `eth0`         | The DE-10 Nanos built-in Gigabit Ethernet               |
+| `eth0`         | The DE10-Nano's built-in Gigabit Ethernet               |
 
 These two interface names should be consistent across all MiSTers.
 However, if you want to set a static IP address on a USB network card,
 you will first need to know the name Linux has given to the interface.
-To do this run the command `ip link` by typing it and then pressing ++Enter++.
-You should get an output that looks somewhat like this:
+Run `ip link`. The output looks similar to this:
 ```
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
     link/ether 01:02:03:04:05:06 brd ff:ff:ff:ff:ff:ff
 ```
-If necessary, you can run the command `ip addr` instead to see what IP address is currently assigned to each interface (if any).
-You would get an output that looks somewhat like this:
+If necessary, run `ip addr` instead to see the IP address currently assigned to each interface (if any):
 ```
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -318,23 +288,22 @@ You would get an output that looks somewhat like this:
        valid_lft 40368sec preferred_lft 34968sec
 ```
 There will be an additional entry
-for each USB Wi-Fi and/or ethernet adapter MiSTer has recognized.
-Take note of the interface name you want to change before proceeding to the next step.
-The interface names are case-sensitive.
+for each USB Wi-Fi and/or Ethernet adapter MiSTer has recognized.
+Take note of the interface name you want to change (they are case-sensitive) before proceeding.
 
-#### Configure a static IP address to an interface
+#### Assign a static IP address to an interface
 
-> Let's assume you want the network interface named `eth0` to be assigned a static ip address of `192.168.0.128`.
+> Assume you want the network interface named `eth0` to be assigned a static IP address of `192.168.0.128`.
 Replace these values with the network interface name you got in the previous step
 and the IP address you want to set it to.
 
-Open dhcpcd configuration file for editing by running the command `nano /etc/dhcpcd.conf`.
-Press ++Down++ until you're at the bottom of the file then type the following:
+Open the dhcpcd configuration file by running `nano /etc/dhcpcd.conf`.
+Press ++Down++ until you're at the bottom of the file, then type:
 ```
 interface eth0
 static ip_address=192.168.0.128/24
 ```
-Be sure to type these lines at the very bottom of the file as these lines are order-sensitive.
+These lines are order-sensitive, so be sure to add them at the very bottom of the file.
 Any line below an `interface` line will apply to that interface until the next `interface` line.
 Any line above the first `interface` line will apply to all network interfaces.
 
@@ -343,10 +312,10 @@ You can optionally specify any combination of options for an interface, here are
 | Option                        | Description                                       |
 |-------------------------------|---------------------------------------------------|
 | `static routers=`             | Manually specify routers/gateways to the Internet |
-| `static domain_name_servers=` | Manually specify DNS servers to revolve names     |
+| `static domain_name_servers=` | Manually specify DNS servers to resolve names     |
 | `ntp_servers=`                | Manually specify NTP servers to get time from     |
 
-With all these options manually specified a interface configuration could look somewhat like this:
+With these options specified, an interface configuration looks like:
 ```
 interface eth0
 static ip_address=192.168.0.128/24
@@ -355,16 +324,15 @@ static domain_name_servers=8.8.8.8 1.1.1.1
 ntp_servers=192.168.0.1 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org
 ```
 
-Once done, press ++Ctrl+o++ to make `nano` save `dhcpcd.conf` then ++Ctrl+x++ to exit `nano`.
-Run the command `reboot` to restart the MiSTer back to the startup menu with the new network settings applied.
+Once done, save with ++Ctrl+o++ and exit with ++Ctrl+x++.
+Run `reboot` to restart the MiSTer with the new network settings applied.
 
-#### Re-Enabling DHCP
-If your static IP configuration isn't working, or you simply want to revert to automatic DHCP IP assignment.
-Open `/etc/dhcpcd.conf` again and comment out the lines by placing a `#` character at the beginning of each line
-that you want to revert the behavior of.
-Commenting out lines is as good as removing them but saves you having to write them again later if you change your mind.
+#### Re-enabling DHCP
+If your static IP configuration isn't working, or you want to revert to automatic DHCP,
+open `/etc/dhcpcd.conf` again and put a `#` at the beginning of each line you want to revert.
+Commenting lines out is as good as removing them, but lets you restore them later if you change your mind.
 
-To revert all of your configurations, comment out every line you added like so:
+To revert all of your configuration, comment out every line you added like so:
 ```
 #interface eth0
 #static ip_address=192.168.0.128/24
@@ -372,5 +340,4 @@ To revert all of your configurations, comment out every line you added like so:
 #static domain_name_servers=8.8.8.8 1.1.1.1
 #ntp_servers=192.168.0.1 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org
 ```
-Just like before: save the file and reboot to restart the MiSTer
-back to the startup menu with the new network settings applied.
+Just like before: save the file and reboot to apply the new settings.

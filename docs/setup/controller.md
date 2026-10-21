@@ -1,30 +1,24 @@
-Now we should define some gamepad inputs on our MiSTer. This is pretty easy to do. You should use a keyboard and your gamepad/controller for this step. For each different kind of controller you have, you should do this step, and the MiSTer will store a configuration based on that device's unique ID.
+Next, define your gamepad's inputs, using a keyboard and the gamepad. Do this once for each kind of controller you have; the MiSTer stores a separate configuration for each device's unique ID.
 
-## Defining your Gamepad's Buttons
-Go to the second menu in the On Screen Display, this is where you went to previously when running the Downloader or WiFi scripts. There is another option here, "Define joystick buttons". Select this option to configure your buttons on your gamepad:
+## Defining your gamepad's buttons
+Go to the second screen of the Menu core's On-Screen Display (where you ran the Downloader or WiFi scripts) and select "Define joystick buttons":
 
 ![Define your gamepad!](img/define-joystick.png)
 
-It will guide you through the process of detecting your general controller type by asking you to press a few d-pad buttons and maybe the analog sticks. 
-
-Then it will ask you to assign some buttons:
+The MiSTer first detects your general controller type by asking you to press a few D-pad directions and possibly the analog sticks. It then asks you to assign buttons:
 
 * Four face buttons and two shoulder buttons
 * Start and Select
 * OSD button or 2-button combo (to use instead of F12 on the keyboard)
 * A few extra buttons for advanced functions
 
-Skip any buttons you don't want to assign (there may be a lot of them) with the ++space++ on the keyboard or the User button on your MiSTer. If you accidentally assign the wrong button, don't worry, just define it all over again from the start.
-
-If you press ++enter++ to "Finish" too early, you might miss the Analog Joystick configuration step which is important if you have analog joysticks.
-
-Here is a picture to give you an idea of what the buttons it is asking you to press may represent:
+This picture shows what the requested buttons correspond to:
 
 ![MiSTer Controller Setup](img/controller-layout.png)
 
-The L on the bottom left is referring to an analog joystick. Your controller may or may not have this. If it does, the step to define the analogy joystick's input is at the end, so your joystick will not work unless you go through the entire list of inputs to define.
+* **Skipping buttons:** skip any button you don't want to assign (there may be many) with ++space++ on the keyboard or the User button on your MiSTer. If you assign a wrong button, don't worry: just start the definition over.
+* **Analog sticks:** the L at the bottom left of the picture is an analog stick. Its definition step comes at the end of the list, so if your controller has analog sticks, go through the entire list. If you press ++enter++ ("Finish") too early, you will skip this step and the stick won't work.
+* **OSD button:** if your controller has a "Home" button, as many modern controllers do, it's probably best to assign it to the OSD/Menu. If you assign neither an OSD button nor a combo, the only way to open the menu is ++f12++ on a keyboard.
 
-Another important button is the OSD button. Many modern controllers have a "Home" button, it's probably best to assign this to the OSD/Menu. If you do not assign anything to home, the only way to access the menu will be to use the ++f12++ key on a keyboard.
-
-### Define Gamepad Inputs/Buttons Example Video
+### Example video
 ![type:video](videos/define-gamepad.mp4)

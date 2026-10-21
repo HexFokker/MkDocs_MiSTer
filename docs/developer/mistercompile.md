@@ -1,21 +1,21 @@
-MiSTer uses a combination of various compiled binaries in the finished product. There is a customized minimal Linux Kernel, a bootloader, a Main MiSTer binary that's written in C, and then there are the cores built on the MiSTer framework written in a combination of VHDL, Verilog, and SystemVerilog. In order to compile the "full stack" as it were, you need a variety of tools.
+MiSTer combines several compiled components: a customized minimal Linux kernel, a bootloader, the Main MiSTer binary written in C, and cores built on the MiSTer framework in VHDL, Verilog, and SystemVerilog. Compiling the full stack requires a variety of tools.
 
 ## To compile MiSTer FPGA cores
 
-The vast majority of MiSTer FPGA cores currently use Quartus 17.0.2 for compilation. Here are the download links for both Windows and Linux:
+The vast majority of MiSTer FPGA cores currently use Quartus 17.0.2 for compilation. Download links for Windows and Linux:
 
 | Download URL                                                                                                                           | SHA1 Checksum                              |
 |----------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
 | [Linux](https://download.altera.com/akdlm/software/acdsinst/17.0std.2/602/ib_tar/Quartus-lite-17.0.2.602-linux.tar){target=_blank}     | `02aebab728d54e3ca8660d2646fdf93bc669b0ac` |
 | [Windows](https://download.altera.com/akdlm/software/acdsinst/17.0std.2/602/ib_tar/Quartus-lite-17.0.2.602-windows.tar){target=_blank} | `01d1f9cea037cf4b8c666da1193f94ba626b6fb3` |
 
-The Linux version is intended to work with Ubuntu 18.xx, you may have to adjust by downloading some missing dependencies if you use a newer version or another distribution.
+The Linux version is intended for Ubuntu 18.xx; you may have to download some missing dependencies if you use a newer version or another distribution.
 
-Open the .qpf file from the MiSTer core you wish to compile with Quartus and press the play button. It's as simple as that!
+Open the `.qpf` file of the MiSTer core you wish to compile in Quartus and press Compile (the play button).
 
 ## General prerequisites for ARM Cross Compiling
 
-These prerequisites are not completely strict, only some of them are. I'm using a specific linux distro (Ubuntu 20.04.5 LTS in WSL2), but you may find that other distros work for you, however your results may vary. Install the prereqs that I use for the Main MiSTer Binary and Linux kernel compilation this way:
+Only some of these prerequisites are strict. This guide was tested on Ubuntu 20.04.5 LTS in WSL2; other distros may work, but your results may vary. Install the prerequisites for compiling the Main MiSTer binary and Linux kernel this way:
 
 ```sh
 sudo apt update && sudo apt upgrade -y
@@ -28,23 +28,23 @@ Download the correct cross-compiler for compiling ARM binaries on a 64-bit x86-b
 wget -c https://developer.arm.com/-/media/Files/downloads/gnu-a/10.2-2020.11/binrel/gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf.tar.xz
 ```
 
-Extract this archive to somewhere you prefer, we will use it as a PATH, so here we will extract to `/opt`:
+Extract this archive somewhere convenient — it will be added to PATH; here it's extracted to `/opt`:
 
 ```sh
 tar xf gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf.tar.xz -C /opt
 ```
 
-Add this to your path temporarily each time you compile:
+Add this to your PATH temporarily each time you compile:
 
 ```sh
 export PATH=/opt/gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf/bin:$PATH
 ```
 
-**Note:** On WSL2 I have to run these export commands again after logging out, this may not be the case in your scenario, there are ways to permanently set them, but I'm preferring not to do that, you can also use them as parameters with `make` like normal (e.g. `PATH=/opt/gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf/bin:$PATH make -j30`).
+**Note:** On WSL2 (the author's setup), you may have to run these export commands again after logging out — this may not be the case in your scenario. There are ways to set them permanently, or you can pass them to `make` as parameters (e.g. `PATH=/opt/gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf/bin:$PATH make -j30`).
 
 ## Main MiSTer Binary
 
-The Main MiSTer binary is a good place to start for this guide. 
+The Main MiSTer binary is a good place to start for this guide.
 
 ### Linux (including WSL)
 
@@ -54,7 +54,7 @@ Clone the Main_MiSTer repository:
 git clone https://github.com/MiSTer-devel/Main_MiSTer.git
 ```
 
-Then `cd` into that directory that was created and follow up with `make`.
+Then `cd` into the created directory and run `make`.
 
 ### macOS
 
@@ -62,12 +62,12 @@ With Apple Silicon, the commonly used toolchains do not run directly as they are
 
 You can take advantage of an [IDE with devcontainers support](https://containers.dev/supporting){target=_blank} as the Main MiSTer repo includes a [devcontainer configuration](https://github.com/MiSTer-devel/Main_MiSTer/tree/master/.devcontainer){target=_blank}.
 
-Make sure you have enough RAM available or you will experience [disconnects](https://code.visualstudio.com/docs/remote/troubleshooting#_troubleshooting-hanging-or-failing-connections){target=_blank}. E.g. if using [Colima](https://github.com/abiosoft/colima){target=_blank}, the following appears sufficient to quickly compile MiSTer: 
+Make sure you have enough RAM available or you will experience [disconnects](https://code.visualstudio.com/docs/remote/troubleshooting#_troubleshooting-hanging-or-failing-connections){target=_blank}. For [Colima](https://github.com/abiosoft/colima){target=_blank}, the following appears sufficient to compile MiSTer quickly: 
 ```
 colima start --cpu 4 --memory 8
 ```
 
-After the devcontainer is setup, you can proceed as before and run `make`.
+After the devcontainer is set up, you can proceed as before and run `make`.
 
 ## MiSTer Linux Kernel
 
@@ -84,4 +84,4 @@ sudo apt-get update
 sudo apt-get build-dep linux
 ```
 
-to be continued... If you would like to contribute to this article, please do! :)
+To be continued — contributions welcome.

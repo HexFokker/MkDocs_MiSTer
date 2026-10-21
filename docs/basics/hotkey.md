@@ -1,4 +1,4 @@
-Here's a reference of the hotkeys you can use with the MiSTer. Hotkeys are useful at saving time and there are some hotkeys which do things you can only do with a keyboard or gamepad. Some of these hotkeys only work in the Main Menu core, others will work inside emulators as part of the gameplay, and some will work in all instances.
+This page lists the MiSTer hotkeys. Hotkeys save time, and some actions can only be done with a keyboard or gamepad hotkey. Some hotkeys work only in the Main Menu core, some work inside cores during gameplay, and some work everywhere.
 
 ## In any core, with OSD closed
 
@@ -8,8 +8,8 @@ Here's a reference of the hotkeys you can use with the MiSTer. Hotkeys are usefu
 | ++alt+f12++                               | Open core select menu                                                              |
 | ++win+prtsc++                             | Take a screenshot (upscaled)                                                       |
 | ++shift+win+prtsc++                       | Take a screenshot (raw output)                                                     |
-| ++lctrl+lalt+ralt++                       | Press "User" button, usually resets current core, same function as IO board button |
-| ++lshift+lctrl+lalt+ralt++                | Full Reboot/Reset, same as IO add-on board Reset button                            |
+| ++lctrl+lalt+ralt++                       | Press the "User" button — usually resets the current core; same as the I/O board button |
+| ++lshift+lctrl+lalt+ralt++                | Full reboot/reset; same as the I/O add-on board's Reset button                  |
 | Controller: Button + Menu hotkey          | Turn on/off turbo/autofire for the pressed button                                  |
 | Controller: Direction + Menu hotkey       | Set rate of turbo/autofire in milliseconds (ms)                                    |
 
@@ -19,9 +19,9 @@ Here's a reference of the hotkeys you can use with the MiSTer. Hotkeys are usefu
 | ---------------------------- | ----------------------------------------------------------------------- |
 | ++f12++                      | Close OSD                                                               |
 | ++f11++                      | Pair Bluetooth controller                                               |
-| Hold IO Board OSD Button     | Alternate method to Pair Bluetooth controller                           |
+| Hold I/O board OSD Button     | Alternate method to Pair Bluetooth controller                           |
 | Left                         | Go to information screen (shows currently selected INI file and volume) |
-| Right                        | System screen (change core, set filters, gamma, etc...)                 |
+| Right                        | System screen (change core, set filters, gamma, etc.)                   |
 | Controller: Back + R/L/U/D   | Select Alternate INI file if defined (Default/Alt1/Alt2/Alt3)           |
 | Controller: Select           | Expands submenus in the OSD when highlighted                            |
 | Controller: Shoulder Buttons | Cycles through the OSD options in a core in either direction            |
@@ -47,7 +47,7 @@ Some computer cores make use of the Windows key (++win++) on your keyboard.
 
 ### Light gun cores
 
-Some consoles cores make use of USB/BT light guns, such as the Guncon2, Guncon3, Gun4IR, Sinden, etc.
+Some console cores make use of USB/BT light guns, such as the Guncon2, Guncon3, Gun4IR, Sinden, etc.
 
 [Read this guide](./input.md#using-a-lightgun){target=_blank} for more information.
 
@@ -59,12 +59,12 @@ Some consoles cores make use of USB/BT light guns, such as the Guncon2, Guncon3,
 
 ### Cores that support savestates
 
-Very few cores support savestates (NES, PSX, GameBoy, GBA, WonderSwan, AtariLynx). There are 4 savestate slots available. In those cores there is a standard savestate button you can assign on your controller (we'll call that SaveStateBtn here):
+Very few cores support savestates (NES, PSX, GameBoy, GBA, WonderSwan, AtariLynx). There are four savestate slots available. In those cores, a standard savestate button can be assigned on your controller (called `SaveStateBtn` here):
 
 | Hotkey                                  | Description                                   |
 | --------------------------------------- | --------------------------------------------- |
 | ++alt+f1++ - ++f4++                     | Save the state in slots 1-4 respectively      | 
 | ++f1++ - ++f4++                         | Restore the state from slots 1-4 respectively |
-| Controller: SaveStateBtn + Left/Right   | Switches the savestate slot                   |
-| Controller: SaveStateBtn + Start + Down | Saves to the selected slot                    |
-| Controller: SaveStateBtn + Start + Up   | Restores from the selected slot               |
+| Controller: SaveStateBtn + Left/Right   | Switch the savestate slot                     |
+| Controller: SaveStateBtn + Start + Down | Save to the selected slot                     |
+| Controller: SaveStateBtn + Start + Up   | Restore from the selected slot                |

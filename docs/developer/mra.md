@@ -2,9 +2,9 @@ This page explains most of the intricacies of the way MiSTer handles ROMs for Ar
 
 ## MRA Format
 
-Because some arcade boards can change games by just putting in new roms, it made sense to move the RBF files out of sight from the menu list, and browse the MRA files instead. These MRA files specify which RBF file to use, and which mame rom zip files to create on the fly into a rom to pass to the arcade core. They will create the old a.pacman.rom style rom on the fly from mame roms, either merged or non-merged.
+Because some arcade boards can change games by just putting in new ROMs, it made sense to move the RBF files out of the menu list and browse the MRA files instead. These MRA files specify which RBF file to use and which MAME ROM zip files to merge on the fly into a ROM to pass to the arcade core — the old `a.pacman.rom`-style ROM, built from either merged or non-merged MAME ROMs.
 
-### Here is an example of where the files might go:
+### Example file layout
 ```bash
 /_Arcade/<game name>.mra
 /_Arcade/cores/<game rbf>.rbf
@@ -13,7 +13,7 @@ Because some arcade boards can change games by just putting in new roms, it made
 ```
 There are other locations for these files based on search paths.
 
-### MRA Format
+### Example MRA file
 ```xml
 <misterromdescription>
   <name>Donkey Kong (US set 1)</name>
@@ -37,7 +37,7 @@ There are other locations for these files based on search paths.
   <buttons names="Jump,Start 1P,Start 2P,Coin" default="A,Start,Select,R"/>
 <!-- rom index 1 or any other index can pass additional information to a rom.
 useful to say this rom is game A or game 1.  Use it in case of multiple games for
-the same RBF, ie: Dig Dug 2, Mappy -->
+the same RBF, e.g. Dig Dug 2, Mappy -->
   <rom index="1">
     <part>0A</part>
   </rom>
@@ -56,7 +56,7 @@ ROM structure
 
 
 <!-- rom index 0 is the standard rom. The zip will be added to the name inside the part, unless the
-part has it's own zip. The md5 will be checked at the end. A file not found error is reported before an md5
+part has its own zip. The md5 will be checked at the end. A file not found error is reported before an md5
 error. -->
   <rom index="0" zip="dkong.zip" md5="05fb1dd1ce6a786c538275d5776b1db1" type="merged|nonmerged|split">
     <part crc="ba70b88b" name="c_5et_g.bin"/>
@@ -94,7 +94,7 @@ Otherwise it will skip the additional entries.
 
 ```
 
-When creating a core you can pass additional data in using ioctl_index > 0. 
+When creating a core, you can pass additional data in using `ioctl_index` > 0. 
 
 ```verilog
 // Retrieve Title No.
@@ -106,30 +106,30 @@ end
 
 ### Explanation for XML elements and attributes
 
-* **name**: As an element this indicates how the rom should be called. The value should be taken from MAME. As an attribute this indicates an external rom file (or part thereof) that should be loaded by MiSTer.
-* **mratimestamp**: This indicates the date on which the *.mra file was created (useful for other users to determine if there is a newer version of the *.mra file available to which they should upgrade). The date format is yyyymmdd.
-* **mameversion**: This indicates on which version of a MAME romset the *.mra file is based (which version was used for testing). The dot in MAME's version numbering is omitted.
+* **name**: As an element this indicates what the ROM should be called. The value should be taken from MAME. As an attribute this indicates an external ROM file (or part thereof) that should be loaded by MiSTer.
+* **mratimestamp**: This indicates the date on which the *.mra file was created (useful for users to determine if a newer version of the *.mra file is available). The date format is YYYYMMDD.
+* **mameversion**: This indicates which version of a MAME romset the *.mra file is based on (which version was used for testing). The dot in MAME's version numbering is omitted.
 * **setname**: This indicates the name of the romset used as given by MAME. It is used to overwrite the core ID specified in the *.rbf file so that individual settings can be saved on a per romset basis.
 * **year**: This indicates the year the game was released. The format is YYYY and the value should be taken from MAME.
 * **manufacturer**: This indicates the manufacturer of the game. The value should be taken from MAME.
 * **rbf**: This indicates the filename (sans path and extension) of the core that should be used to run the game.
-* **buttons**: This indicates the default button mapping for the game. As the name implies, it only applies buttons, not to directional controls. The **names** attribute specifies how the buttons are called in the MiSTer OSD while the **default** attribute specifies how the buttons are mapped to the virtual [MiSTer gamepad](../setup/controller.md). Each **name** corresponds to a bit in the joystick_X port output from hps_io, starting at bit 4 (bits 0-3 are the directional controls). Use '-' to pad for any unused bits. The buttons include not only player inputs, but also start buttons, coins, pause etc. How you arrange these button bits is up to you; they can map directly to I/O ports in the emulated hardware, or can be arbitrary (they are configured in the OSD in the order in which they appear in the attribute) and subsequently re-mapped to hardware ports in your core.
-* **switches**: This is to define the dip switches present on the arcade board. As this is a bit more complex, there is a [specific section](#Dip-Switches) for it below.
-* **nvram**: This tells MiSTer to save the NVRAM data on Save Settings in the OSD. If an NVRAM was saved, it will be sent to the core as well
+* **buttons**: This indicates the default button mapping for the game. As the name implies, it applies to buttons only, not to directional controls. The **names** attribute specifies how the buttons are called in the MiSTer OSD, while the **default** attribute specifies how they are mapped to the virtual [MiSTer gamepad](../setup/controller.md). Each **name** corresponds to a bit in the joystick_X port output from hps_io, starting at bit 4 (bits 0-3 are the directional controls). Use '-' to pad for any unused bits. The buttons include not only player inputs but also start buttons, coins, pause, etc. How you arrange these bits is up to you: they can map directly to I/O ports in the emulated hardware, or they can be arbitrary — they are configured in the OSD in the order they appear in the attribute — and subsequently re-mapped to hardware ports in your core.
+* **switches**: This is to define the dip switches present on the arcade board. As this is a bit more complex, there is a [specific section](#dip-switches) for it below.
+* **nvram**: This tells MiSTer to save the NVRAM data on Save Settings in the OSD. If an NVRAM was saved, it will be sent to the core as well.
 * **romstruct**: This is to give information about the rom structure, how the rom memory is mapped. Information contained herein is intended as a comment for other developers and not actually used by MiSTer.
-* **remark**: This element is intended for general remarks. Information contained herein is intended as a comment for other developers and not actually used by MiSTer.
-* **rom**: Part, patch and interleave elements must have a rom element as a parent element. An **index** attribute with a value of 1 is used to pass information to multigame cores, which machine configuration to use. For passing actual rom data you need an index value of 0. The **md5** attribute is used to specify the md5 checksum. The md5 checksum is calculated and checked by MiSTer after the whole rom is created according to the given *.mra file. You can use the Linux console to find out the checksum calculated by MiSTer when it starts the core (the command line to do so is '/media/fat/MiSTer rbffilename mrafilename'). Roms whose checksum differ from the one specified in the *.mra file won't load. Specifying the md5 checksum as “none” will disable this check.
+* **remark**: Free-form remarks for other developers; not used by MiSTer.
+* **rom**: Part, patch and interleave elements must have a rom element as a parent element. An **index** attribute with a value of 1 tells multigame cores which machine configuration to use. For passing actual rom data you need an index value of 0. The **md5** attribute is used to specify the md5 checksum. The md5 checksum is calculated and checked by MiSTer after the whole rom is created according to the given *.mra file. You can use the Linux console to find out the checksum calculated by MiSTer when it starts the core (the command line to do so is `/media/fat/MiSTer rbffilename mrafilename`). ROMs whose checksum differs from the one specified in the `*.mra` file won't load. Specifying the md5 checksum as "none" will disable this check.
 * **part**: The part element is only allowed inside a rom element. It is used for specifying a part of the rom. The content of a part can either be embedded as a hex value into the *.mra file itself (if copyright law allows) or there can be a reference to an external file via the name attribute. If the external file is in a different zip file than the parent rom element, the filename of the zip file must be specified via the **zip** attribute.
-  * The **crc** attribute specifies the CRC32 checksum of the respective part (format: eight hex digits). If a crc value is specified, MiSTer will try to select the appropriate file by crc (and only revert to the filename specified by the attribute name, if the crc value does not match). This increases compatibility of the *.mra file with different MAME versions of the romset. As crc values are only relevant for external files, a crc value should only be given to a part element when there is a reference to an external file.
-  * The **repeat** attribute only applies to embedded parts and indicates for how long (not how many times) the sequence should be repeated. By default decimal numbers are assumed. Hex numbers must be preceded with "0x".
-  * Inside the rom element, the **offset** and **length** attributes only apply to external files. To use the offset attribute for internal data, the patch element must be used. Offset indicates the location inside the file from where MiSTer should start reading and length indicates the length of the sequence that MiSTer should be reading. By default decimal numbers are assumed. Hex numbers must be preceded with "0x".
-  * The **map** attribute specifies to only read certain parts of the corresponding part element. For example a value of "0001" (binary) means to read only every fourth byte while a value of "1010" (binary) means to read only every first and third byte. To byteswap a part you need to set a map attribute value of 21 (decimal) and enclose the respective part element in an interleave tag.
+    * The **crc** attribute specifies the CRC32 checksum of the respective part (format: eight hex digits). If a crc value is specified, MiSTer will try to select the appropriate file by crc, reverting to the filename in the `name` attribute only if the crc value does not match. This increases compatibility of the *.mra file with different MAME versions of the romset. As crc values are only relevant for external files, a crc value should only be given to a part element when there is a reference to an external file.
+    * The **repeat** attribute only applies to embedded parts and indicates for how long (not how many times) the sequence should be repeated. By default decimal numbers are assumed. Hex numbers must be preceded with "0x".
+    * Inside the rom element, the **offset** and **length** attributes only apply to external files. To use the offset attribute for internal data, the patch element must be used. Offset indicates the location inside the file from where MiSTer should start reading and length indicates the length of the sequence that MiSTer should be reading. By default decimal numbers are assumed. Hex numbers must be preceded with "0x".
+    * The **map** attribute specifies to only read certain parts of the corresponding part element. For example a value of "0001" (binary) means to read only every fourth byte while a value of "1010" (binary) means to read only every first and third byte. To byteswap a part you need to set a map attribute value of 21 (decimal) and enclose the respective part element in an interleave tag.
 * **patch**: The patch element is only allowed inside a rom element. It is applied after the whole rom is created from its parts and overwrites the content of the rom with the content of the patch element, starting from the specified offset and for the length of the patch element's content.
-* **interleave**: The interleave element is only allowed inside a rom element and can only be used as parent element to one or more part elements. Together with the mandatory **output** attribute the interleave element can be used to specify that the children part elements should be read in a certain way. For example an output-value of "32" (decimal) indicates that the children part elements ROM data should be treated as 32 bit.
+* **interleave**: The interleave element is only allowed inside a rom element and can only be used as parent element to one or more part elements. Together with the mandatory **output** attribute the interleave element can be used to specify that the child part elements should be read in a certain way. For example, an output value of "32" (decimal) indicates that the child part elements' ROM data should be treated as 32-bit.
 
 ### Dip Switches
 
-Dip switch support in the latest version of MRA is used instead of the status bits. The DIP config str is listed in the core, and the core is responsible for reading the up to 64bits of dip data that is sent via ioctl_index 254.
+Dip switch support in the latest version of MRA is used instead of the status bits. The DIP config string is listed in the core, and the core is responsible for reading up to 64 bits of DIP data sent via `ioctl_index` 254.
 
 
 ```verilog
@@ -137,7 +137,7 @@ reg [7:0] sw[8];
 always @(posedge clk_sys) if (ioctl_wr && (ioctl_index==254) && !ioctl_addr[24:3]) sw[ioctl_addr[2:0]] <= ioctl_dout;
 ```
 
-Switches is the dip switch setting. The **default** are the default bytes. These are used so you can default the arcade into the proper factory settings. This is useful when the factory settings aren't all OFF/OFF/OFF. Note that in the **default** hexadecimal string, the leftmost byte refers to DIP bits 7:0, the next byte to 15:8 and so on. The most significant byte thus occupies the rightmost part of the string.
+The `switches` element holds the DIP switch settings, and `default` holds the default bytes. These let the arcade default to the proper factory settings. This is useful when the factory settings aren't all OFF/OFF/OFF. Note that in the **default** hexadecimal string, the leftmost byte refers to DIP bits 7:0, the next byte to 15:8 and so on. The most significant byte thus occupies the rightmost part of the string.
 
 ```xml
  <switches default="FF,FF,C9">
@@ -145,12 +145,12 @@ Switches is the dip switch setting. The **default** are the default bytes. These
 
 The value C9 will apply to DIP bits 23:16.
 
-The dip tag let's you put in a dip switch entry. The bit number (starting at 0) is based on the way the core was written. Often MAME source code can be used to understand the bits. The numbering will depend on the rom used, the arcade core, and how things are laid out.
+The `dip` tag lets you add a DIP switch entry. The bit number (starting at 0) is based on how the core was written — MAME source code can often help you understand the bits. The numbering depends on the ROM used, the arcade core, and how things are laid out.
  
-* **bits**: bit number to fill out sent to the core in ioctl_data
+* **bits**: bit numbers sent to the core in `ioctl_data`
 * **name**: title for the OSD
 * **ids**: title for each option in the OSD
-* **values**: if you want the values to be different than 0,1,2,3 you can reorder them
+* **values**: if you want the values to be different from 0,1,2,3, you can reorder them
  
 ```xml
     <dip bits="16,17" name="Coinage" ids="2c/1cr,1c/1cr,1c/2cr,Free Play" values="3,1,2,0"/>

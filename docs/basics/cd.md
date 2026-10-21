@@ -1,25 +1,27 @@
-MiSTer supports Cue/Bin and [CHD](https://github.com/rtissera/libchdr){target=_blank} formats. The way the MiSTer handles CD-based ROMs and images is fairly simple. There are some specifics that need to be described about how the MiSTer handles CDs.
+MiSTer loads CD-based games from CUE/BIN and [CHD](https://github.com/rtissera/libchdr){target=_blank} images. This page explains how to store them, and whether USB CD drives are supported.
 
-## Will MiSTer ever support USB CD Drives?
+## Will MiSTer ever support USB CD drives?
 
-The short answer is **no**. The long answer is that:
+The short answer is no. The long answer is that:
 
-1. There is too much hardware variation in CD drives and the drivers that go with them for it to be worth it and
-2. Everything added to the Linux image and Main binary for the MiSTer have to be very carefully considered as the goal is to keep it lightweight and not bloated. 
+1. There is too much hardware variation in CD drives and their drivers for support to be worth it.
+2. Everything added to the MiSTer's Linux image and Main binary must be very carefully considered, because the goal is to keep them lightweight.
 
-CD Drive support is not a priority, as properly dumped CD-ROM images are bit-perfect where it counts (excluding randomized subchannel data and garbage data fill-in).
+Drive support is also not a priority, as properly dumped CD-ROM images are bit-perfect where it counts (excluding randomized subchannel data and garbage-data fill-in).
 
-## Cue/Bin Folders and CHD files
+## CUE/BIN folders and CHD files
 
-If you are using cue/bin files, then you need to place them in their own folder separate from the other cue/bin ROMs. Currently every CD-based core supports cue/bin. CHD files are a compressed CD image format that is also supported by almost every CD-based core. CHD files don't need to be placed in their own folder separate from each other.
+Every CD-based core currently supports CUE/BIN. Place each CUE/BIN game in its own folder, separate from your other CUE/BIN games.
+
+CHD is a compressed CD image format that almost every CD-based core also supports. CHD files don't need separate folders.
 
 ## Multi-disc games
 
-For multi-disc games like on Playstation / PSX you will want to place each of the disc files into the same subfolder like so:
+For multi-disc games (e.g. on PlayStation / PSX), place each disc's files in the same subfolder:
 
 ```
 ./Valkyrie Profile (USA)/Valkyrie Profile (USA) (Disc 1).chd
 ./Valkyrie Profile (USA)/Valkyrie Profile (USA) (Disc 2).chd
 ```
 
-This will signal to the MiSTer that the save file name should be `Valkyrie Profile (USA).sav` (the subfolder name). It will also allow you to switch discs by loading the other disc image without resetting the core.
+The MiSTer then names the save file after the subfolder (`Valkyrie Profile (USA).sav`), so all discs share one save. You can also switch discs by loading the other disc image, without resetting the core.

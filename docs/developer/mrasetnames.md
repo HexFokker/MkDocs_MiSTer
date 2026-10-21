@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-This is a list of the mra files and the setnames that are used for the mister.ini core exceptions.
+This is a list of the MRA files and the setnames used for MiSTer.ini core exceptions.
 
 | mra\_filename                                                                  | setname     | mameversion | rbf              |
 | ------------------------------------------------------------------------------ | ----------- | ----------- | ---------------- |

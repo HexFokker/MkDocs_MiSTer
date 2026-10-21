@@ -1,84 +1,84 @@
-A common concern among retro enthusiasts is whether a device of this sort has _lag_ and whether it will create a less desirable experience compared to original hardware. 
+A common concern among retro enthusiasts is whether a device like MiSTer has _lag_ and whether it creates a less desirable experience than original hardware. 
 
-Every electronic equipment exhibits some kind of _latency_, but it only becomes problematic if this latency causes frames to be missed. A frame is typically 16ms for a system using a 60 frames per second (60 Hz) display.
+All electronic equipment exhibits some kind of _latency_, but it only becomes problematic if this latency causes frames to be missed. A frame is typically 16 ms for a system using a 60 frames per second (60 Hz) display.
 
 Lag is only problematic in a few specific cases:
 
 * Some older games were designed to rely on extremely quick response times (e.g. Punch-Out on NES).
 * If the latency is different between two players, it could introduce an unfair advantage.
-* Lag that isn't constant can be an issue on games that require precise movement. (Most players can adapt to lag that is consistent.)
+* Lag that isn't constant can be an issue in games that require precise movement. (Most players can adapt to lag that is consistent.)
 
-There are three major categories of lag. **Input**, which involves controllers, mouse, etc, **Processing**, which would involve buffering in the core, execution or delays in code and **Display** which involves the output of the video to your display device.
+For a more detailed overview of lag, see [https://inputlag.science/](https://inputlag.science/){target=_blank}.
 
-For a more detailed overview of lag and exploration of it, please refer to this page:
+## Where lag comes from
 
-[https://inputlag.science/](https://inputlag.science/){target=_blank}
+There are three major categories of lag: **input** (controllers, mouse, etc.), **processing** (buffering in the core, execution or delays in code), and **display** (the video output to your display device).
 
 ### Input
-For input, MiSTer primarily uses USB. In this case the overall input lag is the sum of the lag caused by the USB polling and the lag caused by the controller itself, how quickly it processes the signals. The latter is outside the scope of MiSTer and can only be improved by using a better controller. On the MiSTer side only the lag caused by the USB polling can be reduced if the connected USB device supports a lower polling interval. The polling interval is measured in Hz and indicates how often a USB device is polled per second. At 1000 Hz, a USB device is polled 1000 times per second, which means the additional lag caused by the polling is 1 s / 1000 = 1 ms in the worst case and 0.5 ms on average. This is a great improvement compared to the default value of 125 Hz, where a USB device is polled 125 times per second, which means the additional lag caused by the polling is 1 s / 125 = 8 ms in the worst case and 4 ms on average.
+For input, MiSTer primarily uses USB. In this case the overall input lag is the sum of the lag caused by USB polling and the lag from the controller itself (how quickly it processes the signals). The latter is outside the scope of MiSTer and can only be improved by using a better controller. On the MiSTer side, only the lag caused by USB polling can be reduced, and only if the connected USB device supports a lower polling interval. The polling interval is measured in Hz and indicates how often a USB device is polled per second. At 1000 Hz the polling adds at most 1 ms of lag (0.5 ms on average) — a great improvement over the default 125 Hz, which adds up to 8 ms (4 ms on average).
 
-If a game is rendered at 60 frames per second, a single frame takes 1 s / 60 ≈ 16 ms to process. One might think that any polling interval below 16 ms would be perfect; however, USB polling happens independently of the vertical sync. Therefore, even with a 1 ms polling interval, there is a chance of 1/16 that the whole frame will be missed and input will be processed on the next frame. The longer the polling interval, the greater the odds of a missed frame. With a polling interval of 8 ms, the odds of input missing a frame are 50%. Native polling rates and input response vary across consoles and even games.
+If a game is rendered at 60 frames per second, a single frame takes 1 s / 60 ≈ 16 ms to process. One might think that any polling interval below 16 ms would be perfect; however, USB polling happens independently of the vertical sync. Therefore, even with a 1 ms polling interval, there is a 1/16 chance that the whole frame will be missed and input will be processed on the next frame. The longer the polling interval, the greater the odds of a missed frame. With a polling interval of 8 ms, the odds of input missing a frame are 50%. Native polling rates and input response vary across consoles and even games.
 
 ### Processing
-This is one core advantage of emulation using FPGAs. Unlike software emulators which go through a cycle of executing, and then waiting for a screen refresh, FPGA cores run in real time, as the original hardware did. This means that cores don’t have CPU bottlenecks to slow them down arbitrarily or require additional large buffers to hold data under most circumstances.
+Processing is where FPGA emulation has a key advantage. Software emulators repeatedly execute and then wait for the next screen refresh, whereas FPGA cores run in real time, as the original hardware did. In most circumstances, cores therefore have no CPU bottlenecks that slow them down arbitrarily, and need no large extra buffers to hold data.
 
 ### Display
 MiSTer’s two primary display outputs are analog and HDMI. 
 
-The analog output is driven as the original system would have, with no buffering, and so it will be effectively identical to the latency of a real console. From this point of view, the analog output cannot have any form of lag. 
+The analog output is driven as the original system would have, with no buffering, so its latency is effectively identical to a real console's — from this point of view, the analog output has no lag of its own.
 
-When using HDMI output the image must be scaled up to fit the higher resolutions, which requires additional processing. The MiSTer scaler has options which impact its latency. Using `vsync_adjust=2` in the ini file will result in about 4 scanlines of latency, while 0 or 1 will result in up to roughly 2 frames of latency, with the added advantage of being more compatible with displays. 
+HDMI output must be scaled up to a higher resolution, which requires additional processing. How much latency the scaler adds depends on the `vsync_adjust` setting: from about 4–30 lines up to roughly 2 frames (see [Video lag](#video-lag) below).
 
-In addition your own television or monitor may introduce more latency, but this varies by device and no definite number can be given on that here. 
+Your television or monitor may add further latency, but this varies by device, so no definite number can be given here.
 
-In summary, if lag is critical to you, **it's best to play on a CRT using a recommended and widely-tested USB controller.** Some users have tested and ranked USB controllers by performance; you can see their results [here](https://github.com/eniva/MisSTer_Guides/wiki/USB-Controllers-Performance-Ranking){target=_blank}. An alternate thorough list of tested controllers by misteraddons is also available [here](https://rpubs.com/misteraddons/inputlatency){target=_blank}.
+### Summary
 
-Do keep in mind, however, that even over HDMI MiSTer is capable of providing a better experience than many other devices.
+If lag is critical to you, **it's best to play on a CRT using a recommended and widely tested USB controller.** Some users have tested and ranked USB controllers by performance; see their [results](https://github.com/eniva/MisSTer_Guides/wiki/USB-Controllers-Performance-Ranking){target=_blank}. Another thorough list of tested controllers is MiSTerAddons and Lemonici's [MiSTer Input Latency Chart](https://rpubs.com/misteraddons/inputlatency){target=_blank}.
+
+Even over HDMI, however, MiSTer can provide a better experience than many other devices.
 
 ## Reducing Lag
 
 ### Video lag
 
-MiSTer offers options in how to configure its HDMI upscaler, making a tradeoff between compatibility and low latency.
-These can be set in the MiSTER.INI file at the root of the SD card:
+The `vsync_adjust` option in `MiSTer.ini` (at the root of the SD card) configures the HDMI upscaler, trading compatibility against latency:
 
-* `vsync_adjust=2` is the best option if it is compatible with your TV. This mode uses the original refresh rate and pixel clock of the core, resulting in sub-frame latency. The actual latency of this mode is around 4 to 30 lines of lag when using vscale_mode=1, and slightly more in other modes, according to Grabulosaure who made the scaler [in this video he made](https://www.youtube.com/watch?v=DYfUZ6PG7H4){target=_blank}.
-* `vsync_adjust=1` is the second best option and it has 1 frame of latency. This mode uses a framebuffer, but maintains the system's original vsync and varies the pixel clock per core.
-* `vsync_adjust=0` is the lesser option, but it is the most compatible vsync_adjust mode. Up to 1-2 frames of latency and slightly less smooth scrolling. This mode guarantees 60 hz output with an NTSC standard pixel clock so it has higher compatibility with modern displays. However, you will notice occasional jittering as the core's refresh rate does not match the display's refresh rate.
+* `vsync_adjust=2` is the best option if your TV is compatible with it. It uses the core's original refresh rate and pixel clock, giving sub-frame latency. According to Grabulosaure, who made the scaler, the actual latency is around 4 to 30 lines with `vscale_mode=1`, and slightly more in other modes ([video](https://www.youtube.com/watch?v=DYfUZ6PG7H4){target=_blank}).
+* `vsync_adjust=1` is the second-best option, with 1 frame of latency. It uses a framebuffer, but keeps the system's original vsync and varies the pixel clock per core.
+* `vsync_adjust=0` is the weakest option for latency, but the most compatible: up to 1-2 frames of latency and slightly less smooth scrolling. It always outputs 60 Hz with an NTSC-standard pixel clock, so it is more compatible with modern displays. However, you will notice occasional jitter, because the core's refresh rate doesn't match the display's.
 
 ### Input lag
 
-USB controllers usually have an interval value which the host (MiSTer Linux kernel) respects to poll their inputs at. Most USB devices can actually perform better by being polled more often without any side effects.
+USB controllers usually report a polling interval, which the host (the MiSTer Linux kernel) respects when polling their inputs. Most USB devices can actually perform better when polled more often, without any side effects.
 
-To set a higher USB polling rate, you need to go to the "linux" subdirectory on your SD card and rename "u-boot.txt_example" to "u-boot.txt". The aforementioned file contains the following options, which should only be changed if you are encountering problems:
+To set a higher USB polling rate, go to the `linux` folder on your SD card and rename `u-boot.txt_example` to `u-boot.txt`. The file contains the following options; change them only if you run into problems:
 ```bash
 v=loglevel=4 usbhid.jspoll=1 xpad.cpoll=1
 ```
-**loglevel**: 4 is the default value. You can set this to 9 to get debugging messages with dmesg command via SSH. If you just want to know which values of usbhid.jspoll and xpad.cpoll are applied to your controller, there are easier ways to achieve this (see below).
+**loglevel**: 4 is the default value. You can set this to 9 to get debugging messages with the `dmesg` command via SSH. See below for how to check the jspoll/cpoll values applied to your controller.
 
 **usbhid.jspoll**: specifies the interval for USB HID controllers, usually DirectInput.
 
-* 0 is the default value MiSTer uses (even when there is no "u_boot.txt"). In this case the requested value from the controller is used.
-* 1 is the recommended value (which means 1000/1 = 1000 Hz polling rate). However, if you ever encounter any issues, try higher integer values. The higher the interval, the higher the possible lag. This shouldn't go above 8 (which means 1000/8 = 125 Hz polling rate).
-* To see which value is applied to your controller, you can run ```systool -m usbhid -A jspoll``` from the Linux shell.
+**xpad.cpoll**: specifies the interval for USB XInput controllers. XInput is the controller standard of Microsoft's Xbox consoles and PC, and most popular controllers use it. Its values work the same way as `usbhid.jspoll`'s.
 
-**xpad.cpoll**: specifies the interval for USB XInput controllers. Most popular controllers use this. There is no practical difference here. XInput is for Microsoft's Xbox consoles and PC.
+Both parameters take the same values:
 
-* 0 is the default value MiSTer uses (even when there is no "u_boot.txt"). In this case the requested value from the controller is used.
-* 1 is the recommended value (which means 1000/1 = 1000 Hz polling rate). However, if you ever encounter any issues, try higher integer values. The higher the interval, the higher the possible lag. This shouldn't go above 8 (which means 1000/8 = 125 Hz polling rate).
-* To see which value is applied to your controller, you can run ```systool -m xpad -A cpoll``` from the Linux shell.
+* `0` — the default; the value requested by the controller is used (even without a `u-boot.txt`).
+* `1` — recommended; 1000/1 = 1000 Hz polling. If you encounter issues, try higher integer values: the higher the interval, the higher the possible lag. Don't go above 8 (1000/8 = 125 Hz).
+
+To check the applied value, run `systool -m usbhid -A jspoll` or `systool -m xpad -A cpoll` from the Linux shell.
 
 ## What is the fastest controller I can get?
 
-Almost any standard USB controller will work well with MiSTer, however there is a short list of excellent controllers that we can suggest based on user feedback and input lag testing:
+Almost any standard USB controller works well with MiSTer, but based on user feedback and input lag testing, these are a few excellent choices:
 
-* 8bitdo M30 2.4g connected in wired mode
+* 8BitDo M30 2.4G connected in wired mode
 * Sony DS4 in wired mode
-* Hori Fighting Commander (later revisions), either PS4 or XBOX1 variant is fine; pick your favorite
+* Hori Fighting Commander (later revisions), either the PS4 or Xbox One variant — pick your favorite
 * DIY USB adapter using open source firmware available [here](https://github.com/MiSTer-devel/Retro-Controllers-USB-MiSTer){target=_blank}
 
-Generally speaking, while Bluetooth connected devices will work fine, you can expect the highest amount of input latency while using your controller in this way.
+Bluetooth-connected devices generally work fine, but expect the highest input latency from them.
 
-Please keep in mind, “high latency” controllers *should* add, at most, 16 ms (1/60th of a second) or one frame (or rarely, depending on the controller, 32ms) of lag, and not constantly, to your experience, which is not a lot of lag, so if you’re not the type of person who notices that, you can safely just use any decent USB controller. Variable lag (the input response varying between 1 and 3 frames, for instance) is more noticeable than consistent lag. There are very few controllers which add more than 1 frame of lag.
+Keep in mind that even "high latency" controllers *should* add at most 16 ms (1/60th of a second, one frame) of lag, or rarely, depending on the controller, 32 ms, and not constantly. That is not a lot, so if you don't notice lag, you can safely use any decent USB controller. Variable lag (for instance, response varying between 1 and 3 frames) is more noticeable than consistent lag. Very few controllers add more than 1 frame of lag.
 
-There is no definitive fastest controller that you can get, but there are quite a few at the top of the list. You can, again, check MiSTerAddons and Lemonici's [MiSTer Input Latency Chart](https://rpubs.com/misteraddons/inputlatency){target=_blank} for a definitive community sourced list of controllers tested with MiSTer with a separate device that uses the DE10-Nano's headers to get an objective result.
+There is no single definitive fastest controller, but quite a few are near the top. For a definitive, community-sourced list, see MiSTerAddons and Lemonici's [MiSTer Input Latency Chart](https://rpubs.com/misteraddons/inputlatency){target=_blank}: the controllers were tested on MiSTer with a separate device connected to the DE10-Nano's headers, for objective results.

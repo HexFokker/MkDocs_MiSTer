@@ -1,8 +1,8 @@
-On MiSTer the top level is inside [sys/sys_top.v](https://github.com/MiSTer-devel/Template_MiSTer/blob/master/sys/sys_top.v){target=_blank}. When writing or porting a MiSTer core, instead of telling quartus to use your own top, quartus uses sys_top, and it will call a module called emu that you need to provide. This will document the parameters that your top level will need to implement. The MiSTer sys_top will handle a lot of useful things like audio and HDMI video.
+On MiSTer, the top level is inside [sys/sys_top.v](https://github.com/MiSTer-devel/Template_MiSTer/blob/master/sys/sys_top.v){target=_blank}. When writing or porting a MiSTer core, Quartus uses `sys_top` rather than your own top, and `sys_top` calls a module named `emu` that you must provide. This page documents the parameters your top level needs to implement. `sys_top` handles a lot of useful things like audio and HDMI video.
 
 ## Instantiating your core
 
-Tour core should be inside an emu block, see the [Template Top Level](https://github.com/MiSTer-devel/Template_MiSTer/blob/master/mycore.sv){target=_blank} for an example. Some of the contents of this article regarding the code used might be outdated, always reference the Template in the link above for the latest framework version.
+Your core should live inside an `emu` block — see the [Template Top Level](https://github.com/MiSTer-devel/Template_MiSTer/blob/master/mycore.sv){target=_blank} for an example. Some code in this article may be outdated; always reference the template linked above for the latest framework version.
 
 ## Master input clock
 ```verilog
@@ -10,9 +10,9 @@ Tour core should be inside an emu block, see the [Template Top Level](https://gi
 	input         CLK_50M,
 ```
 
-Most cores will use the PLL which is instantiated from the sys folder, but the pll needs to live in the rtl folder off of the top level (at the same level as sys). This choice was made so that you can update the sys folder without losing the PLL configuration.
+Most cores use the PLL instantiated from the `sys` folder, but the PLL must live in the `rtl` folder next to the top level (at the same level as `sys`), so that updating `sys` doesn't lose the PLL configuration.
 
-NOTE: For full compatibility with the existing sys architecture, keep the pll named 'pll' and the instance 'pll' as shown below. You can use the megawizard to edit the pll to modify the required frequencies etc... (including adding more outputs). If you don't have a pll create a new one, or use the one from the template. The sys_top.sdc requires the name for the pll and the instance name be correct.
+NOTE: For full compatibility with the existing sys architecture, keep the PLL named `pll` and the instance named `pll` as shown below. Use the MegaWizard to edit the PLL and modify the required frequencies (including adding more outputs). If you don't have a PLL, create one or use the one from the template. sys_top.sdc requires the PLL name and instance name to be correct.
 
 ```
 wire clk_sys;
@@ -31,7 +31,7 @@ pll pll
 	input         RESET,
 ```
 
-Normally the RESET line is used in conjunction with the button on the I/O board, as well as a status flag. Most cores use status bit 0 (this is reserved for a Soft Reset), and a CONF_STR that includes an option like: `"R0,Reset;"`
+Normally the `RESET` line is used in conjunction with the button on the I/O board, as well as a status flag. Most cores use status bit 0 (reserved for a soft reset), and a `CONF_STR` that includes an option like: `"R0,Reset;"`
 
 ```verilog
 wire reset = RESET | status[0] | buttons[1];
@@ -39,7 +39,7 @@ wire reset = RESET | status[0] | buttons[1];
 
 ## HPS Bus
 
-The HPS Bus is used to communicate with the ARM processor. It is passed into the hps_io module which will do a bunch of work for the core, and provide a simpler interface to use. Include the hps_io module in the emu module. See [hps_io](hps_io.md)
+The HPS bus is used to communicate with the ARM processor. Pass it into the `hps_io` module, which does a lot of the work for the core and provides a simpler interface. Include `hps_io` in the `emu` module. See [hps_io](hps_io.md).
 
 ```verilog
 	//Must be passed to hps_io module
@@ -48,23 +48,25 @@ The HPS Bus is used to communicate with the ARM processor. It is passed into the
 
 ## Video Signals
 
-The top level module that calls emu includes the high quality HDMI scaler, and provides a fairly simple interface to output video on MiSTer. There are a number of other helper modules that can be included to provide proper video output.
+The top-level module that calls `emu` includes the high-quality HDMI scaler, and provides a fairly simple interface to output video on MiSTer. Other helper modules can be included to provide proper video output.
 
-At the simplest level provide a CLK_VIDEO, and/or CE_PIXEL (CE_PIXEL can be set to 1 if your video clk is correct). The video clock needs to be greater than 40MHZ for all of the features to work. 
+At the simplest level, provide a `CLK_VIDEO` and/or `CE_PIXEL` (`CE_PIXEL` can be tied to 1 if your video clock is correct). The video clock needs to be above 40 MHz for all features to work.
 
-Generally the video signals want to be whatever the native resolution of the machine that is being emulated. ie: an old 8bit computer will generally output 15khz video. MiSTer has a scandoubler built in that will create VGA compatible output if the user wants that on their VGA port. To include this scandoubler in the core you will usually use the video_mixer or arcade_video modules. The forced_scandoubler signal comes from the hps_io module. Some users want to use a 15khz monitor with 15khz cores, so the core itself shouldn't have a scandoubler built in. Some original devices may have had higher resolution output, if that native output was greater than 15khz, it is ok to output it natively through the VGA signals.  The scaler will use the VGA_DE (usually based on HBLANK and VBLANK `assign VGA_DE = ~(HBlank | VBlank);`)  to scale it up to HDMI based on the settings in the ini file.
+Generally, the video signals should be at the emulated machine's native resolution; an old 8-bit computer, for example, generally outputs 15 kHz video. If the original device's native output was higher than 15 kHz, it's fine to output that natively through the VGA signals. The scaler uses `VGA_DE` (usually `assign VGA_DE = ~(HBlank | VBlank);`) to scale the image to HDMI according to the ini file settings.
+
+For users who want VGA-compatible output on the VGA port, MiSTer has a built-in scandoubler, which you usually include through the `video_mixer` or `arcade_video` module. It is controlled by the `forced_scandoubler` signal from `hps_io`. Some users run 15 kHz cores on 15 kHz monitors, so the core itself shouldn't have its own built-in scandoubler.
 
 ### Video Mixer
 
-Use the [Video Mixer](video_mixer.md) Module to add MiSTer framework standard features like gamma support, scaling, and scandoubling.
+Use the [Video Mixer](video_mixer.md) module to add MiSTer framework standard features like gamma support, scaling, and scandoubling.
 
 ### Video Freak 
 
-Use the [Video Freak](video_freak.md) Module to add cropping and scaling
+Use the [Video Freak](video_freak.md) module to add cropping and scaling.
 
 ### Arcade Video
 
-Use the [Arcade Video](arcade_video.md) Module for arcade cores to support rotation, scandoubling, and most of the features that are in video_mixer. This file also includes **screen_rotate** which is used for vertical arcade games to allow rotation over HDMI.
+Use the [Arcade Video](arcade_video.md) module for arcade cores to support rotation, scandoubling, and most of the features in `video_mixer`. The file also includes `screen_rotate`, which adds HDMI rotation for vertical arcade games.
 
 ```verilog
 	//Base video clock. Usually equals to CLK_SYS.
@@ -123,19 +125,19 @@ Use the [Arcade Video](arcade_video.md) Module for arcade cores to support rotat
 `endif
 ```
 
-## LEDs on the IO board
+## LEDs on the I/O board
 
 ```verilog
 	output        LED_USER,  // 1 - ON, 0 - OFF.
 
 	// b[1]: 0 - LED status is system status OR'd with b[0]
-	//       1 - LED status is controled solely by b[0]
+	//       1 - LED status is controlled solely by b[0]
 	// hint: supply 2'b00 to let the system control the LED.
 	output  [1:0] LED_POWER,
 	output  [1:0] LED_DISK,
 ```
 
-## Buttons on IO board
+## Buttons on I/O board
 
 ```verilog
 	// I/O board button press simulation (active high)
@@ -153,9 +155,9 @@ Use the [Arcade Video](arcade_video.md) Module for arcade cores to support rotat
 	output  [1:0] AUDIO_MIX, // 0 - no mix, 1 - 25%, 2 - 50%, 3 - 100% (mono)
 ```
 
-## A to D converter
+## Analog-to-digital converter
 
-Used for tape input and other things. An extra module on MiSTer that provides an analog audio jack, and conversion to digial signals.
+Used for tape input and similar. An add-on module for MiSTer provides an analog audio jack with conversion to digital signals.
 
 ```verilog
 	//ADC
@@ -193,35 +195,34 @@ Used for tape input and other things. An extra module on MiSTer that provides an
 ### Writing to DDR3
 
 The internal DDR3 controller handles writes very efficiently, so burst writes are typically not required.
-To write, DDRAM_WE should be high for 1 clock cycle whenever DDRAM_BUSY is low. 
-It will write the data in DDRAM_DIN to DDRAM_ADDR with respect to DDRAM_BE.
-For a single write, DDRAM_BURSTCNT should be 1.
-Multiple writes can also be issued without pausing when DDRAM_BURSTCNT = 1.
+To write, `DDRAM_WE` should be high for 1 clock cycle whenever `DDRAM_BUSY` is low. 
+It writes the data in `DDRAM_DIN` to `DDRAM_ADDR` with respect to `DDRAM_BE`.
+For a single write, `DDRAM_BURSTCNT` should be 1.
+Multiple writes can also be issued without pausing when `DDRAM_BURSTCNT = 1`.
 
 ### Reading from DDR3
 
-To read one or multiple 64 bit words, DDRAM_RD must be high for 1 clock cycle, while DDRAM_BUSY is low.
-It will read DDRAM_BURSTCNT 64 bit words from DDRAM_ADDR(counting up for bursts) and provide the results, typically one each clock cycle, at DDRAM_DOUT with DDRAM_DOUT_READY = 1, when the read is valid.
-Every read request will have a latency of multiple cycles. Something like 20 cycles @ 100Mhz is a typical value, but it can be way longer.
-DDR3 read should therefore be used with higher DDRAM_BURSTCNT to make use of the high bandwidth, whenever possible.
+To read one or more 64-bit words, hold `DDRAM_RD` high for 1 clock cycle while `DDRAM_BUSY` is low. It reads `DDRAM_BURSTCNT` 64-bit words starting at `DDRAM_ADDR` (counting up for bursts) and presents the results at `DDRAM_DOUT` — typically one per clock cycle — with `DDRAM_DOUT_READY = 1` when the read is valid.
+Every read request has multi-cycle latency: around 20 cycles at 100 MHz is typical, but it can be much longer.
+Use higher `DDRAM_BURSTCNT` values to take advantage of DDR3's high bandwidth whenever possible.
 
 ### DDR3 Busy signal
 
-DDRAM_BUSY acts like an ignore for the request ports. So whenever this signal is high, no request can be issued in this clock cycle.
-However, having a request pending doesn't lead to any problem, so it is uncritical to e.g. set DDRAM_RD = 1 in a clocked process and only clear it back to 0 when DDRAM_BUSY = 0.
-This way, the request signals can be clocked instead of being combinatorial, leading to higher possible clock speed and less problems with timing closure.
+`DDRAM_BUSY` acts as an ignore signal for the request ports: whenever it is high, no request can be issued that cycle.
+However, a pending request causes no problem, so it's fine to e.g. set `DDRAM_RD = 1` in a clocked process and only clear it when `DDRAM_BUSY = 0`.
+This lets the request signals be clocked rather than combinatorial, allowing higher clock speeds and fewer timing-closure problems.
 
 ## Single and Dual SDRAM interface
 
-For full understanding of the SDRAM interface you will need to look at the specifications for the SDRAM chip. Also, the [hardware](https://github.com/MiSTer-devel/Hardware_MiSTer){target=_blank} may be useful, here is the [Schematic](https://github.com/MiSTer-devel/Hardware_MiSTer/blob/master/releases/sdram_xsds_2.9.pdf){target=_blank}. It is useful to look through some code that already runs on MiSTer:
+For a full understanding of the SDRAM interface, see the SDRAM chip's specifications. The [hardware repository](https://github.com/MiSTer-devel/Hardware_MiSTer){target=_blank} and [schematic](https://github.com/MiSTer-devel/Hardware_MiSTer/blob/master/releases/sdram_xsds_2.9.pdf){target=_blank} may also be useful.
 
-Look through the data sheet for the [32MB](https://github.com/MiSTer-devel/Main_MiSTer/wiki/files/AS4C16M16SA-V3.0_March%202015.pdf){target=_blank} module. The 64MB module data sheet isn't as detailed.
+Look through the [32 MB module's data sheet](https://github.com/MiSTer-devel/Main_MiSTer/wiki/files/AS4C16M16SA-V3.0_March%202015.pdf){target=_blank}; the 64 MB module's data sheet isn't as detailed.
 
-Some examples of SDRAM modules:
+Some examples of SDRAM usage in existing cores:
 
-* single port direct usage: [Gameboy](https://github.com/MiSTer-devel/Gameboy_MiSTer/blob/master/rtl/sdram.sv){target=_blank}
-* multi port request/response: [Gameboy Advance](https://github.com/MiSTer-devel/GBA_MiSTer/blob/master/rtl/sdram.sv){target=_blank}
-* complex bank machine: [JT Frame](https://github.com/jotego/jtframe/blob/master/hdl/sdram/jtframe_sdram_bank.v){target=_blank}
+* Single-port direct usage: [Gameboy](https://github.com/MiSTer-devel/Gameboy_MiSTer/blob/master/rtl/sdram.sv){target=_blank}
+* Multi-port request/response: [Gameboy Advance](https://github.com/MiSTer-devel/GBA_MiSTer/blob/master/rtl/sdram.sv){target=_blank}
+* Complex bank machine: [JT Frame](https://github.com/jotego/jtframe/blob/master/hdl/sdram/jtframe_sdram_bank.v){target=_blank}
 
 ```verilog
 	//SDRAM interface with lower latency
@@ -254,9 +255,9 @@ Some examples of SDRAM modules:
 
 ## Serial Support
 
-Serial is passed to the linux arm side of the MiSTer. On the arm side, software decides what to do with the data. ie: send it to shell, ppp, MIDI, etc.
+Serial is passed to the MiSTer's Linux ARM side, where software decides what to do with the data — e.g. send it to the shell, PPP, or MIDI.
 
-Different serial speeds and optons are set using options in the [CONF_STR](conf_str.md). 
+Serial speeds and options are configured via [CONF_STR](conf_str.md).
 
 ```verilog
 	input         UART_CTS,
@@ -267,7 +268,7 @@ Different serial speeds and optons are set using options in the [CONF_STR](conf_
 	input         UART_DSR,
 ```
 
-## User Port - extra USB 3.1A style connector on MiSTer
+## User port (extra USB 3.1 Type-A-style connector on MiSTer)
 
 
 | USB  |  P7 |  Name  | PIN  |   MiSTer | emu wire |
@@ -295,7 +296,7 @@ Different serial speeds and optons are set using options in the [CONF_STR](conf_
 
 ## OSD Status
 
-This is set to 1 when the OSD is open. It can be used to pause the core when the OSD is open, and/or for autosave.
+`OSD_STATUS` is 1 when the OSD is open. It can be used to pause the core while the OSD is open, and/or for autosave.
 
 ```verilog
 	input         OSD_STATUS

@@ -1,7 +1,7 @@
-While developing the core, it's convenient to upload it through USB blaster(JTAG) port directly from Quartus. MiSTer supports USB Blaster and automatically reloads Linux part for uploaded core. Since Linux requires reboot (for better stability), you may notice longer time to start the core. This is normal. It's advised to have console connected to MiSTer to control the booting process. Once core compiled in RBF format and put into SD card, loading speed will be fast.
+While developing a core, it's convenient to upload it through the USB Blaster (JTAG) port directly from Quartus. MiSTer supports USB Blaster and automatically reloads the Linux part for the uploaded core. Since Linux requires a reboot (for better stability), you may notice a longer startup time — this is normal. It's advisable to have a console connected to the MiSTer to control the boot process. Once the core is compiled to RBF format and placed on the SD card, loading will be fast.
 
 ## Configuring USB Blaster on Linux
-Although there is no need for drivers on linux, by default only root user can access the cable. In order to use it as a regular user just add a file called `/etc/udev/rules.d/92-usbblaster.rules` with the following content:
+Although no drivers are needed on Linux, by default only the root user can access the cable. To use it as a regular user, add a file called `/etc/udev/rules.d/92-usbblaster.rules` with the following content:
 
 ```
 # USB-Blaster 

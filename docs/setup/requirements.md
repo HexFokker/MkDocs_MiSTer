@@ -8,31 +8,31 @@ A MiSTer stack consists of the DE10-Nano board from Terasic, coupled with a numb
 
 ## Pre-built solutions and clones
 
-Over time, two kinds of hardware solutions have appeared in the market:
+Over time, two kinds of hardware solutions have appeared on the market:
 
 - pre-built kits (using the DE10-Nano)
 - clones of the DE10-Nano[^1] (and their equivalent pre-built kits)
 
-We don't cover the various options here and their trade-offs. MiSTer is designed and tested with the DE10-Nano board and the stack we describe below. 
+This guide doesn't cover the options and their trade-offs. MiSTer is designed and tested with the DE10-Nano board and the stack described below.
 
-[^1]: Hardware solutions using clone boards can aim for compatibility with the MiSTer project, but with minor differences in hardware, ocasional incompatibilities can occur (although they can also be fixed, it's not within the scope of the project). We refer to the respective sellers for compatibility and support.
+[^1]: Clone boards can aim for compatibility with the MiSTer project, but minor hardware differences can cause occasional incompatibilities (they can be fixed, but that's outside the scope of the MiSTer project). Consult the respective sellers for compatibility and support.
 
 ## Build from scratch
 
-There are a few things you will need in order to setup your MiSTer:
+You'll need the following to set up your MiSTer:
 
 * Terasic DE10-Nano
-* MicroSD card (minimum 4GB) and MicroSD Card Reader
-* USB OTG Adapter or a [MiSTer USB Hub Add-On Board](../basics/addons.md#usb-hub-addon-board){target=_blank} (no USB devices will work without this)
-* USB Keyboard
-* HDMI Display and HDMI Cable
+* MicroSD card (minimum 4 GB) and a MicroSD card reader
+* USB OTG adapter or a [MiSTer USB Hub add-on board](../basics/addons.md#usb-hub-addon-board){target=_blank} (no USB devices will work without this)
+* USB keyboard
+* HDMI display and HDMI cable
 
 Recommended:
 
-* [MiSTer SDRAM Add-On Board](../basics/addons.md#128mb-sdram-addon-board){target=_blank} (optional but many cores require it)
-* USB Gamepad
+* [MiSTer SDRAM add-on board](../basics/addons.md#128mb-sdram-addon-board){target=_blank} (optional, but many cores require it)
+* USB gamepad
 * Cooling for the FPGA
-* Internet connection
+* Internet connection (required for the first update)
 
 ### Where to buy
 **DE10-Nano:**
@@ -43,18 +43,18 @@ Recommended:
 
 **SDRAM:**
 
-The MiSTer SDRAM add-on board is required by many cores, like the SNES, NES, Playstation, and Game Boy cores. There are multiple sellers out there which sell these, and you can also assemble it yourself if you are skilled at soldering.
+The MiSTer SDRAM add-on board is required by many cores, like the SNES, NES, PlayStation, and Game Boy cores. Multiple sellers carry them, and you can also assemble one yourself if you're skilled at soldering.
 
 **USB OTG Adapter/Hub:**
 
-Preferably, the MiSTer USB Hub Add-on board which you can assemble yourself if you are good at soldering, or you can [buy from the various shops that sell them](../basics/addons.md#where-to-buy){target=_blank} instead.
+The MiSTer USB Hub add-on board is preferred. You can assemble it yourself if you're good at soldering, or [buy one from a shop that sells them](../basics/addons.md#where-to-buy){target=_blank}.
 
-At a minimum, the [MakerSpot Micro USB OTG Hub](https://www.amazon.com/MakerSpot-Accessories-Charging-Extension-Raspberry/dp/B01JL837X8){target=_blank} works very well for the MiSTer, if you are looking for a very cheap option.
+If you want a very cheap option, the [MakerSpot Micro USB OTG Hub](https://www.amazon.com/MakerSpot-Accessories-Charging-Extension-Raspberry/dp/B01JL837X8){target=_blank} works very well as a minimum.
 
 **Cooling:**
 
-The processor on the DE10-Nano is 21.5mm x 21.5mm so a heatsink that is around this size is suitable. If using one larger than these dimensions, please make sure to to not let the heatsink touch other electronic components outside the processor.
+The processor on the DE10-Nano is 21.5 mm × 21.5 mm, so a heatsink around that size is suitable. With a larger heatsink, make sure it doesn't touch components outside the processor.
 
-There is no mounting mechanism for the heatsink, you will need to use an "adhesive thermal pad". 3M makes some good ones, and the heatsinks you can buy in this size usually come with these kinds of thermal pads already.
+There is no mounting mechanism for the heatsink — use an "adhesive thermal pad". 3M makes good ones, and heatsinks of this size usually come with them.
 
 Do not apply a lot of pressure and do not touch the components directly with your fingers, as static shock can damage them.

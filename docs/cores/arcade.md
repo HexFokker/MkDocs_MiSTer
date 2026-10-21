@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-Here is a list of the arcade cores that are on the MiSTer FPGA. Supported games list only includes the general game name, not all revisions/versions. There are also [Alternative MRA files](https://github.com/MiSTer-devel/MRA-Alternatives_MiSTer/tree/master/_alternatives) that use these cores with all sorts of variations on the same games supported that you can find. The update script will automatically download all the MRA files necessary to play these.
+This is a list of the arcade cores on MiSTer. The Supported Games column lists only general game names, not all revisions/versions. [Alternative MRA files](https://github.com/MiSTer-devel/MRA-Alternatives_MiSTer/tree/master/_alternatives) run variations of these games on the same cores. The update script automatically downloads all the MRA files needed to play them.
 
 | Core Name                                                                          | Supported Games | SDRAM    |
 | ---------------------------------------------------------------------------------- | --------------- | -------- |
@@ -17,7 +17,7 @@ Here is a list of the arcade cores that are on the MiSTer FPGA. Supported games 
 | [BankPanic](https://github.com/MiSTer-devel/Arcade-BankPanic_MiSTer)               | Bank Panic<br>Combat Hawk |          |
 | [BattleZone](https://github.com/MiSTer-devel/Arcade-BattleZone_MiSTer)             | Battle Zone<br>Bradley Trainer<br>Red Baron |          |
 | [Berzerk](https://github.com/MiSTer-devel/Arcade-Berzerk_MiSTer)                   | Berzerk |          |
-| [BlackWidow](https://github.com/MiSTer-devel/Arcade-BlackWidow_MiSTer)             | Black Widow<br>Gravitar<br>Lunar Battle(prototype) |          |
+| [BlackWidow](https://github.com/MiSTer-devel/Arcade-BlackWidow_MiSTer)             | Black Widow<br>Gravitar<br>Lunar Battle (prototype) |          |
 | [Blockade](https://github.com/MiSTer-devel/Arcade-Blockade_MiSTer)                 | Blasto<br>Blockade<br>CoMotion<br>Hustle |          |
 | [BombJack](https://github.com/MiSTer-devel/Arcade-BombJack_MiSTer)                 | Bomb Jack |          |
 | [Bosconian](https://github.com/MiSTer-devel/Arcade-Bosconian_MiSTer)               | Bosconian - Star Destroyer |          |
@@ -59,7 +59,7 @@ Here is a list of the arcade cores that are on the MiSTer FPGA. Supported games 
 | [IkariWarriors](https://github.com/MiSTer-devel/Arcade-IkariWarriors_MiSTer)       | Ikari Warriors<br>Victory Road | ✔️       |
 | [Inferno](https://github.com/MiSTer-devel/Arcade-Inferno_MiSTer)                   | Inferno (Williams) |          |
 | [IremM62](https://github.com/MiSTer-devel/Arcade-IremM62_MiSTer)                   | Horizon<br>Kid Niki - Radical Ninja<br>Kung-Fu Master<br>Lode Runner<br>Lode Runner II - The Bungeling Strikes Back<br>Lode Runner III - The Golden Labyrinth<br>Lode Runner IV - Teikoku Kurano Dasshutsu<br>Spelunker II - 23 no Kagi<br>Spelunker<br>The Battle-Road<br>Youjyuden | ✔️       |
-| [IremM72](https://github.com/MiSTer-devel/Arcade-IremM72_MiSTer)                   | Air duel<br>Daiku no Gensan(M72 and M84)<br>Dragon Breed<br>Gallop - Armed Police Unit<br>Hammerin' Harry<br>Image Fight<br>Legend of Hero Tonma<br>Mr. HELI no Daibouken<br>Ninja Spirit<br>R-Type<br>R-Type II<br>X Multiply | ✔️       |
+| [IremM72](https://github.com/MiSTer-devel/Arcade-IremM72_MiSTer)                   | Air Duel<br>Daiku no Gensan (M72 and M84)<br>Dragon Breed<br>Gallop - Armed Police Unit<br>Hammerin' Harry<br>Image Fight<br>Legend of Hero Tonma<br>Mr. HELI no Daibouken<br>Ninja Spirit<br>R-Type<br>R-Type II<br>X Multiply | ✔️       |
 | [IronHorse](https://github.com/MiSTer-devel/Arcade-IronHorse_MiSTer)               | Iron Horse |          |
 | [Jackal](https://github.com/MiSTer-devel/Arcade-Jackal_MiSTer)                     | Jackal<br>Tokushu Butai Jackal<br>Top Gunner | ✔️       |
 | [Jailbreak](https://github.com/MiSTer-devel/Arcade-Jailbreak_MiSTer)               | Jailbreak<br>Manhattan 24 Bunsyo |          |
@@ -108,7 +108,7 @@ Here is a list of the arcade cores that are on the MiSTer FPGA. Supported games 
 | [Sprint2](https://github.com/MiSTer-devel/Arcade-Sprint2_MiSTer)                   | Sprint 2 |          |
 | [Subs](https://github.com/MiSTer-devel/Arcade-Subs_MiSTer)                         | Subs | ✔️       |
 | [SuperBreakout](https://github.com/MiSTer-devel/Arcade-SuperBreakout_MiSTer)       | Super Breakout |          |
-| [TankBattalion](https://github.com/MiSTer-devel/Arcade-TankBattalion_MiSTer)       | Tank Battallion |          |
+| [TankBattalion](https://github.com/MiSTer-devel/Arcade-TankBattalion_MiSTer)       | Tank Battalion |          |
 | [Tecmo](https://github.com/MiSTer-devel/Arcade-Tecmo_MiSTer)                       | Gemini Wing<br>Rygar<br>Silkworm | ✔️       |
 | [TIAMC1](https://github.com/MiSTer-devel/Arcade-TIAMC1_MiSTer)                     | Billiard<br>Gorodki<br>Konek Gorbunok<br>Kot-Rybolov<br>S.O.S.<br>Snezhnaja Koroleva |          |
 | [TimePilot](https://github.com/MiSTer-devel/Arcade-TimePilot_MiSTer)               | Time Pilot |          |

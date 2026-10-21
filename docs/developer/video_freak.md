@@ -1,6 +1,6 @@
-Video Freak is used to crop and scale the image.
+`video_freak` is used to crop and scale the image.
 
-Video Freak will take in the original VGA_DE_IN and output a new VGA_DE and VIDEO_ARX/VIDEO_ARY using the cropping parameters.
+`video_freak` takes the original `VGA_DE_IN` and outputs a new `VGA_DE` and `VIDEO_ARX`/`VIDEO_ARY` based on the cropping parameters.
  
 ```verilog
 module video_freak

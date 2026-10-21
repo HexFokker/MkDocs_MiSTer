@@ -5,9 +5,11 @@ hide:
 
 *by Sorgelig*
 
-You have assembled an arcade cabinet and looking for connecting your joysticks and buttons? You don't need to buy any of those expensive adapters. All you need is USB keyboard which you can disassemble.
+Assembled an arcade cabinet and looking to connect your joysticks and buttons? You don't need an expensive adapter — all you need is a USB keyboard you can disassemble.
 
-After disassembling the keyboard you need to find the row and column contacts on board for following keys:
+## 1. Wire the keyboard
+
+Disassemble the keyboard and find the row and column contacts on its board for the following keys:
 ```
 		5,         1P coin
 		1,         1P start (shift key)
@@ -47,16 +49,18 @@ After disassembling the keyboard you need to find the row and column contacts on
 		F2,        Test
 		F3,        Tilt
 ```
-You can use multi-meter to find the contacts.
 
-Then connect your buttons/joystick to board according to table above. Your hardware part is done.  
-Connect your modded arcade keyboard to USB and start Menu core, then go to `Define Joystick buttons`. Press any button, and you will see "Keyboard ID: XXXX:YYYY" where XXXX:YYYY is HW identifier of the keyboard. Press ESC to ext from this dialog.  
-Now open MiSTer.ini and add following options there:
-```
-jamma_vid=XXXX
-jamma_pid=YYYY
-```
-XXXX and YYYY are those IDs you saw for your modded keyboard. Save and restart Menu core.  
-Go to `Define Joystick buttons` again and assign buttons using P1 buttons. Note it now writes "Joystick ID: XXXX:YYYY" (instead of Keyboard) which means it recognizes your modded keyboard as jamma 2-player input device. P2 buttons will be automatically assigned the same as for P1.
+You can use a multimeter to find the contacts. Connect your buttons and joystick to these contacts according to the table above. This completes the hardware part.
 
-Now your Arcade input device is ready to use. Unlike normal gamepads/joysticks, this device will always assign P1 and P2 inputs statically regardless P1 or P2 button was pressed first.
+## 2. Configure MiSTer
+
+1. Connect the modded keyboard to a USB port, start the Menu core, and go to `Define Joystick buttons`. Press any button: the screen shows "Keyboard ID: XXXX:YYYY", where XXXX:YYYY is the keyboard's hardware ID. Press ESC to exit this dialog.
+2. Open MiSTer.ini and add the following options, where XXXX and YYYY are the IDs you just saw:
+
+        jamma_vid=XXXX
+        jamma_pid=YYYY
+
+3. Save the file and restart the Menu core.
+4. Go to `Define Joystick buttons` again and assign the buttons using the P1 controls. The screen now shows "Joystick ID: XXXX:YYYY" instead of "Keyboard ID", which means the modded keyboard is recognized as a JAMMA 2-player input device. The P2 buttons are assigned automatically, in the same way as P1.
+
+Your arcade input device is now ready. Unlike normal gamepads/joysticks, it always assigns the P1 and P2 inputs statically, regardless of which player presses a button first.

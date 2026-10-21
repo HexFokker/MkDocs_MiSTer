@@ -1,18 +1,19 @@
-The standard paths are of the form `/media/fat/games/<CORE>`, where `<CORE>` is the [internal core name](../developer/corenames.md) of the given system. 
+Each core looks for its games in a folder named after the core. This page lists where that folder can be, and which location is used if it exists in more than one.
 
-Please check the respective README file for each core to determine the appropriate full path.
+## Standard Core Paths
+They are of the form `/media/fat/games/<CORE>`, where `<CORE>` is the [internal core name](../developer/corenames.md) of the given system. Check each core's README to determine the appropriate full path.
 
 ## Standard USB Core Paths
-They are of the form `/media/usb<0..5>/games/<CORE>`. Where `<0..5>` indicates the number of USB drives mounted by the operating system.
+They are of the form `/media/usb<0..5>/games/<CORE>`, where `<0..5>` indicates the number of USB drives mounted by the operating system.
 
 ## Standard CIFS Core Paths
 They are of the form `/media/fat/cifs/games/<CORE>`.
 
 ## Other Paths
-There are other valid paths, that are available for backwards-compatibility reasons, and also to ease testing. You should use the standard paths instead whenever possible.
+Other valid paths exist for backwards compatibility and to ease testing. You should use the standard paths instead whenever possible.
 
 ## Path Priority
-There is a priority order of core paths. When you plug in a USB drive and it has a folder `/games/PSX` on it (mounted locally as `/media/usb<0..5>/games/PSX` when plugged in), then the MiSTer PSX core will look to that folder on the USB drive instead of the local one on the MicroSD at `/media/fat/games/PSX`. Here is the priority list from [Main_MiSTer's file_io.cpp](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/file_io.cpp#L922){target=_blank} in order of highest priority to lowest:
+There is a priority order of core paths. When you plug in a USB drive containing a `/games/PSX` folder (mounted as `/media/usb<0..5>/games/PSX`), the MiSTer PSX core looks there instead of the local `/media/fat/games/PSX` on the MicroSD. Here is the priority list from [Main_MiSTer's file_io.cpp](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/file_io.cpp#L922){target=_blank}, from highest to lowest priority:
 
 1. `/media/usb<0..5>`
 2. `/media/usb<0..5>/games`
@@ -23,4 +24,4 @@ There is a priority order of core paths. When you plug in a USB drive and it has
 7. `/media/fat`
 8. `/media/fat/games`
 
-If the core's folder isn't found in any of these it should create the folder.
+If the core's folder isn't found in any of these locations, the core should create it automatically.

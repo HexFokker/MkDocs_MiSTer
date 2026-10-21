@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-This is a chart that shows the default native resolution, frequencies, and pixel clock of each core upon startup. These values are not static and are only here for documentation purposes. This should not be taken as a list of a core's compatibility with your particular display.
+This chart shows each core's default native resolution, frequencies, and pixel clock at startup. These values are not static and are documented for reference only — this is not a compatibility list for your display.
 
 ## Arcade Core Default Native Resolutions
 

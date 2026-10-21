@@ -1,247 +1,255 @@
-Here are some Frequently Asked Questions that you may have. If there is anything missing here, feel free to contribute by editing the page on github using the Edit pen icon in the top right.
+Answers to frequently asked questions about MiSTer. If something is missing, feel free to contribute by editing this page on GitHub with the Edit (pen) icon in the top right.
 
-## When will MiSTer support cartridges or USB CD Drives?
+## About MiSTer
 
-MiSTer will never officially use physical cartridges or support USB CD Drives. 
+### Is MiSTer hard to set up? Is it really only for technical people who like to tinker?
 
-The project aims to replace the need for having original hardware for the same experience. It is physically impractical to support cartridges given the number of GPIO pins available from the FPGA. USB CD Drives all will have different latency and buffer characteristics, different drivers, and actually will add unpredictable latency to the current method of loading CD games.
+No and no, although people who enjoy tinkering can get a lot more out of their MiSTer if they wish. The minimum setup only requires attaching an SDRAM board to a DE10-Nano and preparing an SD card. See [the Setup Guide](../setup/requirements.md) for details.
 
-## Why doesn't MiSTer have a fancy GUI with cover art and metadata?
+### How does the accuracy of MiSTer cores compare to other FPGA options?
 
-There are a few reasons combined to explain not having a big fancy GUI on MiSTer. First, MiSTer's menu is designed to take up a very limited amount of space on the FPGA and use the least amount of resources on the ARM processor side. Second, the DE10-Nano has no graphics processor, so a fancy GUI will be rendered slowly in software by the CPU unless it is rendered on the FPGA side. Finally, the MiSTer menu has to fit on a wide variety of very low resolution analog displays and still be useful.
+Most MiSTer cores are as accurate as, if not more accurate than, those of any other major FPGA product available today. Most people would not be able to tell these cores apart from the original hardware.
 
-## Does MiSTer have lag?
+### Does MiSTer have lag?
 
-It depends on your setup, but it ranges from imperceptibly low to around one frame of lag.  
+It depends on your setup, but it ranges from imperceptibly low to around one frame. Zero latency is possible with certain equipment and tweaks; see [Input Latency](../advanced/lag.md) for a detailed explanation.
 
-Zero latency is possible with certain equipment and tweaks. [See here](../advanced/lag.md) for a more detailed explanation.
+### When will MiSTer support cartridges or USB CD drives?
 
-## I've seen in the news, "Update Framework" or "Update Sys".  What does that mean?
+Never, officially. The project aims to give the original hardware experience without needing the original hardware. Supporting cartridges is physically impractical given the number of GPIO pins available from the FPGA. USB CD drives all have different drivers, latency, and buffering, and they would add unpredictable latency compared with the current method of loading CD games. See also [CD-based games](cd.md#will-mister-ever-support-usb-cd-drives).
 
-The "framework" (or "sys") has all the common elements between cores that handle things like IO, video scaling, etc... Therefore this means that core had it's framework elements updated.
+### Why doesn't MiSTer have a fancy GUI with cover art and metadata?
 
-## Can I customize the update/downloader script to ignore certain things?
+For several reasons:
 
-Yes, you would just need to add some filters to `/media/fat/downloader.ini`. [Read this guide](https://github.com/MiSTer-devel/Downloader_MiSTer/blob/main/docs/download-filters.md){target=_blank} for more information.
+1. MiSTer's menu is designed to take up very little space on the FPGA and as few resources as possible on the ARM processor.
+2. The DE10-Nano has no graphics processor, so a fancy GUI would be rendered slowly in software by the CPU, unless it were rendered on the FPGA.
+3. The menu has to fit and remain usable on a wide variety of very low-resolution analog displays.
 
-## Can I use the downloader script to download more cores than it currently does?
+### Will any MiSTer core ever get save states?
 
-Yes, there is support for custom databases in the downloader script. [Read this guide](https://github.com/MiSTer-devel/Downloader_MiSTer/blob/main/docs/custom-databases.md){target=_blank} for more information.
+The Game Boy, GBA, Lynx, WonderSwan, NES, and PSX cores support savestates.
 
-## What are unstable cores? How do I install one?
+Before savestates can be added, a core must either be written from scratch to support them or be significantly reworked to support pausing. Adding savestates to an FPGA-based emulator is not as simple as adding them to a software emulator. There are no specific plans to add them to other cores at this time, but it may happen one day.
 
-Unstable cores are automatically built from the latest commits to a core's repository. They reflect the most recent changes made by developers and are updated continuously as new code is pushed. While they may contain bugs or unfinished features, they will eventually mature into a stable release. Unstable cores are intentionally not installed by update scripts, but there are valid use cases for installing one, such as testing bug fixes or new features. Note that not every core has automated unstable builds available.
+### I heard the DE10-Nano board uses subsidized components. Is MiSTer doomed if that stops?
 
-Unstable builds are uploaded to the [MiSTer-unstable-nightlies GitHub organization](https://github.com/MiSTer-unstable-nightlies), which hosts forks of core repositories. The downloads can be found under the Releases tab of the core's repository (not to be confused with the `releases` folder visible in the repository file tree, which contains the stable upstream builds and should be ignored). To install the build, copy the `.rbf` file to the appropriate folder on your MiSTer's micro SD card. You may want to place it in a dedicated `/_Unstable/` folder to keep these builds separate from stable cores. 
+No. The DE10-Nano is manufactured at a very large scale for students and is widely available. When it reaches end of life, the open-source cores and infrastructure will be ported to another widely available board.
 
-## Can I use original console controllers?
+### I see a defect that some other people aren't seeing. Should I get a different DE10-Nano?
 
-Yes, there are many USB adapters for original console controllers available, see the usb controller recommendations below. They can also be connected directly via the IO board's User port (SNAC) as detailed below.
+No. Report the defect and wait for a fix. There is no magically better DE10-Nano.
 
-## What about light guns?
+### I found some other Cyclone-based dev board on sale and it has built-in WiFi. Can I use it for MiSTer?
 
-Light guns such as the NES Zapper are too timing sensitive to work over USB, but will work fine on supported cores via the IO board as detailed below. 
+Generally, no. Someone may always take the time to port things to another board, but different pins and memory mean the cores won't simply work on it, and unless the board is a significant upgrade it would never get official support. Supporting another platform takes a lot of work, so there are no plans to support multiple unofficial hardware platforms.
 
-MiSTer supports several USB light guns, such as GunCon2, GunCon3, Gun4IR, Sinden, etc.
+## Hardware
 
-GunCon2 requires a CRT and a way to tap into the sync signal. GunCon3, and Gun4IR work on all displays. Sinden requires a modern display and dedicated files for MiSTer.
+### Does MiSTer need an I/O board?
 
-Reflex Adapt supports overclocked GunCon1, with better performance than GunCon2, when 1ms (1000Hz) polling is enabled.
+No. The I/O board is optional, but it offers features that may be important to some users, such as 3.5 mm and optical audio, CRT output, and tape audio input.
 
-Each core requires calibration. Calibrate your guns from the distance you plan to play. For best results, use a white screen to calibrate.
+### Do I need an I/O board to get analog video output to my CRT?
 
-Never allow the calibration value to be less than 0. If you save a calibration with a negative value, it will likely cause the core to crash. To fix this, remove the core's light gun calibration file from the "config" folder of your MiSTer's micro SD card. 
+No. You can use an HDMI-to-VGA adapter instead; see [Direct Video](../advanced/directvideo.md).
 
-## Any USB controller recommendations?
+### Which cores require SDRAM?
 
-Almost any controller that uses USB will work with MiSTer. You can also use a Bluetooth or 2.4ghz USB adapter for wireless. Good controllers that many users seem to like and have low input latency are:
+See the [Console Cores](../cores/console.md) and [Computer Cores](../cores/computer.md) lists, which are kept up to date. Many [Arcade cores](../cores/arcade.md) require SDRAM as well.
 
-* [Sony DualSense (PS5 Controller)](https://www.playstation.com/en-us/accessories/dualsense-wireless-controller/){target=_blank} - Very low lag, fast pairing, and a touchpad that can be used as mouse input (for cores with mouse support, like SNES lightgun use or a mouse as a spinner control).
-* [8BitDo M30 Bluetooth](https://www.8bitdo.com/m30/){target=_blank} and [8BitDoM30 2.4G](https://www.8bitdo.com/m30-2-4g-for-genesis-mini-mega-drive-mini/){target=_blank} - Note these kinds of controllers do not have as many buttons as the Playstation style controllers, and they do not have joysticks, so you may be limited if you solely use them.
-* [8bitDo SN30 Pro 2](https://www.8bitdo.com/pro2/){target=_blank} - Versatile connectivity and confortable design that is similar to the Playstation DualShock form factor with an SNES aesthetic and button layout.
-* [8bitDo Arcade Stick](https://www.8bitdo.com/arcade-stick/){target=_blank} - Wired and wireless low lag functionality with somewhat low variable lag, DIY customizable pushbuttons and joystick is also supported.
-* [iBuffalo SNES Controller](https://www.amazon.com/Buffalo-iBuffalo-Classic-USB-Gamepad/dp/B002B9XB0E/){target=_blank} - A little overpriced now, but it is one of the lowest lag controllers tested.
+### Why do some cores require an SDRAM add-on board when other cores do not?
 
-And many many more. Check [MiSTerAddons' input latency tests](https://rpubs.com/misteraddons/inputlatency){target=_blank} to help you decide. Also to ensure you get the fastest response make sure to check the [USB overclock instructions](../advanced/lag.md) section out.
+Usually because the core needs reliable read and write timing to work properly without bugs. The original NES, for instance, accesses the ROM directly, so its timings are much tighter and SDRAM is required. The DE10-Nano's built-in DDR3 memory has variable latency for random reads and writes, which makes it unsuitable for systems that need reliable timing.
 
-There are also some excellent usb controller adapters which enable you to use original console controllers:
+### Do I need the official USB Hub Add-On Board?
 
-* [UltimateMiSTer.com's Daemon USB Adapters](https://ultimatemister.com/product-category/daemonbite-adapters/){target=_blank} (Portugal) - Support for multiple kinds of controllers using an RP2040 chip and the GP2040 firmware.
-* [MiSTerAddons.com's Reflex Adapt](https://misteraddons.com/products/reflex-adapt){target=_blank} (USA) - Supports multiple controller types with one primary device to use with [multiple controller adapter cables](https://misteraddons.com/products/hdmi-controller-adapters){target=_blank}.
-* [Timville Triple Controller Daemonbite](https://www.tindie.com/products/timville/triple-controller-classic-gaming-usb-adapter/){target=_blank} (USA) - A spinoff of MickGuyver's Daemonbite adapters that has support for NES, Genesis, and SNES original hardware. You can also make it yourself using instructions found [here](https://github.com/timville85/TripleController){target=_blank}. There is an option to purchase a 3d printed housing that you can also print yourself using the 3d files from [here](https://www.thingiverse.com/thing:5011783){target=_blank}.
+No, but you will probably want at least an inexpensive OTG hub, such as the [MakerSpot Micro USB OTG Hub](https://www.amazon.com/MakerSpot-Accessories-Charging-Extension-Raspberry/dp/B01JL837X8){target=_blank}, or a regular hub with an adapter. Use a powered hub if you have many devices.
+
+### Do I need to have a USB keyboard with me to use MiSTer?
+
+Yes, it's a good idea to always have a USB keyboard available. A cheap, compact wireless keyboard reduces clutter.
+
+### What power supply is compatible with MiSTer?
+
+The DE10-Nano needs a 5 V power supply rated for at least 2 A, with a center-positive coaxial "barrel" plug of 5.5 mm outer diameter, 2.1 mm inner diameter, and 11.0 mm length.
+
+If you use a USB Hub add-on board with a lot of power-hungry peripherals (WiFi, Bluetooth, multiple controllers, a mechanical hard drive), consider a similar 5 V supply with more current (4–5 A). Typically this is only needed if you have a mechanical hard drive, make heavy use of the charging port, or power an MT32-Pi from the User IO port, because these draw a lot of current.
+
+### Does my MiSTer need cooling?
+
+A heatsink (passive cooling) is recommended. 22 mm × 22 mm is the ideal size, but 20 mm × 20 mm is more than enough and more common. Active cooling with a fan helps but is not strictly required. Some faster and more complex cores, such as ao486, SNES, N64, and PSX, may generate a lot of heat.
+
+### The DE10-Nano is rated for up to 100°C operation and it doesn't get nearly that hot. Do I really need a fan or heatsink?
+
+A number of complex cores (like ao486) benefit from a cooler chip, because heat can affect the tight timings they require. A heatsink is recommended to avoid any possible glitches, and a fan on top of it is even better. You won't damage your DE10-Nano if you use neither.
+
+### My fan is very loud, is there anything I can do about that?
+
+Probably. Many I/O boards, though not all, have a [jumper](https://en.wikipedia.org/wiki/Jumper_(computing)){target=_blank} near the fan connector that switches the fan's voltage from 5 V to 3 V. It is most likely either next to the fan power connector (you may have to remove the [mezzanine board](https://mister-devel.github.io/MkDocs_MiSTer/assets/92_av_board.png){target=_blank} to reach it) or on the underside of the board.
+
+Jumper on the top side of the board:
+
+![I/O board with the 5v jumper on the top side](https://mister-devel.github.io/MkDocs_MiSTer/assets/jumper_top.png)
+
+Jumper on the underside of the board:
+
+![I/O board with the 5v jumper on the bottom side](https://mister-devel.github.io/MkDocs_MiSTer/assets/jumper_bottom.png)
+
+Moving the jumper to the other position should slow the fan down and make it quieter.
+
+### My MiSTer needs a case. What should I do?
+
+Either make one yourself or buy one from an online vendor. For DIY, 3D-print files are available online (e.g. on [Thingiverse](https://www.thingiverse.com/search?q=mister+fpga){target=_blank}). See [Cases](case.md) for designs and ideas.
+
+### What kind of screws do I use with the DE10-Nano's 14 mm-long brass standoffs?
+
+M3 screws; 8 mm is a good length.
+
+## Software and updates
+
+### I've seen "Update Framework" or "Update Sys" in the news. What does that mean?
+
+The "framework" (or "sys") contains the elements that all cores share, such as I/O and video scaling. The message means that the framework part of that core was updated.
+
+### Can I customize the update/downloader script to ignore certain things?
+
+Yes. Add filters to `/media/fat/downloader.ini` as described in [this guide](https://github.com/MiSTer-devel/Downloader_MiSTer/blob/main/docs/download-filters.md){target=_blank}.
+
+### Can I use the downloader script to download more cores than it currently does?
+
+Yes. The downloader script supports custom databases; see [this guide](https://github.com/MiSTer-devel/Downloader_MiSTer/blob/main/docs/custom-databases.md){target=_blank}.
+
+### What are unstable cores? How do I install one?
+
+Unstable cores are built automatically from the latest commits to a core's repository, so they include the developers' most recent changes and are updated whenever new code is pushed. They may contain bugs or unfinished features, but they eventually mature into a stable release. The update scripts intentionally don't install them, but there are good reasons to install one, such as testing a bug fix or a new feature. Not every core has automated unstable builds.
+
+Unstable builds are uploaded to the [MiSTer-unstable-nightlies GitHub organization](https://github.com/MiSTer-unstable-nightlies), which hosts forks of the core repositories. Download them from the Releases tab of the core's repository. Ignore the `releases` folder in the repository's file tree: it contains the stable upstream builds. To install a build, copy its `.rbf` file to the appropriate folder on your MiSTer's MicroSD card. You may want to use a dedicated `/_Unstable/` folder to keep these builds separate from stable cores.
+
+### Why doesn't this core from another repo work? Why is MiSTer so hard to use?
+
+MiSTer repositories are self-contained, and the official updater script only fetches cores from the active official MiSTer repositories. Cores from other repositories are not fully integrated, so your results may vary. Some of their developers have their own Discord servers or forums where you can ask for support.
+
+### How do I make MiSTer boot into the NES core and a specific game?
+
+Combine two options, autobooting a core and starting the core with a given ROM:
+
+* In `MiSTer.ini`, set `bootcore=NES_20201102.rbf` (or the core version you have), and comment out `;bootcore_timeout`.
+* In your NES games folder (e.g. `/media/fat/games/NES/`), copy the FDS BIOS as `boot0.rom` and the `.nes` ROM you want to boot as `boot1.rom`.
+
+For more options, see the [NES core documentation](https://github.com/MiSTer-devel/NES_MiSTer#installation){target=_blank}.
+
+## Controllers
+
+### Can I use original console controllers?
+
+Yes. Many USB adapters for original console controllers are available; see the USB controller recommendations below. They can also be connected directly to the I/O board's User port (SNAC), as described below.
+
+### Any USB controller recommendations?
+
+Almost any USB controller works with MiSTer, and Bluetooth or 2.4 GHz USB adapters work for wireless. Controllers that many users seem to like and that have low input latency:
+
+* [Sony DualSense (PS5 Controller)](https://www.playstation.com/en-us/accessories/dualsense-wireless-controller/){target=_blank} - Very low lag, fast pairing, and a touchpad that can be used as mouse input in cores with mouse support (for example, for SNES lightgun games or as a spinner).
+* [8BitDo M30 Bluetooth](https://www.8bitdo.com/m30/){target=_blank} and [8BitDo M30 2.4G](https://www.8bitdo.com/m30-2-4g-for-genesis-mini-mega-drive-mini/){target=_blank} - These have fewer buttons than PlayStation-style controllers and no analog sticks, so they may limit you if they are your only controllers.
+* [8BitDo SN30 Pro 2](https://www.8bitdo.com/pro2/){target=_blank} - Versatile connectivity and a comfortable design, similar in shape to the PlayStation DualShock, with an SNES look and button layout.
+* [8BitDo Arcade Stick](https://www.8bitdo.com/arcade-stick/){target=_blank} - Low lag both wired and wireless, with somewhat low lag variation; the pushbuttons and joystick can be replaced (DIY).
+* [iBuffalo SNES Controller](https://www.amazon.com/Buffalo-iBuffalo-Classic-USB-Gamepad/dp/B002B9XB0E/){target=_blank} - A little overpriced now, but one of the lowest-lag controllers tested.
+
+There are many, many more. [MiSTerAddons' input latency tests](https://rpubs.com/misteraddons/inputlatency){target=_blank} can help you decide, and see the [USB overclock instructions](../advanced/lag.md) for the fastest response.
+
+Excellent USB adapters for original console controllers:
+
+* [UltimateMiSTer.com's DaemonBite adapters](https://ultimatemister.com/product-category/daemonbite-adapters/){target=_blank} (Portugal) - Support multiple kinds of controllers, using an RP2040 chip and the GP2040 firmware.
+* [MiSTerAddons.com's Reflex Adapt](https://misteraddons.com/products/reflex-adapt){target=_blank} (USA) - One main device that supports multiple controller types through [separate adapter cables](https://misteraddons.com/products/hdmi-controller-adapters){target=_blank}.
+* [Timville Triple Controller DaemonBite](https://www.tindie.com/products/timville/triple-controller-classic-gaming-usb-adapter/){target=_blank} (USA) - A spinoff of MickGuyver's DaemonBite adapters that supports original NES, Genesis, and SNES controllers. You can also build it yourself with [these instructions](https://github.com/timville85/TripleController){target=_blank}. A 3D-printed housing is available for purchase, or you can print it yourself from [these 3D files](https://www.thingiverse.com/thing:5011783){target=_blank}.
 * [2600-daptor D9](http://www.2600-daptor.com/){target=_blank}
 
-## Can I increase the polling rate of my USB controller to improve input latency?
+### Can I increase the polling rate of my USB controller to improve input latency?
 
-Yes, you can. [See here](../advanced/lag.md).
+Yes. See [Input Latency](../advanced/lag.md).
 
-## Do I need the official USB Hub Add-On Board?
+### How do I add a second controller to MiSTer?
 
-No, but you will probably want some sort of inexpensive OTG hub (such as the [MakerSpot Micro USB OTG Hub](https://www.amazon.com/MakerSpot-Accessories-Charging-Extension-Raspberry/dp/B01JL837X8){target=_blank} at least (or a regular hub with an adapter). Use a powered hub if you have many devices.
+With no core loaded, plug in the controller and set it up in the Menu core, then define it in the OSD of each core as needed. This is only necessary if the controller is a different make/model (a different VendorID/ProductID) from the controllers you have already defined; a second DualShock 4, for example, shouldn't need its inputs defined again. For the same reason, different devices that share a VendorID/ProductID may need to be reconfigured whenever you switch between them, and there is currently no way around this. This includes 8BitDo and Mayflash adapters used with multiple controllers, because the ID belongs to the adapter.
 
-## Do I need to have a USB keyboard with me to use MiSTer?
+### What are the methods for connecting controllers to the serial port of the I/O add-on board?
 
-Yes, it's a good idea to always have a USB keyboard available. Cheap wireless compact keyboards exist that you can use to reduce clutter.
+SNAC (Serial Native Accessory Converter) connects original controllers directly to supported cores (SNES, Genesis, NES, and TG16). SNAC adapters are sold online by various sellers:
 
-## How do I add a second controller to MiSTer?
+* [MiSTerFPGA.co.uk's SNAC adapters](https://misterfpga.co.uk/product/mister-snac-controller-adapters/){target=_blank} (best used with their [SNAC extension cable](https://misterfpga.co.uk/product/mister-snac-extension-cable/){target=_blank})
+* [UltimateMiSTer.com's SNAC Adapters](https://ultimatemister.com/product-category/mister-snac/){target=_blank} (best used with their [SNAC extension cable](https://ultimatemister.com/product/snac-extension-c64-iec-mt32-pi/){target=_blank})
+* [MiSTerAddons.com's SNAC V1](https://misteraddons.com/products/mister-fpga-serial-native-accessory-converter-snac){target=_blank}, [SNAC V2](https://misteraddons.com/products/snax){target=_blank}, and [SNAC V3](https://misteraddons.com/products/snax64){target=_blank}, all of which use [external controller adapters](https://misteraddons.com/products/hdmi-controller-adapters){target=_blank} made for them and sold separately.
 
-First setup the controller in the main menu after plugging it in with no core loaded. Then you can define it in the various cores' OSD menus. This is only necessary if the controller is a different make/model (or has a different VendorID/ProductID) than any other controllers you have already defined. If you have already setup a Dualshock 4 controller, the second Dualshock 4 controller shouldn't need it's inputs to be defined again. Because of this, shared VendorID's and ProductID's between devices that are different may require reconfiguration when switching between them. There isn't any way around this currently. This includes using 8BitDo and Mayflash controller adapters with multiple controllers, as the adapters contain the ID information which is referenced.
+For details on SNAC, see [this page](https://github.com/blue212/SNAC){target=_blank}.
 
-## Does MiSTer need an IO board?
+### What about light guns?
 
-No. The IO board is optional, but offers features that could be important for some users (3.5mm and optical audio, CRT output, tape audio input, etc...).
+Original light guns such as the NES Zapper are too timing-sensitive to work over USB, but they work fine in supported cores through the I/O board (SNAC, see above).
 
-## What are the methods for connecting controllers to the serial port of the IO add-on board?
+MiSTer also supports several USB light guns, such as the GunCon 2, GunCon 3, Gun4IR, and Sinden:
 
-SNAC (Serial Native Accessory Converter) is used for direct wiring. Supporting cores (SNES, Genesis, NES, and TG16) allow you to directly connect original controllers. SNAC Adapters can be purchased from various sellers online:
+* GunCon 2 requires a CRT and a way to tap into the sync signal.
+* GunCon 3 and Gun4IR work on all displays.
+* Sinden requires a modern display and dedicated files for MiSTer.
+* Reflex Adapt supports an overclocked GunCon 1, which performs better than the GunCon 2 when 1 ms (1000 Hz) polling is enabled.
 
-* [MiSTerFPGA.co.uk's SNAC adapters](https://misterfpga.co.uk/product/mister-snac-controller-adapters/){target=_blank} (best to use alongside their [SNAC extension cable](https://misterfpga.co.uk/product/mister-snac-extension-cable/){target=_blank}
-* [UltimateMiSTer.com's SNAC Adapters](https://ultimatemister.com/product-category/mister-snac/){target=_blank} (best to use alongside their [SNAC extension cable](https://ultimatemister.com/product/snac-extension-c64-iec-mt32-pi/){target=_blank}
-* [MiSTerAddons.com's SNAC V1](https://misteraddons.com/products/mister-fpga-serial-native-accessory-converter-snac){target=_blank} and [SNAC V2](https://misteraddons.com/products/snax){target=_blank} and [SNAC V3](https://misteraddons.com/products/snax64){target=_blank} which all use [external controller adapters](https://misteraddons.com/products/hdmi-controller-adapters){target=_blank} made for them purchased separately.
+Each core requires its own calibration. Calibrate your gun from the distance you plan to play at, and use a white screen for best results.
 
- See [this page](https://github.com/blue212/SNAC){target=_blank} for details on SNAC.
+Never let the calibration value go below 0: saving a calibration with a negative value will likely make the core crash. To fix this, delete the core's light gun calibration file from the "config" folder on your MiSTer's MicroSD card.
 
-## Do I need an IO board to get analog video output to my CRT?
+## Video
 
-No. You can also use an HDMI to VGA adapter to do it instead. See [Direct Video](../advanced/directvideo.md).
+### How do I set up MiSTer for 1080p, shimmer-free gameplay?
 
-## Is MiSTer hard to set up? Is it really only for technical people who like to tinker?
+Run the updater script, then use one of the video presets and filters it installs, in the Video Processing menu of the secondary OSD. See [Video Configuration](video.md) for details.
 
-No and no, but those who enjoy tinkering can get a lot extra out of their MiSTer if they wish. The minimum setup only requires attaching a memory board to a DE-10 Nano and making an SD card. See [the Setup Guide](../setup/requirements.md) for more information.
+### How do I get the scanline filters on my MiSTer to look good?
 
-## Which cores require SDRAM?
+For the best results, without shimmering artifacts during motion, use integer scaling: set `vscale_mode=1` in `MiSTer.ini`, or use the core's own integer scaling options (and 5x, if supported). Not all cores have OSD options for integer scaling.
 
-You can find the updated list at the [Console Cores](../cores/console.md) and [Computer Cores](../cores/computer.md) sections. Many [Arcade cores](../cores/arcade.md) require SDRAM as well.
+"Integer scaling" means the source resolution (e.g. 240p) is scaled to the target resolution (e.g. 1080p) by a whole-number factor only (1, 2, 3, 4...). With the MiSTer set to 1080p in `MiSTer.ini` and a core that natively outputs 240p, integer scaling enlarges the image 4x (4 × 240 = 960). The remaining 120 lines are left as black borders at the top and bottom of the screen.
 
-## Why does the some cores require an SDRAM add-on board when the other cores do not?
+You can use other settings if you want the scaler to fill the screen, but scanlines won't be "perfect" unless the source resolution divides evenly into the target resolution (e.g. 240p into 1200p at 5x).
 
-This is usually because the reliable timing for reads and writes to SDRAM are critical to make the core work properly without bugs. The original NES for instance needs to access the ROM directly, so the timings are much tighter so SDRAM is required. DDR3 has variable latency for random reads and random writes, so for systems where reliable timing is needed then DDR3 becomes unsuitable.
+### I have a 4K or other higher-than-1080p display, does MiSTer support that resolution? I'd like to enjoy better video scaling.
 
-## Does my MiSTer need cooling?
+MiSTer can't quite reach 4K. To change the resolution, edit `MiSTer.ini` on your SD card: for example, `video_mode=12` for 1920x1440p or `video_mode=13` for 2048x1536p (the hardware maximum). `video_mode=14` gives 2560x1440p using your display's pixel repetition feature, but your display's upscaling may then cause some tearing or resizing artifacts. Whether these higher resolutions work may depend on your display and signal chain.
 
-It is recommended to use a heatsink (passive cooling). 22mm x 22mm is the ideal size. 20mm x 20mm is more than enough however and is more common. Active cooling with a fan helps but is not strictly required. Some faster and more complex cores like ao486, SNES, N64, or PSX may generate a lot of heat.
+### Other cores work but I get a black screen for this one. What do I do?
 
-## What power supply is compatible with MiSTer?
+Try setting `vsync_adjust` to 0 (this was the default setting), because your display may not support all refresh rates.
 
-The DE10-Nano board needs a 5V power supply with at least 2A. The connector is a coaxial "barrel" plug of 5.5 mm outer diameter and 2.1 mm inner diameter, center positive. If you are using a USB Hub addon board and have a lot of power hungry peripherals attached to it (wifi, bluetooth, multiple controllers, a mechanical hard drive), it might be a good idea to upgrade to a similar 5v power supply, but with more amps (4A-5A). Typically this is only needed if you have a mechanical hard drive, are heavily using the charging port, or have an MT32-Pi powered by the serial IO user port as these draw a good amount of amps.
+## CD games
 
-## My MiSTer needs a case. What should I do?
+### My CD games don't work! Help!
 
-There are two routes you can take; either make it yourself or purchase a case from an online vendor. For DiY, you can find the necessary 3D print files online (e.g. [thingiverse](https://www.thingiverse.com/search?q=mister+fpga){target=_blank}.
+Unzip them; CD games must not be zipped. Use ISO/WAV/BIN/IMG + CUE files or CHD. See [CD-based games](cd.md) for how to store them.
 
-## What kind of screws do I use with the DE-10 Nano's 14mm long brass standoffs?
+### How do I handle multidisc games? The core keeps resetting when I change to another disc!
 
-M3 screws, 8mm is a good length.
+Put all discs of the game in the same subfolder; the core then shouldn't reset when you mount the next disc. See [Multi-disc games](cd.md#multi-disc-games) for an example.
 
-## How do I set up MiSTer for 1080p, shimmer free gameplay?
+### What version of the CD card BIOS do I need for TurboGrafx-16 CD/PC Engine CD?
 
-Run the updater script and use one of the video presets + filters that come with it in the Video Processing menu on the secondary OSD. See [Video Configuration](video.md) for more specific information.
+Use the Japanese version 3.0, commonly found as `Super CD-ROM System (Japan) (v3.0).pce`.
 
-## How do I get the scanlines filters on my MiSTer to look good?
+## Menu and screenshots
 
-You will need to set the device to integer scaling for the best results without any shimmer artifacts during motion. Either set vscale_mode=1 in mister.ini or use the vscale integer settings within the core itself (as well as 5x) if they are supported. Not all cores support the OSD options to do integer scaling.
+### How do I change the wallpaper/background on the Menu core when I turn on my MiSTer?
 
-"Integer scaling" is when your source resolution (240p) is divided into your target resolution (1080p) using only whole numbers (e.g. 1, 2, 3, 4...). This means if you use integer scaling with the MiSTer set to a 1080p resolution in the MiSTer.ini, and the core you are using natively outputs 240p, then the image will be scaled 4x which 4 times 240 equals 960. This leaves a black border for the remaining 80 pixels distributed across the top and bottom the screen.
+By default, the Menu core background shows simulated TV static. Press F1 in the Menu core to cycle through color bars, plain black, and a wallpaper.
 
-You can play with other settings if you want the scaler to fill the screen, but scanlines won't be "perfect" unless the source resolution (e.g. 240p) divides evenly into the target resolution (e.g. 1200p at 5x scaling).
+The wallpaper option looks for `menu.jpg` or `menu.png` in the root of your MicroSD card (`/media/fat/` when the MiSTer is running). If neither file exists, it picks a random `.png` or `.jpg` from the `./wallpapers` folder each time the Menu core loads. The image's EXIF rotation metadata affects its orientation; if the image appears rotated, change this value with an online EXIF editor.
 
-## I have a 4k or other higher than 1080p display, does MiSTer support that resolution?  I'd like to enjoy better video scaling.
+### Can you take screenshots on the MiSTer?
 
-MiSTer can't quite reach 4k. Edit mister.ini on your SD card to change resolutions, e.g. video_mode=12 for 1920x1440p or video_mode=13 for 2048x1536p (hardware maximum). There is also video_mode=14 for 2560x1440p using the pixel repetition feature of your display, but this may have some tearing or resizing artifacts induced by your display's upscaling feature. Compatibility with these higher resolutions may depend upon your display and signal chain.
+Yes. Press ++win+prtsc++ for an upscaled screenshot, or ++shift+win+prtsc++ for the raw output of the core (which may be distorted or have an odd aspect ratio). Screenshots are stored in `./screenshots`, in a folder named after the core.
 
-## How does the accuracy level of various MiSTer cores compare to other FPGA options?
+These screenshots are simple and don't include any video processing effects. To capture the fully processed image you see on a modern display, you need a capture card that supports the desired resolution. A card often used in the community is the [Magewell USB HDMI Gen 1 or Gen 2](https://www.magewell.com/products/usb-capture-hdmi-gen-2){target=_blank}, which can be found used on eBay for a fraction of the retail price.
 
-Most MiSTer cores are just as, if not more accurate, as any of the other major FPGA offerings available today. Most people would not able to tell the difference between these cores and the original hardware.
+[Example: raw screenshot from the NES core](img/raw_screenshot.png){target=_blank}
 
-## Will any MiSTer core ever get save states?
-
-The Gameboy, GBA, Lynx, Wonderswan, NES, and PSX cores all support savestates.
-
-Cores need to be written from scratch to support them or they need to be reworked significantly to support pause before save states can be added. At this time there are no specific plans to apply this to other cores, but it may happen one day. It is not as simple to add savestate functionality to an FPGA-based emulator than it is to add to a software-based emulator.
-
-## Why doesn’t this core from another repo work? Why is MiSTer so hard to use?
-
-MiSTer repositories are self contained and the official updater script only fetches cores from the active official MiSTer repositories. Cores from other repos are not fully integrated so your results may vary. Some developers have their own discord servers or forums and you can seek support there.
-
-## Other cores work but I get a black screen for this one. What do I do?
-
-Try setting vsync_adjust to 0 as your display may not support all refresh rates. (Note that this was the default setting)
-
-## My CD games don’t work! Help!
-
-Unzip them. Do not zip CD games. Also put them in iso/wav/bin/img + cue format.
-
-## How do I handle multidisc games? The core keeps resetting when I change to another disc!
-
-You need to place all discs into the same subfolder to do disc-swapping, like so:
-
-```
-./Valkyrie Profile (USA)/Valkyrie Profile (USA) (Disc 1).chd
-./Valkyrie Profile (USA)/Valkyrie Profile (USA) (Disc 2).chd
-```
-
-If they are in the same folder then the core should not reset when you mount the next disc.
-
-## What version of the CD card bios do I need for TurboGrafx-16 CD/PC Engine CD?
-
-Use Japanese version 3.0. You will commonly find it with filename: `Super CD-ROM System (Japan) (v3.0).pce`
-
-## How do I make MiSTer boot into the NES core and a specific game?
-
-You need to use two different options: autobooting a core, and starting the core on a given ROM. Here is how:
-
-* In the .INI file, set `bootcore=NES_20201102.rbf` (or the specific core version you have), and comment out `;bootcore_timeout`.
-* Then on your NES games folder (e.g. `/media/fat/games/NES/`, copy the FDS bios as `boot0.rom`, and your .NES rom to boot as `boot1.rom`.
-
-For more options, please refer to the [NES core documentation](https://github.com/MiSTer-devel/NES_MiSTer#installation){target=_blank} 
-
-## I heard the DE10-Nano board uses subsidized components. Is MiSTer doomed if that stops?
-
-De10-Nano is manufactured in very large scale for use by students and is widely available. When it reaches end of life, the open source cores and infrastructure will be ported to another widely available board.
-
-## I see a defect that some other people aren’t seeing. Should I get a different DE-10 Nano?
-
-No, you should report the defect and wait for a fix. There is no magical best DE-10 Nano.
-
-## I found some other Cyclone based dev board on sale and it has built in WiFi. Can I use it for MiSTer?
-
-Generally, no. While it’s always possible that someone will take time to port things to other boards, the different pins and memory will mean it won’t be a straight use and unless it’s a significant upgrade, it would never gain official support. The work involved to support another platform is quite heavy, so there is no plan to support multiple unofficial hardware platforms.
-
-## The DE-10 is rated for up to 100°C operation and it doesn’t get nearly that hot.  Do I really need a fan or heatsink?
-
-A number of complex cores (like ao486) benefit from having the chip at cooler temperatures, since heat can affect the tight timings they require. A heatsink is recommended to avoid any possible glitches, but you won't damage your DE10-Nano if you choose not to use one. A fan is even better on top of that.
-
-## My fan is very loud, is there anything I can do about that?
-
-Probably.
-
-While not ubiquitous, a lot of IO boards will have a [jumper](https://en.wikipedia.org/wiki/Jumper_(computing)){target=_blank} next to or near the fan hookup to change the fan's voltage from 5v to 3v. 
-
-The jumper will likely either be next to the fan power's connector (you may have to remove the [mezzanine board](https://mister-devel.github.io/MkDocs_MiSTer/assets/92_av_board.png){target=_blank} to access it), or on the underside of the board.
-
-Here is an example of the jumper on the top side of the board.
-
-![IO Board with the 5v jumper on the top side](https://mister-devel.github.io/MkDocs_MiSTer/assets/jumper_top.png)
-
-Here is an example of the jumper on the underside of the board.
-
-![IO Board with the 5v jumper on the bottom side](https://mister-devel.github.io/MkDocs_MiSTer/assets/jumper_bottom.png)
-
-Changing the jumper's position in the block should slow the fan down (and make it quieter).
-
-## How do I change the wallpaper/background on the Menu core when I turn on my MiSTer?
-
-By default the background of the Menu core when you turn on the MiSTer displays a simulation of old TV static. You can change the background type to color bars, plain black background, and a wallpaper by pressing F1 on the keyboard in the Menu core. The wallpaper option will check for `menu.jpg` or `menu.png` in the root of your MicroSD storage (or `/media/fat/` when the MiSTer is running). If you don't have either of these files there then it will look in the `./wallpapers` folder and randomly pick any `.png` or `.jpg` file inside each time the Menu core is loaded. Please note, EXIF metadata for rotation values will influence the orientation of the image. You can modify this value with online EXIF data editors available if you run into orientation issues.
-
-## Can you take screenshots on the MiSTer?
-
-You can take screenshots on the MiSTer very easily. All you have to do is press ++win+prtsc++ on your keyboard and you will get an upscaled screenshot. For raw output from the core (which may be distorted or in a weird aspect ratio) prese ++shift+win+prtsc++. The screenshots are stored in `./screenshots` in a folder named after the core you took the screenshot in.
-
-These screenshots do not include the effects of any video processing options, they are very simple. To take screenshots of the full video processing (i.e. the image you see on your modern screen when using the MiSTer) you will need to use some kind of capture card that supports the desired resolution. An example capture card that is frequently used in the community is the [Magewell USB HDMI Gen 1 or Gen 2](https://www.magewell.com/products/usb-capture-hdmi-gen-2){target=_blank} which can be found for a fraction of the retail price on eBay used.
-
-[Here is an example of a raw screenshot from the NES core](img/raw_screenshot.png){target=_blank}
-
-[Here is an example of an upscaled screenshot from the Neo Geo core](img/upscaled_screenshot.png){target=_blank}
+[Example: upscaled screenshot from the Neo Geo core](img/upscaled_screenshot.png){target=_blank}
 
 ## Why use FPGA when other proven solutions exist, such as Raspberry Pi?
 
@@ -249,8 +257,8 @@ These screenshots do not include the effects of any video processing options, th
 
 There are debates about how to refer to the process of simulating real hardware using FPGA. Some people insist it's not emulation but rather true hardware replication, while any simulation using a traditional CPU should be referred to as emulation. I have my own opinion here. :) From my point of view, if the FPGA code is based on the circuitry of real hardware (along with the usual tweaks for FPGA compatibility), then it should be called *replication*. Anything else is *emulation*, since it uses different kinds of approximation to meet the same objectives. Currently, it's hard to find a core that can truly be called a replica – most cores are based on more-or-less functional recreations rather than true circuit recreation. The most widely used CPU cores – the Z80 (T80) and MC68000 (TG68K) – are pure functional emulations, not replications. So it's okay to call FPGA cores emulators, unless they are proven to be replicas.
 
-To go back to the original question, then, why FPGA, if it's also just emulation? Well, FPGA emulation is fundamentally different than emulation on a CPU. Traditional emulators on CPUs execute code sequentially. This is a tricky method of emulation because real hardware has many chips and all of them work in parallel. The CPU, video chip/logic, audio chip, memory arbiter – all of them are working at the same time. So a traditional emulator has to take care of all these parts and try to emulate the whole orchestra at the same time by quickly "running" from one chip to another. This requires a lot of CPU power to emulate even an old and slow retro computer. Sometimes even a modern CPU working at 100 times the speed of the retro computer is not enough, so the emulator has to use approximation, skip emulation of some less important parts, or assume some standard work of the emulated system without extraordinary usage. Let's take a well-known emulator, UAE, emulating an Amiga. On a Raspberry Pi 3, you can run some Amiga CPU benchmarks and get crazy numbers like 100 times the original 68000 processor. So you may assume you have an emulated Amiga that is 100 times faster than real one. No, you don't. If you run different kinds of demos or games, you will see the video stutters sometimes. For example, if you play the well-known "State of The Art" demo by Spaceballs, you will notice video stuttering at some points, while a real Amiga 600 with 1x CPU speed plays the whole demo very smoothly. This is how traditional emulators on Raspberry Pi work.
+To go back to the original question, then, why FPGA, if it's also just emulation? Well, FPGA emulation is fundamentally different than emulation on a CPU. Traditional emulators on CPUs execute code sequentially. This is a tricky method of emulation because real hardware has many chips and all of them work in parallel. The CPU, video chip/logic, audio chip, memory arbiter – all of them are working at the same time. So a traditional emulator has to take care of all these parts and try to emulate the whole orchestra at the same time by quickly "running" from one chip to another. This requires a lot of CPU power to emulate even an old and slow retro computer. Sometimes even a modern CPU working at 100 times the speed of the retro computer is not enough, so the emulator has to use approximation, skip emulation of some less important parts, or assume some standard work of the emulated system without extraordinary usage. Let's take a well-known emulator, UAE, emulating an Amiga. On a Raspberry Pi 3, you can run some Amiga CPU benchmarks and get crazy numbers like 100 times the original 68000 processor. So you may assume you have an emulated Amiga that is 100 times faster than the real one. No, you don't. If you run different kinds of demos or games, you will see the video stutter sometimes. For example, if you play the well-known "State of the Art" demo by Spaceballs, you will notice video stuttering at some points, while a real Amiga 600 with 1x CPU speed plays the whole demo very smoothly. This is how traditional emulators on Raspberry Pi work.
 
-FPGA emulation works very differently from traditional emulation on CPU. An FPGA is a large array of simple triggers and other logic – just like any other chip/CPU. The only difference is that specific chips/CPUs have these triggers and logic permanently connected, while FPGA allows you to connect them however you want. A special HDL (hardware description language) describes how to connect all these triggers/logic cells. Everything in FPGA works in parallel like in the original chips/devices. Thus, FPGA is pretty close to the original hardware. FPGA doesn't need high frequencies to emulate retro computers; it works at much lower frequencies than traditional emulators require. Since everything in FPGA works in parallel, it is no problem to handle any possible usage of the emulated system. Developers using FPGA usually concentrate on the specific part to make it work correctly – and it will work as it should in any possible scenario. In the same reference demo, "State Of the Art," using FPGA emulation, you can see smooth video through the whole playback, as on the original hardware.
+FPGA emulation works very differently from traditional emulation on CPU. An FPGA is a large array of simple triggers and other logic – just like any other chip/CPU. The only difference is that specific chips/CPUs have these triggers and logic permanently connected, while FPGA allows you to connect them however you want. A special HDL (hardware description language) describes how to connect all these triggers/logic cells. Everything in FPGA works in parallel like in the original chips/devices. Thus, FPGA is pretty close to the original hardware. FPGA doesn't need high frequencies to emulate retro computers; it works at much lower frequencies than traditional emulators require. Since everything in FPGA works in parallel, it is no problem to handle any possible usage of the emulated system. Developers using FPGA usually concentrate on the specific part to make it work correctly – and it will work as it should in any possible scenario. In the same reference demo, "State of the Art," using FPGA emulation, you can see smooth video through the whole playback, as on the original hardware.
 
 You may want to ask, "So why not make all emulators on FPGA then?" The answer is: FPGA programming is not so trivial. Every bit in FPGA works in parallel, so the developer needs to think in parallel as well :). What is trivial on CPU is not trivial on FPGA – although some parts that are trivial on FPGA cost a lot in CPU code.

@@ -1,4 +1,4 @@
-Here's some useful links for experienced and new developers:
+Useful links for new and experienced developers:
 
 ## MiSTer FPGA Tutorials
 [Alanswx's MiSTer Tutorials series](https://github.com/alanswx/Tutorials_MiSTer){target=_blank}    

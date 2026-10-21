@@ -1,8 +1,8 @@
-Here are some useful snippets of hdl as used throughout the MiSTer project with sources linked for reference.
+Here are some useful HDL snippets as used throughout the MiSTer project, with sources linked for reference.
 
 ## Simple Pixel Clock Divider Using Clock Enable Generator
 
-In any MiSTer core you develop you will need to attach a pixel clock to the `CE_PIXEL` signal. It's common to divide your video clock by either 4 or 8, it really depends on the core. For simple division like this it is generally best practice to use a clock enable generator, as shown in [the Tropical Angel core](https://github.com/MiSTer-devel/Arcade-TropicalAngel_MiSTer/blob/master/Arcade-TropicalAngel.sv#L386-L391){target=_blank}.
+In any MiSTer core you develop you will need to attach a pixel clock to the `CE_PIXEL` signal. It's common to divide your video clock by 4 or 8, depending on the core. For simple division like this it is generally best practice to use a clock enable generator, as shown in [the Tropical Angel core](https://github.com/MiSTer-devel/Arcade-TropicalAngel_MiSTer/blob/master/Arcade-TropicalAngel.sv#L386-L391){target=_blank}.
 
 ```sv
 reg ce_pix;
@@ -15,11 +15,11 @@ end
 assign CE_PIXEL = ce_pix;
 ```
 
-Adjust this simple clock enable generator's `div` register width to increase the division factor. `[2:0]` divides by 8 because 3 bits counts from 0-7, etc...
+Adjust this simple clock enable generator's `div` register width to increase the division factor. `[2:0]` divides by 8 because 3 bits count from 0-7, etc.
 
 ## Fractional Clock Enable Generator
 
-For clock division generators that do not divide evenly in 2, 4, 8, 16, etc... You may need a more complicated scheme. You could use a module like [CEGen.vhd from the MegaDrive core](https://github.com/MiSTer-devel/MegaDrive_MiSTer/blob/main/rtl/CEGen.vhd){target=_blank} and then you would [instantiate it using the parameters](https://github.com/MiSTer-devel/MegaDrive_MiSTer/blob/main/rtl/audio_cond.sv#L96-L106){target=_blank} in a similar way:
+For clock division that doesn't divide evenly by 2, 4, 8, 16, etc., you may need a more complicated scheme. You could use a module like [CEGen.vhd from the MegaDrive core](https://github.com/MiSTer-devel/MegaDrive_MiSTer/blob/main/rtl/CEGen.vhd){target=_blank} and [instantiate it with parameters](https://github.com/MiSTer-devel/MegaDrive_MiSTer/blob/main/rtl/audio_cond.sv#L96-L106){target=_blank}:
 
 ```sv
 wire ce_flt;
@@ -35,11 +35,11 @@ CEGen fltce
 );
 ```
 
-What this essentially does is take in a 53.693175MHz clock and output a clock enable register that is oscillating at approximately 7.056MHz, on average. Since 7.056MHz doesn't divide evenly into the input clock's frequency, we had to use a fractional clock division which is usually not suggested. Be careful when doing this because it is not a 50% duty cycle, so it should only be used in instances where you know it won't give you a bad result. In this case it was used for audio filtering, so it was not an issue.
+This takes in a 53.693175 MHz clock and outputs a clock-enable register oscillating at approximately 7.056 MHz on average. Since 7.056 MHz doesn't divide evenly into the input clock, this requires fractional clock division, which is usually discouraged — it's not a 50% duty cycle, so only use it where that can't hurt. Here it was used for audio filtering, so it wasn't an issue.
 
-## Reading Stream Of A ROM
+## Reading a ROM's Data Stream
 
-You can read the stream of data from the ROM you load and have conditionals trigger as a result. Here's a [snippet from the SMS core](https://github.com/MiSTer-devel/SMS_MiSTer/blob/master/SMS.sv#L547-L563){target=_blank} that was done to switch behavior when a specific version of a ROM is detected:
+You can read the data stream from the ROM you load and trigger conditionals on it. This [snippet from the SMS core](https://github.com/MiSTer-devel/SMS_MiSTer/blob/master/SMS.sv#L547-L563){target=_blank} switches behavior when a specific ROM version is detected:
 
 ```sv
 reg  ysj_quirk = 0;
@@ -63,11 +63,11 @@ always @(posedge clk_sys) begin
 end
 ```
 
-As the ROM is loaded, when it gets to the certain byte offset (the check for a certain `ioctl_addr`), it will then start loading in the data into `cart_id` one byte at a time. When it gets past the point where I don't want to detect anymore, it then checks to see if `cart_id` matches the hex value I'm looking for. If your core needs special quirks for specific mappers and there are no typical detection schemes (like NES mappers that are added to ROMs), this can be a good way to adjust behavior to match how original hardware would behave given other unique identifiers within the ROM.
+As the ROM loads, the code watches for specific byte offsets (`ioctl_addr` values) and copies those bytes into `cart_id` one at a time. After the last offset, it compares `cart_id` against the hex value you're looking for. If your core needs special quirks for specific mappers and no standard detection scheme exists (like the mapper IDs in NES ROM headers), this lets you adjust behavior based on other unique identifiers in the ROM, matching how original hardware would behave.
 
 ## Analog Joystick Combinatorial Block with Deadzones
 
-Analog Joysticks like on the Sony DualSense controller are supported on MiSTer. If you have a specific control scheme you want to handle with Analog joysticks, you can specify this [like the Inferno core](https://github.com/MiSTer-devel/Arcade-Inferno_MiSTer/blob/master/Arcade-Inferno.sv#L291-L311).
+Analog joysticks like the Sony DualSense's are supported on MiSTer. If you have a specific control scheme you want to handle with analog joysticks, you can specify it [as in the Inferno core](https://github.com/MiSTer-devel/Arcade-Inferno_MiSTer/blob/master/Arcade-Inferno.sv#L291-L311).
 
 ```sv
 hps_io #(.CONF_STR(CONF_STR)) hps_io
@@ -104,4 +104,4 @@ always_comb begin
 end
 ```
 
-If the dead zone is incorrect to your feel, you can adjust the + or - integer value at the end of each.
+If the dead zone doesn't feel right, adjust the +/- integer threshold at the end of each line.

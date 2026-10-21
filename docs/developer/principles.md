@@ -1,12 +1,12 @@
-Here's some tips and guidelines when contributing to the MiSTer project.
+Tips and guidelines for contributing to the MiSTer project.
 
 ## Indent with tabs, not spaces
 
-This may be a controversial subject to some, however there is good reason to indent with tabs instead of spaces in this instance. The project is uploaded to github and spaces are not handled that well by github in terms of diff compares, git blame, formatting, etc... Tabs are more compatible and will be easier for everyone to work with.
+Tabs over spaces may be controversial, but there's good reason here: the project lives on GitHub, which handles spaces poorly in diffs, git blame, and formatting. Tabs are more compatible and easier for everyone to work with.
 
 ## Comment your code when appropriate
 
-It may take some extra time, but it saves everyone, including yourself, time in the long run. Make sure to be relatively thorough in commenting your code. For example, a good example of commented code from the Atari7800 core in [TIA.sv](https://github.com/MiSTer-devel/Atari7800_MiSTer/blob/cfcb2603d3f718268b5de8b7742798dd5fdbc605/rtl/TIA.sv#L786){target=_blank} starting at line 786:
+Commenting takes extra time but saves everyone, including yourself, time in the long run. Be reasonably thorough. A good example from the Atari7800 core: [TIA.sv](https://github.com/MiSTer-devel/Atari7800_MiSTer/blob/cfcb2603d3f718268b5de8b7742798dd5fdbc605/rtl/TIA.sv#L786){target=_blank} starting at line 786:
 
 ```sv
 module playfield
@@ -23,9 +23,9 @@ module playfield
 );
 ```
 
-When instantiating this module, this dev added a comment to the end of all of her Inputs and Outputs. One shouldn't assume everyone else knows that `hclk` is `Horizontal clock phase 2` even if the name makes sense to yourself. Other good examples of good comments are separating sections of assignments or port instantiations by category, or explaining the "Why" behind a particularly unintuitive section of code.
+When instantiating this module, the developer added a comment to the end of each input and output. Don't assume everyone knows that `hclk` is `Horizontal clock phase 2`, even if the name makes sense to you. Other good comment practices: separating sections of assignments or port instantiations by category, and explaining the "why" behind unintuitive code.
 
-However there is such a thing as commenting your code **too** much. This should also be avoided. Here is an example:
+But code can also be commented **too** much — avoid that as well:
 
 ```sv
 // The 16-bit Color Look Up Table
@@ -39,7 +39,7 @@ wire TRANSP_DETECT; // Transparency Detection
 };
 ```
 
-It's obvious that this is a color look up table because the wire is named `color_lut` so that doesn't need to be described. It's obvious that `TRANSP_DETECT` is for transparency detection. 
+The wire name `color_lut` already says it's a color look-up table, and `TRANSP_DETECT` obviously signals transparency detection — neither comment adds anything.
 
 For an extreme and deliberately funny example:
 
@@ -90,7 +90,7 @@ Please don't do things like this.
 
 ## Align ends, assignments, and proper indentation
 
-Try to keep similar elements in our code aligned for readability purposes, for example, in the [EEPROM_24C0x.sv](https://github.com/MiSTer-devel/NES_MiSTer/blob/8dddb6cc01a2a2854a444838e0cfe5a17338060f/rtl/EEPROM_24C0x.sv){target=_blank} file from NES_MiSTer, this:
+Keep similar elements aligned for readability. For example, in [EEPROM_24C0x.sv](https://github.com/MiSTer-devel/NES_MiSTer/blob/8dddb6cc01a2a2854a444838e0cfe5a17338060f/rtl/EEPROM_24C0x.sv){target=_blank} from NES_MiSTer, this:
 
 ```sv
 // savestate
@@ -107,7 +107,7 @@ assign SS_MAP1_BACK[ 2: 0] = (state == STATE_STANDBY)  ? 3'd0 :
 assign SS_MAP1_BACK[ 2: 0] = (state == STATE_STANDBY) ? 3'd0 : (state == STATE_TEST) ? 3'd1 : (state == STATE_ADDRESS) ? 3'd2 : (state == STATE_WRITE) ? 3'd3 : 3'd4;
 ```
 
-Sure, they both do the same thing, but it was much easier to parse what each thing did quickly. SystemVerilog is not a strongly typed language with regards to indentations, so you won't get compilation errors if you fail to indent your ends accurately. But we should indent them appropriately anyways. 
+Both do the same thing, but the first is much easier to parse at a glance.
 
 Another example:
 
@@ -137,7 +137,7 @@ q <= q;
 end
 ```
 
-Both will succesfully compile and be functionally identical, but it takes a little longer for our mind to parse on first glance. Aligning comments at the end of a line is also helpful in improving readability as shown in the `playfield` module example near the top of this page.
+Both compile successfully and are functionally identical, but the indented version is easier to parse at first glance. SystemVerilog won't throw compilation errors for bad indentation, but indent `end`s properly anyway. Aligning comments at the end of a line also helps readability, as in the `playfield` module example near the top of this page.
 
 ## Naming things to be easily understood
 
@@ -154,11 +154,11 @@ module STM95XXX
 );
 ```
 
-It's also commented, but now you know after reading this that anytime a signal with `_n` is used, that is an active low signal, it doesn't need to be described as active low in a comment each time it is used from then on.
+With this convention, a signal suffixed `_n` is understood to be active low without needing a comment every time.
 
 ## If you run out of DSP or Logic space accidentally
 
-If you run out of space in compilation, you might be accidentally implying your code to be put into DSP, which is very limited. You can specify that the compiler use logic instead by using the [multstyle](https://www.intel.com/content/www/us/en/programmable/quartushelp/17.0/index.htm#hdl/vlog/vlog_file_dir_multstyle.htm){target=_blank}:
+If you run out of space during compilation, your code may be inferred into DSP, which is very limited. Tell the compiler to use logic instead with the [multstyle](https://www.intel.com/content/www/us/en/programmable/quartushelp/17.0/index.htm#hdl/vlog/vlog_file_dir_multstyle.htm){target=_blank} attribute:
 
 ```sv
 (* multstyle = "logic" *) module myModule (
@@ -166,4 +166,4 @@ If you run out of space in compilation, you might be accidentally implying your 
 )
 ```
 
-This will force this module into logic space instead of it ever using DSP or block ram. Also you can force a module into DSP the same way with `(* multstyle = "dsp" *)`. The `multstyle` attribute can be used for Module declarations, variable declarations, and binary expressions.
+This forces the module into logic space instead of DSP or block RAM. You can likewise force a module into DSP with `(* multstyle = "dsp" *)`. The `multstyle` attribute works on module declarations, variable declarations, and binary expressions.

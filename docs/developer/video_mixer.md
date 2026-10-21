@@ -1,8 +1,8 @@
-Video Mixer is used as a helper to provide a lot of the nice videos that the MiSTer framework supplies. This includes scandoubling, gamma, hq2x scaling, and freezing.
+`video_mixer` is a helper module that provides many of the video features the MiSTer framework supplies, including scandoubling, gamma, HQ2x scaling, and freezing.
  
-## Instantiating video_mixer
+## Instantiating `video_mixer`
 
-The module has a few parameters that are used to set it up.
+Set up the module with these parameters:
 
 * `LINE_LENGTH`
 * `HALF_DEPTH`
@@ -16,7 +16,7 @@ module video_mixer
 	parameter GAMMA        = 0
 )
 (
-	input            CLK_VIDEO, // should be multiple by (ce_pix*4)
+	input            CLK_VIDEO, // should be a multiple of (ce_pix*4)
 	output reg       CE_PIXEL,  // output pixel clock enable
 
 	input            ce_pix,    // input pixel clock or clock_enable

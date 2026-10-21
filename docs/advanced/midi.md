@@ -1,38 +1,34 @@
-There are multiple options for using MIDI on the MiSTer. Here's a few of the ways you can use it below.
+There are multiple options for using MIDI on the MiSTer.
 
 
 ## [The mt32-pi Project](https://github.com/dwhinham/mt32-pi/wiki){target=_blank}
 
-Dale Whinham (aka d0pefish) has come up with an open source MIDI synthesizer for the raspberry pi called mt32-pi. For the most up to date instructions on how to use mt32-pi with your MiSTer, [please go to the MiSTer FPGA section of the mt32-pi wiki](https://github.com/dwhinham/mt32-pi/wiki/MiSTer-FPGA){target=_blank} to get all of the information you should need. There are also [two add-on boards designed by sorgelig](https://mister-devel.github.io/MkDocs_MiSTer/basics/addons/#mt32-pi-lite-mister-addon-board){target=_blank} specifically for mt32-pi to be used with the MiSTer.
+Dale Whinham (aka d0pefish) created mt32-pi, an open-source MIDI synthesizer for the Raspberry Pi. For current instructions, see the [MiSTer FPGA section of the mt32-pi wiki](https://github.com/dwhinham/mt32-pi/wiki/MiSTer-FPGA){target=_blank}. There are also [two add-on boards designed by Sorgelig](https://mister-devel.github.io/MkDocs_MiSTer/basics/addons/#mt32-pi-lite-mister-addon-board){target=_blank} for using mt32-pi with the MiSTer.
 
-## MT32-pi Video Example
+### Example video
 ![type:video](videos/mt32-pi.mp4)
 
-## Computer Cores with MIDI support.
+## Computer cores with MIDI support
 
-When running the Minimig and ao486 cores, once a ALSA compatible USB MIDI device is attached, two additional ‘UART Connection’ menu options (‘USBMIDI’ and ‘USBMIDI-38K’) will be available in addition to ‘None’, ‘PPP’ and ‘Console’.
+When an ALSA-compatible USB MIDI device is attached, the Minimig and ao486 cores get two extra 'UART Connection' menu options, 'USBMIDI' and 'USBMIDI-38K', in addition to 'None', 'PPP', and 'Console'.
 
 ### Minimig
 
-‘USBMIDI’ - This option is used with the Amiga / Minimig core. This option sets the UART connection speed to 31250 baud which is the standard MIDI speed.
+Use 'USBMIDI' with the Amiga (Minimig) core. It sets the UART connection speed to 31250 baud, the standard MIDI speed.
 
-Many Amiga applications and most games don’t require any additional drivers for MIDI. Some “newer” applications may require the CAMD driver.
-
-[Aminet : CAMD](http://aminet.net/package/mus/midi/camd){target=_blank}
+Many Amiga applications and most games don't need any additional MIDI drivers. Some "newer" applications may require the [CAMD driver](http://aminet.net/package/mus/midi/camd){target=_blank} (Aminet).
 
 ### ao486
 
-‘USBMIDI-38K’ - This option is used with the ao486 core. This option sets the UART Connection speed to 38400 baud. (The MIDI speed of 31250 baud is not a standard speed DOS PC UARTs were capable of doing)
+Use 'USBMIDI-38K' with the ao486 core. It sets the UART connection speed to 38400 baud, because DOS PC UARTs couldn't run at the standard MIDI speed of 31250 baud.
 
-While some sequencer applications and Microsoft Windows may support MIDI on the serial port, DOS games typically require a MPU-401 interface which ao486 unfortunately lacks. In lieu of hardware MPU-401 capability the SoftMPU TSR can be used with a good degree of success.
-
-[SoftMPU](http://bjt42.github.io/softmpu/){target=_blank}
+Some sequencer applications and Microsoft Windows may support MIDI on the serial port, but DOS games typically require an MPU-401 interface, which ao486 unfortunately lacks. Instead of a hardware MPU-401, the [SoftMPU](http://bjt42.github.io/softmpu/){target=_blank} TSR can be used with a good degree of success.
 
 #### SoftMPU
 
-SoftMPU requires the QEMM memory manager be installed. For testing QEMM 8.03 was used. QEMM “stealth” option seems to be incompatible with ao486 so it is advisable to skip that part of the optimize process. It’s a good idea to run the QEMM optimize application again after installing SoftMPU (in the AUTOEXEC.BAT) to get as much of the lower 640K conventional RAM free as possible.
+SoftMPU requires the QEMM memory manager (QEMM 8.03 was used for testing). QEMM's "stealth" option seems to be incompatible with ao486, so it is advisable to skip that part of the optimize process. After adding SoftMPU to AUTOEXEC.BAT, it's a good idea to run QEMM's optimize again to free up as much of the lower 640 KB of conventional RAM as possible.
 
-Although less common, some DOS games and applications require MPU-401 interrupts. This option can break compatibility with others software not requiring interrupts.
+Although less common, some DOS games and applications require MPU-401 interrupts. Enabling them can break compatibility with other software that doesn't use interrupts.
 
 
 Starting SoftMPU without MPU-401 interrupts:
@@ -43,13 +39,13 @@ Starting SoftMPU with MPU-401 interrupts:
        
     SOFTMPU.EXE /SB:220 /IRQ:5 /MPU:330 /OUTPUT:COM1  
 
-The Rev.0 Roland MT-32 used in testing required the ‘DELAYSYSEX’ switch to prevent buffer overflow for certain games but made Sierra games upload sysex commands excessively slowly. This is not necessary for General MIDI modules and newer revision MT-32s.
+The Rev.0 Roland MT-32 used in testing needed the 'DELAYSYSEX' switch to prevent buffer overflow in certain games, but it made Sierra games send SysEx commands excessively slowly. This is unnecessary for General MIDI modules and newer-revision MT-32s.
 
     SOFTMPU.EXE /MPU:330 /DELAYSYSEX /OUTPUT:COM1
 
-#### MidilLink
+## MidiLink
 
-The 'midilink' daemon currently supports following switches / options:
+The [MidiLink](https://github.com/bbond007/MiSTer_MidiLink){target=_blank} daemon (`midilink`) currently supports the following switches/options:
 
 ```
 TESTSER  - this option sends a test message to the serial port once 
@@ -64,9 +60,7 @@ QUIET    - this option suppresses MIDI debug output.
            (default is 31250 baud) - used with ao486 core.
 ```
 
-[MidiLink Github](https://github.com/bbond007/MiSTer_MidiLink){target=_blank}
-
-#### MIDI Adapters reported to work
+## MIDI adapters reported to work
 
 * Creative EMU XMIDI (Known to mangle SYSEX messages)
 * Roland UM-ONE

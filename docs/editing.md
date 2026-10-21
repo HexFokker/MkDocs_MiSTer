@@ -3,40 +3,40 @@ hide:
   - toc
 ---
 
-Here's a quick guide to show you how to edit this documentation site. It's very similar to editing a wiki page, but requires a few extra steps. All edits are approved by the administrators of the MkDocs_MiSTer repository on GitHub.
+This guide shows how to edit this documentation site. It's similar to editing a wiki page, with a few extra steps. All edits are approved by the administrators of the MkDocs_MiSTer repository on GitHub.
 
 ## How to edit/contribute to pages on this documentation site
 
-First, you will need a github account:
+First, you will need a GitHub account:
 
-[Signup to GitHub](https://github.com/signup){target=_blank}
+[Sign up for GitHub](https://github.com/signup){target=_blank}
 
-Next you go to the page you want to edit and click on the pen icon in the top right for that page:
+Next, go to the page you want to edit and click the pen icon in its top right:
 
 ![Edit this documentation page button](img/contrib1.png)
 
-Then you need to fork the repository for this documentation. A repository is just what coders call the place where they store all the code for their project. A fork is just a personal copy of that repository where you can make your own changes to it. So let's click "Fork this Repository":
+Then fork the documentation repository. A repository is where a project's files are stored; a fork is your personal copy of it where you can make changes. Click "Fork this Repository":
 
 ![Fork the repository for this documentation page](img/contrib2.png)
 
-Now make your changes using the text editor. The MkDocs_MiSTer site uses the [Markdown syntax](https://www.markdownguide.org/cheat-sheet/){target=_blank}, so make sure to follow those guidelines. The editor comes with a Preview Tab so you can see how your work may appear. Certain MkDocs specific tags or formatting (e.g. `{target=_blank}` which makes your browser open a link in a new tab):
+Now make your changes in the text editor, following [Markdown syntax](https://www.markdownguide.org/cheat-sheet/){target=_blank}. The editor's Preview tab shows how your work may appear, but MkDocs-specific tags and formatting (e.g. `{target=_blank}`, which makes a link open in a new tab) may not display there as they will on the site:
 
 ![Use the markdown editor on GitHub to make your changes](img/contrib3.png)
 
-Write in a short description of your changes and propose the changes that describes why you made the changes:
+Write a short description of your changes and why you made them, then click "Propose changes" to commit them to your fork:
 
 ![Propose the changes to the documentation page](img/contrib4.png)
 
-The next step is to create a pull request. Pull requests are a way of asking the repository owner to accept the changes you've made into their repository. Double check your work to make sure it is what you wanted:
+Next, create a pull request — a request for the repository administrators to accept your changes. Double-check your work first:
 
 ![Check your work and click "Create pull request"](img/contrib5.png)
 
-The form to create a pull request will appear. This is your last chance to double-check your work before creating the pull request to ask the owner to "merge" your changes into the main repository. Merging these changes will update the site momentarily, so make sure the changes you made are correct:
+The pull request form will appear — your last chance to check your work before asking the administrators to merge your changes into the main repository. The administrators review the pull request and either merge it or close it. Merging updates the site shortly after, so make sure everything is correct:
 
 ![Last chance to check your work, and then click "Create pull request"](img/contrib6.png)
 
-In this case, the user birdybrain submitted a very goofy change, and as such his pull request was denied (and closed). This upset birdybrain quite a bit and he was disrespectful in his reply. Be respectful and understanding and try to work with the owners of the repository. Don't be like birdybrain here:
+In this example, user birdybrain submitted a very goofy change, so his pull request was denied and closed. He was quite upset by this and replied disrespectfully — don't be like birdybrain. Be respectful and understanding, and try to work with the administrators:
 
 ![Be respectful and mindful of the goal of the documentation site](img/contrib7.png)
 
-Hopefully that helps you learn how to edit the documentation on this site. If you completed this and edited a page, congratulations! You now should know how to use GitHub, fork a repository, commit changes to the source code, and create a pull request.
+Once you've edited a page this way, you should now know how to fork a repository, commit changes, and create a pull request on GitHub.

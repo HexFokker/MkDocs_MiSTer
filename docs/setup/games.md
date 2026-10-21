@@ -1,39 +1,30 @@
-To play games on the MiSTer you will need to transfer them to your MicroSD. There are other ways to load games, like over a NAS or using USB drive, but for now we're going to stick to the most basic easy method. If you'd like more information on these other methods you can head to the [Advanced Networking Page](../advanced/network.md) of this site, to find out more.
+To play games on the MiSTer, transfer them to your MicroSD card. Games can also be loaded in other ways, such as from a NAS or a USB drive (see the [Advanced Networking page](../advanced/network.md)), but this guide sticks to the most basic method.
 
-## Games folder description
-The `/games/` folder is where ROMs are stored. `/games/NES` is where you would place NES ROMs, for instance. Each MiSTer core looks to a specific folder for these ROMs so it is best to put them in the right place.
+## The games folder
+ROMs are stored in the `/games/` folder: NES ROMs go in `/games/NES`, for instance. Each core looks for its ROMs in a specific folder, so it's best to put them in the right place.
 
-## Transfer ROMs over the Network with FTP/SFTP/SCP
-The Mister has a FTP and SSH server already enabled out of the box.
-See [Network Access](../advanced/network.md#network-access)
-for more information on how to connect to these services.
+## File formats
 
-## Transfer ROMs over the Network with Samba/SMB
-The MiSTer comes setup with a Samba server already, it just needs to be activated. This means you can connect to it like any other shared folder on the network. It's pretty easy.
+* **CD images** must be in CUE/BIN or CHD format and can't be placed in zip archives — they are handled differently from other ROMs. Put each CD game in its own folder, and keep all discs of a multi-disc game in the same folder (e.g. `Final Fantasy VII` discs 1–3 in one `Final Fantasy VII` folder). This lets you change discs without resetting the core, and on the PSX core your save carries over from disc to disc. See [CD-based games](../basics/cd.md) for details.
+* **VHD (virtual hard drive) files** must not be zipped either.
+* **All other ROMs** can be placed in zip archives. The core shows which file extensions it accepts. If a ROM won't load, the core's readme (on GitHub or in the `/games/$CORE/` folder) should tell you which file types work with that core.
 
-First we need to enable the Samba service:
+## Transfer ROMs over the network with FTP/SFTP/SCP
+The MiSTer has FTP and SSH servers enabled out of the box. See [Network Access](../advanced/network.md#network-access) for how to connect to them.
 
-1. Goto the Scripts menu and run `samba_on`
-2. If you are using Windows, all you need to do is type `\\MiSTer\sdcard\` in the address bar at the top of the File Explorer and press enter. You can do the same in Linux or on MacOS depending on how you access network shares on those systems the same way.
+## Transfer ROMs over the network with Samba/SMB
+The MiSTer also comes with a Samba server. Once you activate it, the MiSTer's SD card appears on your network like any other shared folder:
+
+1. Go to the Scripts menu in the Menu core and run `samba_on`.
+2. On Windows, type `\\MiSTer\sdcard\` in the File Explorer address bar and press Enter. On Linux and macOS, open the share the way you normally access network shares on your system.
 
 ![MiSTer FPGA Samba Server File Explorer](img/samba.png)
 
-In this case I'm going to transfer some ROMs to the `/games/NES/` folder so I can use them with the NES core.
+In this example, ROMs are copied to the `/games/NES/` folder for the NES core:
 
 ![ROM Transfer to MiSTer FPGA folder from Windows](img/rom-transferred.png)
 
-## Transfer ROMs to the MicroSD directly
-You can also turn off the MiSTer, remove the MicroSD and plug it into your computer to transfer roms. It will have an exFAT formatted partition named "MiSTer" that most operating systems can work with.
+## Transfer ROMs to the MicroSD card directly
+You can also turn off the MiSTer, remove the MicroSD card, and plug it into your computer. It has an exFAT partition named "MiSTer" that most operating systems can read and write.
 
-After this is done you can proceed to the next step since we are going to [Play a Game](play.md).
-
-## Notes about File Formats
-CD images for any cores that use CD's must either be in CUE/BIN or CHD. It is best to place CD images into their own separate folders and it is adviced to place multi-disc games's into the same folder (e.g. `Final Fantasy VII Discs 1-3` in the same `Final Fantasy VII` folder), since you can then change discs without resetting the core, and your save files will load from disc to disc (in the case of the PSX core).
-
-CD images can't be placed in zip archives. They are handled differently from other game ROMs.
-
-For more CD image information check [CD-based ROMs](../basics/cd.md)
-
-VHD (virtual hard drive) files are the same, they must not be zipped.
-
-All other ROMs can be placed in zip folders/archives and accessed. The core will tell you which file extensions are accepted. If you have an issue with a ROM loading, the readme for that core that is available on GitHub or in the `/games/$CORE/` folder should tell you what kinds of files work with that core.
+Once your games are on the card, continue to the next step: [Play a Game](play.md).

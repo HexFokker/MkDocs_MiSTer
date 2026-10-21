@@ -1,8 +1,6 @@
-Here's a collection of links to various information, videos, and articles about the MiSTer. MiSTer is an evolving platform, so these videos can only represent what was available at the time of them being made, some information and representations may be outdated. If you just want a comprehensive full review of almost everything MiSTer has to offer that is relatively up to date then watch the My Life In Gaming video here:
+A collection of links to articles and videos about the MiSTer. Since the platform keeps evolving, some material may be outdated. For a relatively current, comprehensive overview, watch the My Life In Gaming primer:
 
 [MiSTer FPGA in 2022: A Primer Guide to Retro Gaming's Hardware Emulator / MY LIFE IN GAMING](https://youtu.be/rhT6YYRH1EI){target=_blank} - March 31, 2022
-
-Otherwise there are some other videos listed below.
 
 ## MiSTer FPGA Articles
 
@@ -26,10 +24,10 @@ Otherwise there are some other videos listed below.
 * [Nov 2019 - SmokeMonster - MiSTer Cores without add-ons (no SDRAM)](https://www.youtube.com/watch?v=_g471imXA7U){target=_blank}
 * [Jul 2019 - RetroManCave - Exploring MiSTer](https://www.youtube.com/watch?v=e5yPbzD-W-I){target=_blank}
 * [May 2019 - GameSack - MiSTer Review](https://www.youtube.com/watch?v=dibLXWdX5-M){target=_blank}
-* [Oct 2018 - ETA Prime - FPGA Emulation MisTer Project on the Terasic DE10-Nano](https://www.youtube.com/watch?v=1jb8YPXc8DA){target=_blank}
+* [Oct 2018 - ETA Prime - FPGA Emulation MiSTer Project on the Terasic DE10-Nano](https://www.youtube.com/watch?v=1jb8YPXc8DA){target=_blank}
 * [Oct 2018 - SmokeMonster - Introducing the MiSTer FPGA](https://www.youtube.com/watch?v=igiVHfBzX8w){target=_blank}
 
-## Tutorials
+## Video Tutorials
 
 * [MiSTer FPGA 2023 Build Guide and Software Setup! (Video Game Esoterica)](https://www.youtube.com/watch?v=V5DLwTDyh_o){target=_blank}
 * [MiSTer FPGA Analog Video Guide and Setup Tutorial - VGA, PVM's and Component Video (Video Game Esoterica)](https://www.youtube.com/watch?v=-dG3fPjlOuM){target=_blank}

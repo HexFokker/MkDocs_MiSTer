@@ -1,40 +1,48 @@
-MiSTer has support for a wide variety of input devices. It also has options to configure these devices to fit your needs in addition to several quality of life features across most, sometimes all, cores. Here is a breakdown of some special configurations for various input devices like spinners, gamepads, joysticks, and keyboards.
+MiSTer supports a wide variety of input devices. It also offers options for configuring them and several quality-of-life features that work in most (sometimes all) cores. This page covers special configurations for devices such as spinners, gamepads, joysticks, and keyboards.
 
-MiSTer has a set of standard features for USB/Bluetooth gaming controllers:
+## What devices are supported?
 
-* Auto Fire
+Generally, any normal USB HID-compatible input device should work: keyboards, arcade spinners, USB adapters for original controllers (such as the Raphnet and DaemonBite retro adapters), and even modern console controllers like the PS5 DualSense. If you have an Analog I/O or Digital I/O board, supported cores can also use original controllers through [SNAC](#serial-native-accessory-converter-snac), including lightguns that normally only work with the original system.
+
+USB and Bluetooth gaming controllers get these standard features:
+
+* Autofire
 * Mouse emulation from your joystick
-* Up to 6 player support
+* Up to 6 players
 
 ## Default Joystick Player Assignment Method
 
-* After a core starts, press a button on any connected controller to make it the Player 1 gamepad/joystick
-* Press a button on a second controller to make it the Player 2 joystick (if supported by the core)
-* Keep going for assigning Player 3, Player 4, etc...
-* If you assigned the players in the wrong order, it's easy to start over, just go to the On-Screen Display's secondary menu (press Right after going into the OSD) and select "Reset player assignment" to start all over again.
-* If you reset the core, it also resets the player assignments.
+* After a core starts, press a button on any connected controller to make it the Player 1 gamepad/joystick.
+* Press a button on a second controller to make it the Player 2 joystick (if the core supports it).
+* Continue the same way for Player 3, Player 4, etc.
+* If you assigned the players in the wrong order, open the OSD's secondary menu (press Right after opening the OSD) and select "Reset player assignment" to start over.
+* Resetting the core also resets the player assignments.
 
-Please note; if a controller doesn't seem to work, it's possible you will need to reboot the MiSTer into the Menu core, and define the inputs for that controller if it hasn't been done already. Also, if the controller attached has the same Product ID and Vendor ID as seen by the linux system, you may not be able to use two of them at the same time. It depends upon how the controller is made to work.
+If a controller doesn't seem to work, you may need to reboot the MiSTer into the Menu core and define the controller's inputs, if you haven't already. Also, if two attached controllers report the same Vendor ID and Product ID to Linux, you may not be able to use both at the same time; this depends on how the controller is made.
 
 ## Advanced Joystick Player Assignment Method
 
-There is now an alternate method to do joystick player assignment manually based upon the vendor ID and product ID of the USB device (e.g. an an arcade cabinet with two usb encoder joysticks and the one on the right always being assigned to player 2). To use this manual joystick player assignment feature you can assign it by one of three identification methods:
+You can also assign joystick players manually, based on which device is which. This is useful, for example, in an arcade cabinet with two USB encoder joysticks, where the right one should always be Player 2. Each controller can be identified in one of three ways:
 
-1. For bluetooth devices connected wirelessly, you would use the bluetooth MAC address.
-2. For wired devices you would typically use the VendorID and ProductID.
-3. For multiple devices that share the same VendorID and ProductID, you would want to use the USB port location.
+1. Wireless Bluetooth devices: by their Bluetooth MAC address.
+2. Wired devices: typically by their VendorID and ProductID.
+3. Multiple devices that share the same VendorID and ProductID: by their USB port location.
 
-The easiest way to get this information is, after enabling debug on MiSTer.ini, to either [open up a console connection](../advanced/console.md){target=_blank} or SSH into your MiSTer as root and run `killall MiSTer; /media/fat/MiSTer` to watch the debug output whenever you plug or unplug a usb device. Then you would enter that information into your MiSTer.ini with [the instructions provided in the section](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/MiSTer.ini){target=_blank} that starts with `Permanently assign specific controller to specific player.`.
+The easiest way to find this information is to enable debug in MiSTer.ini, then [open a console connection](../advanced/console.md){target=_blank} or SSH into your MiSTer as root and run `killall MiSTer; /media/fat/MiSTer`. The debug output shows the information whenever you plug in or unplug a USB device. Enter it in your MiSTer.ini as described in the section starting with `Permanently assign specific controller to specific player` in the [default MiSTer.ini](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/MiSTer.ini){target=_blank}.
 
-## Auto Fire
+## Maximum number of players
 
-Any defined button supports the auto fire feature. To activate auto fire, press and hold the desired button and then quickly press and release the button defined as `BUTTON OSD`(for joystick) or `KBD TOGGLE`(for keyboard). To increase the autofire rate on that button, repeat the the same procedure. To disable autofire continue stepping that button through rates until it displays that autofire is now disabled on that button. Using this method, each button may have its own autofire rate.
+The MiSTer framework supports _up to_ six players on separate USB or Bluetooth controllers. Individual cores may support fewer: for instance, as of January 2026, the Saturn core supports up to 2 USB/Bluetooth controllers. If a core supports [SNAC](#serial-native-accessory-converter-snac), you may be able to add more players through it.
 
-By default, MiSTer allows autofire rates of 10 hz, 15 hz, and 30 hz to be used. If you'd like to set custom rates, this can be done by modifying the MiSTer.ini file. Custom rates are defined by adding or modifying the autofire_rates line. Custom rates will be rounded down to the nearest rate that repeats cleanly at 60 Hz. You may find that some games work better with certain rates, and that other rates (particularly 30hz) are too fast for certain games to process.
+## Autofire
+
+Any defined button supports autofire. To turn it on, press and hold the button, then quickly press and release the button defined as `BUTTON OSD` (joystick) or `KBD TOGGLE` (keyboard). Repeat this to step up to the next autofire rate. To turn autofire off, keep stepping through the rates until the message says autofire is disabled for that button. Each button can have its own autofire rate.
+
+By default, MiSTer offers autofire rates of 10, 15, and 30 Hz. To set custom rates, add or edit the `autofire_rates` line in MiSTer.ini. Custom rates are rounded down to the nearest rate that repeats cleanly at 60 Hz. You may find that some games work better with certain rates, and that some rates (particularly 30 Hz) are too fast for certain games to process.
 
 `autofire_rates=7.5,10,15,20,30`
 
-Advanced users may set a custom autofire rate as a pattern of button presses and releases. Prefix the pattern with 0b, and input 0 for each frame for which the button should be released, and 1 for each frame for which it should be held.
+Advanced users may set a custom autofire rate as a pattern of button presses and releases. Prefix the pattern with `0b`, then use `0` for each frame the button should be released and `1` for each frame it should be held.
 
 `autofire_rates=0b000011111`
 
@@ -42,58 +50,45 @@ This line would configure a single autofire rate in which the button is held for
 
 ### (Advanced) Built-in Custom Rates
 
-As a convenience to players of shooting games (which often favor very particular autofire rates) one custom rate has been included which can be accessed using a special keyword rather than having to calculate the custom pattern. Simply include the value where you would normally place a custom rate or pattern in your `autofire_rates=` line. Others may be added in the future as they are recommended by the community or the user who maintains autofire gets better at shooting games.
+Shooting games often favor very particular autofire rates. For convenience, one such rate is built in and can be selected with a keyword instead of a calculated pattern: put the keyword in the `autofire_rates=` line where you would put a custom rate or pattern. More may be added in the future as the community recommends them, or as the maintainer of the autofire feature gets better at shooting games.
 
 | Value       | Target Game   | Resulting Rate |
 | ----------- | ------------- | -------------- |
 | GUNFRONTIER | Gun Frontier  | 6.67 Hz        |
 
-### Auto Fire and the Joystick/D-pad
+### Autofire and the joystick/D-pad
 
-By default, autofire does not apply to the d-pad/joystick. If you wish to override this behavior and allow directional inputs to use autofire, add `autofire_on_directions=1` to your MiSTer.ini
-
-## Maximum number of players
-
-MiSTer (as a framework) supports _up to_ 6 players on separate controllers via USB or Bluetooth.
-
-The total number however can be further constrained by the core. For instance, as of January 2026, you can use up to 2 of these controllers with the Saturn core.
-
-If available in the core, you might be able to combine these with more via [SNAC](#serial-native-accessory-convertor-snac).
+By default, autofire does not apply to the D-pad/joystick. To allow autofire on directional inputs, add `autofire_on_directions=1` to your MiSTer.ini.
 
 ## Mouse emulation
 
-Your joystick can emulate mouse if the required button "Mouse Emu" has been defined when you defined your inputs in the Menu core. Hold the `Mouse Emu` button and ++alt+m++, Mouse Left/Right/Middle Btn will emulate the mouse functions. When Mouse emulation is activated, the left analog stick (if defined earlier) will be switched to pointer functions for the mouse. Press `BUTTON OSD` while holding `Mouse Emu` to toggle mouse emulation permanently. In permanent mouse emulation the `Mouse Emu` button becomes a sniper button with smaller pointer movements. Only the buttons defined for mouse emulation will be switched. Other joystick buttons will continue to act as regular joystick buttons. Thus, if your game pad has many buttons, you can have both mouse and joystick in one game pad at the same time (useful for some games, like Walker on Amiga).
+Your joystick can emulate a mouse if you defined the "Mouse Emu" button when you set up your inputs in the Menu core. Hold `Mouse Emu` and ++alt+m++; the buttons you defined as Mouse Left/Right/Middle Btn then act as mouse buttons, and the left analog stick (if defined) moves the pointer. To keep mouse emulation on permanently, press `BUTTON OSD` while holding `Mouse Emu`. In permanent mode, `Mouse Emu` becomes a sniper button that makes pointer movements smaller.
 
-## What devices are supported?
+Only the buttons defined for mouse emulation switch to mouse functions; the other buttons keep working as regular joystick buttons. A gamepad with many buttons can therefore act as a mouse and a joystick at the same time, which is useful for some games, such as Walker on the Amiga.
 
-Generally speaking, any normal USB HID compatible input device should work. Keyboards, arcade spinners, usb adapters for original controllers such as the Raphnet and Daemonbite retro adapters, and even modern console controllers like the DualSense PS5 controller. There is even the Serial Native Accessory Connector, if you have one of the Analog or Digital IO add-on boards, which on supported cores allows you to use original hardware controllers, such as lightguns, which would normally only work with the original system and require zero lag to function.
+## Serial Native Accessory Converter (SNAC)
 
-## Serial Native Accessory Convertor (SNAC)
-
-SNAC adaptors allow you to connect original hardware controllers and peripherals to the MiSTer cores. The cores which support SNAC connections have been specially built to have serial connections exposed to specific pins on the DE10-Nano. That means when you pull the trigger on the NES Zapper while aiming at your CRT, the signals travel almost instantly, similar to how they would on original hardware.
+SNAC adapters let you connect original controllers and peripherals to MiSTer cores. Cores that support SNAC are specially built to expose serial connections on specific pins of the DE10-Nano. As a result, when you pull the trigger of an NES Zapper aimed at your CRT, the signal arrives almost instantly, as it would on original hardware. This matters for devices like lightguns, which need zero lag to work.
 
 ## Using a Lightgun
 
-In addition to SNAC support for using lightguns with their original system's core, MiSTer also supports several USB/Bluetooth lightguns. Examples include GUN4IR, Guncon 2, Guncon 3 and the Wiimote.  
-These can be used with various cores, ie they can act as a Zapper in the NES core, a Guncon 1 in the PSX core etc.
-
-Additional information on Guncon 2 support can be found here [https://github.com/NolanNicholson/GunCon2-MiSTer](https://github.com/NolanNicholson/GunCon2-MiSTer){target=_blank}
+Besides original lightguns over SNAC, MiSTer supports several USB/Bluetooth lightguns, such as the GUN4IR, GunCon 2, GunCon 3, and Wiimote. They can be used with various cores, for example as a Zapper in the NES core or a GunCon 1 in the PSX core. For more on GunCon 2 support, see the [GunCon2-MiSTer repository](https://github.com/NolanNicholson/GunCon2-MiSTer){target=_blank}.
 
 ### Lightgun Calibration
 
-The lightgun needs to be calibrated in each core:
+The lightgun must be calibrated in each core:
 
-* Press the ++f10++ key while the OSD is open to show the calibration screen, follow the prompt to shoot each edge of the image
-* It is recommended to load a game and calibrate to the edges of the image, rather than the entire (widescreen) TV
+* With the OSD open, press ++f10++ to show the calibration screen, then follow the prompts to shoot each edge of the image.
+* It is recommended to load a game and calibrate to the edges of the game image, rather than to the edges of the whole (widescreen) TV.
   
 ### Lightgun Joy1/Joy2 assignment
 
-* This setting needs to match the player number your lightgun is currently assigned within the core. See [Default Joystick Player Assignment Method](#default-joystick-player-assignment-method)
-* Some systems had their lightguns connect to player 2, eg NES, SNES, Genesis. Many games from these systems will also work with the lightgun assigned as player 1 (Joy1), however some require a normal controller as player 1 and the lightgun as player 2 (Joy2). 
+* This setting must match the player number your lightgun is assigned to in the core. See [Default Joystick Player Assignment Method](#default-joystick-player-assignment-method).
+* On some systems, such as the NES, SNES, and Genesis, the lightgun connected to the player 2 port. Many games for these systems also work with the lightgun as player 1 (Joy1), but some require a normal controller as player 1 and the lightgun as player 2 (Joy2).
 
 
 ### PSX Lightgun Mapping
-| Guncon    | Justifier   | Mapping               |
+| GunCon    | Justifier   | Mapping               |
 | --------- | ------------| --------------------- |
 | Trigger   | Trigger     | O (Gun Fire:Negcon A) |
 | A (Left)  | Start       | Start (Gun A)         |
@@ -101,11 +96,11 @@ The lightgun needs to be calibrated in each core:
 
 **OSD Settings**
 
-* Pad1: GunCon or Justifier (set based on Game)
+* Pad1: GunCon or Justifier (set based on the game)
 
 ### SNES Lightgun Mapping
 
-| SuperScope | Justifier | Mapping       |
+| Super Scope | Justifier | Mapping       |
 | ---------- | --------- | ------------- |
 | Fire       | Trigger   | A (SS Fire)   |
 | Cursor     |           | B (SS Cursor) |
@@ -169,40 +164,44 @@ The lightgun needs to be calibrated in each core:
     * Port1 Input: Lightgun
     * Gun Control: Joy1
     * Gun Fire: Joy
- * 'Audio & Video' menu  
+* 'Audio & Video' menu
     * Show Overscan: Yes
 
 ## Using A Mouse
 
-You can also use a mouse for various purposes on the MiSTer. The main purpose for mouse support is for use with some computer cores which had mice.
+MiSTer supports mice, mainly for the computer cores whose original systems had them.
 
-You can also use the mouse as an emulated lightgun. The same principles behind doing this applies to a wiimote with a powered sensor bar. You can do this by pairing your wiimote to the MiSTer and it will be used as a Mouse when paired.
+A mouse can also act as an emulated lightgun. A Wiimote with a powered sensor bar works on the same principle: once paired with the MiSTer, it is used as a mouse.
 
 ![type:video](videos/mouse-lightgun.mp4)
 
-You can also use a mouse for a paddle style controller if you'd like.
+A mouse can also act as a paddle-style controller.
 
 ## Are gaming keyboards worth it?
 
-High performance and expensive keyboards and mice aren't advantageous to use for MiSTer. They won't give any major or even minor significant benefits. Additionally, these devices often have too many functions and many virtual devices cluttering the input subsystem which may introduce input lag or be complete unresponsive. They may also prevent other devices, such as gamepads, from working. So if you experience problems with your gaming keyboard, try a simpler keyboard instead to see if that resolves the issue. General advice is not to go out and buy a specialty gaming keyboard for MiSTer specifically, it may end up being a waste of money.
+No. High-performance, expensive keyboards and mice give no benefit on MiSTer, major or minor. They often expose many extra functions and virtual devices that clutter the input subsystem, which may add input lag, make the device completely unresponsive, or stop other devices such as gamepads from working. If you have problems with a gaming keyboard, try a simpler keyboard. The general advice is not to buy a specialty gaming keyboard just for MiSTer — it may end up being a waste of money.
 
 ## What about rumble support?
 
-Rumble / controller vibration has recently been added to the Game Boy core, the Game Boy Advance core, and, of course, the Playstation core. With regards to the Playstation core you will need to make sure your controller's rumble is upported. You can test rumble support on your controller at the menu core by holding the "L" button and pressing the "X" or "Y" face buttons (assuming an SNES-style layout) to test each of the two motors. Controllers have to be in X-Input mode in order to work with rumble reliably.
+Rumble (controller vibration) has recently been added to the Game Boy, Game Boy Advance, and PlayStation cores. For the PlayStation core, make sure your controller's rumble is supported: in the Menu core, hold "L" and press "X" or "Y" (SNES-style layout) to test each of the two motors. Rumble only works reliably with controllers in X-Input mode.
 
 ## What about PlayStation 3-5, Xbox 360 and Xbox One, Switch, and third party Bluetooth gamepads?
 
-The ideal wireless solution for these gamepads are third party USB dongles such as the 8BitDo retro receiver (specifically the 8BitDo Wireless Bluetooth Adapter) or a name brand Bluetooth 4.x/5.0 receiver. The 8BitDo receiver supports Bluetooth PlayStation, Xbox, Wii, Switch, and 8BitDo gamepads without using the Bluetooth setup menu. One 8BitDo Bluetooth receiver will pair to one controller at one time. If multiple controllers are required for multiplayer games, multiple 8BitDo receivers are needed, however regular Bluetooth pairing does not have this limitation.
+The ideal wireless solution for these gamepads is a third-party USB dongle, such as the 8BitDo retro receiver (specifically the 8BitDo Wireless Bluetooth Adapter), or a name-brand Bluetooth 4.x/5.0 adapter.
 
-8BitDo receivers may introduce lag, limited range, line of sight connection issues compared to Bluetooth 5.0 adapters (including TP-Link and Asus). The main appeal of 8BitDo receivers is ease of use and quick pairing. 8BitDo receivers act as a controller themselves as a compatibility layer between your paired gamepad and whatever the USB host. Bluetooth adapters by comparison pair your gamepad directly as a device to the MiSTer. No matter what controller you connect, the 8BitDo presents itself as the same controller. This means that some features like the PS5 controller's mute button and touchpad are not be available, whereas using Bluetooth 5.0 has a lesser chance of limited compatibility, until support is added to the framework and Linux by the development team to support every feature.
+The 8BitDo receiver supports Bluetooth PlayStation, Xbox, Wii, Switch, and 8BitDo gamepads without using the MiSTer's Bluetooth setup menu. Its main appeal is ease of use and quick pairing. Its drawbacks, compared to Bluetooth 5.0 adapters (including TP-Link and Asus models):
 
-Grey and Orange (brick decorated) 8BitDo USB Adapters are functionally the same after using the latest firmware. Gamepads may switch to different input modes using hotkeys for different functionality (depends upon the model of controller, some have a switch on the back, like the 8BitDo SN30 Pro 2). Documentation on 8BitDo's site doesn't specify this, but the firmware update log does.
+* It may add lag, and may have limited range and line-of-sight issues.
+* Each receiver pairs with only one controller at a time, so multiplayer needs one receiver per controller. Regular Bluetooth pairing has no such limit.
+* The receiver sits between your gamepad and the USB host as a compatibility layer and always presents itself as the same controller, whatever gamepad you connect. Some gamepad features, such as the PS5 controller's mute button and touchpad, are therefore unavailable. A Bluetooth 5.0 adapter pairs the gamepad directly with the MiSTer, so it is less likely to have such limitations, although some features still won't work until the development team adds framework and Linux support for them.
+
+Grey and orange (brick-decorated) 8BitDo USB adapters are functionally the same on the latest firmware. Depending on the controller model, gamepads can switch between input modes with hotkeys; some models, such as the 8BitDo SN30 Pro 2, have a switch on the back instead. 8BitDo's website doesn't document these hotkeys, but the firmware update log does:
 
 * X-Input mode: Hold SELECT+UP for 3 seconds.
-* PSC (Playstation Classic) mode: Hold SELECT+DOWN for 3 seconds. This is useful for gamepads which are limited in buttons (12 total; DPAD counts as 4) and need to access the MiSTer OSD menu. Note that the OSD menu should not be assigned when configuring buttons in the main MiSTer menu core, as the L+R+START combination will bring up the OSD while in the cores. The combination is hard-coded in MiSTer specifically for 8Bitdo adapters. You may also lose auto-fire/mouse functionality in this mode.
+* PSC (PlayStation Classic) mode: Hold SELECT+DOWN for 3 seconds. This is useful for gamepads with few buttons (12 in total, with the D-pad counting as 4) that still need to open the MiSTer OSD. In this mode, L+R+START opens the OSD inside cores; this combination is hard-coded in MiSTer specifically for 8BitDo adapters, so don't assign an OSD button when configuring buttons in the Menu core. You may also lose autofire and mouse functionality in this mode.
 
-Alternative 8BitDo adapters, such as the 8BitDo console Retro Receivers (SNES, NES, Genesis) are always in X-Input mode when connected via Micro USB.
+Other 8BitDo adapters, such as the 8BitDo Retro Receivers for SNES, NES, and Genesis consoles, are always in X-Input mode when connected via Micro USB.
 
 ## JammaSD support
 
-MiSTer supports the use of a JammaSD by detecting if the pressed buttons are from Player 1 or 2. You first have to configure player 1 in main menu (as a joypad) (and also remap it in cores if needed). Player 2 inputs will be auto defined, like if it was a second identical joypad. MiSTer also supports a second JammaSD being plugged in for Player 3 and 4. JammaSD support was added with a VID/PID that should be the same across all devices, but if your device has a different VID/PID, you can adjust it in the MiSTer.ini file using the jamma_vid/jamma_pid/jamma2_vid/jamma2_pid options.
+MiSTer supports the JammaSD by detecting whether a pressed button belongs to Player 1 or Player 2. Configure Player 1 as a joypad in the Menu core (and remap it in cores if needed); Player 2's inputs are then defined automatically, as if it were a second identical joypad. A second JammaSD can be plugged in for Players 3 and 4. JammaSD support uses a VID/PID that should be the same on all devices; if yours differs, set it in MiSTer.ini with the `jamma_vid`/`jamma_pid`/`jamma2_vid`/`jamma2_pid` options.

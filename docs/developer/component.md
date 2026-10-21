@@ -264,7 +264,7 @@ See: [Cores supporting RTC](../cores/features/rtcsupport.md){target=_blank}
 * [Sega Genesis](https://github.com/MiSTer-devel/Genesis_MiSTer){target=_blank}
 
 ## Zilog
-## Z80
+### Z80
 
 * [Astrocade](https://github.com/MiSTer-devel/Astrocade_MiSTer){target=_blank}
 * [ColecoVision & SG-1000](https://github.com/MiSTer-devel/ColecoVision_MiSTer){target=_blank}
@@ -297,123 +297,119 @@ See: [Cores supporting RTC](../cores/features/rtcsupport.md){target=_blank}
 * [Arcade - Breakout](https://github.com/MiSTer-devel/Arcade-Breakout_MiSTer){target=_blank} DM9310, DM9312, DM9316, DM9602, S82S16, Astable 555 Timer, Oneshot 555 Timer,  NAND, NOR, Toggle FF
 * [Arcade - Computer Space](https://github.com/MiSTer-devel/Arcade-ComputerSpace_MiSTer){target=_blank} 74161 16-bit
 * [Arcade - Crazy Balloon](https://github.com/MiSTer-devel/Arcade-CrazyBalloon_MiSTer){target=_blank} NE555V
-<p/>
 
-# Features
+## Features
 See: [SYS HPS IO](hps_io.md){target=_blank} for ARM <-> FPGA communication details.
-## ADC
+### ADC
 See: [Cores Supporting ADC](https://github.com/MiSTer-devel/Main_MiSTer/wiki/Cores-Supporting-ADC){target=_blank}
 
-## Audio Filters in Menu
+### Audio Filters in Menu
 
 * [Sega Genesis](https://github.com/MiSTer-devel/Genesis_MiSTer){target=_blank}
 
-## Controllers - Original Console Controllers
+### Controllers - Original Console Controllers
 See SNAC: [User Port (Serial IO)](https://github.com/MiSTer-devel/Main_MiSTer/wiki/User-Port-(Serial-IO)){target=_blank}
 
-## DIP Switches in Menu
-Many Arcade Games
+### DIP Switches in Menu
 
+* Many arcade games
 * [Arcade - Galaga](https://github.com/MiSTer-devel/Arcade-Galaga_MiSTer){target=_blank} T80
 
-## Rotate the Screen
+### Rotate the Screen
 
 * [Atari Lynx](https://github.com/MiSTer-devel/AtariLynx_MiSTer){target=_blank}
 
-## Save States
+### Save States
 
 * [Gameboy](https://github.com/MiSTer-devel/Gameboy_MiSTer){target=_blank}
+* [NES](https://github.com/MiSTer-devel/NES_MiSTer){target=_blank}
 
-## Secondary SD Card
+### Secondary SD Card
 See: [Secondary SD card](https://github.com/MiSTer-devel/Main_MiSTer/wiki/Secondary-SD-card){target=_blank}
 
-## Gameboy Link Port via USERIO
+### Gameboy Link Port via USERIO
 
 * [Gameboy](https://github.com/MiSTer-devel/Gameboy_MiSTer){target=_blank}
 
-## Cheats
+### Cheats
 
 * [Gameboy](https://github.com/MiSTer-devel/Gameboy_MiSTer){target=_blank}
 * [Sega Master System & Game Gear](https://github.com/MiSTer-devel/SMS_MiSTer){target=_blank}
 * [NES](https://github.com/MiSTer-devel/NES_MiSTer){target=_blank}
 * [Turbo Grafx 16](https://github.com/MiSTer-devel/TurboGrafx16_MiSTer){target=_blank}
 
-## FPGA Only Systems (never manufactured as IC's)
+### FPGA-Only Systems (never manufactured as ICs)
 
 * [Chip 8](https://github.com/MiSTer-devel/Chip8_MiSTer){target=_blank}
 * [Epoch Galaxy 2](https://github.com/MiSTer-devel/EpochGalaxy2_MiSTer){target=_blank}
 * [Flappy Bird](https://github.com/MiSTer-devel/FlappyBird_MiSTer){target=_blank}
 * [Life](https://github.com/MiSTer-devel/Life_MiSTer){target=_blank}
 
-## Joystick - Fixed 4 & 8 way
+### Joystick - Fixed 4 & 8 way
 
 * [Arcade - A Tetris](https://github.com/MiSTer-devel/Arcade-ATetris_MiSTer){target=_blank} T65
 
-## Mouse
+### Mouse
 
 * [SNES](https://github.com/MiSTer-devel/SNES_MiSTer){target=_blank}
 * [Turbo Grafx 16](https://github.com/MiSTer-devel/TurboGrafx16_MiSTer){target=_blank}
 
-## OSD Settings
+### OSD Settings
 
 * [Chess](https://github.com/MiSTer-devel/Chess_MiSTer){target=_blank}
 
-## Random Number Generator
+### Random Number Generator
 
 * [Life](https://github.com/MiSTer-devel/Life_MiSTer){target=_blank}
 
-## Read CUE+(Image/Track)
+### Read CUE+(Image/Track)
 
 * [Mega CD](https://github.com/MiSTer-devel/MegaCD_MiSTer){target=_blank}
 * [Turbo Grafx 16](https://github.com/MiSTer-devel/TurboGrafx16_MiSTer){target=_blank}
 
-## ROMs With and without Headers
+### ROMs With and Without Headers
 
 * [Turbo Grafx 16](https://github.com/MiSTer-devel/TurboGrafx16_MiSTer){target=_blank}
 
-## Save Games
+### Save Games
 
 * [NES](https://github.com/MiSTer-devel/NES_MiSTer){target=_blank}
 
-## Save States
-
-* [NES](https://github.com/MiSTer-devel/NES_MiSTer){target=_blank}
-
-## SDRAM
+### SDRAM
 See: [Cores that use SDRAM](https://github.com/MiSTer-devel/Main_MiSTer/wiki/Cores-that-use-SDRAM){target=_blank}
 
-## Speech
+### Speech
 
 * [Arcade - Bagman](https://github.com/MiSTer-devel/Arcade-Bagman_MiSTer){target=_blank}
 
-## SPI
+### SPI
 
 * [Arduboy](https://github.com/MiSTer-devel/Arduboy_MiSTer){target=_blank}
 
-## Two BIOS Options
+### Two BIOS Options
 
 * [Gameboy Advance](https://github.com/MiSTer-devel/GBA_MiSTer){target=_blank} (Optional)
 * [Turbo Grafx 16](https://github.com/MiSTer-devel/TurboGrafx16_MiSTer){target=_blank}
 
-## Two Displays (HDMI + VGA)
+### Two Displays (HDMI + VGA)
 
 * [Gameboy Advance 2P](https://github.com/MiSTer-devel/GBA_MiSTer/tree/GBA2P){target=_blank}
 
-## Two Systems Simultaneously
+### Two Systems Simultaneously
 
 * [Gameboy 2P](https://github.com/MiSTer-devel/Gameboy_MiSTer/tree/Gameboy2P){target=_blank}
 * [Gameboy Advance 2P](https://github.com/MiSTer-devel/GBA_MiSTer/tree/GBA2P){target=_blank}
 
-## Vector Graphics
+### Vector Graphics
 
 * [Vectrex](https://github.com/MiSTer-devel/Vectrex_MiSTer){target=_blank}
 * [Arcade - Asteroids Deluxe](https://github.com/MiSTer-devel/Arcade-AsteroidsDeluxe_MiSTer){target=_blank}
 * [Arcade - Black Widow](https://github.com/MiSTer-devel/Arcade-BlackWidow_MiSTer){target=_blank}
 
-## Wave based Sound Generator
+### Wave-Based Sound Generator
 
 * [Arcade - Dig Dug](https://github.com/MiSTer-devel/Arcade-DigDug_MiSTer){target=_blank} T80
 
-## XML ROM Configuration files?
+### XML ROM Configuration Files
 
 * [NeoGeo](https://github.com/MiSTer-devel/NeoGeo_MiSTer){target=_blank}

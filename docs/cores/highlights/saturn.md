@@ -1,16 +1,16 @@
-The Sega Saturn MiSTer core, developed originally by [srg320 (Sergey Dvodnenko)](https://www.patreon.com/srg320/){target=_blank}, provides a suitable modern replacement to original hardware in the vast majority of games in the Sega Saturn library.
+The Sega Saturn MiSTer core, originally developed by [srg320 (Sergey Dvodnenko)](https://www.patreon.com/srg320/){target=_blank}, is a suitable modern replacement for the original hardware for the vast majority of the Sega Saturn library.
 
 ## Controller/Accessories Support
 
 - USB/Bluetooth:
 
-    - Supports (maximum 2 controllers):
+    - Supported (maximum 2 controllers):
 
         - Control Pad (the default controller)
         - Mouse
-        - Lightguns
+        - Light guns
  
-    - Missing:
+    - Not supported:
 
         - Full 3D Control Pad support [^1]
         - Twin-Stick
@@ -22,7 +22,7 @@ The Sega Saturn MiSTer core, developed originally by [srg320 (Sergey Dvodnenko)]
         - Keyboard
         - Multitap
 
-- [SNAC](./../../basics/input.md#serial-native-accessory-convertor-snac): 
+- [SNAC](./../../basics/input.md#serial-native-accessory-converter-snac): 
     - Supported:
 
         - Control Pad
@@ -38,71 +38,69 @@ The Sega Saturn MiSTer core, developed originally by [srg320 (Sergey Dvodnenko)]
 
 ## Media support
 
-  - Multi-disc support
-  - BIN/CUE and CHD support (see [CD support](../../basics/cd.md#cuebin-folders-and-chd-files))
-  - Multiple region support + Automatic region detection
+- Multi-disc support
+- BIN/CUE and CHD support (see [CD support](../../basics/cd.md#cuebin-folders-and-chd-files))
+- Multiple region support and automatic region detection
 
 ## BIOS and region selection
 
-### TL;DR
+### Single BIOS
 
-The best user experience is with a region-free BIOS if you have one.
-
-By placing a BIOS as `boot.rom` in the `games/Saturn` folder, the core will auto-load it when starting.
+Place a BIOS file named `boot.rom` in the `games/Saturn` folder, and the core loads it automatically at startup. For the best experience, use a region-free BIOS if you have one.
 
 ### Multiple BIOS
 
-If wanting to use multiple BIOS and/or control which are used per games (automatically when opening the core), place them named as `cd_bios.rom` in either:
+To use multiple BIOSes and/or control which one is used per game (automatically when opening the core), place files named `cd_bios.rom` in either:
 
 - the same folder as the game
-- a parent folder of the game (e.g. a folder for Japanese released games with the Japanese Saturn BIOS, with the games in subfolders there).
+- a parent folder of the game (e.g. a folder for Japanese releases containing the Japanese Saturn BIOS, with the games in subfolders)
 
-### Other
+### OSD options
 
-The OSD menu of the core also allows:
+The core's OSD menu also allows:
 
 - manual loading of BIOS (when named with a `*.bin` extension)
-- setting automatic region detection.
+- setting automatic region detection
 
 ## Options
 
-We do not cover all options, but document a key one.
+This page documents a key option; see the core's OSD for the others.
 
 ### "Fast timings"
 
-After loading the core, in the OSD, under `Hardware -> Timings` you will find an option to set timings to:
+After loading the core, the OSD menu `Hardware -> Timings` offers these settings:
 
 - `Normal` (default)
 - `Fast` (commonly referred to as "fast timings")
 
-Whilst `Fast` is made available, it can break some titles (e.g. freezes and graphical glitches) and is best not used as default[^3]. It exists to address issues in the `Normal` mode with the released version of the core.
+While `Fast` is available, it can break some titles (e.g. freezes and graphical glitches) and is best not used as the default[^3]. It exists to address issues in the `Normal` mode of the released core.
 
 ## FAQ
 
 ### Dual SDRAM vs Single SDRAM builds
 
-MiSTer systems are expected to have a single 128MB SDRAM module. Official core releases only target a single module at most.
+MiSTer systems are expected to have a single 128 MB SDRAM module, and official core releases target at most one module.
 
-As part of their development workflow, developers can start with two SDRAM modules in their development hardware (at the expense of losing some analogue functionality) simply for development convenience. This is to obtain extra bandwidth before the core is optimised for official releases targetting the single SDRAM builds of end users. 
+As part of their development workflow, developers can start with two SDRAM modules on their development hardware for convenience (at the expense of losing some analog functionality). This provides extra bandwidth before the core is optimized for the official single-SDRAM releases that end users run.
 
-During development and/or before cores reach that stage, or as the limit of the hardware is reached, Dual SDRAM variants of cores might be distributed unofficially in the community. Some enthusiasts also build dual SDRAM stacks while using experimental builds.
+During development, before a core reaches that stage, or when it reaches the limits of the hardware, Dual SDRAM variants of cores may be distributed unofficially in the community. Some enthusiasts also build dual-SDRAM stacks while using experimental builds.
 
-In the Saturn core, the Dual SDRAM builds continue to be built and discussed due to a few outstanding but generally minor issues present in the official single SDRAM build. A number of these can currently be mitigated with the [fast timings](#fast-timings) option, but not all. Releases are not official and use of single SDRAM builds continues to be encouraged.
+For the Saturn core, Dual SDRAM builds are still made and discussed because the official single-SDRAM build has a few outstanding, but generally minor, issues. Some of these can currently be mitigated with the [fast timings](#fast-timings) option, but not all. The Dual SDRAM releases are not official, and using the single-SDRAM builds is still encouraged.
 
 More info [here](https://github.com/MiSTer-devel/Saturn_MiSTer/issues/251#issuecomment-2482401756){target=_blank} from the developer.
 
 ## Known issues
 
-Please review the rest of this page as we document limitations per feature/section.
+Limitations are documented per feature throughout this page.
 
-The remaining [GitHub issues](https://github.com/MiSTer-devel/Saturn_MiSTer){target=_blank} covers these more thoroughly[^4].
+The remaining [GitHub issues](https://github.com/MiSTer-devel/Saturn_MiSTer){target=_blank} cover these more thoroughly[^4].
 
 ## Source code
 
 Available [here](https://github.com/MiSTer-devel/Saturn_MiSTer){target=_blank}.
 
 
-[^1]: Analogue triggers (to replicate the 3D Control Pad) are not currently supported. If set to use the 3D Control Pad, the core will simply not feed input to the triggers (e.g. to map digital to analogue signal, or use the compatibility digital mode of the 3D Control Pad, as that is equivalent to the Control Pad mode already supported)
-[^2]: support for multitap is not currently included in the core as of January 2026, although it was implemented previously and may be readded at some point
-[^3]: see these comments: [1](https://github.com/MiSTer-devel/Saturn_MiSTer/issues/251#issuecomment-2481394472){target=_blank}, [2](https://github.com/MiSTer-devel/Saturn_MiSTer/issues/251#issuecomment-2481418725){target=_blank}
-[^4]: some issues may be out of date and no longer apply (and/or require more testing before closing)
+[^1]: Analog triggers (to replicate the 3D Control Pad) are not currently supported. If set to the 3D Control Pad, the core simply does not feed input to the triggers (e.g. to map digital input to analog signals, or to use the 3D Control Pad's digital compatibility mode, which would be equivalent to the already supported Control Pad mode).
+[^2]: Support for multitap is not currently included in the core as of January 2026, although it was implemented previously and may be re-added at some point
+[^3]: See these comments: [1](https://github.com/MiSTer-devel/Saturn_MiSTer/issues/251#issuecomment-2481394472){target=_blank}, [2](https://github.com/MiSTer-devel/Saturn_MiSTer/issues/251#issuecomment-2481418725){target=_blank}
+[^4]: Some issues may be out of date and no longer apply (and/or require more testing before closing)

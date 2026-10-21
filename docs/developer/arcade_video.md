@@ -1,19 +1,19 @@
-Arcade video is used mostly in arcade cores. It has some useful helpers to optionaly turn on scandoubler (based on the ini settings), deals with rotation on HDMI, and can optionally handle GAMMA, and different color widths.
+`arcade_video` is used mostly in arcade cores. It provides helpers to optionally enable the scandoubler (based on ini settings), handle rotation on HDMI, and optionally handle gamma and different color widths.
 
 ## Instantiating arcade_video
 
-The module has a few parameters that are used to set it up.
+Set up the module with these parameters:
 
 * WIDTH - the width of one scanline
-* DW - width of pixels. most arcades don't use a full 24 bits
-   *  6 : 2R 2G 2B
-   *  8 : 3R 3G 2B
-   *  9 : 3R 3G 3B
-   * 12 : 4R 4G 4B
-   * 24 : 8R 8G 8B
+* DW - pixel width in bits. Most arcades don't use a full 24 bits
+    *  6 : 2R 2G 2B
+    *  8 : 3R 3G 2B
+    *  9 : 3R 3G 3B
+    * 12 : 4R 4G 4B
+    * 24 : 8R 8G 8B
 * GAMMA - allow gamma controls
 
-The clk_video needs to be 4x the ce_pix and above 40MHZ.
+`clk_video` needs to be 4x `ce_pix` and above 40 MHz.
 
 ```verilog
 
@@ -21,15 +21,13 @@ The clk_video needs to be 4x the ce_pix and above 40MHZ.
 	input         ce_pix,
 ```
 
-The FX parameter uses the output of `status[5:3]` in this example of a config string: `"O35,Scandoubler Fx,None,HQ2x,CRT 25%,CRT 50%,CRT 75%;",`
+The `fx` input is driven by `status[5:3]`, using a config string such as `"O35,Scandoubler Fx,None,HQ2x,CRT 25%,CRT 50%,CRT 75%;",`
 
 ## Rotating vertical games 
 
-Optionally, we add the screen_rotate and pass in whether the game needs to rotate ccw or cw.
+Optionally add `screen_rotate` and pass whether the game needs to rotate counterclockwise (`ccw`) or clockwise (`cw`).
 
-Screen rotate uses DDRAM for the framebuffer for rotation. If your core needs DDRAM for something else, see [MCR3](https://github.com/MiSTer-devel/Arcade-MCR3_MiSTer){target=_blank} for an example that uses DDRAM for an audio file and for the screen_rotate. Use this ddram: 
-
-* [ddram](https://github.com/MiSTer-devel/Arcade-MCR3_MiSTer/blob/master/rtl/ddram.sv){target=_blank} instead of screen_rotate.
+`screen_rotate` uses DDRAM for the rotation framebuffer. If your core needs DDRAM for something else, see [MCR3](https://github.com/MiSTer-devel/Arcade-MCR3_MiSTer){target=_blank} for an example that shares DDRAM between an audio file and `screen_rotate`; use its [ddram](https://github.com/MiSTer-devel/Arcade-MCR3_MiSTer/blob/master/rtl/ddram.sv){target=_blank} module to share DDRAM between `screen_rotate` and your own hardware, instead of giving `screen_rotate` exclusive use of it.
 
 ```verilog
 screen_rotate screen_rotate

@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-Here is a list of the computer cores that are in the MiSTer Github Repository.
+This is a list of the computer cores in the MiSTer GitHub repository.
 
 | Core Name                                                               | System                                                     | /games/ Folder   | SDRAM    |
 | ----------------------------------------------------------------------- | ---------------------------------------------------------- | ---------------- | -------- |

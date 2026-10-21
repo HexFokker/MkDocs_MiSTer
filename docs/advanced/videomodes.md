@@ -1,12 +1,12 @@
-The `#!ini video_mode` INI setting supports several different methods of specifying the video mode.
+The `#!ini video_mode` INI setting supports several ways to specify the video mode.
 
 ## Automatic Detection
-If no `#!ini video_mode` setting is specified, MiSTer will attempt to determine the correct video mode using EDID information from the display device. This will only work for devices connected to the HDMI port. If a valid video mode cannot be determined then the default 720p mode will be used.
+If no `#!ini video_mode` setting is specified, MiSTer will attempt to determine the correct video mode using EDID information from the display device. This will only work for devices connected to the HDMI port. If a valid video mode cannot be determined, the default 720p mode is used.
 
 ## Video Mode Presets (video_mode)
-MiSTer has 15 built in video mode presets ranging from 0-14. These presets cover a lot of common display modes used by televisions and computer monitors. Here's an example video_mode setting and a table below to explain what each of the preset modes are:
+MiSTer has 15 built-in video mode presets (0–14) covering common display modes for televisions and monitors. For example:
 ```ini
-; Number 8 - 1920x1080 - 60hz - 16:9 - FHD 1080p
+; Number 8 - 1920x1080 - 60 Hz - 16:9 - FHD 1080p
 video_mode=8
 ```
 
@@ -29,45 +29,45 @@ video_mode=8
 | 14     | 2560x1440  | 60           | 16:9         | 1440p         |
 
 ## Custom Video Modes
-A custom mode can be set by specifying the width, height and refresh rate like so:
+A custom mode can be set by specifying the width, height, and refresh rate like so:
 ```ini
 ; 1920x1200 at 75Hz
 video_mode=1920,1200,75
 ```
-The maximum value for width is 4096, height is 2048 and refresh rate is unlimited but it must be a whole integer value. The DE-10 may not be able to output the mode you select or your display may not be able to accept it. The maximum recommended video frequency is 210Mhz which limits the maximum resolution to 2048x1536. [Pixel repetition](#hdmi-pixel-repetition) can be used to increase the resolution further, but it also has limits.
+The maximum width is 4096, the maximum height is 2048, and the refresh rate can be any whole integer. The DE10-Nano may not be able to output the mode you select, or your display may not accept it. The maximum recommended video frequency is 210 MHz, which limits the maximum resolution to 2048x1536. [Pixel repetition](#hdmi-pixel-repetition-pr) can push resolution further, but it also has limits.
 
 The VESA [Coordinated Video Timings](https://en.wikipedia.org/wiki/Coordinated_Video_Timings){target=_blank} standard is used to calculate the timing information for the requested video mode. By default the reduced blanking version of the standard is used. This is compatible with most flat panel displays but may not be as well supported on older displays and CRT monitors. You can use regular CVT timings by adding the `#!ini cvt` flag to the end of the video mode:
 ```ini
 ; 1600x1200 on a CRT monitor
 video_mode=1600,1200,60,cvt
 ```
-Regular timing requires a slightly higher clock speed for a given resolution, so it some higher resolution modes are not achievable with it. An [online video timing calculator](https://tomverbeure.github.io/video_timings_calculator){target=_blank} can help with understanding the differences between the two methods.
+Regular CVT timing requires a slightly higher clock speed for a given resolution, so some higher-resolution modes aren't achievable with it. An [online video timing calculator](https://tomverbeure.github.io/video_timings_calculator){target=_blank} can help you understand the differences between the two methods.
 
 ## Manual Modelines
-Video mode timing can be fully specified using a video modeline which consists of nine values defining the horizontal timing, vertical timing and pixel clock.
+Video mode timing can be fully specified with a modeline consisting of nine values that define the horizontal timing, vertical timing, and pixel clock.
 ```ini
 video_mode=hact,hfp,hs,hbp,vact,vfp,vs,vbp,fpix
 ```
-`hact` and `vact` defines the active (visible) size of the video mode in horizontal and vertical pixels, respectively. `hfp`, `hs` and `hbp` defines the duration of horizontal front porch, sync and back porch in pixels. `vfp`, `vs` abd `vbp` define the same properties, but for the vertical timing. Finally, the `fpix` value is the frequency of the pixel clock in KHz (pixels clocks are usually specified in MHz, so multiply the Mhz value by a 1000 to get the value in KHz).
+`hact` and `vact` define the active (visible) size of the video mode in horizontal and vertical pixels, respectively. `hfp`, `hs`, and `hbp` define the duration of the horizontal front porch, sync, and back porch in pixels. `vfp`, `vs`, and `vbp` define the same properties for the vertical timing. Finally, `fpix` is the pixel clock frequency in kHz (pixel clocks are usually specified in MHz, so multiply the MHz value by 1000).
 
-MiSTer modelines are similar to XFree86 modelines, but the information is expressed slightly differently. You can convert an XFree86 modeline to a MiSTer one using the custom video mode tool by morf77 [available here](https://morf77.pythonanywhere.com/){target=_blank} which can be used in conjunction with a [modeline calculator](https://arachnoid.com/modelines/){target=_blank}.
+MiSTer modelines are similar to XFree86 modelines, but the information is expressed slightly differently. You can convert an XFree86 modeline to a MiSTer one with morf77's [custom video mode tool](https://morf77.pythonanywhere.com/){target=_blank}, used together with a [modeline calculator](https://arachnoid.com/modelines/){target=_blank}.
 
 ## Additional Flags
-Some additional flags can be added to custom modes and modelines to modify the behavior.
+Additional flags can be appended to custom modes and modelines:
 
  * `#!ini +hsync` / `#!ini -hsync` - set the horizontal sync polarity
- * `#!ini +vsync` / `#!ini -hsync` - set the vertical sync polarity
+ * `#!ini +vsync` / `#!ini -vsync` - set the vertical sync polarity
  * `#!ini pr` - use HDMI pixel repetition (custom modelines only)
  * `#!ini cvt` - use normal CVT timing (custom mode only)
  * `#!ini cvtrb` - use reduced blanking CVT timing (custom mode only)
 
 ## HDMI Pixel Repetition (pr)
-HDMI pixel repetition enables MiSTer to output a higher resolution video signal without using additional resources or requiring higher clock speeds. It does this by instructing the ADV7513 HDMI transmitter to duplicate each pixel that it sends to the display. This does not increase the fidelity of the final image, in most cases it will reduce it, but it does enable a wider selection of video modes.
+HDMI pixel repetition enables MiSTer to output a higher resolution video signal without using additional resources or requiring higher clock speeds. It does this by instructing the ADV7513 HDMI transmitter to duplicate each pixel that it sends to the display. This doesn't increase the fidelity of the final image — in most cases it reduces it — but it enables a wider selection of video modes.
 
-MiSTer is limited to a maximum horizontal resolution of 2048 pixels and a maximum pixel clock of 210Mhz. This is enough to display a 2048x1536 image (209Mhz, iPad resolution), which is the maximum native resolution supported. It is also enough for 1920x1440 (184Mhz) which is a non-standard 4:3 resolution supported by some displays. The more commonly supported 2560x1440 mode is out of reach both because of its large horizontal resolution and because of its 240Mhz pixel clock.
+MiSTer is limited to a maximum horizontal resolution of 2048 pixels and a maximum pixel clock of 210 MHz. This is enough for 2048x1536 (209 MHz, iPad resolution), the maximum native resolution supported, and also for 1920x1440 (184 MHz), a non-standard 4:3 resolution that some displays accept. The more commonly supported 2560x1440 mode is out of reach: it exceeds the limits in both horizontal resolution and pixel clock (240 MHz).
 
-Pixel repetition makes a mode like 2560x1440 possible by lowering the horizontal resolution to 1280 pixels which lowers the pixel clock to 120Mhz. The 1280x1440 image that the MiSTer scaler produces is stretched horizontally by the ADV7513 so the signal that the display receives is the full 2560x1440.
+Pixel repetition makes a mode like 2560x1440 possible by lowering the horizontal resolution to 1280 pixels, which lowers the pixel clock to 120 MHz. The 1280x1440 image produced by the MiSTer scaler is stretched horizontally by the ADV7513, so the display receives the full 2560x1440.
 
 ![Pixel Repetition Pipeline](img/pixel-repeat.png)
 
-An update to the framework is required to support the non-uniform scaling for the cores output and pixel repetition is only supported for cores that have been updated. Older cores will have their output set to 1920x1080 if a mode requiring pixel repetition is requested.
+Supporting the non-uniform scaling of the core's output requires an updated framework, and pixel repetition only works with cores that have been updated. Older cores output 1920x1080 when a mode requiring pixel repetition is requested.
