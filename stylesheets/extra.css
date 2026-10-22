@@ -104,3 +104,23 @@
   --md-shadow-z2: 0 0.2rem 0.5rem #0000001a,0 0 0.05rem #00000040;
   --md-shadow-z3: 0 0.2rem 0.5rem #00000033,0 0 0.05rem #00000059;
 }
+
+/* Sticky table headers.
+   Fitting tables: extra.js clears overflow-x so the viewport is the
+   scrollport and the header pins at 2.4rem below the site header.
+   Overflowing tables: get .js-scrollbox — the wrap scrolls internally
+   and the header pins at its top. */
+.md-typeset table thead th {
+  position: sticky;
+  top: 2.4rem;
+  z-index: 3;
+  background: var(--md-default-bg-color);
+  box-shadow: 0 .05rem 0 var(--md-default-fg-color--lightest);
+}
+.md-typeset__scrollwrap.js-scrollbox {
+  max-height: calc(100vh - 4.8rem);
+  overflow-y: auto;
+}
+.md-typeset__scrollwrap.js-scrollbox table thead th {
+  top: 0;
+}
