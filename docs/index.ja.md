@@ -3,8 +3,8 @@ hide:
   - toc
 ---
 <figure markdown>
-  ![MiSTer-kun Cat by hewhoisred and MiSTer Logo by Conrad Fenech](assets/logo_small.png){ align=center width="750" }
-  <figcaption>MiSTer-kun Cat by hewhoisred and MiSTer Logo by Conrad Fenech</figcaption>
+  ![ミスターくん猫（作：hewhoisred）と MiSTer ロゴ（作：Conrad Fenech）](assets/logo_small.png){ align=center width="750" }
+  <figcaption>ミスターくん猫（作：hewhoisred）と MiSTer ロゴ（作：Conrad Fenech）</figcaption>
 </figure>
 ### MiSTer FPGA とは？
 **MiSTer** は、現代的なハードウェアを使って昔のコンピューター・ゲーム機・アーケード基板を再現することを目指すオープンソースプロジェクトです。ソフトウェアやゲームイメージは実機と同じように動作し、マウス・キーボード・ジョイスティックなどのゲームコントローラー類の周辺機器も使えます。MiSTer は [DE10-Nano](http://de10-nano.terasic.com){target=_blank} という FPGA ボード上で動作し、HDMI でテレビやモニターに接続します。7ポート USB ハブ、128MB SDRAM モジュール、Digital I/O または Analog I/O ボードなど、さまざまな[拡張ボード](basics/addons.md){target=_blank}で拡張できます。プロジェクトは活発に開発が続いており、新しいコア・機能・バグ修正が定期的に登場しています。
