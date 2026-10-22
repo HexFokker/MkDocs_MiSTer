@@ -31,7 +31,7 @@ This table shows the `MiSTer.ini` settings required for each analog video output
 | Composite Converted⁶ | 1               | rgb       | 0        | 0             | 0           | 0                   | N/A        |
 
 ¹ Scan-doubled = 2x resolution (e.g. 240p → 480p)  
-² Upscaled resolution = video_mode  
+² Upscaled resolution follows [`video_mode`](videomodes.md)  
 ³ External "direct video" (HDMI-to-VGA) adapter required — native resolution only (no upscaling or scan-doubling)  
 ⁴ External "direct video" adapter requires modification to pass Sync on Green (SoG)  
 ⁵ Active Y/C converter required  

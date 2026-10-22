@@ -31,7 +31,7 @@ hide:
 | Composite Converted⁶ | 1               | rgb       | 0        | 0             | 0           | 0                   | N/A        |
 
 ¹ Scan-doubled = 2倍解像度（例：240p → 480p）  
-² Upscaled resolution = video_mode  
+² 上変換解像度は [`video_mode`](videomodes.md) の設定に従う  
 ³ 外部 "direct video"（HDMI-to-VGA）アダプターが必要 — ネイティブ解像度のみ（アップスケール・スキャンダブル不可）  
 ⁴ 外部 "direct video" アダプターは Sync on Green（SoG）を通すための改造が必要  
 ⁵ アクティブ Y/C コンバーターが必要  
