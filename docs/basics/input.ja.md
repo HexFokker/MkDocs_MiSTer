@@ -69,7 +69,7 @@ Menu コアで入力を設定したとき "Mouse Emu" ボタンを定義して�
 
 ## Serial Native Accessory Converter（SNAC） { #serial-native-accessory-converter-snac }
 
-SNAC アダプターを使うと、実機のコントローラーや周辺機器を MiSTer コアに接続できます。SNAC 対応コアは、DE10-Nano の特定ピンにシリアル接続を出すよう特別に作られています。その結果、CRT に向けて NES Zapper のトリガーを引いたとき、信号は実機と同じようにほぼ即座に届きます。動作にゼロラグが必要なライトガンのような機器では、これが重要です。
+SNAC アダプターを使うと、実機のコントローラーや周辺機器を MiSTer コアに接続できます。SNAC 対応コアは、DE10-Nano の特定ピンにシリアル接続を出すよう特別に作られています。その結果、CRT に向けて NES Zapper のトリガーを引いたとき、信号は実機と同じようにほぼ即座に届きます。動作に最小限のレイテンシーが必要なライトガンのような機器では、これが重要です。
 
 ## ライトガンの使用 { #using-a-lightgun }
 

@@ -34,7 +34,7 @@ hide:
 
 ¹ Scan-doubled = 2倍解像度（例：240p → 480p）  
 ² 上変換解像度は [`video_mode`](videomodes.md) の設定に従う  
-³ 外部 "direct video"（HDMI-to-VGA）アダプターが必要 — ネイティブ解像度のみ（アップスケール・スキャンダブル不可）  
+³ 外部 "direct video"（HDMI-to-VGA）アダプターが必要 — HDMI スケーラーをバイパスし、`vga_scaler=1` や `video_mode` のアップスケールは使いません。対応コアでは `forced_scandoubler=1` によるコア内部のスキャンダブルが引き続き使えます  
 ⁴ 外部 "direct video" アダプターは、HS ピンの CSYNC をグリーンに混合する sync-on-green 回路の追加が必要。[Direct Video](directvideo.md#setup-for-ypbpr-signals) を参照  
 ⁵ Y/C アダプターボードが必要（アクティブまたはパッシブ）  
 ⁶ 外部 RGB to NTSC/PAL コンバーターが必要  

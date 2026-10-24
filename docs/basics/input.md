@@ -69,7 +69,7 @@ Only the buttons defined for mouse emulation switch to mouse functions; the othe
 
 ## Serial Native Accessory Converter (SNAC)
 
-SNAC adapters let you connect original controllers and peripherals to MiSTer cores. Cores that support SNAC are specially built to expose serial connections on specific pins of the DE10-Nano. As a result, when you pull the trigger of an NES Zapper aimed at your CRT, the signal arrives almost instantly, as it would on original hardware. This matters for devices like lightguns, which need zero lag to work.
+SNAC adapters let you connect original controllers and peripherals to MiSTer cores. Cores that support SNAC are specially built to expose serial connections on specific pins of the DE10-Nano. As a result, when you pull the trigger of an NES Zapper aimed at your CRT, the signal arrives almost instantly, as it would on original hardware. This matters for devices like lightguns, which need the lowest possible latency to work.
 
 ## Using a Lightgun
 

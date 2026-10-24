@@ -34,7 +34,7 @@ This table shows the `MiSTer.ini` settings required for each analog video output
 
 ¹ Scan-doubled = 2x resolution (e.g. 240p → 480p)  
 ² Upscaled resolution follows [`video_mode`](videomodes.md)  
-³ External "direct video" (HDMI-to-VGA) adapter required — native resolution only (no upscaling or scan-doubling)  
+³ External "direct video" (HDMI-to-VGA) adapter required — bypasses the HDMI scaler and does not use `vga_scaler=1` or `video_mode` upscaling. Core-level scan-doubling with `forced_scandoubler=1` remains available on supported cores  
 ⁴ External "direct video" adapter requires an added sync-on-green circuit that mixes the CSYNC from the HS pin into green — see [Direct Video](directvideo.md#setup-for-ypbpr-signals)  
 ⁵ Y/C adapter board required (active or passive)  
 ⁶ External RGB to NTSC/PAL converter required  

@@ -3,7 +3,7 @@
   <figcaption>Artwork by Hewhoisred</figcaption>
 </figure>
 
-MiSTer has various add-on boards that are somewhat optional: the 128 MB SDRAM board, for example, is needed to run all of the cores, and the Analog I/O board lets you easily connect your MiSTer to a classic CRT television or monitor. You can buy these boards from various online sellers, or assemble one yourself by ordering the PCB from a PCB manufacturer, buying the components, and soldering it.
+MiSTer has various add-on boards that are somewhat optional: the 128 MB SDRAM board, for example, is needed to run the most demanding cores, and the Analog I/O board lets you easily connect your MiSTer to a classic CRT television or monitor. You can buy these boards from various online sellers, or assemble one yourself by ordering the PCB from a PCB manufacturer, buying the components, and soldering it.
 
 ## [128MB SDRAM Addon Board](https://github.com/MiSTer-devel/Hardware_MiSTer/blob/master/releases/sdram_xsds_2.9.pdf){target=_blank}
 

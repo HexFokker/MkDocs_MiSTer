@@ -3,7 +3,7 @@
   <figcaption>Artwork by Hewhoisred</figcaption>
 </figure>
 
-MiSTer には、どちらかと言えば任意の拡張ボードがいくつかあります。たとえば 128 MB SDRAM ボードはすべてのコアを動かすために必要で、Analog I/O ボードがあれば MiSTer を昔ながらの CRT テレビやモニターに簡単に接続できます。これらのボードはさまざまなオンライン販売店から買えますし、PCB を基板メーカーに発注して部品を買い揃え、自分ではんだ付けして組み立てることもできます。
+MiSTer には、どちらかと言えば任意の拡張ボードがいくつかあります。たとえば 128 MB SDRAM ボードは要求の高いコアを動かすために必要で、Analog I/O ボードがあれば MiSTer を昔ながらの CRT テレビやモニターに簡単に接続できます。これらのボードはさまざまなオンライン販売店から買えますし、PCB を基板メーカーに発注して部品を買い揃え、自分ではんだ付けして組み立てることもできます。
 
 ## [128MB SDRAM 拡張ボード](https://github.com/MiSTer-devel/Hardware_MiSTer/blob/master/releases/sdram_xsds_2.9.pdf){target=_blank} { #128mb-sdram-addon-board }
 

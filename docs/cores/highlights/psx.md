@@ -86,7 +86,7 @@ Enables 24-bit rendering, which may make the graphics of some games look much sm
 
 ### Dither 24-bit for VGA
 
-MiSTer's Analog I/O board was not originally designed with 24-bit RGB color in mind, so only 18-bit video comes out over it. This option will dither 24-bit video sources from the PSX (most situations are not 24-bit, usually just FMV sequences from some games) so the lack of those 6 bits is not apparent over analog video. This has no effect on HDMI video and shouldn't be used if you are using a direct video adapter, which has full 24-bit RGB support.
+Analog I/O Board 6.x was not originally designed with 24-bit RGB color in mind, so only 18-bit video comes out over it (I/O Board 9.2 with AV Board 1.2 provides 24-bit output). This option will dither 24-bit video sources from the PSX (most situations are not 24-bit, usually just FMV sequences from some games) so the lack of those 6 bits is not apparent over analog video. This has no effect on HDMI video and shouldn't be used if you are using a direct video adapter, which has full 24-bit RGB support.
 
 ### Widescreen Hack
 

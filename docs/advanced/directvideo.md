@@ -1,11 +1,13 @@
 ## Direct Video
-Since autumn 2019, *Direct Video* has provided analog video output without an I/O board. It offers the **same** minimal latency as the I/O board's VGA port and even better color depth in some cores. To use it, enable the feature in your `MiSTer.ini` file and attach a DAC to your HDMI port.
+Since autumn 2019, *Direct Video* has provided analog video output without an I/O board. It offers minimal latency comparable to the I/O board's VGA output. To use it, enable Direct Video in `MiSTer.ini` and connect a compatible HDMI-to-VGA DAC to the DE10-Nano's HDMI port.
 
 ![picture](img/direct-video-dac.jpg)
 
 *You may use an HDMI-to-VGA converter similar to this one.*
 
 *NOTE*: as of 2021-06-27, it seems very hard to find devices that are compatible with VGA-to-SCART adapters, while devices that work with VGA are still easy to find. More info: [Main_MiSTer issue #410](https://github.com/MiSTer-devel/Main_MiSTer/issues/410){target=_blank}
+
+These are historical test results, not a guarantee that currently sold adapters with the same product name use identical hardware.
 
 ## Adapters known to work with Direct Video
 
@@ -27,9 +29,9 @@ Since autumn 2019, *Direct Video* has provided analog video output without an I/
 
 ## Compatibility
 
-*Direct Video* is compatible with most current cores and will be supported in all future cores coming to MiSTer.
+*Direct Video* is compatible with most current cores, but support depends on the core.
 
-RGBs, RGsB, and YPbPr are supported, although YPbPr has less display compatibility in *Direct Video* mode than YPbPr from the I/O board.
+RGBS, RGsB, and YPbPr are supported, although YPbPr has less display compatibility in *Direct Video* mode than YPbPr from the I/O board.
 
 Note that output resolution and format can vary from core to core. See [the analog video configuration table](crttable.md) for more information.
 
@@ -41,17 +43,17 @@ Then you need to add the following line to your [MiSTer.ini](ini.md) file:
 
 `direct_video=1`
 
-This enables *Direct Video* at startup. The HDMI port then outputs the core's raw, unprocessed digital audio/video signal, which your DAC converts. While this mode is enabled, MiSTer won't work with an HD TV or monitor: they need a standard HDMI signal, and the zero-lag *Direct Video* signal **IS NOT** standard HDMI.
+This enables *Direct Video* at startup. This bypasses the standard HDMI video scaler and outputs the core's native video timing through the HDMI transmitter, which your DAC converts. The resulting signal is not standard HDMI, so a normal HDMI TV or monitor cannot be used while *Direct Video* is enabled.
 
 The analog video signal from your DAC should work with standard CRTs if the loaded core uses standard CRT refresh frequencies (see [Core Default Resolutions](nativeres.md) for an incomplete list; your results may vary). Depending on which kind of analog signal you want, some further configuration is needed, as described below.
 
-## Setup for RGB signals
+## Setup for RGBS over SCART
 
-For analog RGB output, enable composite sync on the HSync signal in your `MiSTer.ini` (`composite_sync=1`), then plug an RGB-compatible VGA-SCART cable into your TV.
+For RGBS output over SCART, set `composite_sync=1` in `MiSTer.ini`, then connect an RGB-compatible VGA-to-SCART cable to your TV.
 
 For optimal results, [Retro Access](https://retro-access.com/products/mister-io-scart?_pos=1&_sid=97cb11000&_ss=r){target=_blank} sells SCART and BNC cables specifically for use with MiSTer.
 
-**DISCLAIMER:** Many VGA DACs may output a sync signal at **3 volts _or more_** on pin 13 (HSYNC/CSYNC) even when used in *Direct Video* mode! You will need a 470 ohm resistor on the corresponding SCART sync pin to attenuate this signal to levels that are safe for all video equipment. A variety of professional video equipment can have wide tolerances for higher-voltage sync signals, but other devices — especially external scalers like the OSSC or XRGB Mini Framemeister — can be damaged by repeated exposure to them. Unless you are 100% certain your equipment can tolerate higher voltage signals, it is _strongly_ recommended that you either purchase a cable that has a 470 ohm resistor inline or add one yourself. Retro Access MiSTer SCART cables, for example, come with a resistor inline by default.
+**DISCLAIMER:** Many VGA DACs may output a sync signal at **3 volts _or more_** on pin 13 (HSYNC/CSYNC) even when used in *Direct Video* mode! You will need a 470 ohm resistor on the corresponding SCART sync pin to reduce the sync voltage reaching the display's 75-ohm input. A variety of professional video equipment can have wide tolerances for higher-voltage sync signals, but other devices — especially external scalers like the OSSC or XRGB Mini Framemeister — can be damaged by repeated exposure to them. Unless you are 100% certain your equipment can tolerate higher voltage signals, it is _strongly_ recommended that you either purchase a cable that has a 470 ohm resistor inline or add one yourself. Retro Access MiSTer SCART cables, for example, come with a resistor inline by default.
 
 ## Setup for YPbPr signals
 
@@ -72,7 +74,7 @@ This is handy for modern monitors that have a VGA input but typically can't hand
 
 ## Color Depth
 
-*Direct Video* produces a 24-bit color signal, superior to the I/O board's 18-bit signal. However, few cores use 24-bit color, so the improved color depth may not make much of an impact depending on the cores you run.
+*Direct Video* carries a 24-bit digital video signal. Analog I/O Board 6.x provides 18-bit VGA output, while I/O Board 9.2 with AV Board 1.2 also provides 24-bit output. A core may internally generate fewer than 24 bits of color, so a 24-bit output path does not necessarily increase the number of colors produced by the core.
 
 Most cheap DACs, like the ones based on the AG6200 chip, don't produce Full Range RGB. They instead produce Limited Range RGB (16-235) or, much more commonly, a non-spec Limited Range variant (16-255). To compensate, you may want to configure the `hdmi_limited` option in your MiSTer.ini to adjust the signal being sent to your DAC.
 
