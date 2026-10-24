@@ -41,7 +41,7 @@ Once you have either an I/O board or a Direct Video adapter, connect it to your 
 
 ### Settings
 
-Most of the settings changes are done in your `MiSTer.ini` file, which is located in the `/media/fat/` directory of your SD card. When editing this file, back up your currently working `MiSTer.ini`, then use a fresh `MiSTer.ini` from the official repository ([right-click this link and choose "Save file as"](https://github.com/MiSTer-devel/Main_MiSTer/raw/master/MiSTer.ini){target=_blank}). All `MiSTer.ini` settings in this section assume this default file.
+Settings are changed in `MiSTer.ini` in the `/media/fat/` directory of your SD card. Back up your working file, then start from a fresh `MiSTer.ini` from the official repository ([right-click this link and choose "Save file as"](https://github.com/MiSTer-devel/Main_MiSTer/raw/master/MiSTer.ini){target=_blank}) — the settings below assume this default file.
 
 #### Analog I/O board
 
@@ -76,7 +76,7 @@ Most of the settings changes are done in your `MiSTer.ini` file, which is locate
 
 ### Connecting to composite or S-Video
 
-Supported cores output composite / S-Video natively by generating luma (Y) on the green output and chroma (C) on the red output. A Y/C adapter board carries these signals to the S-Video or composite jacks and provides the sync. S-Video keeps Y and C separate; composite combines them into a single CVBS signal.
+Supported cores can generate native Y/C signals for S-Video or composite output — luma (Y) on the green output and chroma (C) on the red output. A Y/C adapter board carries these signals to the S-Video or composite jacks and provides the sync. S-Video keeps Y and C separate; composite combines them into a single CVBS signal.
 
 #### Adapter boards
 
@@ -89,7 +89,7 @@ The exact cabling depends on the adapter and the display — the items below are
 * S-Video: Y and C must stay on separate wires all the way to the display. Depending on the adapter and display, this can be a 4-pin mini-DIN connector or separate RCA jacks. Some monitors, such as the Commodore 1702, take Y/C on RCA jacks — in that case a "VGA-to-component" cable works purely as a physical VGA-to-RCA breakout (the signal is still Y/C, not YPbPr).
 * Composite:
     * If the adapter provides a dedicated composite (CVBS) RCA output, connect it straight to the display's composite input — no Y-adapter needed.
-    * A passive setup can instead combine Y and C with a VGA-to-RCA breakout cable and a 1-male-to-2-female RCA Y-adapter. This simple method lacks a luma trap and produces severe rainbow artifacts.
+    * A passive setup can instead combine Y and C with a VGA-to-RCA breakout cable and a 1-male-to-2-female RCA Y-adapter. This simple method lacks a luma trap and can produce severe rainbow artifacts, so it is not the recommended composite setup.
 
 #### Settings with the Analog I/O board
 
@@ -113,35 +113,35 @@ The exact cabling depends on the adapter and the display — the items below are
 
 Instead of relying on MiSTer's native Y/C output, you can use an external converter that takes an RGB or component signal and transcodes it to S-Video or composite.
 
-**These converters have been reported to work well in S-Video mode, but composite has rainbow artifacts and excessive dot crawl. This is currently unavoidable and expected behavior.**
+**The converters reported here generally worked well in S-Video mode, but their composite output was prone to rainbow artifacts and excessive dot crawl.**
 
 One option is the [Axunworks converter](https://www.axunworks.com/RGB-to-Composite-S-Video-p341706.html){target=_blank}. It requires a VGA-to-BNC cable with BNC-to-RCA adapters, and most likely also suffers from artifacts in composite ([forum thread](https://shmups.system11.org/viewtopic.php?f=6&t=63452&start=270){target=_blank}). Other options reported to work well are converters from the eBay seller "wakabavideo" and the "Keene SCART to S-Video" brand.
 
 ## Types of CRT displays
 
-There are three main categories of CRTs: consumer televisions, computer monitors, and professional video monitors. Some of these categories overlap in compatibility, but the signals intended for one type of CRT are often not ideal on another. Each category has subcategories that aren't important here. Generally speaking, using a CRT with the MiSTer is not a one-size-fits-all experience.
+There are three main categories of CRTs: consumer televisions, computer monitors, and professional video monitors. Signals intended for one type are often not ideal on another — using a CRT with MiSTer is not a one-size-fits-all experience.
 
 ### Consumer televisions
 
-Typically these are only compatible with a 15 kHz frequency signal (the kind of signal video game consoles used). They were intended to be used with what is known as a "240p" analog signal. From the 1950s up until the late 1980s most consumer televisions only used [RF video](https://en.wikipedia.org/wiki/RF_connector){target=_blank} which is highly susceptible to interference, especially today. Later they began to use [composite video](https://en.wikipedia.org/wiki/Composite_video){target=_blank} (which is still very noisy, but less prone to interference than RF video). Some TVs also supported [S-Video](https://en.wikipedia.org/wiki/S-Video){target=_blank} (a much sharper signal, more resistant to interference), but it was less common. In many European countries these TVs also supported RGB video by way of [SCART connectors](https://en.wikipedia.org/wiki/SCART){target=_blank} (which is about as good as it gets). Finally, near the end of the life of CRT televisions in the late 90s and early 2000s they began to use [component video](https://en.wikipedia.org/wiki/Component_video){target=_blank} and even [HDMI video](https://en.wikipedia.org/wiki/HDMI){target=_blank}.
+The consumer CRTs discussed here are generally 15 kHz-only — the analog rate used by many retro consoles, covering both 240p and 480i — though late-era models may also support higher-rate component or HDMI inputs. From the 1950s up until the late 1980s most consumer televisions only used [RF video](https://en.wikipedia.org/wiki/RF_connector){target=_blank} which is highly susceptible to interference, especially today. Later they began to use [composite video](https://en.wikipedia.org/wiki/Composite_video){target=_blank} (which is still very noisy, but less prone to interference than RF video). Some TVs also supported [S-Video](https://en.wikipedia.org/wiki/S-Video){target=_blank} (a much sharper signal, more resistant to interference), but it was less common. In many European countries these TVs also supported RGB video by way of [SCART connectors](https://en.wikipedia.org/wiki/SCART){target=_blank} (which is about as good as it gets). Finally, near the end of the life of CRT televisions in the late 90s and early 2000s they began to use [component video](https://en.wikipedia.org/wiki/Component_video){target=_blank} and even [HDMI video](https://en.wikipedia.org/wiki/HDMI){target=_blank}.
 
 Most used CRT televisions sold today (in the United States) use composite video or component video. In Europe it is more common — though not guaranteed — to find used CRT televisions with RGB SCART support.
 
 ### Computer monitors
 
-Computer monitors were usually designed for higher-resolution 31 kHz signals. They often only had a [VGA connector](https://en.wikipedia.org/wiki/VGA_connector){target=_blank}, with very few offering other options like [DVI](https://en.wikipedia.org/wiki/Digital_Visual_Interface){target=_blank}. Since these displays were made for higher resolutions, running a 240p signal through them can produce jitter or other undesirable effects, even when scandoubled to 31 kHz. Computer monitors handle retro computer video signals excellently, as that is what they were designed for. There are also [multisync monitors](https://en.wikipedia.org/wiki/Multisync_monitor){target=_blank} capable of natively handling 15 kHz (240p) analog signals. These are less common but are highly sought after by the CRT enthusiast community — if you want one monitor to handle all types of signals, consider acquiring a multisync monitor.
+Computer monitors were usually designed for higher-resolution 31 kHz signals. They often only had a [VGA connector](https://en.wikipedia.org/wiki/VGA_connector){target=_blank}, with very few offering other options like [DVI](https://en.wikipedia.org/wiki/Digital_Visual_Interface){target=_blank}. Since these displays were made for higher resolutions, running a 240p signal through them can produce jitter or other undesirable effects, even when scandoubled to 31 kHz. Computer monitors handle retro computer video signals well. There are also [multisync monitors](https://en.wikipedia.org/wiki/Multisync_monitor){target=_blank} capable of natively handling 15 kHz (240p) analog signals. These are less common but are highly sought after by the CRT enthusiast community — if you want one monitor to handle all types of signals, consider acquiring a multisync monitor.
 
 ### Professional video monitors
 
-Professional Video Monitors (PVMs) also go by other names: [Broadcast reference monitor, Broadcast video monitor (BVM)](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}, Medical Grade Monitor, and more. These displays were designed for professional use, with high-quality components, and were very expensive for their time. PVMs are still made today, but they are now usually very expensive OLED or LCD displays used only in niche business applications. Old PVMs offered a wide variety of connections, sometimes all of the connectors mentioned above, plus specialty connectors such as [BNC connectors](https://en.wikipedia.org/wiki/BNC_connector){target=_blank}, which carry the red, green, blue, and sync signals on separate connectors. Some BNC cable configurations also require a fifth, sync-on-green cable.
+Professional Video Monitors (PVMs) also go by other names: [Broadcast reference monitor, Broadcast video monitor (BVM)](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}, Medical Grade Monitor, and more. These displays were designed for professional use, with high-quality components, and were very expensive for their time. New professional reference monitors are still made, but current models generally use OLED or LCD rather than CRT, and are used only in niche business applications. Old PVMs offered a wide variety of connections, sometimes all of the connectors mentioned above, plus specialty connectors such as [BNC connectors](https://en.wikipedia.org/wiki/BNC_connector){target=_blank}, which carry the red, green, blue, and sync signals on separate connectors. Some BNC cable configurations also require a fifth, sync-on-green cable.
 
 For retro hardware, a used PVM has these advantages over consumer CRT televisions:
 
-* Very high-quality designs with more displayed lines (a crisper image), better colors, or superior display technology.
+* Very high-quality designs offering higher TVL and finer image detail, better colors, or superior display technology — though actual sharpness depends on the model and its condition.
 * They were often designed to be easier to service, and had better shielding against electromagnetic interference.
 * Since around the mid-80s, most of them seem to have supported native RGB input, so in theory the video quality can be far superior.
 * They typically allow very fine control of the image through many dials and buttons on the front.
 * Many support simultaneous output, mirroring the image to another display.
 * A good number of them are also multisync, supporting both 15 kHz and 31 kHz signals, and many are region-agnostic, supporting 50 Hz PAL and 60 Hz NTSC signals.
 
-Unfortunately, PVMs are incredibly expensive today, so if you don't already have one, it may be very difficult to get one now. It is not uncommon to see a mere 9" PVM selling for over $200, and 19" to 24" displays for anywhere from $500 to over $2000, depending on the model's popularity and features.
+Unfortunately, PVMs are incredibly expensive today, so if you don't already have one, it may be very difficult to get one now. It is not uncommon to see used PVMs listed for several hundred dollars or more, depending on the model's popularity, size, and features.
