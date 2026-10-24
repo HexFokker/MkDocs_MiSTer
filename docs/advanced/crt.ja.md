@@ -1,6 +1,6 @@
-MiSTer をクラシックな CRT ディスプレイに接続する方法はいくつかありますが、主な2つは Analog I/O ボードの VGA ポートと、DE10-Nano の HDMI ソケットに挿す Direct Video HDMI-to-VGA アダプターです。
+MiSTer には2つのネイティブアナログ出力経路があります。Analog I/O ボードの VGA ポート、または DE10-Nano の HDMI ポートに挿す互換性のある HDMI-to-VGA アダプター経由の Direct Video です。
 
-*このコンテンツの大部分は、MiSTer FPGA GitHub Wiki で [MikeS11](https://github.com/MikeS11/){target=_blank} と [ArchiveRL](https://github.com/ArchiveRL/){target=_blank} が書いたガイドに基づいています*
+*このページは MiSTer FPGA GitHub Wiki で [MikeS11](https://github.com/MikeS11/){target=_blank} と [ArchiveRL](https://github.com/ArchiveRL/){target=_blank} が書いた CRT ガイドに一部基づいており、大幅に改訂されています。*
 
 ## 出力経路
 
@@ -8,14 +8,14 @@ MiSTer をクラシックな CRT ディスプレイに接続する方法はい�
 
 * Analog I/O ボード
     * 長所：追加機能（ボタン、LED）、コンポーネント出力に SoG 改造不要
-    * 短所：より高価、一部コアで色深度が低い、Dual SDRAM を使えない
+    * 短所：より高価、Dual SDRAM を使えない
 * Direct Video アダプター
-    * 長所：より良い色深度、はるかに安い
+    * 長所：はるかに安い
     * 短所：追加機能なし、コンポーネント出力に追加の改造が必要、すべてのアダプターの動作が保証されているわけではない
 
 ## 標準 RGB／コンポーネント接続
 
-ディスプレイの種類ごとに、必要なケーブルと `MiSTer.ini` の設定を示します。`MiSTer.ini` は SD カードの `/media/fat/` にあります。動作中のファイルをバックアップし、公式リポジトリーの新しいコピー（[このリンクを右クリックして "Save file as" を選択](https://github.com/MiSTer-devel/Main_MiSTer/raw/master/MiSTer.ini){target=_blank}）から始めてください。以下の設定はこのデフォルトファイルを前提にしています。Direct Video アダプターでは常に `direct_video=1` を追加します。すべての出力モードは [CRT 構成テーブル](crttable.md) に一覧があります。
+`MiSTer.ini` は SD カードの `/media/fat/` にあります。動作中のファイルをバックアップし、公式リポジトリーの新しいコピー（[このリンクを右クリックして "Save file as" を選択](https://github.com/MiSTer-devel/Main_MiSTer/raw/master/MiSTer.ini){target=_blank}）から始めてください。以下の設定はこのデフォルトファイルを前提にしています。Direct Video アダプターでは常に `direct_video=1` を追加します。すべての出力モードとその完全な INI 値は [CRT 構成テーブル](crttable.md) のページに一覧があります。
 
 * **RGB SCART 付き民生テレビ（15 kHz）** — コンポジット同期ラインに 470 オーム抵抗のある SCART ケーブル。抵抗が内蔵か販売者に確認するのが[推奨](https://www.retrorgb.com/beware-of-mister-scart-cables.html){target=_blank}です。購入先：[MiSTerAddons (US)](https://misteraddons.com/collections/parts/products/video-cables-hdmi-scart-ypbpr){target=_blank}、[Retro Access (UK)](https://retro-access.com/products/mister-io-scart?_pos=1&_sid=97cb11000&_ss=r){target=_blank}、[UltimateMiSTer (PT)](https://ultimatemister.com/product/rgb-scart-cable/){target=_blank}、[Wolfsoft (DE)](https://www.wolfsoft.de/shop/product_info.php/products_id/15401//mister-premium-rgb-kabel-2m.html){target=_blank}、[Antoniovillena (ES)](https://www.antoniovillena.es/store/product/vga-scart-cable/){target=_blank}。MiST ケーブルも概ね動きますが抵抗がないことがあります：[Lotharek (PL)](https://lotharek.pl/productdetail.php?id=171){target=_blank}、[Amigastore (EU)](http://amigastore.eu/en/512-mist-scart-cable-mist-db15-f-to-scart-tv.html){target=_blank}。別案として VGA-SCART コンバーター：[Antoniovillena](https://www.antoniovillena.es/store/product/vga-scart-adapter/){target=_blank}、[Arcadeforge](https://arcadeforge.net/UMSA/UMSA-Ultimate-SCART-Adapter::57.html?language=en){target=_blank}、[Retro Upgrades](https://www.retroupgrades.co.uk/product/vga2scart/){target=_blank}。民生用 Trinitron では、暗い・不正確な色を直すために追加の抵抗／ポテンショメーターが必要になることがあります（[フォーラムリンク](https://misterfpga.org/viewtopic.php?p=4162#p4162){target=_blank}）。
     INI：`composite_sync=1`
@@ -29,8 +29,8 @@ MiSTer をクラシックな CRT ディスプレイに接続する方法はい�
 * **VGA モニター（31 kHz）** — 標準の VGA ケーブル。
     INI：`forced_scandoubler=1`（Direct Video では `direct_video=1` も追加）
 
-* **PVM/BVM** — 標準の VGA-to-BNC ケーブル（3xRGB + HSync）。
-    INI：`composite_sync=1`（Direct Video では `direct_video=1` も追加）
+* **PVM/BVM** — RGB と独立した同期線を運ぶ標準の VGA-to-BNC ケーブル。
+    INI：`composite_sync=1` — 同期線は CSYNC を運びます（Direct Video では `direct_video=1` も追加）
 
 * **Commodore モニター** — 1084S 用ケーブルが [UltimateMiSTer (PT)](https://ultimatemister.com/product/mister-commodore-1084s/){target=_blank} から販売されています。
 
@@ -70,5 +70,5 @@ MiSTer をクラシックな CRT ディスプレイに接続する方法はい�
 ## CRT ディスプレイの種類
 
 * **民生テレビ** — 主に 15 kHz モデル（240p と 480i）。後期のモデルはより高いレートのコンポーネントや HDMI 入力を持つものもあります。入力対応は地域とモデルにより異なります。北米ではコンポジットが一般的で、欧州では RGB SCART がより一般的（ただし全てではない）でした。画質の順位はおおむね RF < コンポジット < S-Video < コンポーネント／RGB です。
-* **コンピューターモニター** — 31 kHz 向けに設計され、通常は VGA のみ。240p 信号は 31 kHz にスキャンダブルしてもジャッターやその他のアーティファクトが出ることがあります。[マルチシンクモニター](https://en.wikipedia.org/wiki/Multisync_monitor){target=_blank}は 15 kHz をネイティブに扱えます。珍しいですが、1台ですべてをこなす選択肢です。
-* **プロ用モニター** — Sony の PVM/BVM シリーズ、[放送用リファレンスモニター](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}、医療用ディスプレイなど：高い TVL の高品質な設計（実際のシャープさはモデルと状態に依存）、80年代半ば以降のほとんどのモデルでネイティブ RGB 入力、豊富な前面パネルの画像調整、修理しやすくシールドも良好。多くがマルチシンクで、50/60 Hz 対応はモデルにより異なります。接続性は広範で BNC 入力も含みます。モデルによって、3本（RGB＋sync-on-green）、4本（RGB＋コンポジット同期）、5本（RGB＋独立水平同期・垂直同期）の BNC を使います。中古品は高価で入手困難です。
+* **コンピューターモニター** — 31 kHz 向けに設計され、通常は VGA のみ。240p 信号は 31 kHz にスキャンダブルしてもジャッターやその他のアーティファクトが出ることがあります。[マルチシンクモニター](https://en.wikipedia.org/wiki/Multisync_monitor){target=_blank}は 15 kHz をネイティブに扱えます。珍しいですが、さまざまなコンソールやビデオタイミングに対応できる柔軟な選択肢です。
+* **プロ用モニター** — Sony の PVM/BVM シリーズ、[放送用リファレンスモニター](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}、医療用ディスプレイなど：高い TVL の高品質な設計（実際のシャープさはモデルと状態に依存）、80年代半ば以降の多くのモデルでネイティブ RGB 入力、豊富な前面パネルの画像調整、修理しやすくシールドも良好。多くがマルチシンクで、50/60 Hz 対応はモデルにより異なります。接続性は広範で BNC 入力も含みます。モデルによって、3本（RGB＋sync-on-green）、4本（RGB＋コンポジット同期）、5本（RGB＋独立水平同期・垂直同期）の BNC を使います。中古品は高価で入手困難です。

@@ -1,6 +1,6 @@
-A few methods connect your MiSTer to a classic CRT display; the two main ones are the VGA port on the Analog I/O board and a Direct Video HDMI-to-VGA adapter plugged into the DE10-Nano's HDMI socket.
+MiSTer has two native analog output paths: the VGA port on an Analog I/O board, or Direct Video through a compatible HDMI-to-VGA adapter on the DE10-Nano's HDMI port.
 
-*The vast majority of this content is from the guide written by [MikeS11](https://github.com/MikeS11/){target=_blank} and [ArchiveRL](https://github.com/ArchiveRL/){target=_blank} on the MiSTer FPGA GitHub Wiki*
+*Based in part on the CRT guide by [MikeS11](https://github.com/MikeS11/){target=_blank} and [ArchiveRL](https://github.com/ArchiveRL/){target=_blank} on the MiSTer FPGA GitHub Wiki, with substantial revisions.*
 
 ## Output paths
 
@@ -8,14 +8,14 @@ Both paths produce a nearly identical image that should match the original hardw
 
 * Analog I/O board
     * Pros: extra features (buttons, LEDs), no SoG mod needed for component output
-    * Cons: more expensive, lower color depth in some cores, can't use Dual SDRAM
+    * Cons: more expensive, can't use Dual SDRAM
 * Direct Video adapter
-    * Pros: better color depth, much cheaper
+    * Pros: much cheaper
     * Cons: no extra features, needs extra modification for component output, not all adapters are guaranteed to work
 
 ## Standard RGB / component connections
 
-For each display type: the cable, then the `MiSTer.ini` options. `MiSTer.ini` is in `/media/fat/` on your SD card — back up your working file, then start from a fresh copy from the official repository ([right-click this link and choose "Save file as"](https://github.com/MiSTer-devel/Main_MiSTer/raw/master/MiSTer.ini){target=_blank}); the settings below assume this default file. With a Direct Video adapter, always add `direct_video=1`. The [CRT configuration table](crttable.md) lists every output mode.
+`MiSTer.ini` is in `/media/fat/` on your SD card — back up your working file, then start from a fresh copy from the official repository ([right-click this link and choose "Save file as"](https://github.com/MiSTer-devel/Main_MiSTer/raw/master/MiSTer.ini){target=_blank}); the settings below assume this default file. With a Direct Video adapter, always add `direct_video=1`. The [CRT configuration table](crttable.md) page lists every output mode and its full INI values.
 
 * **Consumer TV with RGB SCART (15 kHz)** — a SCART cable with a 470-ohm resistor on the composite sync line; [it's recommended](https://www.retrorgb.com/beware-of-mister-scart-cables.html){target=_blank} to ask the seller whether one is built in. Sources: [MiSTerAddons (US)](https://misteraddons.com/collections/parts/products/video-cables-hdmi-scart-ypbpr){target=_blank}, [Retro Access (UK)](https://retro-access.com/products/mister-io-scart?_pos=1&_sid=97cb11000&_ss=r){target=_blank}, [UltimateMiSTer (PT)](https://ultimatemister.com/product/rgb-scart-cable/){target=_blank}, [Wolfsoft (DE)](https://www.wolfsoft.de/shop/product_info.php/products_id/15401//mister-premium-rgb-kabel-2m.html){target=_blank}, [Antoniovillena (ES)](https://www.antoniovillena.es/store/product/vga-scart-cable/){target=_blank}. A MiST cable usually works too but may lack the resistor: [Lotharek (PL)](https://lotharek.pl/productdetail.php?id=171){target=_blank}, [Amigastore (EU)](http://amigastore.eu/en/512-mist-scart-cable-mist-db15-f-to-scart-tv.html){target=_blank}. Alternatively use a VGA-SCART converter: [Antoniovillena](https://www.antoniovillena.es/store/product/vga-scart-adapter/){target=_blank}, [Arcadeforge](https://arcadeforge.net/UMSA/UMSA-Ultimate-SCART-Adapter::57.html?language=en){target=_blank}, [Retro Upgrades](https://www.retroupgrades.co.uk/product/vga2scart/){target=_blank}. On a consumer Trinitron you may also need an extra resistor/potentiometer to fix dull or incorrect colors ([forum link](https://misterfpga.org/viewtopic.php?p=4162#p4162){target=_blank}).
     INI: `composite_sync=1`
@@ -29,8 +29,8 @@ For each display type: the cable, then the `MiSTer.ini` options. `MiSTer.ini` is
 * **VGA monitor (31 kHz)** — a standard VGA cable.
     INI: `forced_scandoubler=1` (plus `direct_video=1` for Direct Video)
 
-* **PVM/BVM** — a standard VGA-to-BNC cable (3xRGB + HSync).
-    INI: `composite_sync=1` (plus `direct_video=1` for Direct Video)
+* **PVM/BVM** — a standard VGA-to-BNC cable carrying RGB plus a separate sync line.
+    INI: `composite_sync=1` — the sync line carries CSYNC (plus `direct_video=1` for Direct Video)
 
 * **Commodore monitors** — a cable for the 1084S is sold by [UltimateMiSTer (PT)](https://ultimatemister.com/product/mister-commodore-1084s/){target=_blank}.
 
@@ -70,5 +70,5 @@ Instead of the native Y/C output, an external converter can transcode an RGB or 
 ## CRT display types
 
 * **Consumer televisions** — mainly 15 kHz models (240p and 480i); later models may also take higher-rate component or HDMI inputs. Input support varies by region and model: composite was common in North America, RGB SCART was more common — though not universal — in Europe. Signal quality ranks roughly RF < composite < S-Video < component / RGB.
-* **Computer monitors** — designed for 31 kHz, usually VGA-only. A 240p signal can produce jitter or other artifacts even when scandoubled to 31 kHz. [Multisync monitors](https://en.wikipedia.org/wiki/Multisync_monitor){target=_blank} handle 15 kHz natively — uncommon, but the one-monitor-fits-all option.
-* **Professional monitors** — Sony's PVM/BVM series, [broadcast reference monitors](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}, and medical-grade displays: high-quality builds with higher TVL (sharpness depends on model and condition), native RGB input on most models since the mid-80s, extensive front-panel image controls, easy servicing and good shielding. Many are multisync; 50/60 Hz support varies by model. Connectivity is broad, including BNC inputs — depending on the model, three BNC (RGB with sync-on-green), four (RGB plus composite sync), or five (RGB plus separate horizontal and vertical sync). Used units are expensive and hard to find.
+* **Computer monitors** — designed for 31 kHz, usually VGA-only. A 240p signal can produce jitter or other artifacts even when scandoubled to 31 kHz. [Multisync monitors](https://en.wikipedia.org/wiki/Multisync_monitor){target=_blank} handle 15 kHz natively — uncommon, but a versatile option for different consoles and video timings.
+* **Professional monitors** — Sony's PVM/BVM series, [broadcast reference monitors](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}, and medical-grade displays: high-quality builds with higher TVL (sharpness depends on model and condition), native RGB input on many models since the mid-80s, extensive front-panel image controls, easy servicing and good shielding. Many are multisync; 50/60 Hz support varies by model. Connectivity is broad, including BNC inputs — depending on the model, three BNC (RGB with sync-on-green), four (RGB plus composite sync), or five (RGB plus separate horizontal and vertical sync). Used units are expensive and hard to find.
