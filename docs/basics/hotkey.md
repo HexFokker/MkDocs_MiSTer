@@ -10,8 +10,8 @@ This page lists the MiSTer hotkeys. Hotkeys save time, and some actions can only
 | ++shift+win+prtsc++                       | Take a screenshot (raw output)                                                     |
 | ++lctrl+lalt+ralt++                       | Press the "User" button — usually resets the current core; same as the I/O board button |
 | ++lshift+lctrl+lalt+ralt++                | Full reboot/reset; same as the I/O add-on board's Reset button                  |
-| Controller: Button + Menu hotkey          | Turn on/off turbo/autofire for the pressed button                                  |
-| Controller: Direction + Menu hotkey       | Set rate of turbo/autofire in milliseconds (ms)                                    |
+| Controller: hold a button + press the Menu button   | Step that button through the configured autofire rates, then off   |
+| Controller: hold a direction + press the Menu button | Same, for directional inputs (requires `autofire_on_directions=1`) |
 
 ## With the OSD open, in any core
 

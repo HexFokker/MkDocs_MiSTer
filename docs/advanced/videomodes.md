@@ -1,7 +1,7 @@
 The `#!ini video_mode` INI setting supports several ways to specify the video mode.
 
 ## Automatic Detection
-If no `#!ini video_mode` setting is specified, MiSTer will attempt to determine the correct video mode using EDID information from the display device. This will only work for devices connected to the HDMI port. If a valid video mode cannot be determined, the default 720p mode is used.
+If no `#!ini video_mode` setting is specified, MiSTer will attempt to determine the correct video mode using EDID information from the display device. This will only work for devices connected to the HDMI port. If a valid video mode cannot be determined, a safe preset is used — 720p, or 1080p if the EDID data indicates Full HD support.
 
 ## Video Mode Presets (video_mode)
 MiSTer has 15 built-in video mode presets (0–14) covering common display modes for televisions and monitors. For example:
@@ -28,13 +28,15 @@ video_mode=8
 | 13     | 2048x1536  | 60           | 4:3          | iPad Retina   |
 | 14     | 2560x1440  | 60           | 16:9         | 1440p         |
 
+`video_mode_pal` and `video_mode_ntsc` accept the same values and override `video_mode` when the core's output is ~50 Hz or ~60 Hz, respectively. These overrides only take effect when `vsync_adjust` is non-zero.
+
 ## Custom Video Modes
 A custom mode can be set by specifying the width, height, and refresh rate like so:
 ```ini
 ; 1920x1200 at 75Hz
 video_mode=1920,1200,75
 ```
-The maximum width is 4096, the maximum height is 2048, and the refresh rate can be any whole integer. The DE10-Nano may not be able to output the mode you select, or your display may not accept it. The maximum recommended video frequency is 210 MHz, which limits the maximum resolution to 2048x1536. [Pixel repetition](#hdmi-pixel-repetition-pr) can push resolution further, but it also has limits.
+The maximum width is 4096, the maximum height is 2048, and the refresh rate can be a whole number or a fraction (for example, `59.94`). The DE10-Nano may not be able to output the mode you select, or your display may not accept it. The maximum recommended video frequency is 210 MHz, which limits the maximum resolution to 2048x1536. [Pixel repetition](#hdmi-pixel-repetition-pr) can push resolution further, but it also has limits.
 
 The VESA [Coordinated Video Timings](https://en.wikipedia.org/wiki/Coordinated_Video_Timings){target=_blank} standard is used to calculate the timing information for the requested video mode. By default the reduced blanking version of the standard is used. This is compatible with most flat panel displays but may not be as well supported on older displays and CRT monitors. You can use regular CVT timings by adding the `#!ini cvt` flag to the end of the video mode:
 ```ini
@@ -48,6 +50,7 @@ Video mode timing can be fully specified with a modeline consisting of nine valu
 ```ini
 video_mode=hact,hfp,hs,hbp,vact,vfp,vs,vbp,fpix
 ```
+Two further values can be appended to set the sync polarities directly: `hpol` then `vpol`, each `0` or `1` (11 values in total).
 `hact` and `vact` define the active (visible) size of the video mode in horizontal and vertical pixels, respectively. `hfp`, `hs`, and `hbp` define the duration of the horizontal front porch, sync, and back porch in pixels. `vfp`, `vs`, and `vbp` define the same properties for the vertical timing. Finally, `fpix` is the pixel clock frequency in kHz (pixel clocks are usually specified in MHz, so multiply the MHz value by 1000).
 
 MiSTer modelines are similar to XFree86 modelines, but the information is expressed slightly differently. You can convert an XFree86 modeline to a MiSTer one with morf77's [custom video mode tool](https://morf77.pythonanywhere.com/){target=_blank}, used together with a [modeline calculator](https://arachnoid.com/modelines/){target=_blank}.
@@ -57,7 +60,7 @@ Additional flags can be appended to custom modes and modelines:
 
  * `#!ini +hsync` / `#!ini -hsync` - set the horizontal sync polarity
  * `#!ini +vsync` / `#!ini -vsync` - set the vertical sync polarity
- * `#!ini pr` - use HDMI pixel repetition (custom modelines only)
+ * `#!ini pr` - use HDMI pixel repetition (custom modes and modelines; also applied automatically when the width exceeds 2048)
  * `#!ini cvt` - use normal CVT timing (custom mode only)
  * `#!ini cvtrb` - use reduced blanking CVT timing (custom mode only)
 

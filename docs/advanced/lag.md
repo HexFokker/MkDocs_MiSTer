@@ -45,7 +45,7 @@ The `vsync_adjust` option in `MiSTer.ini` (at the root of the SD card) configure
 
 * `vsync_adjust=2` is the best option if your TV is compatible with it. It uses the core's original refresh rate and pixel clock, giving sub-frame latency. According to Grabulosaure, who made the scaler, the actual latency is around 4 to 30 lines with `vscale_mode=1`, and slightly more in other modes ([video](https://www.youtube.com/watch?v=DYfUZ6PG7H4){target=_blank}).
 * `vsync_adjust=1` is the second-best option, with 1 frame of latency. It uses a framebuffer, but keeps the system's original vsync and varies the pixel clock per core.
-* `vsync_adjust=0` is the weakest option for latency, but the most compatible: up to 1-2 frames of latency and slightly less smooth scrolling. It always outputs 60 Hz with an NTSC-standard pixel clock, so it is more compatible with modern displays. However, you will notice occasional jitter, because the core's refresh rate doesn't match the display's.
+* `vsync_adjust=0` is the weakest option for latency, but the most compatible: up to 1-2 frames of latency and slightly less smooth scrolling. It outputs your fixed `video_mode` timing unchanged — a standard pixel clock and refresh rate — so it is more compatible with modern displays. However, you will notice occasional jitter, because the core's refresh rate doesn't match the display's.
 
 ### Input lag
 

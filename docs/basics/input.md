@@ -38,7 +38,7 @@ The MiSTer framework supports _up to_ six players on separate USB or Bluetooth c
 
 Any defined button supports autofire. To turn it on, press and hold the button, then quickly press and release the button defined as `BUTTON OSD` (joystick) or `KBD TOGGLE` (keyboard). Repeat this to step up to the next autofire rate. To turn autofire off, keep stepping through the rates until the message says autofire is disabled for that button. Each button can have its own autofire rate.
 
-By default, MiSTer offers autofire rates of 10, 15, and 30 Hz. To set custom rates, add or edit the `autofire_rates` line in MiSTer.ini. Custom rates are rounded down to the nearest rate that repeats cleanly at 60 Hz. You may find that some games work better with certain rates, and that some rates (particularly 30 Hz) are too fast for certain games to process.
+By default, MiSTer offers autofire rates of 10, 15, and 30 Hz. To set custom rates, add or edit the `autofire_rates` line in MiSTer.ini. Custom rates are rounded down to the nearest rate that repeats cleanly at 60 Hz, and rates above 30 Hz are capped at 30 Hz. You may find that some games work better with certain rates, and that some rates (particularly 30 Hz) are too fast for certain games to process.
 
 `autofire_rates=7.5,10,15,20,30`
 
@@ -52,9 +52,10 @@ This line would configure a single autofire rate in which the button is held for
 
 Shooting games often favor very particular autofire rates. For convenience, one such rate is built in and can be selected with a keyword instead of a calculated pattern: put the keyword in the `autofire_rates=` line where you would put a custom rate or pattern. More may be added in the future as the community recommends them, or as the maintainer of the autofire feature gets better at shooting games.
 
-| Value       | Target Game   | Resulting Rate |
-| ----------- | ------------- | -------------- |
-| GUNFRONTIER | Gun Frontier  | 6.67 Hz        |
+| Value       | Target Game    | Resulting Rate |
+| ----------- | -------------- | -------------- |
+| GUNFRONTIER | Gun Frontier   | 6.67 Hz        |
+| GAREGGA     | Battle Garegga | 8.57 Hz        |
 
 ### Autofire and the joystick/D-pad
 

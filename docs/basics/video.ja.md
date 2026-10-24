@@ -66,27 +66,23 @@ vsync_adjust=2
 
 ### 可変リフレッシュレート（VRR）
 
-MiSTer は可変リフレッシュレート（VRR）に対応しています。コアが非標準リフレッシュレートを出力する際、低ラグの `vsync_adjust`（`1` または `2`）を使ったときの、ディスプレイでの同期ずれを VRR が抑えます。
+MiSTer は可変リフレッシュレート（VRR）に対応しています。VRR は `vsync_adjust` の代替機構です。スケーラーがピクセルクロックを調整する代わりに、変化するコアのリフレッシュレートに従うようディスプレイに指示します。VRR は `vsync_adjust` が `0` の場合のみ有効で、Direct Video 出力では使われません。
 
-VRR には新しいビルドの [Main MiSTer バイナリー](https://github.com/MiSTer-devel/Main_MiSTer/){target=_blank}が必要です（新リリースは準備中。先行ビルドは [MiSTer FPGA Discord](https://discord.gg/misterfpga){target=_blank} の `#unstable-nightlies` チャンネルに投稿されています）。さらに、更新版の [MiSTer.ini](https://github.com/MiSTer-devel/Main_MiSTer/raw/master/MiSTer.ini){target=_blank} か、既存の ini への次の追記が必要です：
+VRR には最新の [Main MiSTer バイナリー](https://github.com/MiSTer-devel/Main_MiSTer/){target=_blank}が必要です。さらに、更新版の [MiSTer.ini](https://github.com/MiSTer-devel/Main_MiSTer/raw/master/MiSTer.ini){target=_blank} か、既存の ini への次の追記が必要です：
 
 ```ini
 ; Variable Refresh Rate control
 ; 0 - Do not enable VRR (send no VRR control frames)
-; 1 - Auto Detect VRR from display EDID. 
+; 1 - Auto Detect VRR from display EDID.
 ; 2 - Force Enable Freesync
-; 3 - Force Enable Vesa HDMI Forum VRR
+; 3 - Force Enable VESA VRR
+; 4 - Force Enable MiSTer VRR (vsync_adjust must be 0)
 vrr_mode=0
-; Freesync min/max framerate parameter defaults to the min/max capability reported by the display
-; Freesync minimum framerate. 
-vrr_min_framerate=0
-; Freesync maximum framerate
-vrr_max_framerate=0
 ; VESA VRR base framerate. Normally set to the current video mode's output framerate
 vrr_vesa_framerate=0
 ```
 
-VRR は互換性を広く保ち、MiSTer を使いやすくするため、デフォルトではオフです。`vrr_mode=1` でディスプレイの対応を自動検出します。結果はまちまちで、この設定では同期できないディスプレイもあります。自動検出が失敗したら `2`（FreeSync）または `3`（VESA HDMI Forum VRR）で強制有効にします。FreeSync を「AMD FreeSync」と表記するディスプレイもありますが、オープン標準であり AMD 製品専用ではありません。VESA VRR を「G-Sync」と表記するディスプレイもありますが、NVIDIA 独自の G-Sync 標準と必ずしも同一ではありません。
+VRR は互換性を広く保ち、MiSTer を使いやすくするため、デフォルトではオフです。`vrr_mode=1` でディスプレイの対応を自動検出します。結果はまちまちで、この設定では同期できないディスプレイもあります。自動検出が失敗したら `2`（FreeSync）、`3`（VESA HDMI Forum VRR）、または `4`（MiSTer VRR）で強制有効にします。ディスプレイへ送られるリフレッシュレンジは `refresh_min`/`refresh_max` から取得され、それらが 0 の場合は EDID が報告するレンジが使われます。FreeSync を「AMD FreeSync」と表記するディスプレイもありますが、オープン標準であり AMD 製品専用ではありません。VESA VRR を「G-Sync」と表記するディスプレイもありますが、NVIDIA 独自の G-Sync 標準と必ずしも同一ではありません。
 
 VRR の結果は環境によって異なります。この設定を変える前に、`MiSTer.ini` をすぐ編集できる状態にしておいてください。設定によっては、元に戻すまで映像が出なくなることがあります。MiSTer が報告するリフレッシュレートがテレビ側の表示と違うこともあります。これは正常です。テレビは独自の方法でリフレッシュレートを測っており、高価な測定機器がないと精度を検証できません。
 

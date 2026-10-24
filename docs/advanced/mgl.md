@@ -56,6 +56,11 @@ Example MGL files:
 * `reset`: Triggers a reset on the core. You probably don't need this.
     * `delay`: Number of seconds to wait before reset.
     * `hold`: Number of seconds to hold the reset (optional; about 100 ms if omitted).
+* `option`: Sets one of the core's OSD options to a chosen value.
+    * `name`: The option's label as shown in the core's OSD.
+    * `value`: One of that option's values.
+    * `page`: Optional OSD page title, needed only when the same option name appears on multiple pages.
+    * `default="1"`: Apply only when the core has no saved settings — useful for first-run defaults.
 
 The `rbf` tag must be present.
 
@@ -66,6 +71,16 @@ The `setname` tag is optional, and the change it makes is only temporary. It is 
 The `type` and `index` attributes depend on what values were configured by the core's developer. See below for [how to check those](#finding-mgl-arguments).
 
 If a core pops up the OSD menu after loading the game or the game doesn't load, try increasing the `delay` value.
+
+Options can also be preset per shortcut. For example, this loads a TurboGrafx-16 game with the Colors option set to Raw RGB (an option on the core's "Audio & Video" OSD page):
+
+```xml
+<mistergamedescription>
+	<rbf>_Console/TurboGrafx16</rbf>
+	<option name="Colors" value="Raw RGB" page="Audio & Video"/>
+	<file delay="1" type="f" index="0" path="dummy.pce"/>
+</mistergamedescription>
+```
 
 ## MGL Arguments
 

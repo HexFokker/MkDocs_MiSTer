@@ -66,27 +66,23 @@ As a rule of thumb, start at `vsync_adjust=2` for the smoothest video and lowest
 
 ### Variable Refresh Rate (VRR)
 
-MiSTer supports Variable Refresh Rate (VRR). VRR reduces sync loss on your display when the core outputs a non-standard refresh rate and you use a low-lag `vsync_adjust` setting (`1` or `2`).
+MiSTer supports Variable Refresh Rate (VRR). VRR is an alternative to `vsync_adjust`: instead of the scaler adjusting the pixel clock, the display is told to follow the core's changing refresh rate. VRR is only active when `vsync_adjust` is `0`, and it is not used with Direct Video output.
 
-VRR requires a recent build of [the Main MiSTer binary](https://github.com/MiSTer-devel/Main_MiSTer/){target=_blank} (a new release is currently pending; early builds are posted in the `#unstable-nightlies` channel of the [MiSTer FPGA Discord](https://discord.gg/misterfpga){target=_blank}). You also need either an updated [MiSTer.ini](https://github.com/MiSTer-devel/Main_MiSTer/raw/master/MiSTer.ini){target=_blank} or the following lines added to your existing one:
+VRR requires an up-to-date [Main MiSTer binary](https://github.com/MiSTer-devel/Main_MiSTer/){target=_blank}. You also need either an updated [MiSTer.ini](https://github.com/MiSTer-devel/Main_MiSTer/raw/master/MiSTer.ini){target=_blank} or the following lines added to your existing one:
 
 ```ini
 ; Variable Refresh Rate control
 ; 0 - Do not enable VRR (send no VRR control frames)
-; 1 - Auto Detect VRR from display EDID. 
+; 1 - Auto Detect VRR from display EDID.
 ; 2 - Force Enable Freesync
-; 3 - Force Enable Vesa HDMI Forum VRR
+; 3 - Force Enable VESA VRR
+; 4 - Force Enable MiSTer VRR (vsync_adjust must be 0)
 vrr_mode=0
-; Freesync min/max framerate parameter defaults to the min/max capability reported by the display
-; Freesync minimum framerate. 
-vrr_min_framerate=0
-; Freesync maximum framerate
-vrr_max_framerate=0
 ; VESA VRR base framerate. Normally set to the current video mode's output framerate
 vrr_vesa_framerate=0
 ```
 
-VRR is off by default, for broad compatibility and to keep the MiSTer easy to use. Set `vrr_mode=1` to auto-detect what your display supports; results vary, and some displays can't sync with this setting. If auto-detection fails, force VRR on with `2` (FreeSync) or `3` (VESA HDMI Forum VRR). Some displays label FreeSync as "AMD FreeSync", but it is an open standard and not exclusive to AMD products. Some displays also label VESA VRR as "G-Sync", even though it isn't necessarily the same as NVIDIA's proprietary G-Sync standard.
+VRR is off by default, for broad compatibility and to keep the MiSTer easy to use. Set `vrr_mode=1` to auto-detect what your display supports; results vary, and some displays can't sync with this setting. If auto-detection fails, force VRR on with `2` (FreeSync), `3` (VESA HDMI Forum VRR), or `4` (MiSTer VRR). The refresh range sent to the display comes from `refresh_min`/`refresh_max`, falling back to the range reported in the display's EDID. Some displays label FreeSync as "AMD FreeSync", but it is an open standard and not exclusive to AMD products. Some displays also label VESA VRR as "G-Sync", even though it isn't necessarily the same as NVIDIA's proprietary G-Sync standard.
 
 Results with VRR vary. Before changing this setting, make sure you can easily edit `MiSTer.ini`, because the setting may leave you without display output until you revert it. The refresh rate reported by the MiSTer may also differ from the one reported by your TV. This is expected: TVs measure refresh rate with proprietary methods whose accuracy can't be verified without expensive test equipment.
 

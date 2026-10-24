@@ -56,6 +56,11 @@ MGL ファイルの例：
 * `reset`：コアにリセットを発行。おそらく不要です。
     * `delay`：リセットまで待つ秒数。
     * `hold`：リセットを保持する秒数（オプション。省略時は約 100 ms）。
+* `option`：コアの OSD オプションの1つを指定した値に設定します。
+    * `name`：コアの OSD に表示されるオプション名。
+    * `value`：そのオプションの値の1つ。
+    * `page`：OSD ページタイトル（オプション。同名オプションが複数ページにある場合のみ必要）。
+    * `default="1"`：コアに保存済み設定がない場合のみ適用。初回デフォルトに便利。
 
 `rbf` タグは必須です。
 
@@ -66,6 +71,16 @@ MGL ファイルの例：
 `type` と `index` 属性は、コアの開発者が設定した値に依存します。確認方法は後述の [MGL 引数の調べ方](#finding-mgl-arguments)を参照。
 
 ゲーム読み込み後に OSD メニューが出たり、ゲームが読み込まれない場合は `delay` 値を増やしてみてください。
+
+ショートカットごとにオプションをプリセットすることもできます。たとえば、これは Colors オプション（コアの "Audio & Video" OSD ページにある項目）を Raw RGB にして TurboGrafx-16 ゲームを読み込みます：
+
+```xml
+<mistergamedescription>
+	<rbf>_Console/TurboGrafx16</rbf>
+	<option name="Colors" value="Raw RGB" page="Audio & Video"/>
+	<file delay="1" type="f" index="0" path="dummy.pce"/>
+</mistergamedescription>
+```
 
 ## MGL 引数
 

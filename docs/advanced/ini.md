@@ -28,7 +28,7 @@ Alternate INI files can also have custom names. The name appears on the OSD Info
 
 `vscale_mode` - Changes how the image is scaled to the screen. 0 fits the whole image to the screen, 1 uses 1:1 integer scaling, 2 scales in 0.5 steps, and 3 scales in 0.25 steps. Modes 4 and 5 are described in [Video Scaling](videoscaling.md).
 
-`vscale_border` - Sets an overscan border on the screen in pixels (1-399)
+`vscale_border` - Sets an overscan border on the screen in pixels (0-399; 0 disables). Only applies when `vscale_mode` is 0.
 
 `hdmi_limited` - Changes the color range output over HDMI. 0 = `0-255`, 1 = `16-235`, and 2 = `16-255`. A setting of 2 can be useful if you have problems with some Direct Video adapters. Setting it to 1 can also brighten the image on screens with a dynamic backlight.
 
@@ -42,7 +42,7 @@ Alternate INI files can also have custom names. The name appears on the OSD Info
 
 `video_info` - Number of seconds to display the video info in the top-left corner of the screen after the resolution or frequency changes.
 
-`vsync_adjust` - Adjusts the buffer settings for the frames sent to the display. For details, see [vsync_adjust](../basics/video.md#vsync_adjust){target=_blank}. Higher values reduce lag at the cost of compatibility — 0 is the most compatible (and highest-lag) setting, 2 the least.
+`vsync_adjust` - Adjusts the buffer settings for the frames sent to the display. For details, see [vsync_adjust](../basics/video.md#vsync_adjust){target=_blank}. Higher values reduce lag at the cost of compatibility — 0 is the most compatible (and highest-lag) setting, 2 the least. This setting is ignored when `direct_video` is enabled.
 
 `refresh_min` - Forces a minimum refresh rate.
 
@@ -52,27 +52,27 @@ Alternate INI files can also have custom names. The name appears on the OSD Info
 
 `forced_scandoubler` - VGA output will always run in 31 kHz mode (scandoubled) if this setting is turned on, useful for computer CRTs.
 
-`vga_mode` - Sets the VGA output format: `rgb` (default), `ypbpr`, `svideo`, or `cvbs`.
+`vga_mode` - Sets the VGA output format: `rgb` (default), `ypbpr`, `svideo`, `cvbs`, or `subcarrier` (for external encoder boards).
 
-`ntsc_mode` - Only applies when `vga_mode` is `svideo` or `cvbs`. 0 - normal NTSC, 1 - PAL-60, 2 - PAL-M. Note: no cores officially use these settings.
+`ntsc_mode` - Only applies when `vga_mode` is `svideo` or `cvbs`. 0 - NTSC, 1 - PAL-60, 2 - PAL-M. Changes Y/C color encoding, not video timing; leave at 0 unless you specifically need PAL-60 or PAL-M.
 
-`composite_sync` - Sends the sync signal on HSync over the VGA output; needed for certain configurations.
+`composite_sync` - Sends composite sync (CSYNC) on the VGA HSync pin instead of separate horizontal sync; needed for certain configurations.
 
-`vga_scaler` - Sends the scaler output to the VGA port (either Analog I/O or Direct Video). This is usually used with computer CRTs and other 31 kHz displays that aren't compatible with 240p TV signals.
+`vga_scaler` - Sends the scaler output to the VGA port on an Analog I/O board. This is usually used with computer CRTs and other 31 kHz displays that aren't compatible with 240p TV signals.
 
 `menu_pal` - Forces the Menu core to run in PAL mode.
 
-`direct_video` - Changes the HDMI output to an analog signal; only supported by certain Direct Video adapters with AG62xx chipsets. If you have color problems or no image, check `composite_sync` and `vga_mode=ypbpr`, and also try setting `hdmi_limited` to `1`. To use `vga_mode=ypbpr` with component cables, the Direct Video adapter needs a modification that combines HSYNC and Green (see [Direct Video](directvideo.md#setup-for-ypbpr-signals)).
+`direct_video` - Sends the core's unscaled native video over the HDMI port for HDMI-to-analog DAC adapters; only supported by certain Direct Video adapters with AG62xx chipsets. Set `direct_video=2` to enable it automatically only when a known adapter is detected via EDID. If you have color problems or no image, check `composite_sync` and `vga_mode=ypbpr`, and also try setting `hdmi_limited` to `1`. To use `vga_mode=ypbpr` with component cables, the Direct Video adapter needs a modification that combines HSYNC and Green (see [Direct Video](directvideo.md#setup-for-ypbpr-signals)).
 
-`fb_terminal` - Best left at 1. If you have issues running scripts on a CRT or analog display, try switching this to 0 to see if that helps.
+`fb_terminal` - Best left at 1. If you have issues running scripts on a CRT or analog display, set this to 2 to size the terminal for analog output, or 0 to disable the framebuffer terminal.
 
-`vga_sog` - Forces sync-on-green via the Analog I/O board (ignores the board's SoG switch).
+`vga_sog` - Enables sync-on-green on an Analog I/O board when the board's SoG switch is in AUTO; the OVR position forces SoG on regardless of this setting.
 
 ## Audio Settings
 
 `hdmi_audio_96k` - Changes the HDMI audio sampling rate from 48 kHz (default) to 96 kHz. This can help with the audio of systems with unusual sampling rates (like TurboGrafx-16's 32.088 kHz).
 
-`dvi_mode` - DVI mode over the HDMI connection; it disables audio transmission over HDMI when turned on.
+`dvi_mode` - DVI mode over the HDMI connection; it disables audio transmission over HDMI when turned on. 0 - HDMI, 1 - DVI. If unset, the mode is detected automatically from the display's EDID.
 
 ## Controller Settings
 
@@ -90,7 +90,7 @@ Alternate INI files can also have custom names. The name appears on the OSD Info
 
 `osd_timeout` - The length of time the OSD is displayed when brought up with no inputs pressed. 0 - never time out; the range is 5-3600 seconds.
 
-`osd_rotate` - Rotate the OSD. Useful when rotating your monitor for certain arcade cores. 0 - no rotation, 1 - rotate right (+90°), and 2 - rotate left (-90°).
+`osd_rotate` - Rotate the OSD. Useful when rotating your monitor for certain arcade cores. 0 - no rotation, 1 - rotate right (+90°), 2 - rotate left (-90°), and 3 - automatic rotation for vertical arcade cores.
 
 ## Debug Settings
 
@@ -119,3 +119,7 @@ You can also make exceptions for all arcade cores with the `[arcade]` header in 
 [arcade_vertical]
 direct_video=0
 ```
+
+A trailing `*` in a section name matches any core name with that prefix: `[PSX*]` applies to every core whose name starts with PSX.
+
+Sections named `[video=WxH@R]` apply only while a matching output resolution is active — for example, `[video=1920x1080@60.0]` matches 1920x1080 at 60 Hz, and `[video=1920x1080]` without the refresh rate matches any 1920x1080 mode.
