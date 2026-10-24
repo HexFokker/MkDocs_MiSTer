@@ -123,7 +123,7 @@ CRT には3つの主要カテゴリーがあります。民生テレビ、コン
 
 ### 民生テレビ
 
-ここで扱う民生 CRT は一般に 15 kHz 専用です。これは多くのレトロコンソールが使ったアナログレートで、240p と 480i の両方を含みます。ただし末期のモデルは、より高いレートのコンポーネントや HDMI 入力に対応するものもあります。1950年代から1980年代後半まで、ほとんどの民生テレビは [RF ビデオ](https://en.wikipedia.org/wiki/RF_connector){target=_blank}しか使っておらず、特に今日では干渉を受けやすいです。後に[コンポジットビデオ](https://en.wikipedia.org/wiki/Composite_video){target=_blank}（依然としてノイズは多いものの、RF より干渉に強い）が使われるようになりました。[S-Video](https://en.wikipedia.org/wiki/S-Video){target=_blank}（ずっとシャープで干渉に強い信号）対応のテレビもありましたが、あまり一般的ではありませんでした。多くの欧州各国では、[SCART コネクター](https://en.wikipedia.org/wiki/SCART){target=_blank}による RGB ビデオにも対応していました（ほぼ最高レベルです）。最後に、CRT テレビ末期の1990年代後半〜2000年代初頭には[コンポーネントビデオ](https://en.wikipedia.org/wiki/Component_video){target=_blank}や [HDMI](https://en.wikipedia.org/wiki/HDMI){target=_blank} さえ使われるようになりました。
+ここで扱う民生 CRT 構成は主に 15 kHz モデルを使います。これは多くのレトロコンソールが使ったアナログレートで、240p と 480i の両方を含みます。後期の民生 CRT は、モデルによってはより高いレートのコンポーネントや HDMI 入力に対応するものもあります。1950年代から1980年代後半まで、ほとんどの民生テレビは [RF ビデオ](https://en.wikipedia.org/wiki/RF_connector){target=_blank}しか使っておらず、特に今日では干渉を受けやすいです。後に[コンポジットビデオ](https://en.wikipedia.org/wiki/Composite_video){target=_blank}（依然としてノイズは多いものの、RF より干渉に強い）が使われるようになりました。[S-Video](https://en.wikipedia.org/wiki/S-Video){target=_blank}（ずっとシャープで干渉に強い信号）対応のテレビもありましたが、あまり一般的ではありませんでした。多くの欧州各国では、[SCART コネクター](https://en.wikipedia.org/wiki/SCART){target=_blank}による RGB ビデオにも対応していました（ほぼ最高レベルです）。最後に、CRT テレビ末期の1990年代後半〜2000年代初頭には[コンポーネントビデオ](https://en.wikipedia.org/wiki/Component_video){target=_blank}や [HDMI](https://en.wikipedia.org/wiki/HDMI){target=_blank} さえ使われるようになりました。
 
 今日（米国で）売られている中古 CRT テレビの多くは、コンポジットビデオかコンポーネントビデオを使っています。欧州では、保証はありませんが RGB SCART 対応の中古 CRT テレビがより一般的に見つかります。
 
@@ -133,7 +133,7 @@ CRT には3つの主要カテゴリーがあります。民生テレビ、コン
 
 ### プロ用映像モニター
 
-Professional Video Monitor（PVM）は他の名前でも呼ばれます。[Broadcast reference monitor、Broadcast video monitor（BVM）](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}、Medical Grade Monitor などです。これらのディスプレイは高品質部品を使ったプロ向けに設計され、当時としては非常に高価でした。プロ用リファレンスモニターは今日でも製造されていますが、現行モデルは一般に CRT ではなく OLED や LCD を使い、ニッチな業務用途向けです。昔の PVM は多様な接続を提供し、上記のすべてのコネクターに加えて、赤・緑・青・同期信号を別々のコネクターで運ぶ [BNC コネクター](https://en.wikipedia.org/wiki/BNC_connector){target=_blank}のような特殊コネクターもありました。BNC ケーブル構成によっては、5本目の sync-on-green ケーブルも必要です。
+プロ用 CRT モニターには、Sony の PVM や BVM シリーズのほか、[放送用リファレンスモニター](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}、医療用モニター、その他のプロ用ディスプレイが含まれます。これらのディスプレイは高品質部品を使ったプロ向けに設計され、当時としては非常に高価でした。プロ用リファレンスモニターは今日でも製造されていますが、現行モデルは一般に CRT ではなく OLED や LCD を使い、ニッチな業務用途向けです。昔の PVM は多様な接続を提供し、上記のすべてのコネクターに加えて、赤・緑・青・同期信号を別々のコネクターで運ぶ [BNC コネクター](https://en.wikipedia.org/wiki/BNC_connector){target=_blank}のような特殊コネクターもありました。モデルによって、プロ用モニターの BNC 入力は3本（RGB＋sync-on-green）、4本（RGB＋独立复合同期）、または5本（RGB＋独立水平同期・垂直同期）の場合があります。
 
 レトロハードウェアでは、中古 PVM は民生 CRT テレビに対して次の利点があります：
 
@@ -142,6 +142,6 @@ Professional Video Monitor（PVM）は他の名前でも呼ばれます。[Broad
 * 1980年代半ば頃から、ほとんどがネイティブ RGB 入力に対応していたようなので、理論上の映像品質ははるかに優れ得ます。
 * 前面の多くのダイヤルとボタンで、画像を非常に細かく調整できるのが普通です。
 * 多くが同時出力に対応し、画像を別のディスプレイにミラーリングできます。
-* かなりの数がマルチシンクでもあり、15 kHz と 31 kHz 両方の信号に対応。多くはリージョン非依存で、50 Hz PAL と 60 Hz NTSC 両方に対応します。
+* かなりの数がマルチシンクでもあり、15 kHz と 31 kHz 両方の信号に対応。多くのモデルは 50 Hz と 60 Hz の両方で動作しますが、PAL および NTSC への対応はモデルにより異なります。
 
 残念ながら PVM は今日では非常に高価で、すでに持っていなければ今入手するのはかなり難しいかもしれません。モデルの人気、サイズ、機能次第で、中古 PVM が数百ドル以上で出品されるのは珍しくありません。
