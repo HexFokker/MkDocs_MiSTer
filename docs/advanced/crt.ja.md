@@ -125,7 +125,7 @@ CRT には3つの主要カテゴリーがあります。民生テレビ、コン
 
 ここで扱う民生 CRT 構成は主に 15 kHz モデルを使います。これは多くのレトロコンソールが使ったアナログレートで、240p と 480i の両方を含みます。後期の民生 CRT は、モデルによってはより高いレートのコンポーネントや HDMI 入力に対応するものもあります。1950年代から1980年代後半まで、ほとんどの民生テレビは [RF ビデオ](https://en.wikipedia.org/wiki/RF_connector){target=_blank}しか使っておらず、特に今日では干渉を受けやすいです。後に[コンポジットビデオ](https://en.wikipedia.org/wiki/Composite_video){target=_blank}（依然としてノイズは多いものの、RF より干渉に強い）が使われるようになりました。[S-Video](https://en.wikipedia.org/wiki/S-Video){target=_blank}（ずっとシャープで干渉に強い信号）対応のテレビもありましたが、あまり一般的ではありませんでした。多くの欧州各国では、[SCART コネクター](https://en.wikipedia.org/wiki/SCART){target=_blank}による RGB ビデオにも対応していました（ほぼ最高レベルです）。最後に、CRT テレビ末期の1990年代後半〜2000年代初頭には[コンポーネントビデオ](https://en.wikipedia.org/wiki/Component_video){target=_blank}や [HDMI](https://en.wikipedia.org/wiki/HDMI){target=_blank} さえ使われるようになりました。
 
-今日（米国で）売られている中古 CRT テレビの多くは、コンポジットビデオかコンポーネントビデオを使っています。欧州では、保証はありませんが RGB SCART 対応の中古 CRT テレビがより一般的に見つかります。
+北米では、コンポジットは民生 CRT では一般的な入力でしたが、S-Video やコンポーネントへの対応はモデルにより異なりました。欧州では RGB SCART がより一般的でしたが、すべてではありませんでした。
 
 ### コンピューターモニター
 
@@ -133,7 +133,7 @@ CRT には3つの主要カテゴリーがあります。民生テレビ、コン
 
 ### プロ用映像モニター
 
-プロ用 CRT モニターには、Sony の PVM や BVM シリーズのほか、[放送用リファレンスモニター](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}、医療用モニター、その他のプロ用ディスプレイが含まれます。これらのディスプレイは高品質部品を使ったプロ向けに設計され、当時としては非常に高価でした。プロ用リファレンスモニターは今日でも製造されていますが、現行モデルは一般に CRT ではなく OLED や LCD を使い、ニッチな業務用途向けです。昔の PVM は多様な接続を提供し、上記のすべてのコネクターに加えて、赤・緑・青・同期信号を別々のコネクターで運ぶ [BNC コネクター](https://en.wikipedia.org/wiki/BNC_connector){target=_blank}のような特殊コネクターもありました。モデルによって、プロ用モニターの BNC 入力は3本（RGB＋sync-on-green）、4本（RGB＋独立复合同期）、または5本（RGB＋独立水平同期・垂直同期）の場合があります。
+プロ用 CRT モニターには、Sony の PVM や BVM シリーズのほか、[放送用リファレンスモニター](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}、医療用モニター、その他のプロ用ディスプレイが含まれます。これらのディスプレイは高品質部品を使ったプロ向けに設計され、当時としては非常に高価でした。プロ用リファレンスモニターは今日でも製造されていますが、現行モデルは一般に CRT ではなく OLED や LCD を使い、ニッチな業務用途向けです。昔の PVM は多様な接続を提供し、上記のすべてのコネクターに加えて、アナログ映像と同期用の特殊な [BNC](https://en.wikipedia.org/wiki/BNC_connector){target=_blank} 入力もありました。モデルによって、プロ用モニターの BNC 入力は3本（RGB＋sync-on-green）、4本（RGB＋独立复合同期）、または5本（RGB＋独立水平同期・垂直同期）の場合があります。
 
 レトロハードウェアでは、中古 PVM は民生 CRT テレビに対して次の利点があります：
 
