@@ -37,7 +37,7 @@ hide:
 | DonkeyKong3      | 20210312  | 257x224                   | 16.0                   | 60.6                | 6.14              |                                                    |
 | DonkeyKongJunior | 20220227  | 257x224                   | 16.0                   | 60.6                | 6.14              |                                                    |
 | DottoriKun       | 20210705  | 448x192                   | 15.6                   | 61.0                | 8.00              |                                                    |
-| Druaga           | 20210610  | 224x294                   | 203.3                  | 60.8                | 49.12             | Might be inaccurate, need to confirm manually.     |
+| Druaga           | 20210610  | 288x224                   | 16.0                   | 60.8                | 6.14              |                                                                                                                          |
 | Finalizer        | 20220101  | 240x224                   | 16.0                   | 61.1                | 6.14              |                                                    |
 | FoodFight        | 20210115  | 257x224                   | 16.0                   | 60.8                | 6.14              |                                                    |
 | Frenzy           | 20211009  | 256x224                   | 15.6                   | 59.6                | 5.00              |                                                    |
@@ -88,7 +88,7 @@ hide:
 | Sprint1          | 20201210  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
 | Sprint2          | 20201210  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
 | Subs             | 20220105  | 320x224                   | 15.8                   | 59.9                | 6.05              |                                                    |
-| SuperBreakout    | 202201210 |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
+| SuperBreakout    | 20220520  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
 | Tecmo            | 20200810  | 256x224                   | 15.6                   | 59.2                | 6.00              |                                                    |
 | TIAMC1           | 20210322  | 256x256                   | 15.6                   | 49.8                | 5.25              |                                                    |
 | TimePilot        | 20211225  | 256x224                   | 16.0                   | 60.6                | 6.14              |                                                    |

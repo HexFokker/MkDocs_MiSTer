@@ -45,7 +45,7 @@ Supported cores can generate native Y/C signals for S-Video or composite output 
 The exact cabling depends on the adapter and the display — the items below are examples, not parts required for every setup.
 
 * **S-Video** — Y and C must stay on separate wires all the way to the display: a 4-pin mini-DIN connector or separate RCA jacks, depending on the adapter and display. Monitors such as the Commodore 1702 take Y/C on RCA jacks — in that case a "VGA-to-component" cable works purely as a physical VGA-to-RCA breakout (the signal is still Y/C, not YPbPr).
-* **Composite** — if the adapter provides a dedicated composite (CVBS) RCA output, connect it straight to the display's composite input. A passive setup can instead combine Y and C with a VGA-to-RCA breakout cable and a 1-male-to-2-female RCA Y-adapter — this lacks a luma trap and can produce severe rainbow artifacts, so it is not the recommended composite setup.
+* **Composite** — if the adapter provides a dedicated composite (CVBS) RCA output, connect it straight to the display's composite input. A passive setup can instead combine Y and C with a VGA-to-RCA breakout cable and a 2-female-to-1-male RCA Y-adapter — this lacks a luma trap and can produce severe rainbow artifacts, so it is not the recommended composite setup.
 
 ### INI settings
 
