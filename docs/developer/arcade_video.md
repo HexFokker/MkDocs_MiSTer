@@ -10,6 +10,7 @@ Set up the module with these parameters:
     *  8 : 3R 3G 2B
     *  9 : 3R 3G 3B
     * 12 : 4R 4G 4B
+    * 18 : 6R 6G 6B
     * 24 : 8R 8G 8B
 * GAMMA - allow gamma controls
 

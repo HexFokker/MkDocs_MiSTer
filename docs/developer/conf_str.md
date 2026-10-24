@@ -6,7 +6,7 @@ The configuration string is stored in the `CONF_STR` variable of the `emu` modul
 
 ## Status Bit Map
 
-Most cores have a Status Bit Map at the top of the `CONF_STR` section. Developers update it to show which status bits are occupied. Please use it when developing a core, because it is a helpful reference that aids collaboration: only one option can occupy a status bit, so this is important. Status bit `[0]` is reserved as a soft reset.
+Most cores have a Status Bit Map at the top of the `CONF_STR` section. Developers update it to show which status bits are occupied. Please use it when developing a core, because it is a helpful reference that aids collaboration: only one option can occupy a status bit, so this is important. Status bit `[0]` is reserved as a soft reset. The status register is 128 bits wide.
 
 For example, with nothing occupied:
 
@@ -53,7 +53,8 @@ This tells other developers that `status[9:8]` are occupied and should not be us
 * `H{Index}` - Prefix which hides the option if `menumask[Index]` is set.
 * `h{Index}` - Same as `H`, but hides the option if `menumask[Index]` is NOT set.
 * `O{Index1}[{Index2}],{Name},{Options...}` - Option button that allows you to select between various choices.
-    * `{Index1}` and `{Index2}` are values from 0-9 and A-V (like hex, but extending from A-V instead of A-F). This represents all 31 bits. The first and second index are the range of bits that will be set in the status register.
+    * `{Index1}` and `{Index2}` are values from 0-9 and A-V (like hex, but extending from A-V instead of A-F). This represents all 32 bits. The first and second index are the range of bits that will be set in the status register.
+    * Indexes can also be written in bracket notation with plain decimal numbers 0-127: `O[hi:lo]` for a bit range or `O[n]` for a single bit (e.g. `O[122:121],Aspect ratio,...`). The same notation works for `T` and `R`.
     * `{Name}` is what is shown to describe the option.
     * `{Options...}` - a list of comma separated options.
 * `P{#},{Title}` - Creates sub-page for options with `{Title}`.
@@ -76,6 +77,8 @@ These must be placed at the bottom of the configuration string:
 * `jn,{SNES Button Name1},[,{SNES Button2},...]` - sets the default mapping of the buttons, e.g. `jn,A` maps joystick bit 4 to the A button on a SNES-style controller automatically
 * `jp` - same as `jn` but used when `gamepad_defaults=1` in `MiSTer.ini`. Typically refers to positional mapping relative to a SNES controller
 * `V,{Version String}` - Version string. Takes the core name and appends a version string to the name displayed when the core is loaded. Note that the timestamp in the core browser (before the core is loaded) is not derived from `Version String`, but from the .rbf filename.
+* `v,{0-99}` - Config version. Appends `_v{n}` to the core's settings filename, so saved settings are not reused when `CONF_STR` options change in an incompatible way — change the number to force defaults on first start.
+* `X` - Disables the OSD entirely.
 * `I,INFO1,INFO2,...,INFO255` - `INFO1-INFO255` lines to display as OSD info (top left corner of screen).
 * `DEFMRA,{mra name}` - default MRA (e.g. Puckman.mra) to be used when the core is uploaded via USB Blaster (debug)
 

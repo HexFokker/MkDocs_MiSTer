@@ -5,11 +5,13 @@ HPS stands for Hard Processor System — the ARM part of the MiSTer FPGA. The `h
 The module has a few parameters that are used to set it up:
 
 * `CONF_STR` - how the HPS reads the OSD configuration string
+* `CONF_STR_BRAM` - when 1, the configuration string is stored in FPGA block RAM instead of being streamed on demand
 * `PS2DIV` - divides `clk_sys` to create a slower clock for the legacy PS/2 signals (`ps2_kbd_clk_out`, etc.)
 * `WIDE` - makes the `ioctl` data and `sd_buff` signals 8-bit (`WIDE=0`) or 16-bit (`WIDE=1`); when wide, `ioctl_addr` is incremented by 2
 * `VDNUM` - Virtual Device Number — can be 1 to 10, creating extra virtual block devices
 * `BLKSZ` - Block Size — sets the block size of the block device: 0 = 128, 1 = 256, 2 = 512 (default), ... 7 = 16384
 * `PS2WE` - PS/2 Write Enable — option to use two-way PS/2 communication. See the ao486 core.
+* `F12KEYMOD` - modifier key for the framework menu: 0 (default) means F12 opens the menu; 1 means F12 goes to the core and F12 + (L/R)GUI opens the menu
 
 `clk_sys` is the system clock — make sure to use the same clock when reading from these signals.
 `HPS_BUS` should be passed through from the top-level `emu`.
@@ -22,10 +24,10 @@ The module has a few parameters that are used to set it up:
 // VDNUM 1..10
 // BLKSZ 0..7: 0 = 128, 1 = 256, 2 = 512(default), .. 7 = 16384
 //
-module hps_io #(parameter CONF_STR, CONF_STR_BRAM=1, PS2DIV=0, WIDE=0, VDNUM=1, BLKSZ=2, PS2WE=0)
+module hps_io #(parameter CONF_STR, CONF_STR_BRAM=0, PS2DIV=0, WIDE=0, VDNUM=1, BLKSZ=2, PS2WE=0, STRLEN=$size(CONF_STR)>>3, F12KEYMOD=0)
 (
 	input             clk_sys,
-	inout      [48:0] HPS_BUS,
+	inout      [45:0] HPS_BUS,
 
 ```
 
@@ -83,6 +85,14 @@ Spinners — `spinner_x` — look like paddles, but have no stop in the hardware
 	output reg  [8:0] spinner_3,
 	output reg  [8:0] spinner_4,
 	output reg  [8:0] spinner_5,
+
+	// rumble output for cores that support force feedback
+	input      [15:0] joystick_0_rumble, // 15:8 - 'large' rumble motor magnitude, 7:0 'small' rumble motor magnitude
+	input      [15:0] joystick_1_rumble,
+	input      [15:0] joystick_2_rumble,
+	input      [15:0] joystick_3_rumble,
+	input      [15:0] joystick_4_rumble,
+	input      [15:0] joystick_5_rumble,
 ```
 
 ## Buttons
@@ -113,6 +123,8 @@ Buttons from the top-level `emu` are what the hardware sees. Buttons from `hps_i
 	output            direct_video,
 ```
 
+`video_rotated` is a separate input that tells the core when the HDMI output is being rotated by the framework (used by vertical arcade games).
+
 ## Status
 
 The status bits are used by the OSD to provide the core with the values the user picks in the OSD. For example, the status string:
@@ -127,8 +139,8 @@ would set `status[1]` to 0 for NTSC and 1 for PAL.  See the [CONF_STR](conf_str.
 * status_in, status_set - when status_set is 1, the hps_io will grab the status_in and use it to change the status bits
 
 ```Verilog
-	output reg [63:0] status,
-	input      [63:0] status_in,
+	output reg [127:0] status,
+	input      [127:0] status_in,
 	input             status_set,
 	input      [15:0] status_menumask,
 ```
@@ -205,7 +217,7 @@ When the user unmounts the image from the OSD, img_mounted will go high, and the
 Boot ROMs are automatically loaded using the `ioctl` lines. You can also have ROMs loaded via the `F` option in the OSD, or via an MRA.  
 
 * `ioctl_download` - 1 when data is being downloaded. 
-* `ioctl_index` - `[15:6]` is the file type, `[5:0]` the file number
+* `ioctl_index` - `[15:6]` is the file type, `[5:0]` the file number. For `F`-loaded files the type field is the extension index; `boot1.rom` uses type 1, mounted images use their `S` slot class, and special transfers use dedicated values (arcade DIP data is sent with index 254).
 * `ioctl_wr` - high when each byte is valid. 
 * `ioctl_addr` - address of byte from / to file - counts by two if set to wide
 * `ioctl_dout` - data going to core from HPS (ROM)
@@ -224,7 +236,8 @@ Boot ROMs are automatically loaded using the `ioctl` lines. You can also have RO
 	output reg [26:0] ioctl_addr,         // in WIDE mode address will be incremented by 2
 	output reg [DW:0] ioctl_dout,
 	output reg        ioctl_upload = 0,   // signal indicating an active upload
-	input             ioctl_upload_req,
+	input             ioctl_upload_req,   // request to save (must be supported on HPS side for specific core)
+	input       [7:0] ioctl_upload_index,
 	input      [DW:0] ioctl_din,
 	output reg        ioctl_rd,
 	output reg [31:0] ioctl_file_ext,

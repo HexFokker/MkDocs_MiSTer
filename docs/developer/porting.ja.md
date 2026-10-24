@@ -38,7 +38,7 @@ module emu
 	input         RESET,
 
 	//Must be passed to hps_io module
-	inout  [48:0] HPS_BUS,
+	inout  [45:0] HPS_BUS,
 
 	//Base video clock. Usually equals to CLK_SYS.
 	output        CLK_VIDEO,
@@ -61,10 +61,13 @@ module emu
 	output        VGA_F1,
 	output [1:0]  VGA_SL,
 	output        VGA_SCALER, // Force VGA scaler
+	output        VGA_DISABLE, // analog out is off
 
 	input  [11:0] HDMI_WIDTH,
 	input  [11:0] HDMI_HEIGHT,
 	output        HDMI_FREEZE,
+	output        HDMI_BLACKOUT,
+	output        HDMI_BOB_DEINT,
 
 	output        LED_USER,  // 1 - ON, 0 - OFF.
 
@@ -121,6 +124,19 @@ module emu
 	output        SDRAM_nRAS,
 	output        SDRAM_nWE,
 
+	input         UART_CTS,
+	output        UART_RTS,
+	input         UART_RXD,
+	output        UART_TXD,
+	output        UART_DTR,
+	input         UART_DSR,
+
+	// Open-drain User port (SNAC and other I/O board peripherals)
+	input   [6:0] USER_IN,
+	output  [6:0] USER_OUT,
+
+	input         OSD_STATUS,
+
     // there are more needed signals - see the Template_MiSTer repository
 );
 ```
@@ -139,7 +155,7 @@ input   RESET
 コアが DDR3 メモリーを使う場合（スケーラーは除く）、初期 RESET とさよなら RESET は正しい動作に不可欠です。RESET 中に DDR3 にアクセスするとハードハングします。
 
 ```verilog
-inout  [48:0] HPS_BUS
+inout  [45:0] HPS_BUS
 ```
 
 そのまま `hps_io` モジュールに渡してください。
@@ -177,10 +193,10 @@ output        AUDIO_S
 
 MiSTer にはオリジナルの MiST io モジュールに対するいくつかの変更・改善があります：
 
-* 同時に最大4つのイメージをマウント可能（MiST は1つのみ）。複数のマウントイメージが必要な場合は、モジュールパラメーター `VDNUM` を 2..4 に設定します。`VDNUM=1` なら、関連する信号は MiST と同じです。
+* 同時に最大10のイメージをマウント可能（MiST は1つのみ）。複数のマウントイメージが必要な場合は、モジュールパラメーター `VDNUM` を 2..10 に設定します。`VDNUM=1` なら、関連する信号は MiST と同じです。
 * MiSTer の SD カードは複数のパーティションを使い、MiSTer に不可欠な他の部分を保持しているため、コアは SD カード全体にはアクセスできず、イメージファイルのみアクセスできます。SD カード全体への直接アクセスが必要なコアは、イメージのみアクセスするよう再設計してください。
 * SD カード上の Main MiSTer ファイルシステムは exFAT で、4 GB を超えるファイルに対応しています。
-* OSD は最大15行に対応（MiST は7行）。多くのコアで便利です。
+* OSD は最大16行に対応（MiST は7行）。多くのコアで便利です。
 * ARM↔FPGA 通信はパラレルバス上で行われ、高速化されています。16ビット I/O に対応。
 
 ファームウェアには他にも内部改善があります。キーボード／マウス／ジョイスティックのセットアップなどです。

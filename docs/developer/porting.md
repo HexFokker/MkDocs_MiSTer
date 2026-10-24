@@ -37,7 +37,7 @@ module emu
 	input         RESET,
 
 	//Must be passed to hps_io module
-	inout  [48:0] HPS_BUS,
+	inout  [45:0] HPS_BUS,
 
 	//Base video clock. Usually equals to CLK_SYS.
 	output        CLK_VIDEO,
@@ -60,10 +60,13 @@ module emu
 	output        VGA_F1,
 	output [1:0]  VGA_SL,
 	output        VGA_SCALER, // Force VGA scaler
+	output        VGA_DISABLE, // analog out is off
 
 	input  [11:0] HDMI_WIDTH,
 	input  [11:0] HDMI_HEIGHT,
 	output        HDMI_FREEZE,
+	output        HDMI_BLACKOUT,
+	output        HDMI_BOB_DEINT,
 
 	output        LED_USER,  // 1 - ON, 0 - OFF.
 
@@ -120,6 +123,19 @@ module emu
 	output        SDRAM_nRAS,
 	output        SDRAM_nWE,
 
+	input         UART_CTS,
+	output        UART_RTS,
+	input         UART_RXD,
+	output        UART_TXD,
+	output        UART_DTR,
+	input         UART_DSR,
+
+	// Open-drain User port (SNAC and other I/O board peripherals)
+	input   [6:0] USER_IN,
+	output  [6:0] USER_OUT,
+
+	input         OSD_STATUS,
+
     // there are more needed signals - see the Template_MiSTer repository
 );
 ```
@@ -137,7 +153,7 @@ This signal is asserted while the ARM side is initializing. It can be used as an
 If the core uses DDR3 memory (the scaler doesn't count), the initial and bye-bye RESETs are crucial for correct operation. You will get a hard hang if DDR3 is accessed during RESET.
 
 ```verilog
-inout  [48:0] HPS_BUS
+inout  [45:0] HPS_BUS
 ```
 
 Pass it as-is to the `hps_io` module.
@@ -175,10 +191,10 @@ The supplementary module `hps_io.v` is also required in the same entity (see `zx
 
 MiSTer has some changes/improvements over original MiST io modules:
 
-* Supports up to 4 images mounted at the same time (MiST has only 1). Set the module parameter `VDNUM` to 2..4 if more than one mounted image is required. If `VDNUM=1`, the related signals are the same as in MiST.
+* Supports up to 10 images mounted at the same time (MiST has only 1). Set the module parameter `VDNUM` to 2..10 if more than one mounted image is required. If `VDNUM=1`, the related signals are the same as in MiST.
 * Because the SD card on MiSTer uses multiple partitions and holds other parts vital to MiSTer, cores cannot access the whole SD card — only image files. Cores requiring direct access to the whole SD card should be redesigned to access images only.
 * The Main MiSTer file system on the SD card is exFAT, which supports files larger than 4 GB.
-* OSD supports up to 15 lines (versus 7 in MiST), which is handy for many cores.
+* OSD supports up to 16 lines (versus 7 in MiST), which is handy for many cores.
 * ARM↔FPGA communication runs over a parallel bus, which speeds it up. It supports 16-bit I/O.
 
 The firmware has other under-the-hood improvements, like keyboard/mouse/joystick setup.

@@ -5,11 +5,13 @@ HPS は Hard Processor System の略で、MiSTer FPGA の ARM 部分です。`hp
 モジュールには設定に使ういくつかのパラメーターがあります：
 
 * `CONF_STR` - HPS が OSD 設定文字列を読み込む方法
+* `CONF_STR_BRAM` - 1 のとき、設定文字列をオンデマンドでストリームする代わりに FPGA ブロック RAM に格納する
 * `PS2DIV` - `clk_sys` を分周してレガシー PS/2 信号用の遅いクロック（`ps2_kbd_clk_out` など）を作る
 * `WIDE` - `ioctl` データと `sd_buff` 信号を 8ビット（`WIDE=0`）または 16ビット（`WIDE=1`）にする。wide のとき `ioctl_addr` は2ずつインクリメントされる
 * `VDNUM` - Virtual Device Number。1〜10 で、追加の仮想ブロックデバイスを作成
 * `BLKSZ` - Block Size。ブロックデバイスのブロックサイズを設定：0 = 128、1 = 256、2 = 512（デフォルト）、…7 = 16384
 * `PS2WE` - PS/2 Write Enable。双方向 PS/2 通信を使うオプション。ao486 コアを参照。
+* `F12KEYMOD` - フレームワークメニューの修飾キー。0（デフォルト）は F12 でメニューを開く。1 は F12 をコアに渡し、F12 + (L/R)GUI でメニューを開く
 
 `clk_sys` はシステムクロックです。これらの信号を読むときは同じクロックを使ってください。
 `HPS_BUS` はトップレベル `emu` からパススルーすべきです。
@@ -22,10 +24,10 @@ HPS は Hard Processor System の略で、MiSTer FPGA の ARM 部分です。`hp
 // VDNUM 1..10
 // BLKSZ 0..7: 0 = 128, 1 = 256, 2 = 512(default), .. 7 = 16384
 //
-module hps_io #(parameter CONF_STR, CONF_STR_BRAM=1, PS2DIV=0, WIDE=0, VDNUM=1, BLKSZ=2, PS2WE=0)
+module hps_io #(parameter CONF_STR, CONF_STR_BRAM=0, PS2DIV=0, WIDE=0, VDNUM=1, BLKSZ=2, PS2WE=0, STRLEN=$size(CONF_STR)>>3, F12KEYMOD=0)
 (
 	input             clk_sys,
-	inout      [48:0] HPS_BUS,
+	inout      [45:0] HPS_BUS,
 
 ```
 
@@ -83,6 +85,14 @@ MiSTer は別々のジョイスティックで最大6プレイヤーに対応し
 	output reg  [8:0] spinner_3,
 	output reg  [8:0] spinner_4,
 	output reg  [8:0] spinner_5,
+
+	// rumble output for cores that support force feedback
+	input      [15:0] joystick_0_rumble, // 15:8 - 'large' rumble motor magnitude, 7:0 'small' rumble motor magnitude
+	input      [15:0] joystick_1_rumble,
+	input      [15:0] joystick_2_rumble,
+	input      [15:0] joystick_3_rumble,
+	input      [15:0] joystick_4_rumble,
+	input      [15:0] joystick_5_rumble,
 ```
 
 ## ボタン
@@ -113,6 +123,8 @@ MiSTer は別々のジョイスティックで最大6プレイヤーに対応し
 	output            direct_video,
 ```
 
+`video_rotated` は別の入力で、HDMI 出力がフレームワークによって回転されていることをコアに伝えます（縦画面アーケードゲームで使用）。
+
 ## ステータス
 
 ステータスビットは、OSD がユーザーが選んだ値をコアに提供するために使います。たとえば次のステータス文字列：
@@ -127,8 +139,8 @@ MiSTer は別々のジョイスティックで最大6プレイヤーに対応し
 * status_in、status_set - status_set が 1 のとき、hps_io は status_in を取り込んでステータスビットを変更する
 
 ```Verilog
-	output reg [63:0] status,
-	input      [63:0] status_in,
+	output reg [127:0] status,
+	input      [127:0] status_in,
 	input             status_set,
 	input      [15:0] status_menumask,
 ```
@@ -205,7 +217,7 @@ MiSTer は別々のジョイスティックで最大6プレイヤーに対応し
 ブート ROM は `ioctl` ラインで自動的に読み込まれます。OSD の `F` オプションや MRA 経由で ROM を読み込むこともできます。  
 
 * `ioctl_download` - データがダウンロード中のとき 1。 
-* `ioctl_index` - `[15:6]` はファイルタイプ、`[5:0]` はファイル番号
+* `ioctl_index` - `[15:6]` はファイルタイプ、`[5:0]` はファイル番号。`F` で読み込むファイルでは、タイプフィールドは拡張子インデックス。`boot1.rom` はタイプ 1、マウントイメージは `S` スロットクラスを使い、特殊転送は専用の値を使う（アーケード DIP データはインデックス 254 で送られる）。
 * `ioctl_wr` - 各バイトが有効なときハイ。 
 * `ioctl_addr` - ファイルからの・ファイルへのバイトのアドレス。wide に設定されていると2ずつカウント
 * `ioctl_dout` - HPS からコアへのデータ（ROM）
@@ -224,7 +236,8 @@ MiSTer は別々のジョイスティックで最大6プレイヤーに対応し
 	output reg [26:0] ioctl_addr,         // in WIDE mode address will be incremented by 2
 	output reg [DW:0] ioctl_dout,
 	output reg        ioctl_upload = 0,   // signal indicating an active upload
-	input             ioctl_upload_req,
+	input             ioctl_upload_req,   // request to save (must be supported on HPS side for specific core)
+	input       [7:0] ioctl_upload_index,
 	input      [DW:0] ioctl_din,
 	output reg        ioctl_rd,
 	output reg [31:0] ioctl_file_ext,
