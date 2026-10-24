@@ -68,12 +68,12 @@ Sega Saturn の MiSTer コアは、[srg320 (Sergey Dvodnenko)](https://www.patre
 
 ### "Fast timings" { #fast-timings }
 
-コアを読み込んだ後、OSD メニュー `Hardware -> Timings` には次の設定があります：
+コアを読み込んだ後、OSD メニュー `Hardware` の `Timing` オプションには次の設定があります：
 
-- `Normal`（デフォルト）
+- `Original`（デフォルト）
 - `Fast`（一般に "fast timings" と呼ばれる）
 
-`Fast` は使えますが、一部のタイトルを壊すことがあり（フリーズやグラフィックの乱れなど）、デフォルトとしては使わないのが良いです[^3]。これはリリース版コアの `Normal` モードの問題に対処するために存在します。
+`Fast` は使えますが、一部のタイトルを壊すことがあり（フリーズやグラフィックの乱れなど）、デフォルトとしては使わないのが良いです[^3]。これはリリース版コアの `Original` モードの問題に対処するために存在します。このオプションはシングル SDRAM ビルドにのみ存在し、Dual SDRAM ビルドでは常に fast timings になります。
 
 ## FAQ
 

@@ -14,7 +14,8 @@ Here are the currently supported SNES enhancement chips, with example games that
 * S-DD1 (only used in Star Ocean and Street Fighter Alpha 2)
 * SA-1 (Kirby series, Super Mario RPG)
 * SPC7110 (Far East of Eden Zero, Momotarou Dentetsu Happy)
-* ST1010 (F1 ROC II: Race of Champions)
+* ST010 (F1 ROC II: Race of Champions)
+* MSU-1 (CD-quality audio and data expansion used by ROM hacks)
 * S-RTC (Daikaijuu Monogatari II)
 
 Currently the only enhancement chips not supported are MX15001TFC (Nintendo Power Flash Cartridges), ST011 (Hayazashi Nidan Morita Shougi), and ST018 (Hayazashi Nidan Morita Shougi 2). This is mostly because the core is already near the limit of what the DE10-Nano's Cyclone V can fit.

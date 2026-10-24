@@ -15,8 +15,13 @@
 ## パスの優先順位
 コアパスには優先順位があります。`/games/PSX` フォルダーを含む USB ドライブを挿すと（`/media/usb<0..5>/games/PSX` としてマウント）、MiSTer PSX コアは microSD 上のローカル `/media/fat/games/PSX` ではなくそちらを参照します。[Main_MiSTer の file_io.cpp](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/file_io.cpp#L922){target=_blank} による優先順位（高→低）：
 
-1. `/media/usb<0..5>`
-2. `/media/usb<0..5>/games`
+マウントされた各 USB ドライブを順に（`usb0`、`usb1`、... `usb5`）：
+
+1. `/media/usb<N>`
+2. `/media/usb<N>/games`
+
+その後：
+
 3. `/media/network`
 4. `/media/network/games`
 5. `/media/fat/cifs`

@@ -144,7 +144,7 @@ _注意_：これらのオプションをオンにした状態でバグ報告を
 
 ## MiSTer PSX コアでチートを使う { #using-cheats-on-the-mister-psx-core }
 
-PSX のチートは他の MiSTer コアとは違う方法で検出されます。他のコアでは、チートファイルはファイル名に CRC32 ハッシュを持ち、読み込んだ ROM の CRC32 と照合されます。PSX（およびチート対応の他の CD ベースコア）では異なります。CD イメージは CRC32 チェックには大きすぎるため、代わりに内部の Game ID をスキャンし、同じ Game ID のチートファイルを読み込みます。たとえば Final Fantasy VII Disc 1 を読み込むと、MiSTer は Game ID SCUS-94163 を検出し、`./cheats/PSX/` から `SCUS-94163.zip` を読み込みます。OSD で Data Cache 拡張を有効にするとチートは無効になり機能しません。これは仕様です。
+PSX のチートは他の MiSTer コアとは違う方法で検出されます。他のコアでは、チートファイルはファイル名に CRC32 ハッシュを持ち、読み込んだ ROM の CRC32 と照合されます。PSX（およびチート対応の他の CD ベースコア）では異なります。CD イメージは CRC32 チェックには大きすぎるため、代わりに内部の Game ID をスキャンし、同じ Game ID のチートファイルを読み込みます。たとえば Final Fantasy VII Disc 1 を読み込むと、MiSTer は Game ID SCUS-94163 を検出し、`./cheats/PSX/` から `SCUS-94163.zip` を読み込みます。OSD で Turbo を有効にするとチートは無効になり機能しません。これは仕様です。
 
 ## コアのバリアント
 

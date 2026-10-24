@@ -2,7 +2,7 @@ The [MiSTer TurboGrafx16 core](https://github.com/MiSTer-devel/TurboGrafx16_MiST
 
 ## Controller Options
 
-The OSD lets you change which original controller your controller simulates. For example, Pachio-Kun was played with a pachinko-style controller that had an angled slider for aiming the pachinko balls; you can use a mouse for this movement instead.
+The OSD lets you change which original controller your controller simulates. For example, Pachio-Kun was played with a pachinko-style controller that had an angled slider for aiming the pachinko balls; select Pachinko in the Special option and use an analog stick or paddle for this movement instead.
 
 The Turbo Tap controller is also supported. This is separate from MiSTer's built-in turbo feature: the Turbo Tap had a specific turbo frequency that suits some games better, and enabling this option makes the buttons use turbo at that controller's original rate.
 

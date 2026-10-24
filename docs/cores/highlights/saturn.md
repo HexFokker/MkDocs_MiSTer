@@ -68,12 +68,12 @@ This page documents a key option; see the core's OSD for the others.
 
 ### "Fast timings"
 
-After loading the core, the OSD menu `Hardware -> Timings` offers these settings:
+After loading the core, the `Timing` option in the OSD menu `Hardware` offers these settings:
 
-- `Normal` (default)
+- `Original` (default)
 - `Fast` (commonly referred to as "fast timings")
 
-While `Fast` is available, it can break some titles (e.g. freezes and graphical glitches) and is best not used as the default[^3]. It exists to address issues in the `Normal` mode of the released core.
+While `Fast` is available, it can break some titles (e.g. freezes and graphical glitches) and is best not used as the default[^3]. It exists to address issues in the `Original` mode of the released core. This option is only present in single-SDRAM builds; Dual SDRAM builds always use fast timings.
 
 ## FAQ
 

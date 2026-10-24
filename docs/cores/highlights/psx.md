@@ -144,7 +144,7 @@ Three information overlays are available, disabled by default:
 
 ## Using cheats on the MiSTer PSX core
 
-PSX cheats are detected differently from other MiSTer cores. On other cores, the cheat file carries a CRC32 hash in its filename, checked against the CRC32 of the loaded ROM. PSX (and other CD-based cores with cheat support) works differently: CD images are too large for a CRC32 check, so the internal Game ID is scanned instead and the cheats file with the same Game ID is loaded. For example, when Final Fantasy VII Disc 1 is loaded, MiSTer detects Game ID SCUS-94163 and loads `SCUS-94163.zip` from `./cheats/PSX/`. Note that when the Data Cache enhancement is enabled in the OSD, cheats are disabled and will not function. This is by design.
+PSX cheats are detected differently from other MiSTer cores. On other cores, the cheat file carries a CRC32 hash in its filename, checked against the CRC32 of the loaded ROM. PSX (and other CD-based cores with cheat support) works differently: CD images are too large for a CRC32 check, so the internal Game ID is scanned instead and the cheats file with the same Game ID is loaded. For example, when Final Fantasy VII Disc 1 is loaded, MiSTer detects Game ID SCUS-94163 and loads `SCUS-94163.zip` from `./cheats/PSX/`. Note that when Turbo is enabled in the OSD, cheats are disabled and will not function. This is by design.
 
 ## Core variants
 

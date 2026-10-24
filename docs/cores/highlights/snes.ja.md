@@ -14,7 +14,8 @@ Super Nintendo Entertainment System（SNES）の MiSTer コアには多くの機
 * S-DD1（Star Ocean と Street Fighter Alpha 2 のみ）
 * SA-1（Kirby シリーズ、Super Mario RPG）
 * SPC7110（Far East of Eden Zero、Momotarou Dentetsu Happy）
-* ST1010（F1 ROC II: Race of Champions）
+* ST010（F1 ROC II: Race of Champions）
+* MSU-1（ROM ハックで使われる CD 品質オーディオ・データ拡張）
 * S-RTC（Daikaijuu Monogatari II）
 
 現在対応していない拡張チップは、MX15001TFC（Nintendo Power Flash Cartridges）、ST011（Hayazashi Nidan Morita Shougi）、ST018（Hayazashi Nidan Morita Shougi 2）のみです。主な理由は、コアがすでに DE10-Nano の Cyclone V に収まる限界近くにあるためです。
