@@ -7,28 +7,28 @@ hide:
 
 ## CRT 設定表
 
-| Analog Video Out     | composite_sync= | vga_mode= | vga_sog= | direct_video= | vga_scaler= | forced_scandoubler= | SoG Switch⁷ |
-| -------------------- | :-------------: | :-------: | :------: | :-----------: | :---------: | :-----------------: | :--------: |
-| RGBS Native          | 1               | rgb       | 0        | 0             | 0           | 0                   | AUTO       |
-| RGBS Scan-doubled¹   | 1               | rgb       | 0        | 0             | 0           | 1                   | AUTO       |
-| RGBS Upscaled²       | 1               | rgb       | 0        | 0             | 1           | 0                   | AUTO       |
-| RGBS Direct³         | 1               | rgb       | 0        | 1             | 0           | 0                   | N/A        |
-| RGBHV Native         | 0               | rgb       | 0        | 0             | 0           | 0                   | AUTO       |
-| RGBHV Scan-doubled¹  | 0               | rgb       | 0        | 0             | 0           | 1                   | AUTO       |
-| RGBHV Upscaled²      | 0               | rgb       | 0        | 0             | 1           | 0                   | AUTO       |
-| RGBHV Direct³        | 0               | rgb       | 0        | 1             | 0           | 0                   | N/A        |
-| RGsB Native          | 1               | rgb       | 1        | 0             | 0           | 0                   | AUTO       |
-| RGsB Scan-doubled¹   | 1               | rgb       | 1        | 0             | 0           | 1                   | AUTO       |
-| RGsB Upscaled²       | 1               | rgb       | 1        | 0             | 1           | 0                   | AUTO       |
-| RGsB Direct³         | 1               | rgb       | 1        | 1             | 0           | 0                   | N/A        |
-| YPbPr Native         | 0               | ypbpr     | 1        | 0             | 0           | 0                   | OVR        |
-| YPbPr Scan-doubled   | 0               | ypbpr     | 1        | 0             | 0           | 1                   | OVR        |
-| YPbPr Upscaled²      | 0               | ypbpr     | 1        | 0             | 1           | 0                   | OVR        |
-| YPbPr Direct³⁴       | 0               | ypbpr     | 0        | 1             | 0           | 0                   | N/A        |
-| S-Video Native⁵      | 1               | svideo    | 0        | 0             | 0           | 0                   | N/A        |
-| S-Video Converted⁶   | 1               | rgb       | 0        | 0             | 0           | 0                   | N/A        |
-| Composite Native⁵    | 1               | svideo    | 0        | 0             | 0           | 0                   | N/A        |
-| Composite Converted⁶ | 1               | rgb       | 0        | 0             | 0           | 0                   | N/A        |
+| Analog Video Out     | composite_sync= | vga_mode= | vga_sog= | direct_video= | vga_scaler= | forced_scandoubler= |
+| -------------------- | :-------------: | :-------: | :------: | :-----------: | :---------: | :-----------------: |
+| RGBS Native          | 1               | rgb       | 0        | 0             | 0           | 0                   |
+| RGBS Scan-doubled¹   | 1               | rgb       | 0        | 0             | 0           | 1                   |
+| RGBS Upscaled²       | 1               | rgb       | 0        | 0             | 1           | 0                   |
+| RGBS Direct³         | 1               | rgb       | 0        | 1             | 0           | 0                   |
+| RGBHV Native         | 0               | rgb       | 0        | 0             | 0           | 0                   |
+| RGBHV Scan-doubled¹  | 0               | rgb       | 0        | 0             | 0           | 1                   |
+| RGBHV Upscaled²      | 0               | rgb       | 0        | 0             | 1           | 0                   |
+| RGBHV Direct³        | 0               | rgb       | 0        | 1             | 0           | 0                   |
+| RGsB Native          | 1               | rgb       | 1        | 0             | 0           | 0                   |
+| RGsB Scan-doubled¹   | 1               | rgb       | 1        | 0             | 0           | 1                   |
+| RGsB Upscaled²       | 1               | rgb       | 1        | 0             | 1           | 0                   |
+| RGsB Direct³         | 1               | rgb       | 1        | 1             | 0           | 0                   |
+| YPbPr Native         | 0               | ypbpr     | 1        | 0             | 0           | 0                   |
+| YPbPr Scan-doubled   | 0               | ypbpr     | 1        | 0             | 0           | 1                   |
+| YPbPr Upscaled²      | 0               | ypbpr     | 1        | 0             | 1           | 0                   |
+| YPbPr Direct³⁴       | 0               | ypbpr     | 0        | 1             | 0           | 0                   |
+| S-Video Native⁵      | 1               | svideo    | 0        | 0             | 0           | 0                   |
+| S-Video Converted⁶   | 1               | rgb       | 0        | 0             | 0           | 0                   |
+| Composite Native⁵    | 1               | svideo    | 0        | 0             | 0           | 0                   |
+| Composite Converted⁶ | 1               | rgb       | 0        | 0             | 0           | 0                   |
 
 ¹ Scan-doubled = 2倍解像度（例：240p → 480p）  
 ² 上変換解像度は [`video_mode`](videomodes.md) の設定に従う  
@@ -36,6 +36,6 @@ hide:
 ⁴ 外部 "direct video" アダプターは Sync on Green（SoG）を通すための改造が必要  
 ⁵ アクティブ Y/C コンバーターが必要  
 ⁶ 外部 RGB to NTSC/PAL コンバーターが必要  
-⁷ Analog I/O ボード上の物理スイッチ
- 
+ **SoG スイッチ：** Analog I/O Board 6.x では、この表のすべての VGA 出力構成で物理 SoG スイッチを **AUTO** のままにします。**OVR** は SoG を強制的にオンにし、`vga_sog` を上書きします。I/O Board 9.2 with AV Board 1.2 には SoG スイッチがありません。どちらのハードウェアでも、表に示された `vga_sog` の値を使います。
+
 提供：[Porkchop Express](https://twitter.com/MisterAddons){target=_blank}

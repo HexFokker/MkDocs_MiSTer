@@ -1,17 +1,17 @@
-MiSTer has two native analog output paths: the VGA port on an Analog I/O board, or Direct Video through a compatible HDMI-to-VGA adapter on the DE10-Nano's HDMI port.
+MiSTer has two native analog output paths: VGA output from an I/O board, or Direct Video through a compatible HDMI-to-VGA adapter connected to the DE10-Nano's HDMI port.
 
 *Based in part on the CRT guide by [MikeS11](https://github.com/MikeS11/){target=_blank} and [ArchiveRL](https://github.com/ArchiveRL/){target=_blank} on the MiSTer FPGA GitHub Wiki, with substantial revisions.*
 
 ## Output paths
 
-Both paths produce a nearly identical image that should match the original hardware 1:1 in most cases.
+Both paths carry the core's video with minimal processing and normally produce nearly identical results.
 
-* Analog I/O board
-    * Pros: extra features (buttons, LEDs), no SoG mod needed for component output
-    * Cons: more expensive, can't use Dual SDRAM
-* Direct Video adapter
+* **I/O board VGA output** — Analog I/O Board 6.x, or I/O Board 9.2 with AV Board 1.2
+    * Pros: extra features such as buttons and LEDs; built-in sync circuitry for component output, so no cable modification is needed
+    * Cons: more expensive; cannot use Dual SDRAM while providing VGA output
+* **Direct Video adapter**
     * Pros: much cheaper
-    * Cons: no extra features, needs extra modification for component output, not all adapters are guaranteed to work
+    * Cons: no extra features; component output requires an additional sync circuit; not all adapters are guaranteed to work
 
 ## Standard RGB / component connections
 
@@ -20,17 +20,15 @@ Both paths produce a nearly identical image that should match the original hardw
 * **Consumer TV with RGB SCART (15 kHz)** — a SCART cable with a 470-ohm resistor on the composite sync line; [it's recommended](https://www.retrorgb.com/beware-of-mister-scart-cables.html){target=_blank} to ask the seller whether one is built in. Sources: [MiSTerAddons (US)](https://misteraddons.com/collections/parts/products/video-cables-hdmi-scart-ypbpr){target=_blank}, [Retro Access (UK)](https://retro-access.com/products/mister-io-scart?_pos=1&_sid=97cb11000&_ss=r){target=_blank}, [UltimateMiSTer (PT)](https://ultimatemister.com/product/rgb-scart-cable/){target=_blank}, [Wolfsoft (DE)](https://www.wolfsoft.de/shop/product_info.php/products_id/15401//mister-premium-rgb-kabel-2m.html){target=_blank}, [Antoniovillena (ES)](https://www.antoniovillena.es/store/product/vga-scart-cable/){target=_blank}. A MiST cable usually works too but may lack the resistor: [Lotharek (PL)](https://lotharek.pl/productdetail.php?id=171){target=_blank}, [Amigastore (EU)](http://amigastore.eu/en/512-mist-scart-cable-mist-db15-f-to-scart-tv.html){target=_blank}. Alternatively use a VGA-SCART converter: [Antoniovillena](https://www.antoniovillena.es/store/product/vga-scart-adapter/){target=_blank}, [Arcadeforge](https://arcadeforge.net/UMSA/UMSA-Ultimate-SCART-Adapter::57.html?language=en){target=_blank}, [Retro Upgrades](https://www.retroupgrades.co.uk/product/vga2scart/){target=_blank}. On a consumer Trinitron you may also need an extra resistor/potentiometer to fix dull or incorrect colors ([forum link](https://misterfpga.org/viewtopic.php?p=4162#p4162){target=_blank}).
     INI: `composite_sync=1`
 
-* **Consumer TV with YPbPr component (15 kHz)** — with an I/O board, a standard VGA-to-component cable is enough.
-    INI: `vga_mode=ypbpr` — *you might need to flip the SoG switch on the I/O board*
-
-    With Direct Video, the cable needs a sync-on-green circuit added — see [Direct Video - Setup for YPbPr Signals](directvideo.md#setup-for-ypbpr-signals) or [this forum thread](https://misterfpga.org/viewtopic.php?f=33&t=1471){target=_blank}.
-    INI: `direct_video=1`, `composite_sync=1`, `vga_mode=ypbpr`
+* **Consumer TV with YPbPr component (15 kHz)**
+    * **Analog I/O Board 6.x or I/O Board 9.2 with AV Board 1.2** — a standard VGA-to-component cable. INI: `vga_mode=ypbpr`, `vga_sog=1`. On Analog I/O Board 6.x, set the SoG switch to **AUTO** so `vga_sog` controls SoG; I/O Board 9.2 with AV Board 1.2 has no SoG switch.
+    * **Direct Video** — the cable needs a sync-on-green circuit added; see [Direct Video - Setup for YPbPr Signals](directvideo.md#setup-for-ypbpr-signals) or [this forum thread](https://misterfpga.org/viewtopic.php?f=33&t=1471){target=_blank}. INI: `direct_video=1`, `composite_sync=1`, `vga_mode=ypbpr`
 
 * **VGA monitor (31 kHz)** — a standard VGA cable.
     INI: `forced_scandoubler=1` (plus `direct_video=1` for Direct Video)
 
-* **PVM/BVM** — a standard VGA-to-BNC cable carrying RGB plus a separate sync line.
-    INI: `composite_sync=1` — the sync line carries CSYNC (plus `direct_video=1` for Direct Video)
+* **PVM/BVM with RGBS input** — a standard VGA-to-BNC cable carrying RGB and a separate composite-sync signal.
+    INI: `composite_sync=1` (plus `direct_video=1` for Direct Video)
 
 * **Commodore monitors** — a cable for the 1084S is sold by [UltimateMiSTer (PT)](https://ultimatemister.com/product/mister-commodore-1084s/){target=_blank}.
 
@@ -51,8 +49,9 @@ The exact cabling depends on the adapter and the display — the items below are
 
 ### INI settings
 
-* **Analog I/O board** — set the SoG switch OFF (the Y/C adapter generates the sync):
+* **Analog I/O Board 6.x or I/O Board 9.2 with AV Board 1.2** — the Y/C adapter generates the sync. On Analog I/O Board 6.x, set the SoG switch to **AUTO**; **OVR** forces SoG on and must not be used here. I/O Board 9.2 with AV Board 1.2 has no SoG switch:
     * `vga_scaler=0`
+    * `vga_sog=0`
     * `composite_sync=1`
     * `vga_mode=svideo` (`cvbs` also works but is not recommended)
     * `ntsc_mode=0` (0 = normal NTSC, 1 = PAL-60, 2 = PAL-M; this setting is currently unused by cores)
@@ -70,5 +69,5 @@ Instead of the native Y/C output, an external converter can transcode an RGB or 
 ## CRT display types
 
 * **Consumer televisions** — mainly 15 kHz models (240p and 480i); later models may also take higher-rate component or HDMI inputs. Input support varies by region and model: composite was common in North America, RGB SCART was more common — though not universal — in Europe. Signal quality ranks roughly RF < composite < S-Video < component / RGB.
-* **Computer monitors** — designed for 31 kHz, usually VGA-only. A 240p signal can produce jitter or other artifacts even when scandoubled to 31 kHz. [Multisync monitors](https://en.wikipedia.org/wiki/Multisync_monitor){target=_blank} handle 15 kHz natively — uncommon, but a versatile option for different consoles and video timings.
+* **Computer monitors** — designed for 31 kHz, usually VGA-only. A 240p signal can produce jitter or other artifacts even when scandoubled to 31 kHz. Some [multisync monitors](https://en.wikipedia.org/wiki/Multisync_monitor){target=_blank} also accept 15 kHz natively, making them a versatile option for different consoles and video timings.
 * **Professional monitors** — Sony's PVM/BVM series, [broadcast reference monitors](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}, and medical-grade displays: high-quality builds with higher TVL (sharpness depends on model and condition), native RGB input on many models since the mid-80s, extensive front-panel image controls, easy servicing and good shielding. Many are multisync; 50/60 Hz support varies by model. Connectivity is broad, including BNC inputs — depending on the model, three BNC (RGB with sync-on-green), four (RGB plus composite sync), or five (RGB plus separate horizontal and vertical sync). Used units are expensive and hard to find.

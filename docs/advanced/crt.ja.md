@@ -1,17 +1,17 @@
-MiSTer には2つのネイティブアナログ出力経路があります。Analog I/O ボードの VGA ポート、または DE10-Nano の HDMI ポートに挿す互換性のある HDMI-to-VGA アダプター経由の Direct Video です。
+MiSTer には2つのネイティブアナログ出力経路があります。I/O ボードからの VGA 出力、または DE10-Nano の HDMI ポートに接続した互換性のある HDMI-to-VGA アダプター経由の Direct Video です。
 
 *このページは MiSTer FPGA GitHub Wiki で [MikeS11](https://github.com/MikeS11/){target=_blank} と [ArchiveRL](https://github.com/ArchiveRL/){target=_blank} が書いた CRT ガイドに一部基づいており、大幅に改訂されています。*
 
 ## 出力経路
 
-どちらの経路もほぼ同一の画像を生成し、ほとんどの場合元のハードウェアと 1:1 で一致するはずです。
+どちらの経路も最小限の処理でコアの映像を伝え、通常はほぼ同一の結果を生成します。
 
-* Analog I/O ボード
-    * 長所：追加機能（ボタン、LED）、コンポーネント出力に SoG 改造不要
-    * 短所：より高価、Dual SDRAM を使えない
-* Direct Video アダプター
+* **I/O ボードの VGA 出力** — Analog I/O Board 6.x、または I/O Board 9.2 with AV Board 1.2
+    * 長所：ボタンや LED などの追加機能、コンポーネント出力用の同期回路を内蔵しているためケーブル改造が不要
+    * 短所：より高価、VGA 出力を使う間は Dual SDRAM を使えない
+* **Direct Video アダプター**
     * 長所：はるかに安い
-    * 短所：追加機能なし、コンポーネント出力に追加の改造が必要、すべてのアダプターの動作が保証されているわけではない
+    * 短所：追加機能なし、コンポーネント出力には追加の同期回路が必要、すべてのアダプターの動作が保証されているわけではない
 
 ## 標準 RGB／コンポーネント接続
 
@@ -20,17 +20,15 @@ MiSTer には2つのネイティブアナログ出力経路があります。Ana
 * **RGB SCART 付き民生テレビ（15 kHz）** — コンポジット同期ラインに 470 オーム抵抗のある SCART ケーブル。抵抗が内蔵か販売者に確認するのが[推奨](https://www.retrorgb.com/beware-of-mister-scart-cables.html){target=_blank}です。購入先：[MiSTerAddons (US)](https://misteraddons.com/collections/parts/products/video-cables-hdmi-scart-ypbpr){target=_blank}、[Retro Access (UK)](https://retro-access.com/products/mister-io-scart?_pos=1&_sid=97cb11000&_ss=r){target=_blank}、[UltimateMiSTer (PT)](https://ultimatemister.com/product/rgb-scart-cable/){target=_blank}、[Wolfsoft (DE)](https://www.wolfsoft.de/shop/product_info.php/products_id/15401//mister-premium-rgb-kabel-2m.html){target=_blank}、[Antoniovillena (ES)](https://www.antoniovillena.es/store/product/vga-scart-cable/){target=_blank}。MiST ケーブルも概ね動きますが抵抗がないことがあります：[Lotharek (PL)](https://lotharek.pl/productdetail.php?id=171){target=_blank}、[Amigastore (EU)](http://amigastore.eu/en/512-mist-scart-cable-mist-db15-f-to-scart-tv.html){target=_blank}。別案として VGA-SCART コンバーター：[Antoniovillena](https://www.antoniovillena.es/store/product/vga-scart-adapter/){target=_blank}、[Arcadeforge](https://arcadeforge.net/UMSA/UMSA-Ultimate-SCART-Adapter::57.html?language=en){target=_blank}、[Retro Upgrades](https://www.retroupgrades.co.uk/product/vga2scart/){target=_blank}。民生用 Trinitron では、暗い・不正確な色を直すために追加の抵抗／ポテンショメーターが必要になることがあります（[フォーラムリンク](https://misterfpga.org/viewtopic.php?p=4162#p4162){target=_blank}）。
     INI：`composite_sync=1`
 
-* **YPbPr コンポーネント付き民生テレビ（15 kHz）** — I/O ボードなら標準の VGA-to-component ケーブルで足ります。
-    INI：`vga_mode=ypbpr` — *I/O ボードの SoG スイッチを切り替える必要があるかもしれません*
-
-    Direct Video の場合、ケーブルに sync-on-green 回路を追加する必要があります。[Direct Video - YPbPr 信号のセットアップ](directvideo.md#setup-for-ypbpr-signals)または[このフォーラムスレッド](https://misterfpga.org/viewtopic.php?f=33&t=1471){target=_blank}を参照。
-    INI：`direct_video=1`、`composite_sync=1`、`vga_mode=ypbpr`
+* **YPbPr コンポーネント付き民生テレビ（15 kHz）**
+    * **Analog I/O Board 6.x または I/O Board 9.2 with AV Board 1.2** — 標準の VGA-to-component ケーブルを使います。INI：`vga_mode=ypbpr`、`vga_sog=1`。Analog I/O Board 6.x では SoG スイッチを **AUTO** にして `vga_sog` で SoG を制御します。I/O Board 9.2 with AV Board 1.2 には SoG スイッチがありません。
+    * **Direct Video** — ケーブルに sync-on-green 回路を追加します。[Direct Video - YPbPr 信号のセットアップ](directvideo.md#setup-for-ypbpr-signals)または[このフォーラムスレッド](https://misterfpga.org/viewtopic.php?f=33&t=1471){target=_blank}を参照。INI：`direct_video=1`、`composite_sync=1`、`vga_mode=ypbpr`
 
 * **VGA モニター（31 kHz）** — 標準の VGA ケーブル。
     INI：`forced_scandoubler=1`（Direct Video では `direct_video=1` も追加）
 
-* **PVM/BVM** — RGB と独立した同期線を運ぶ標準の VGA-to-BNC ケーブル。
-    INI：`composite_sync=1` — 同期線は CSYNC を運びます（Direct Video では `direct_video=1` も追加）
+* **RGBS 入力の PVM/BVM** — RGB と独立したコンポジット同期信号を運ぶ標準の VGA-to-BNC ケーブルを使います。
+    INI：`composite_sync=1`（Direct Video では `direct_video=1` も追加）
 
 * **Commodore モニター** — 1084S 用ケーブルが [UltimateMiSTer (PT)](https://ultimatemister.com/product/mister-commodore-1084s/){target=_blank} から販売されています。
 
@@ -51,8 +49,9 @@ MiSTer には2つのネイティブアナログ出力経路があります。Ana
 
 ### INI 設定
 
-* **Analog I/O ボード** — SoG スイッチを OFF にします（Y/C アダプターが同期を生成するため）：
+* **Analog I/O Board 6.x または I/O Board 9.2 with AV Board 1.2** — Y/C アダプターが同期を生成します。Analog I/O Board 6.x では SoG スイッチを **AUTO** にします。**OVR** は SoG を強制的にオンにするため、この Y/C 接続では使えません。I/O Board 9.2 with AV Board 1.2 には SoG スイッチがありません：
     * `vga_scaler=0`
+    * `vga_sog=0`
     * `composite_sync=1`
     * `vga_mode=svideo`（`cvbs` でも動きますが推奨されません）
     * `ntsc_mode=0`（0 = 通常 NTSC、1 = PAL-60、2 = PAL-M。この設定は現状どのコアにも使われていません）
@@ -70,5 +69,5 @@ MiSTer には2つのネイティブアナログ出力経路があります。Ana
 ## CRT ディスプレイの種類
 
 * **民生テレビ** — 主に 15 kHz モデル（240p と 480i）。後期のモデルはより高いレートのコンポーネントや HDMI 入力を持つものもあります。入力対応は地域とモデルにより異なります。北米ではコンポジットが一般的で、欧州では RGB SCART がより一般的（ただし全てではない）でした。画質の順位はおおむね RF < コンポジット < S-Video < コンポーネント／RGB です。
-* **コンピューターモニター** — 31 kHz 向けに設計され、通常は VGA のみ。240p 信号は 31 kHz にスキャンダブルしてもジャッターやその他のアーティファクトが出ることがあります。[マルチシンクモニター](https://en.wikipedia.org/wiki/Multisync_monitor){target=_blank}は 15 kHz をネイティブに扱えます。珍しいですが、さまざまなコンソールやビデオタイミングに対応できる柔軟な選択肢です。
+* **コンピューターモニター** — 31 kHz 向けに設計され、通常は VGA のみ。240p 信号は 31 kHz にスキャンダブルしてもジャッターやその他のアーティファクトが出ることがあります。一部の[マルチシンクモニター](https://en.wikipedia.org/wiki/Multisync_monitor){target=_blank}は 15 kHz もネイティブに受け付けるため、さまざまなコンソールやビデオタイミングに対応できる柔軟な選択肢となります。
 * **プロ用モニター** — Sony の PVM/BVM シリーズ、[放送用リファレンスモニター](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}、医療用ディスプレイなど：高い TVL の高品質な設計（実際のシャープさはモデルと状態に依存）、80年代半ば以降の多くのモデルでネイティブ RGB 入力、豊富な前面パネルの画像調整、修理しやすくシールドも良好。多くがマルチシンクで、50/60 Hz 対応はモデルにより異なります。接続性は広範で BNC 入力も含みます。モデルによって、3本（RGB＋sync-on-green）、4本（RGB＋コンポジット同期）、5本（RGB＋独立水平同期・垂直同期）の BNC を使います。中古品は高価で入手困難です。
