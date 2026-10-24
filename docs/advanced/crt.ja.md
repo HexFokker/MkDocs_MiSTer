@@ -54,7 +54,7 @@ MiSTer には2つのネイティブアナログ出力経路があります。I/O
     * `vga_sog=0`
     * `composite_sync=1`
     * `vga_mode=svideo`（`cvbs` でも動きますが推奨されません）
-    * `ntsc_mode=0`（0 = 通常 NTSC、1 = PAL-60、2 = PAL-M。めったに必要ありません。Y/C 副搬送波周波数にのみ影響します）
+    * `ntsc_mode=0`（0 = NTSC、1 = PAL-60、2 = PAL-M。Y/C の色符号化を変更しますが、ビデオタイミングは変更しません。PAL-60 または PAL-M が明確に必要な場合を除き 0 のままにします）
 
 * **Direct Video アダプター** — sync-on-green 回路が必要です。アクティブおよびパッシブアダプターには内蔵されています。ない場合は [Direct Video - YPbPr 信号のセットアップ](directvideo.md#setup-for-ypbpr-signals) を参照。I/O ボードの物理 SoG スイッチは適用されません。アダプターの回路がカバーします：
     * `direct_video=1`

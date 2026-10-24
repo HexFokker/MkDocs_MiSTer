@@ -54,7 +54,7 @@ The exact cabling depends on the adapter and the display — the items below are
     * `vga_sog=0`
     * `composite_sync=1`
     * `vga_mode=svideo` (`cvbs` also works but is not recommended)
-    * `ntsc_mode=0` (0 = normal NTSC, 1 = PAL-60, 2 = PAL-M; rarely needed — only affects the Y/C subcarrier frequency)
+    * `ntsc_mode=0` (0 = NTSC, 1 = PAL-60, 2 = PAL-M; changes Y/C color encoding, not video timing; leave at 0 unless you specifically need PAL-60 or PAL-M)
 
 * **Direct Video adapter** — a sync-on-green circuit is required; active and passive adapters include one, otherwise see [Direct Video - Setup for YPbPr Signals](directvideo.md#setup-for-ypbpr-signals). The I/O board's physical SoG switch doesn't apply — the adapter's circuit covers it:
     * `direct_video=1`
