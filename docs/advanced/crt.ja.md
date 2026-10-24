@@ -76,7 +76,7 @@ I/O ボードまたは Direct Video アダプターを入手したら、ケー�
 
 ### コンポジット／S-Video への接続
 
-MiSTer コアは S-Video／コンポジット（Y/C）をネイティブで出力するようになりました。コアは既存の RGB ピン上に2つの信号を生成します。輝度（ルマ）はグリーン出力、色度（クロマ）はレッド出力です。アダプターボードがそれらを S-Video／コンポジットコネクターに変換します。
+対応コアは、輝度（Y）をグリーン出力、色度（C）をレッド出力に生成することで、コンポジット／S-Video をネイティブ出力します。Y/C アダプターボードがこれらの信号を S-Video またはコンポジット端子へ送り、同期信号を供給します。S-Video は Y と C を分離したまま伝え、コンポジットは両者を1本の CVBS 信号に合成します。
 
 #### アダプターボード
 
@@ -84,11 +84,12 @@ MiSTer コアは S-Video／コンポジット（Y/C）をネイティブで出�
 
 #### 接続要件
 
-* S-Video：
-    * VGA-to-component ケーブル（一部のモニターのみ必要、例：Commodore 1702）
-    * カスタム RCA to S-Video コネクター
+実際の配線はアダプターとディスプレイによって異なります。以下はあくまで例であり、すべての構成で必要な部品ではありません。
+
+* S-Video：Y と C はディスプレイまで常に別々の線で送る必要があります。アダプターとディスプレイによって、4ピン mini-DIN コネクターや個別の RCA 端子が使われます。Commodore 1702 のようなモニターは RCA 端子で Y/C を受けます。この場合「VGA-to-component」ケーブルは純粋に物理的な VGA→RCA ブレイクアウトとして使えます（信号はあくまで Y/C であり、YPbPr ではありません）。
 * コンポジット：
-    * VGA-to-component ケーブルに加えて、1オス→2メス RCA Y アダプタースプリッターケーブル。警告：この方法はルマトラップがないため深刻なレインボーアーティファクトが出ます。
+    * アダプターに専用のコンポジット（CVBS）RCA 出力がある場合は、それをディスプレイのコンポジット入力に直接接続します。Y アダプターは不要です。
+    * パッシブ構成では、VGA→RCA ブレイクアウトケーブルと 1オス→2メス RCA Y アダプターで Y と C を合成することもできます。この簡易な方法はルマトラップがなく、激しいレインボーアーティファクトが出ます。
 
 #### Analog I/O ボードでの設定 { #settings-with-the-analog-io-board }
 
@@ -97,12 +98,16 @@ MiSTer コアは S-Video／コンポジット（Y/C）をネイティブで出�
     * `vga_scaler=0`
     * `composite_sync=1`
     * `vga_mode=svideo`（`cvbs` も動きますが非推奨）
-    * `ntsc_mode=0`（0 = 通常 NTSC、1 = PAL-60、2 = PAL-M。現在これらを使うコアはありません）
+    * `ntsc_mode=0`（0 = 通常 NTSC、1 = PAL-60、2 = PAL-M。この設定は現状どのコアにも使われていません）
 
 #### Direct Video アダプターでの設定
 
-* sync-on-green 回路が必要。アクティブおよびパッシブアダプターには内蔵されています。ない場合は [Direct Video - YPbPr 信号のセットアップ](directvideo.md#setup-for-ypbpr-signals) を参照。
-* INI 設定：[Analog I/O ボード用](#settings-with-the-analog-io-board)と同じ INI リスト（ボードの物理 SoG スイッチは適用されません。アダプターの回路がカバーします）。ただし `vga_scaler=0` の代わりに `direct_video=1`。
+* sync-on-green 回路が必要。アクティブおよびパッシブアダプターには内蔵されています。ない場合は [Direct Video - YPbPr 信号のセットアップ](directvideo.md#setup-for-ypbpr-signals) を参照。I/O ボードの物理 SoG スイッチは適用されません。アダプターの回路がカバーします。
+* INI 設定：
+    * `direct_video=1`
+    * `composite_sync=1`
+    * `vga_mode=svideo`（`cvbs` でも動きますが推奨されません）
+    * `ntsc_mode=0`（0 = 通常 NTSC、1 = PAL-60、2 = PAL-M。この設定は現状どのコアにも使われていません）
 
 #### その他の RGB to コンポジット／S-Video コンバーター
 

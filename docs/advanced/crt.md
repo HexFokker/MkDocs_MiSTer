@@ -76,7 +76,7 @@ Most of the settings changes are done in your `MiSTer.ini` file, which is locate
 
 ### Connecting to composite or S-Video
 
-MiSTer cores now output S-Video / composite (Y/C) natively. The cores generate the two signals on the existing RGB pins: luma (brightness) on the green output and chroma (color) on the red output. An adapter board converts them to the S-Video / composite connectors.
+Supported cores output composite / S-Video natively by generating luma (Y) on the green output and chroma (C) on the red output. A Y/C adapter board carries these signals to the S-Video or composite jacks and provides the sync. S-Video keeps Y and C separate; composite combines them into a single CVBS signal.
 
 #### Adapter boards
 
@@ -84,11 +84,12 @@ MiSTer cores now output S-Video / composite (Y/C) natively. The cores generate t
 
 #### Connection requirements
 
-* S-Video:
-    * VGA-to-component cable (only required for some monitors, e.g. Commodore 1702)
-    * Custom RCA to S-Video connector
+The exact cabling depends on the adapter and the display — the items below are examples, not parts required for every setup.
+
+* S-Video: Y and C must stay on separate wires all the way to the display. Depending on the adapter and display, this can be a 4-pin mini-DIN connector or separate RCA jacks. Some monitors, such as the Commodore 1702, take Y/C on RCA jacks — in that case a "VGA-to-component" cable works purely as a physical VGA-to-RCA breakout (the signal is still Y/C, not YPbPr).
 * Composite:
-    * VGA-to-component cable plus a 1-male-to-2-female RCA Y-adapter splitter cable. Warning: this method produces severe rainbowing because there is no luma trap.
+    * If the adapter provides a dedicated composite (CVBS) RCA output, connect it straight to the display's composite input — no Y-adapter needed.
+    * A passive setup can instead combine Y and C with a VGA-to-RCA breakout cable and a 1-male-to-2-female RCA Y-adapter. This simple method lacks a luma trap and produces severe rainbow artifacts.
 
 #### Settings with the Analog I/O board
 
@@ -97,12 +98,16 @@ MiSTer cores now output S-Video / composite (Y/C) natively. The cores generate t
     * `vga_scaler=0`
     * `composite_sync=1`
     * `vga_mode=svideo` (`cvbs` also works but is not recommended)
-    * `ntsc_mode=0` (0 = normal NTSC, 1 = PAL-60, 2 = PAL-M; no cores currently use these)
+    * `ntsc_mode=0` (0 = normal NTSC, 1 = PAL-60, 2 = PAL-M; this setting is currently unused by cores)
 
 #### Settings with a Direct Video adapter
 
-* A sync-on-green circuit is required. Active and passive adapters include one; otherwise see [Direct Video - Setup for YPbPr Signals](directvideo.md#setup-for-ypbpr-signals).
-* INI settings: the same INI list as [for the Analog I/O board](#settings-with-the-analog-io-board) (the board's physical SoG switch doesn't apply — the adapter's circuit covers it), except `direct_video=1` instead of `vga_scaler=0`.
+* A sync-on-green circuit is required. Active and passive adapters include one; otherwise see [Direct Video - Setup for YPbPr Signals](directvideo.md#setup-for-ypbpr-signals). The I/O board's physical SoG switch doesn't apply — the adapter's circuit covers it.
+* INI settings:
+    * `direct_video=1`
+    * `composite_sync=1`
+    * `vga_mode=svideo` (`cvbs` also works but is not recommended)
+    * `ntsc_mode=0` (0 = normal NTSC, 1 = PAL-60, 2 = PAL-M; this setting is currently unused by cores)
 
 #### Other RGB to composite / S-Video converters
 
