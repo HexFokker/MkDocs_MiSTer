@@ -21,7 +21,7 @@ Both paths carry the core's video with minimal processing and normally produce n
     INI: `composite_sync=1`
 
 * **Consumer TV with YPbPr component (15 kHz)**
-    * **Analog I/O Board 6.x or I/O Board 9.2 with AV Board 1.2** — a standard VGA-to-component cable. INI: `vga_mode=ypbpr`, `vga_sog=1`. On Analog I/O Board 6.x, set the SoG switch to **AUTO** so `vga_sog` controls SoG; I/O Board 9.2 with AV Board 1.2 has no SoG switch.
+    * **Analog I/O Board 6.x or I/O Board 9.2 with AV Board 1.2** — a standard VGA-to-component cable. INI: `composite_sync=0`, `vga_mode=ypbpr`, `vga_sog=1`. On Analog I/O Board 6.x, set the SoG switch to **AUTO** so `vga_sog` controls SoG; I/O Board 9.2 with AV Board 1.2 has no SoG switch.
     * **Direct Video** — the cable needs a sync-on-green circuit added; see [Direct Video - Setup for YPbPr Signals](directvideo.md#setup-for-ypbpr-signals) or [this forum thread](https://misterfpga.org/viewtopic.php?f=33&t=1471){target=_blank}. INI: `direct_video=1`, `composite_sync=1`, `vga_mode=ypbpr`
 
 * **VGA monitor (31 kHz)** — a standard VGA cable.
@@ -54,7 +54,7 @@ The exact cabling depends on the adapter and the display — the items below are
     * `vga_sog=0`
     * `composite_sync=1`
     * `vga_mode=svideo` (`cvbs` also works but is not recommended)
-    * `ntsc_mode=0` (0 = normal NTSC, 1 = PAL-60, 2 = PAL-M; this setting is currently unused by cores)
+    * `ntsc_mode=0` (0 = normal NTSC, 1 = PAL-60, 2 = PAL-M; rarely needed — only affects the Y/C subcarrier frequency)
 
 * **Direct Video adapter** — a sync-on-green circuit is required; active and passive adapters include one, otherwise see [Direct Video - Setup for YPbPr Signals](directvideo.md#setup-for-ypbpr-signals). The I/O board's physical SoG switch doesn't apply — the adapter's circuit covers it:
     * `direct_video=1`

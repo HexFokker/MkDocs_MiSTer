@@ -21,7 +21,7 @@ MiSTer には2つのネイティブアナログ出力経路があります。I/O
     INI：`composite_sync=1`
 
 * **YPbPr コンポーネント付き民生テレビ（15 kHz）**
-    * **Analog I/O Board 6.x または I/O Board 9.2 with AV Board 1.2** — 標準の VGA-to-component ケーブルを使います。INI：`vga_mode=ypbpr`、`vga_sog=1`。Analog I/O Board 6.x では SoG スイッチを **AUTO** にして `vga_sog` で SoG を制御します。I/O Board 9.2 with AV Board 1.2 には SoG スイッチがありません。
+    * **Analog I/O Board 6.x または I/O Board 9.2 with AV Board 1.2** — 標準の VGA-to-component ケーブルを使います。INI：`composite_sync=0`、`vga_mode=ypbpr`、`vga_sog=1`。Analog I/O Board 6.x では SoG スイッチを **AUTO** にして `vga_sog` で SoG を制御します。I/O Board 9.2 with AV Board 1.2 には SoG スイッチがありません。
     * **Direct Video** — ケーブルに sync-on-green 回路を追加します。[Direct Video - YPbPr 信号のセットアップ](directvideo.md#setup-for-ypbpr-signals)または[このフォーラムスレッド](https://misterfpga.org/viewtopic.php?f=33&t=1471){target=_blank}を参照。INI：`direct_video=1`、`composite_sync=1`、`vga_mode=ypbpr`
 
 * **VGA モニター（31 kHz）** — 標準の VGA ケーブル。
@@ -54,7 +54,7 @@ MiSTer には2つのネイティブアナログ出力経路があります。I/O
     * `vga_sog=0`
     * `composite_sync=1`
     * `vga_mode=svideo`（`cvbs` でも動きますが推奨されません）
-    * `ntsc_mode=0`（0 = 通常 NTSC、1 = PAL-60、2 = PAL-M。この設定は現状どのコアにも使われていません）
+    * `ntsc_mode=0`（0 = 通常 NTSC、1 = PAL-60、2 = PAL-M。めったに必要ありません。Y/C 副搬送波周波数にのみ影響します）
 
 * **Direct Video アダプター** — sync-on-green 回路が必要です。アクティブおよびパッシブアダプターには内蔵されています。ない場合は [Direct Video - YPbPr 信号のセットアップ](directvideo.md#setup-for-ypbpr-signals) を参照。I/O ボードの物理 SoG スイッチは適用されません。アダプターの回路がカバーします：
     * `direct_video=1`
