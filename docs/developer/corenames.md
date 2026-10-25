@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-This is a list of the core repositories and the internal core names used for MiSTer.ini core exceptions.
+This is a list of the core repositories and the internal core names used for MiSTer.ini core exceptions. It is a manually maintained snapshot — check the MiSTer-devel organization for cores added since.
 
 | Repository URL                                                                                                                    | Internal Name   |
 | --------------------------------------------------------------------------------------------------------------------------------- | --------------- |

@@ -1,4 +1,4 @@
-This is a list of many recreated components used in various MiSTer FPGA cores.
+This is a list of many recreated components used in various MiSTer FPGA cores. It is a manually maintained snapshot, not an exhaustive inventory.
 
 ## AMI
 ### POKEY Sound Chip

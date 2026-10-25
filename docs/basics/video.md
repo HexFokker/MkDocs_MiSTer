@@ -135,11 +135,11 @@ To improve this, open "Video Processing" in the secondary OSD menu (press F12 or
 
 ![MiSTer FPGA Video Processing options selection](img/video-processing.png)
 
-On this screen, `Video Filter:` defaults to `NearNeighbour`, a nearest-neighbour filter. Scaling 240p video to 1080p requires enlarging each pixel, but 240 doesn't divide evenly into 1080 (1080 / 240 = 4.5), so some pixels can't be perfectly square. Nearest neighbour helps fool your eyes into seeing the pixels as squarer than they are.
+On this screen, `Video Filter:` defaults to `NearNeighbour`, a nearest-neighbour filter. Scaling 240p video to 1080p requires enlarging each pixel, but 240 doesn't divide evenly into 1080 (1080 / 240 = 4.5), so some pixels can't be perfectly square. Because 4.5 is not an integer, some source pixels must end up 4 output pixels tall and others 5, so scaled pixels are not all the same size. Nearest neighbour keeps every edge hard; interpolation instead smooths the transitions so the uneven sizes are less noticeable.
 
 Select `Video Filter:` to choose a filter file; the label changes to `Horz filter:`. For normally oriented (non-rotated) games, the horizontal filter is the upscaling filter that softens or sharpens the image.
 
-Select `<none>` below it to browse the filter files. For now, select `Interpolation (Medium).txt`, which gives softer edges while keeping the illusion of square pixels.
+Select `<none>` below it to browse the filter files. For now, select `Interpolation (Medium).txt`, which softens edges and blends the uneven pixel sizes.
 
 ![MiSTer FPGA Horizontal Interpolation filter horz filter:](img/horz-filter.png)
 
@@ -157,7 +157,7 @@ For scanlines like those of a CRT (and of the scanline option in some emulators)
 
 **Note: this feature only works if the output resolution in MiSTer.ini is a 1080p mode.**
 
-With the scanline filter on, you might notice that some scanlines look darker than others. This is because 240p (this game's resolution) doesn't divide evenly into 1080p, but it does divide evenly into 1200 (5 × 240 = 1200). To make the scanlines even, stretch the image vertically so all pixels are perfectly square: in the regular core menu, select `Video & Audio` → `Vertical Crop` and change `Disabled` to `(216p)5X`. Not all cores have this option; the NES core does.
+With the scanline filter on, you might notice that some scanlines look darker than others. This is because 240p (this game's resolution) doesn't divide evenly into 1080p, but it does divide evenly into 1200 (5 × 240 = 1200). To make the scanlines even, scale the image by an integer factor so every source pixel is the same height: in the regular core menu, select `Video & Audio` → `Vertical Crop` and change `Disabled` to `(216p)5X`. This crops a strip off the top and bottom of the image (hence the name); games designed for CRT overscan usually hide nothing important there. Not all cores have this option; the NES core does.
 
 [![MiSTer FPGA Vertical Crop 5x mode 1080p to 1200p 216p to 5x with overscan](img/5x-vertical-crop.png)](img/5x-vertical-crop.png){target=_blank}
 
@@ -175,12 +175,12 @@ Shadowmasks are another layer of options. They modify the red, green, and blue c
 
 ### Gamma curves
 
-On an old CRT, gamma is the relationship between voltage and brightness. Picture a graph with voltage on the x-axis and brightness (more precisely, luminance) on the y-axis. On a modern TV this is ideally a straight line. On an old CRT it is a curve: at medium voltage, brightness is a lot lower than you'd expect.
+On an old CRT, gamma is the relationship between voltage and brightness. Picture a graph with voltage on the x-axis and brightness (more precisely, luminance) on the y-axis. An old CRT does not respond linearly: at medium voltage, brightness is a lot lower than you'd expect. Modern displays do not reproduce that curve either, though they approximate a similar power-law response.
 
 ![MiSTer FPGA documentation gamma explanation graph example](img/gamma-curve.png)  
 [Image Source](https://www.japanistry.com/understanding-gamma-in-photography/){target=_blank}
 
-MiSTer outputs the linear curve, so gamma filters can restore a curve similar to the one you were used to on an old television. This is especially helpful after adding a "brighter" scanline and a shadowmask (which imitates a CRT's phosphors). Gamma is a matter of personal preference, so try it and judge for yourself.
+MiSTer applies its own intensity mapping, so gamma filters let you reshape the response toward the CRT-like curve you were used to. This is especially helpful after adding a "brighter" scanline and a shadowmask (which imitates a CRT's phosphors). Gamma is a matter of personal preference, so try it and judge for yourself.
 
 This example applies a very mild gamma curve, `gamma_113.txt` from the `Pure_Gamma` folder, which is allegedly close to a typical consumer CRT's gamma curve.
 

@@ -16,7 +16,7 @@ It depends on your setup, but it ranges from imperceptibly low to around one fra
 
 ### When will MiSTer support cartridges or USB CD drives?
 
-Never, officially. The project aims to give the original hardware experience without needing the original hardware. Supporting cartridges is physically impractical given the number of GPIO pins available from the FPGA. USB CD drives all have different drivers, latency, and buffering, and they would add unpredictable latency compared with the current method of loading CD games. See also [CD-based games](cd.md#will-mister-ever-support-usb-cd-drives).
+Not currently, and there are no official plans. The project aims to give the original hardware experience without needing the original hardware. Supporting cartridges is physically impractical given the number of GPIO pins available from the FPGA. USB CD drives all have different drivers, latency, and buffering, and they would add unpredictable latency compared with the current method of loading CD games. See also [CD-based games](cd.md#will-mister-ever-support-usb-cd-drives).
 
 ### Why doesn't MiSTer have a fancy GUI with cover art and metadata?
 
@@ -28,7 +28,7 @@ For several reasons:
 
 ### Will any MiSTer core ever get save states?
 
-The Game Boy, GBA, Lynx, WonderSwan, NES, and PSX cores support savestates.
+A growing number of cores support savestates, including the Game Boy, GBA, Lynx, WonderSwan, NES, PSX, and SNES cores. Check each core's README for its current feature set.
 
 Before savestates can be added, a core must either be written from scratch to support them or be significantly reworked to support pausing. Adding savestates to an FPGA-based emulator is not as simple as adding them to a software emulator. There are no specific plans to add them to other cores at this time, but it may happen one day.
 
@@ -183,7 +183,7 @@ Yes. See [Input Latency](../advanced/lag.md).
 
 ### How do I add a second controller to MiSTer?
 
-With no core loaded, plug in the controller and set it up in the Menu core, then define it in the OSD of each core as needed. This is only necessary if the controller is a different make/model (a different VendorID/ProductID) from the controllers you have already defined; a second DualShock 4, for example, shouldn't need its inputs defined again. For the same reason, different devices that share a VendorID/ProductID may need to be reconfigured whenever you switch between them, and there is currently no way around this. This includes 8BitDo and Mayflash adapters used with multiple controllers, because the ID belongs to the adapter.
+With no core loaded, plug in the controller and set it up in the Menu core, then define it in the OSD of each core as needed. This is only necessary if the controller is a different make/model (a different VendorID/ProductID) from the controllers you have already defined; a second DualShock 4, for example, shouldn't need its inputs defined again. For the same reason, different devices that share a VendorID/ProductID share one button-mapping definition by default; if you need to keep them distinct, assign them to players by USB port location as described on the Controllers page. This includes 8BitDo and Mayflash adapters used with multiple controllers, because the ID belongs to the adapter.
 
 ### What are the methods for connecting controllers to the serial port of the I/O add-on board?
 

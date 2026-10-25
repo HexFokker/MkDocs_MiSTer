@@ -166,4 +166,4 @@ If you run out of space during compilation, your code may be inferred into DSP, 
 )
 ```
 
-This forces the module into logic space instead of DSP or block RAM. You can likewise force a module into DSP with `(* multstyle = "dsp" *)`. The `multstyle` attribute works on module declarations, variable declarations, and binary expressions.
+This forces multipliers in the module to be implemented in logic cells instead of DSP blocks. Note that `multstyle` only controls multiplier implementation — it does not prevent other parts of the module from using DSP or block RAM. You can likewise force multipliers into DSP with `(* multstyle = "dsp" *)`. The `multstyle` attribute works on module declarations, variable declarations, and binary expressions.

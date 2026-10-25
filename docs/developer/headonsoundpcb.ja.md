@@ -55,7 +55,7 @@ Bonus は、ボーナスピンがハイになった瞬間に振幅が 100% に�
 
 振幅は 28 ms ごとに半分になるので、こんな感じです：
 
-`Amplitude = MaxAmplitude-((0.976^time_in_milliseconds)*MaxAmplitude)`
+`Amplitude = MaxAmplitude * 0.976^time_in_milliseconds`（つまり `Amax * 2^(-t/28ms)`。各オーディオサンプルのタイムステップで振幅に減衰係数を掛けます。下の実装を参照）
 
 `MaxAmplitude` は収まる最大値（例：32ビット）に設定して精度を保ちます。通常、このような乗算には32ビット精度の固定小数点演算を使います。後で出力用に16ビットに変換します。
 

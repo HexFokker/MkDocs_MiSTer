@@ -59,7 +59,7 @@ Some console cores make use of USB/BT light guns, such as the Guncon2, Guncon3, 
 
 ### Cores that support savestates
 
-Very few cores support savestates (NES, PSX, GameBoy, GBA, WonderSwan, AtariLynx). There are four savestate slots available. In those cores, a standard savestate button can be assigned on your controller (called `SaveStateBtn` here):
+Savestate support is core-specific — the list changes as cores are updated (NES, PSX, GameBoy, GBA, WonderSwan, AtariLynx, SNES, and others; check each core's README). Four savestate slots are available. In those cores, a standard savestate button can be assigned on your controller (called `SaveStateBtn` here):
 
 | Hotkey                                  | Description                                   |
 | --------------------------------------- | --------------------------------------------- |

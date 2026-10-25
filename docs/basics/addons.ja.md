@@ -50,11 +50,13 @@ USB Hub 拡張ボードは OTG USB ハブで、背面に給電専用 USB ポー�
 
 ## [Analog I/O 拡張ボード](https://github.com/MiSTer-devel/Hardware_MiSTer/raw/master/releases/iobrd_6.1.pdf){target=_blank}
 
+*この節は Analog I/O Board 6.x について説明しています。現在の組み合わせは I/O Board 9.2 と AV Board 1.2 で、24-bit アナログ出力を提供します。詳しくは [CRT ページ](../advanced/crt.md)を参照。*
+
 <figure markdown>
   ![MiSTer FPGA Analog I/O Add-on Board](img/analogio.png){ align=center }
 </figure>
 
-CRT と HDMI ディスプレイへ同時に映像出力したい場合は、Digital I/O ボードではなくこちらを選びます。そうでなければ、安価な Digital I/O ボードで十分なはずです。
+CRT と HDMI ディスプレイへ同時に映像出力したい場合は、Digital I/O ボードではなくこちらを選びます。アナログ出力だけなら安価な Digital I/O ボードで十分ですし、HDMI しか使わないなら I/O ボード自体が不要です。
 
 Digital I/O ボードと同じボタン3個・ステータス LED 3個・サブ microSD スロット・User IO ポート・ファン電源ヘッダー・ファン取り付け穴（上記参照）に加えて：
 

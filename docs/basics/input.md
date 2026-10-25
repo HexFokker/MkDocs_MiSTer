@@ -18,7 +18,7 @@ USB and Bluetooth gaming controllers get these standard features:
 * If you assigned the players in the wrong order, open the OSD's secondary menu (press Right after opening the OSD) and select "Reset player assignment" to start over.
 * Resetting the core also resets the player assignments.
 
-If a controller doesn't seem to work, you may need to reboot the MiSTer into the Menu core and define the controller's inputs, if you haven't already. Also, if two attached controllers report the same Vendor ID and Product ID to Linux, you may not be able to use both at the same time; this depends on how the controller is made.
+If a controller doesn't seem to work, you may need to reboot the MiSTer into the Menu core and define the controller's inputs, if you haven't already. Also, if two attached controllers report the same Vendor ID and Product ID to Linux, they share one button-mapping definition by default; you can still use both and, if needed, assign them to different players by USB port location (see below).
 
 ## Advanced Joystick Player Assignment Method
 

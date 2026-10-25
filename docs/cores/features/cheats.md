@@ -16,17 +16,17 @@ Individual cheats are in .gg format and should be stored in zip files.
 
 ## How to use cheats with CD-ROM images
 
-Because CD-ROM images are large, MiSTer intentionally doesn't check their CRC32 hash. To use cheats with a CD image, place the cheat zip in the same folder as your CUE/BIN or CHD file. Cheats are typically matched to the CD image by filename: the cheat zip's filename must match that of the CUE/BIN, CHD, or ISO. The PlayStation core uniquely also supports a second method, which loads cheats based on the game's internal Game ID (e.g. SCUS-94163); see [Using cheats on the MiSTer PSX core](../highlights/psx.md#using-cheats-on-the-mister-psx-core). If the cheats don't load, check the following:
+Because CD-ROM images are large, MiSTer intentionally doesn't check their CRC32 hash. To use cheats with a CD image, place the cheat zip in the same folder as your CUE/BIN or CHD file. Cheats are typically matched to the CD image by filename: the cheat zip's filename must match the basename of the CUE, CHD, or ISO. The PlayStation core uniquely also supports a second method, which loads cheats based on the game's internal Game ID (e.g. SCUS-94163); see [Using cheats on the MiSTer PSX core](../highlights/psx.md#using-cheats-on-the-mister-psx-core). If the cheats don't load, check the following:
 
 1. The cheat zip file is in the same subfolder as the desired CUE/BIN, CHD, or ISO.
-2. The filename of the zip file is identical to the filename of the CUE/BIN, CHD, or ISO.
+2. The filename of the zip file is identical to the basename of the CUE, CHD, or ISO (for CUE/BIN pairs, match the .cue file).
 3. **(for the PSX core only)** The Game ID of the desired game matches the target Game ID of the zip file.
 
 If cheats for the CD game do not work when everything else looks correct, your version of the game may be different from the one the cheats were made for.
 
 ## Making your own codes
 
-All types of cheat codes for 16-bit systems and earlier can be decoded into four pieces of information: an address, a compare value, a replace value, and usually a flag saying whether the compare value is used. A .gg file stores these in binary as four 32-bit integers in little-endian byte order. 
+Cheat codes in the .gg binary format (used by codes for 16-bit systems and earlier) can be decoded into four pieces of information: an address, a compare value, a replace value, and usually a flag saying whether the compare value is used. A .gg file stores these in binary as four 32-bit integers in little-endian byte order. 
 
 For example, if the address is `0xFF1CA0`, the compare value is `0xB5`, and the replace value is `0xFF`, the file would look like this:
 

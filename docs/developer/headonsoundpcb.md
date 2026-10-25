@@ -53,9 +53,9 @@ Bonus is a pulse generator that goes to 100% amplitude immediately when the bonu
 
 When the bonus pin goes low, the sound decreases in volume following an exponential curve. When the bonus pin is low, the pulse period is 3/4 of the length, resulting in a [perfect fourth](https://en.wikipedia.org/wiki/Perfect_fourth).
 
-The amplitude halves every 28 ms so it's something like:
+The amplitude halves every 28 ms, decaying exponentially from maximum:
 
-`Amplitude = MaxAmplitude-((0.976^time_in_milliseconds)*MaxAmplitude)`
+`Amplitude = MaxAmplitude * 0.976^time_in_milliseconds` (equivalently `Amax * 2^(-t/28ms)`; each audio-sample timestep multiplies the amplitude by a decay factor — see the implementation below)
 
 `MaxAmplitude` should be set to the highest number that fits — e.g. 32 bits — to keep precision. Normally I use fixed-point math with 32 bits of precision for multiplications like this. Later we convert to 16 bits for the output.
 

@@ -29,5 +29,5 @@ The LEDs on your keyboard will display the emulation modes:
 
 ### Notes
 
-* Some systems provide write support, which requires additional attention when you reset/shut down the MiSTer. MiSTer tries not to keep pending writes and flushes to disk as soon as possible. Still, the safer way to reset from a core that was probably writing to disk recently is ++lshift+lctrl+lalt+ralt++ — this flushes all caches to disk before restart. Cores without write support can be restarted with the hard reset button or powered down without concern.
+* Some systems provide write support, which requires additional attention when you reset/shut down the MiSTer. MiSTer tries not to keep pending writes and flushes to disk as soon as possible. Still, the safer way to reset from a core that was probably writing to disk recently is ++lshift+lctrl+lalt+ralt++ — this flushes all caches to disk before restart. Cores without write support can be restarted with the hard reset button or powered down without concern for filesystem corruption — though any in-game save not yet written to the card will still be lost.
 * The ++lctrl+lalt+ralt++ sequence can be replaced by other well-known combos through the INI file.
