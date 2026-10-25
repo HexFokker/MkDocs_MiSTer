@@ -51,7 +51,7 @@ Windows 95/98/NT は PPP 接続で DNS を自動取得せず、OS 側か MiSTer 
 1. 有効な DNS サーバーアドレスを取得：
     * MiSTer または同じネットワークの他の Linux 機器で `cat /etc/resolv.conf | awk '/nameserver/ {print $2}'` を実行し、自動設定された DNS サーバーアドレスを取得
     * 同じネットワークのモダンな Windows 機器で `ipconfig /all` を実行し、出力の `DNS Servers` から自動設定されたアドレスを取得
-    * あるいは、名前解決時間は長くなりますがパブリック DNS サーバー（`8.8.8.8`、`8.8.4.4`、`9.9.9.9`、`1.1.1.1` など）を使用
+    * あるいは、パブリック DNS サーバー（`8.8.8.8`、`8.8.4.4`、`9.9.9.9`、`1.1.1.1` など）を使用
 2. MiSTer SD カードの `ppp_options` を開いて編集：
     * MiSTer からアクセスする場合は `/media/fat/linux/ppp_options`
     * SD カードを別の機器に挿してアクセスする場合は `linux/ppp_options`
@@ -175,7 +175,7 @@ Striketerm 2014 と VIC-1011 2400 ボーモードで BBS に接続する例：
 4. [こちら](https://csdb.dk/release/?id=130807){target=_blank}にある d64 から Striketerm 2014 を読み込み。
 5. "Main Menu"（++f1++）はデフォルトのまま、2400 ボーで動いていることを確認。
 6. "address book"（++f5++）に BBS を保存。[こちら](http://cbbsoutpost.servebbs.com){target=_blank}で探せます。
-7. ゆっくりと BBS を巡りましょう…
+7. BBS を参照しましょう。
 
 CCGMS Ultimate と UP9600 モードで BBS に接続する例：
 

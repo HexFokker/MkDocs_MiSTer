@@ -52,7 +52,7 @@ The latter is the better solution as it allows multiple Windows machines to auto
 1. Get a valid DNS server address:
     * Run `cat /etc/resolv.conf | awk '/nameserver/ {print $2}'` on your MiSTer or other Linux devices on the same network to get the DNS server address(es) it autoconfigured
     * Run `ipconfig /all` on a modern Windows device on the same network and look for `DNS Servers` in the output to get the DNS server address(es) it autoconfigured
-    * Alternatively, use a public DNS server (`8.8.8.8`, `8.8.4.4`, `9.9.9.9`, `1.1.1.1`, etc.) at the expense of longer name resolution times
+    * Alternatively, use a public DNS server (`8.8.8.8`, `8.8.4.4`, `9.9.9.9`, `1.1.1.1`, etc.)
 2. Open `ppp_options` for editing on your MiSTer SD card:
     * Located at `/media/fat/linux/ppp_options` when accessed from the MiSTer itself
     * Located at `linux/ppp_options` when accessed by inserting the SD card into another device
@@ -176,7 +176,7 @@ The following is an example of connecting to a BBS using Striketerm 2014 and VIC
 4. Load Striketerm 2014 from d64, available [here](https://csdb.dk/release/?id=130807){target=_blank}.
 5. Keep the defaults in the Main Menu (++f1++), ensuring you are running at 2400 baud.
 6. Save a BBS to the address book (++f5++); you can find some [here](http://cbbsoutpost.servebbs.com){target=_blank}.
-7. Surf the BBS very slowly...
+7. Browse BBSes.
 
 The following is an example of connecting to a BBS using CCGMS Ultimate and UP9600 mode:
 
