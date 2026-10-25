@@ -1,6 +1,6 @@
 MiSTer はかなり複雑なハードウェアを使っていますが、オープンソースのおかげで、ハードウェアとソフトウェアの知識レベルが異なる開発者でもこのプラットフォーム向けに開発できます。多くの MiSTer コアは、**フレームワーク**と呼ばれる共通のほぼ同一のコードブロックを共有しており、ハードウェアとファームウェアへのアクセスを簡素化しています。
 
-このガイドでは例として [ZX Spectrum](https://github.com/MiSTer-devel/ZX-Spectrum_MISTer){target=_blank} コアを使います。
+新しいコアは現在の [Template_MiSTer](https://github.com/MiSTer-devel/Template_MiSTer){target=_blank} から始めてください。このガイドでは古い [ZX Spectrum](https://github.com/MiSTer-devel/ZX-Spectrum_MISTer){target=_blank} コアを歴史的な例として使います。
 
 ## フレームワーク
 
@@ -195,7 +195,7 @@ MiSTer にはオリジナルの MiST io モジュールに対するいくつか�
 
 * 同時に最大10のイメージをマウント可能（MiST は1つのみ）。複数のマウントイメージが必要な場合は、モジュールパラメーター `VDNUM` を 2..10 に設定します。`VDNUM=1` なら、関連する信号は MiST と同じです。
 * MiSTer の SD カードは複数のパーティションを使い、MiSTer に不可欠な他の部分を保持しているため、コアは SD カード全体にはアクセスできず、イメージファイルのみアクセスできます。SD カード全体への直接アクセスが必要なコアは、イメージのみアクセスするよう再設計してください。
-* SD カード上の Main MiSTer ファイルシステムは exFAT で、4 GB を超えるファイルに対応しています。
+* MiSTer は SD カードの exFAT に対応しています。exFAT 使用時は 4 GiB を超えるファイルを扱えます。
 * OSD は最大16行に対応（MiST は7行）。多くのコアで便利です。
 * ARM↔FPGA 通信はパラレルバス上で行われ、高速化されています。16ビット I/O に対応。
 

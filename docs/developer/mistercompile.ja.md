@@ -31,7 +31,7 @@ wget -c https://developer.arm.com/-/media/Files/downloads/gnu-a/10.2-2020.11/bin
 このアーカイブを適当な場所に展開します。PATH に追加するため、ここでは `/opt` に展開：
 
 ```sh
-tar xf gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf.tar.xz -C /opt
+sudo tar xf gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf.tar.xz -C /opt  # または自分の所有するディレクトリーに展開
 ```
 
 コンパイルのたびにこれを一時的に PATH に追加：

@@ -19,7 +19,7 @@ Only some of these prerequisites are strict. This guide was tested on Ubuntu 20.
 
 ```sh
 sudo apt update && sudo apt upgrade -y
-sudo apt-get install build-essential git libncurses-dev flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf liblz4-tool bc curl gcc git libssl-dev libncurses5-dev lzop make u-boot-tools libgmp3-dev libmpc-dev
+sudo apt-get install build-essential git libncurses-dev flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf liblz4-tool bc curl gcc libncurses5-dev lzop make u-boot-tools libgmp3-dev libmpc-dev
 ```
 
 Download the correct cross-compiler for compiling ARM binaries on a 64-bit x86-based system:
@@ -31,7 +31,7 @@ wget -c https://developer.arm.com/-/media/Files/downloads/gnu-a/10.2-2020.11/bin
 Extract this archive somewhere convenient — it will be added to PATH; here it's extracted to `/opt`:
 
 ```sh
-tar xf gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf.tar.xz -C /opt
+sudo tar xf gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf.tar.xz -C /opt  # or extract to a directory you own instead
 ```
 
 Add this to your PATH temporarily each time you compile:

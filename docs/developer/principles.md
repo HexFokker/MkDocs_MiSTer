@@ -2,7 +2,7 @@ Tips and guidelines for contributing to the MiSTer project.
 
 ## Indent with tabs, not spaces
 
-Tabs over spaces may be controversial, but there's good reason here: the project lives on GitHub, which handles spaces poorly in diffs, git blame, and formatting. Tabs are more compatible and easier for everyone to work with.
+The project convention is tabs; keep indentation consistent with existing files so diffs stay clean.
 
 ## Comment your code when appropriate
 

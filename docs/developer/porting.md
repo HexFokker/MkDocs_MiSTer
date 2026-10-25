@@ -1,6 +1,6 @@
 MiSTer uses quite complex hardware, but thanks to open source, developers with different levels of hardware and software knowledge can develop for the platform. Many MiSTer cores share a common, nearly identical block of code, called the **Framework**, that simplifies access to the hardware and firmware.
 
-This guide uses the [ZX Spectrum](https://github.com/MiSTer-devel/ZX-Spectrum_MISTer){target=_blank} core as an example.
+For new cores, start from the current [Template_MiSTer](https://github.com/MiSTer-devel/Template_MiSTer){target=_blank}. This guide uses the older [ZX Spectrum](https://github.com/MiSTer-devel/ZX-Spectrum_MISTer){target=_blank} core as a historical example.
 
 ## Framework
 Most of the Framework's sources are located in the [sys](https://github.com/MiSTer-devel/ZX-Spectrum_MISTer/tree/master/sys){target=_blank} folder.
@@ -193,7 +193,7 @@ MiSTer has some changes/improvements over original MiST io modules:
 
 * Supports up to 10 images mounted at the same time (MiST has only 1). Set the module parameter `VDNUM` to 2..10 if more than one mounted image is required. If `VDNUM=1`, the related signals are the same as in MiST.
 * Because the SD card on MiSTer uses multiple partitions and holds other parts vital to MiSTer, cores cannot access the whole SD card — only image files. Cores requiring direct access to the whole SD card should be redesigned to access images only.
-* The Main MiSTer file system on the SD card is exFAT, which supports files larger than 4 GB.
+* MiSTer supports exFAT on the SD card; when using exFAT, files larger than 4 GiB are supported.
 * OSD supports up to 16 lines (versus 7 in MiST), which is handy for many cores.
 * ARM↔FPGA communication runs over a parallel bus, which speeds it up. It supports 16-bit I/O.
 
