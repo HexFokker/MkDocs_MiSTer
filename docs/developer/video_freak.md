@@ -1,4 +1,4 @@
-`video_freak` is used to crop and scale the image.
+`video_freak` adjusts display-enable timing, cropping, and scaling/aspect-ratio parameters — it works with the scaler rather than performing all pixel scaling itself.
 
 `video_freak` takes the original `VGA_DE_IN` and outputs a new `VGA_DE` and `VIDEO_ARX`/`VIDEO_ARY` based on the cropping parameters.
  

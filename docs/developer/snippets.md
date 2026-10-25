@@ -1,6 +1,6 @@
 Here are some useful HDL snippets as used throughout the MiSTer project, with sources linked for reference.
 
-## Simple Pixel Clock Divider Using Clock Enable Generator
+## Simple Clock-Enable Divider
 
 In any MiSTer core you develop, `CE_PIXEL` must be driven with a pixel clock-enable pulse — it is a clock enable, not a clock. It is common to assert it once every 4 or 8 video-clock cycles, depending on the core. For simple division like this it is generally best practice to use a clock enable generator, as shown in [the Tropical Angel core](https://github.com/MiSTer-devel/Arcade-TropicalAngel_MiSTer/blob/master/Arcade-TropicalAngel.sv#L386-L391){target=_blank}.
 
@@ -35,7 +35,7 @@ CEGen fltce
 );
 ```
 
-This takes in a 53.693175 MHz clock and outputs a clock-enable register oscillating at approximately 7.056 MHz on average. Since 7.056 MHz doesn't divide evenly into the input clock, this requires fractional clock division, which is usually discouraged — it's not a 50% duty cycle, so only use it where that can't hurt. Here it was used for audio filtering, so it wasn't an issue.
+This takes in a 53.693175 MHz clock and produces a clock-enable pulse train averaging about 7.056 MHz. It is a clock enable in the CLK domain, not a usable clock — since 7.056 MHz doesn't divide evenly, the pulse spacing is irregular (fractional division), so only use it for enables, never to clock logic directly. Here it was used for audio filtering, so the irregularity didn't matter.
 
 ## Reading a ROM's Data Stream
 
