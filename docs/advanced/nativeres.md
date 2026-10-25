@@ -5,7 +5,7 @@ hide:
 
 This chart shows each core's default native resolution, frequencies, and pixel clock at startup. These values are not static and are documented for reference only — this is not a compatibility list for your display.
 
-## Arcade Core Default Native Resolutions
+## Arcade
 
 | Core             | Version   | Default Native Resolution | Horizontal Freq. (kHz) | Vertical Freq. (Hz) | Pixel Clock (MHz) | Notes                                              |
 | ---------------- | --------- | ------------------------- | ---------------------- | ------------------- | ----------------- | -------------------------------------------------- |
@@ -101,7 +101,7 @@ This chart shows each core's default native resolution, frequencies, and pixel c
 | Zaxxon           | 20210915  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
 | ZigZag           | 20210117  | 256x225                   | 15.6                   | 59.2                | 6.00              |                                                    |
 
-## Console Core Default Native Resolutions
+## Console
 
 | Core            | Version  | Default Native Resolution | Horizontal Freq. (kHz) | Vertical Freq. (Hz) | Pixel Clock (MHz) | Notes                                                                                                                    |
 | --------------- | -------- | ------------------------- | ---------------------- | ------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
@@ -133,7 +133,7 @@ This chart shows each core's default native resolution, frequencies, and pixel c
 | Vectrex         | 20220301 | 540x720                   | 43.3                   | 60.0                | 24.00             |                                                                                                                          |
 | WonderSwan      | 20220417 | 224x144                   | 15.3                   | 59.4                | 6.14              |                                                                                                                          |
 
-## Computer Core Default Native Resolutions
+## Computer
 
 | Core           | Version  | Default Native Resolution | Horizontal Freq. (kHz) | Vertical Freq. (Hz) | Pixel Clock (MHz) | Notes                                                                                                                         |
 | -------------- | -------- | ------------------------- | ---------------------- | ------------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -194,7 +194,7 @@ This chart shows each core's default native resolution, frequencies, and pixel c
 | ZXNext         | 20220216 | 704x304                   | 15.6                   | 50.1                | 14.00             |                                                                                                                               |
 | ZX-Spectrum    | 20220216 | 344x284                   | 15.6                   | 50.1                | 7.00              |                                                                                                                               |
 
-## Other Core Default Native Resolutions
+## Other
 
 | Core         | Version  | Default Native Resolution | Horizontal Freq. (kHz) | Vertical Freq. (Hz) | Pixel Clock (MHz) | Notes |
 | ------------ | -------- | ------------------------- | ---------------------- | ------------------- | ----------------- | ----- |
@@ -207,7 +207,7 @@ This chart shows each core's default native resolution, frequencies, and pixel c
 | SlugCross    | 20220401 | 640x480                   | 31.5                   | 59.9                | 25.18             |       |
 | TomyScramble | 20200724 | 320x480                   | 31.2                   | 59.4                | 12.50             |       |
 
-## Utility Core Default Native Resolutions
+## Utility
 
 | Core      | Version  | Default Native Resolution | Horizontal Freq. (kHz) | Vertical Freq. (Hz) | Pixel Clock (MHz) | Notes |
 | --------- | -------- | ------------------------- | ---------------------- | ------------------- | ----------------- | ----- |

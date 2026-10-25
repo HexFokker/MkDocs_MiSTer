@@ -67,7 +67,7 @@ plugins:
             Home: ホーム
             First-time Setup: 初めてのセットアップ
             Requirements: 必要なもの
-            Setup MicroSD Card: microSDカードのセットアップ
+            Set Up the MicroSD Card: microSDカードのセットアップ
             Running the Updater: アップデーターの実行
             Define Your Gamepad: ゲームパッドの設定
             Transferring Games: ゲームの転送
@@ -76,7 +76,7 @@ plugins:
             FAQ: よくある質問
             Troubleshooting: トラブルシューティング
             Game Saves: セーブデータ
-            Addon Boards: 拡張ボード
+            Add-on Boards: 拡張ボード
             Cases: ケース
             Hotkeys: ホットキー
             Controllers: コントローラー
@@ -92,7 +92,7 @@ plugins:
             Cheats: チート
             RTC Support: RTC対応
             Core Highlights: 注目のコア
-            Game Boy 2 Player: Game Boy 2人プレイ
+            Game Boy 2-Player: Game Boy 2人プレイ
             Console Cores: コンソールコア
             Computer Cores: コンピューターコア
             Arcade Cores: アーケードコア
@@ -101,14 +101,13 @@ plugins:
             Advanced Configuration: 詳細設定
             Video Modes: ビデオモード
             Video Scaling: ビデオスケーリング
-            Add-On Boards: 拡張ボード
             RTC Board: RTCボード
             Networking: ネットワーク
             Advanced Networking: 高度なネットワーク
             Computer Core Networking: コンピューターコアのネットワーク
             CRT Displays: CRTディスプレイ
             CRT Configuration Table: CRT設定表
-            Using Your CRT With MiSTer: CRTをMiSTerで使う
+            CRT Connections and Output Modes: CRT接続と出力モード
             Direct Video Adapter: Direct Videoアダプター
             Core Default Resolutions: コアのデフォルト解像度
             Audio Filters: オーディオフィルター
@@ -118,30 +117,30 @@ plugins:
             INI Settings: INI設定
             Lag Explained: ラグの解説
             MGL Files: MGLファイル
-            Console Connection: コンソール接続
+            Linux Serial Console: Linuxシリアルコンソール
             Developer Reference: 開発者リファレンス
             Compiling for MiSTer: MiSTer向けコンパイル
             Porting Cores: コアの移植
             Core Configuration String: コア設定文字列
-            Top-level of Cores: コアのトップレベル
-            overview of emu module: emuモジュール概要
-            sys - hps_io: sys - hps_io
-            sys - video_freak: sys - video_freak
-            sys - video_mixer: sys - video_mixer
-            sys - arcade_video: sys - arcade_video
+            Core Top-Level Modules: コアのトップレベルモジュール
+            emu Module Overview: emuモジュール概要
+            hps_io: hps_io
+            video_freak: video_freak
+            video_mixer: video_mixer
+            arcade_video: arcade_video
             Useful Snippets: 便利なスニペット
             Savestates: セーブステート
             Core Names: コア名
             MRA Setnames: MRAセット名
-            Arcade ROMS and MRA Files: アーケードROMとMRAファイル
+            Arcade ROMs and MRA Files: アーケードROMとMRAファイル
             Debugging (USB Blaster): デバッグ（USB Blaster）
-            Core Components Where Used: コアのコンポーネント対応表
+            Core Component and Feature Usage: コアのコンポーネント対応表
             Developer Journeys: 開発記録
             Analog Simulation: アナログシミュレーション
             Head On Sound PCB Implementation: Head OnサウンドPCB実装
             Template Core: テンプレートコア
             Useful Links: 便利なリンク
-            Tips and Guidelines: ヒントとガイドライン
+            Core Development Guidelines: コア開発ガイドライン
             Editing These Docs: このドキュメントの編集方法
   # https://squidfunk.github.io/mkdocs-material/tutorials/social/basic/
   - social
@@ -188,7 +187,7 @@ nav:
   # Setup section is to remain very stable and simple
   - First-time Setup:
     - Requirements: setup/requirements.md
-    - Setup MicroSD Card: setup/software.md
+    - Set Up the MicroSD Card: setup/software.md
     - Running the Updater: setup/updater.md
     - Define Your Gamepad: setup/controller.md
     - Transferring Games: setup/games.md
@@ -199,7 +198,7 @@ nav:
     - FAQ: basics/faq.md
     - Troubleshooting: basics/troubleshooting.md
     - Game Saves: basics/saves.md
-    - Addon Boards: basics/addons.md
+    - Add-on Boards: basics/addons.md
     - Cases: basics/case.md
     - Hotkeys: basics/hotkey.md
     - Controllers: basics/input.md
@@ -225,7 +224,7 @@ nav:
       - Genesis: cores/highlights/genesis.md
       - MegaCD: cores/highlights/megacd.md
       - Saturn: cores/highlights/saturn.md
-      - Game Boy 2 Player: cores/highlights/gb2p.md
+      - Game Boy 2-Player: cores/highlights/gb2p.md
     - Console Cores: cores/console.md
     - Computer Cores: cores/computer.md
     - Arcade Cores: cores/arcade.md
@@ -236,14 +235,13 @@ nav:
   - Advanced Configuration:
     - Video Modes: advanced/videomodes.md
     - Video Scaling: advanced/videoscaling.md
-    - Add-On Boards:
-      - RTC Board: advanced/rtc.md
+    - RTC Board: advanced/rtc.md
     - Networking:
       - Advanced Networking: advanced/network.md
       - Computer Core Networking: advanced/computer.md
     - CRT Displays:
       - CRT Configuration Table: advanced/crttable.md
-      - Using Your CRT With MiSTer: advanced/crt.md
+      - CRT Connections and Output Modes: advanced/crt.md
       - Direct Video Adapter: advanced/directvideo.md
       - Core Default Resolutions: advanced/nativeres.md
     - Audio Filters: advanced/audio.md
@@ -253,32 +251,32 @@ nav:
     - INI Settings: advanced/ini.md
     - Lag Explained: advanced/lag.md
     - MGL Files: advanced/mgl.md
-    - Console Connection: advanced/console.md
+    - Linux Serial Console: advanced/console.md
 
   # Developer reference. This is going to mostly mirror what is up on Github wiki already.
   - Developer Reference:
     - Compiling for MiSTer: developer/mistercompile.md
     - Porting Cores: developer/porting.md
     - Core Configuration String: developer/conf_str.md
-    - Top-level of Cores:
-      - overview of emu module: developer/emu.md
-      - sys - hps_io: developer/hps_io.md
-      - sys - video_freak: developer/video_freak.md
-      - sys - video_mixer: developer/video_mixer.md
-      - sys - arcade_video: developer/arcade_video.md
+    - Core Top-Level Modules:
+      - emu Module Overview: developer/emu.md
+      - hps_io: developer/hps_io.md
+      - video_freak: developer/video_freak.md
+      - video_mixer: developer/video_mixer.md
+      - arcade_video: developer/arcade_video.md
     - Useful Snippets: developer/snippets.md
     - Savestates: developer/savestates.md
     - Core Names: developer/corenames.md
     - MRA Setnames: developer/mrasetnames.md
-    - Arcade ROMS and MRA Files: developer/mra.md
+    - Arcade ROMs and MRA Files: developer/mra.md
     - Debugging (USB Blaster): developer/debugging.md
-    - Core Components Where Used: developer/component.md
+    - Core Component and Feature Usage: developer/component.md
     - Developer Journeys:
       - Analog Simulation: developer/analogsim.md
       - Head On Sound PCB Implementation: developer/headonsoundpcb.md
     - Template Core: https://github.com/MiSTer-devel/Template_MiSTer
     - Useful Links: developer/links.md
-    - Tips and Guidelines: developer/principles.md
+    - Core Development Guidelines: developer/principles.md
 
   # Fun guide that shows users how to edit the documentation site
   - Editing These Docs: editing.md

@@ -3,9 +3,9 @@ hide:
   - toc
 ---
 
-This table shows the `MiSTer.ini` settings required for each analog video output mode when connecting to a CRT.
-
 ## CRT Configuration Table
+
+This table shows the `MiSTer.ini` settings required for each analog video output mode when connecting to a CRT.
 
 | Analog Video Out     | composite_sync= | vga_mode= | vga_sog= | direct_video= | vga_scaler= | forced_scandoubler= |
 | -------------------- | :-------------: | :-------: | :------: | :-----------: | :---------: | :-----------------: |

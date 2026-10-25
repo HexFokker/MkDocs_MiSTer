@@ -1,8 +1,10 @@
 Many MiSTer cores support in-game saves, either by simulating the original hardware's save features or with savestates. Most cores don't have savestates, but a steadily increasing number do.
 
-## Normal game saves
+## In-game saves
 
 Many cores keep in-game saves in emulated backup memory until they are written to the MicroSD card. Save behavior varies by core.
+
+### Manual saving
 
 For cores with a "Save Backup RAM" option:
 
@@ -13,7 +15,7 @@ MicroSD cards have finite write endurance. Deferring writes until a save trigger
 
 Do not power off, reset, or load another game while a save is being written.
 
-## Autosave option
+### Autosave
 
 Autosave behavior varies by core. On cores that save when the OSD is opened, Autosave writes pending save data automatically when you open the OSD, without requiring you to select "Save Backup RAM".
 

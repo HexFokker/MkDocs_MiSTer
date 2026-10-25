@@ -6,10 +6,14 @@ hide:
   ![ミスターくん猫（作：hewhoisred）と MiSTer ロゴ（作：Conrad Fenech）](assets/logo_small.png){ align=center width="750" }
   <figcaption>ミスターくん猫（作：hewhoisred）と MiSTer ロゴ（作：Conrad Fenech）</figcaption>
 </figure>
-### MiSTer FPGA とは？
+## MiSTer FPGA とは？
 **MiSTer** は、現代的なハードウェアを使って昔のコンピューター・ゲーム機・アーケード基板を再現することを目指すオープンソースプロジェクトです。ソフトウェアやゲームイメージは実機と同じように動作し、マウス・キーボード・ジョイスティックなどのゲームコントローラー類の周辺機器も使えます。MiSTer は [DE10-Nano](http://de10-nano.terasic.com){target=_blank} という FPGA ボード上で動作し、HDMI でテレビやモニターに接続します。7ポート USB ハブ、128MB SDRAM モジュール、Digital I/O または Analog I/O ボードなど、さまざまな[拡張ボード](basics/addons.md){target=_blank}で拡張できます。プロジェクトは活発に開発が続いており、新しいコア・機能・バグ修正が定期的に登場しています。
 
 *MiSTer FPGA の使い方は左のナビゲーションサイドバーを参照してください。初めての方は[セットアップガイド](setup/requirements.md)からどうぞ。*
+
+## このフォークについて
+
+このフォークは、上流のドキュメントを技術的正確さ・明確さ・簡潔さの観点で改訂したものです。編集上の変更は、コア固有の動作とプラットフォーム共通の動作を区別し、必要に応じて技術的主張を最新のドキュメントやソースコードで検証し、曖昧さや重複を取り除く際にもハードウェア要件・設定項目・例外を保持する方針です。これはドキュメントのみのフォークであり、MiSTer 本体を変更するものではありません。
 
 公式 [MiSTer FPGA Discord サーバー](https://discord.gg/MiSTerFPGA){target=_blank}では、ヘルプ・最新情報・活発なコミュニティが待っています。  
 公式 [MiSTer FPGA X（旧 Twitter）アカウント](https://twitter.com/MiSTerFPGABot/){target=_blank}でアップデートやコミュニティの投稿をチェック。  

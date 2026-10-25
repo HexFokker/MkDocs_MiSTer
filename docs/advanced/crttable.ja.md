@@ -3,9 +3,9 @@ hide:
   - toc
 ---
 
-この表は、CRT に接続する際の各アナログ映像出力モードに必要な `MiSTer.ini` 設定を示します。
-
 ## CRT 設定表
+
+この表は、CRT に接続する際の各アナログ映像出力モードに必要な `MiSTer.ini` 設定を示します。
 
 | Analog Video Out     | composite_sync= | vga_mode= | vga_sog= | direct_video= | vga_scaler= | forced_scandoubler= |
 | -------------------- | :-------------: | :-------: | :------: | :-----------: | :---------: | :-----------------: |
