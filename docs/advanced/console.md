@@ -24,7 +24,7 @@ Quick video of connecting on Windows:
 1. Make sure you're a member of the **dialout** group.
 2. Your serial port is likely **/dev/ttyUSB0**.
 3. Configure it: `stty -F /dev/ttyUSB0 115200 cs8 -cstopb -parenb -ixoff -ixon`
-4. Watch the output while dumping it to a file: `cat /dev/ttyUSB0 | tee mr.log`
+4. Watch the output while dumping it to a file: `cat /dev/ttyUSB0 | tee mr.log` — this only reads and logs the serial output; it cannot send input. For an interactive session (e.g. to log in), use a terminal program such as `screen /dev/ttyUSB0 115200` or `minicom`.
 
 mr.log now contains a copy of everything shown on screen.
 

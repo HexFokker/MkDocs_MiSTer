@@ -180,7 +180,7 @@ A mouse can also act as a paddle-style controller.
 
 ## Are gaming keyboards worth it?
 
-No. High-performance, expensive keyboards and mice give no benefit on MiSTer, major or minor. They often expose many extra functions and virtual devices that clutter the input subsystem, which may add input lag, make the device completely unresponsive, or stop other devices such as gamepads from working. If you have problems with a gaming keyboard, try a simpler keyboard. The general advice is not to buy a specialty gaming keyboard just for MiSTer — it may end up being a waste of money.
+No. High-performance, expensive keyboards and mice are usually unnecessary on MiSTer. They often expose many extra functions and virtual devices that clutter the input subsystem; depending on the device this may add latency, make the device unresponsive, or stop other devices such as gamepads from working. If you have problems with a gaming keyboard, try a simpler keyboard. The general advice is not to buy a specialty gaming keyboard just for MiSTer — it may end up being a waste of money.
 
 ## What about rumble support?
 
@@ -188,15 +188,15 @@ Rumble (controller vibration) is supported in the Game Boy, Game Boy Advance, an
 
 ## What about PlayStation 3-5, Xbox 360 and Xbox One, Switch, and third party Bluetooth gamepads?
 
-The ideal wireless solution for these gamepads is a third-party USB dongle, such as the 8BitDo retro receiver (specifically the 8BitDo Wireless Bluetooth Adapter), or a name-brand Bluetooth 4.x/5.0 adapter.
+A practical wireless option for these gamepads is a third-party USB dongle, such as the 8BitDo retro receiver (specifically the 8BitDo Wireless Bluetooth Adapter), or a name-brand Bluetooth 4.x/5.0 adapter.
 
 The 8BitDo receiver supports Bluetooth PlayStation, Xbox, Wii, Switch, and 8BitDo gamepads without using the MiSTer's Bluetooth setup menu. Its main appeal is ease of use and quick pairing. Its drawbacks, compared to Bluetooth 5.0 adapters (including TP-Link and Asus models):
 
 * It may add lag, and may have limited range and line-of-sight issues.
-* Each receiver pairs with only one controller at a time, so multiplayer needs one receiver per controller. Regular Bluetooth pairing has no such limit.
+* Each receiver pairs with only one controller at a time, so multiplayer needs one receiver per controller; regular Bluetooth pairing can handle multiple controllers on one adapter, within the adapter's and framework's own limits.
 * The receiver sits between your gamepad and the USB host as a compatibility layer and always presents itself as the same controller, whatever gamepad you connect. Some gamepad features, such as the PS5 controller's mute button and touchpad, are therefore unavailable. A Bluetooth 5.0 adapter pairs the gamepad directly with the MiSTer, so it is less likely to have such limitations, although some features still won't work until the development team adds framework and Linux support for them.
 
-Grey and orange (brick-decorated) 8BitDo USB adapters are functionally the same on the latest firmware. Depending on the controller model, gamepads can switch between input modes with hotkeys; some models, such as the 8BitDo SN30 Pro 2, have a switch on the back instead. 8BitDo's website doesn't document these hotkeys, but the firmware update log does:
+Grey and orange (brick-decorated) 8BitDo USB adapters have been functionally the same on recent firmware. Depending on the controller model, gamepads can switch between input modes with hotkeys; some models, such as the 8BitDo SN30 Pro 2, have a switch on the back instead. 8BitDo's website doesn't document these hotkeys, but the firmware update log does:
 
 * X-Input mode: Hold SELECT+UP for 3 seconds.
 * PSC (PlayStation Classic) mode: Hold SELECT+DOWN for 3 seconds. This is useful for gamepads with few buttons (12 in total, with the D-pad counting as 4) that still need to open the MiSTer OSD. In this mode, L+R+START opens the OSD inside cores; this combination is hard-coded in MiSTer specifically for 8BitDo adapters, so don't assign an OSD button when configuring buttons in the Menu core. You may also lose autofire and mouse functionality in this mode.

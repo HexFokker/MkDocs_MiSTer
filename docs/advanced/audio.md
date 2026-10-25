@@ -9,7 +9,7 @@ The MiSTer has audio filters that make the audio sound less harsh and more balan
 
 `Arcade LPF` - Filters designed to replicate the filtering of common arcade cabinets. Many arcade games' raw audio output is very harsh on the ears; using these filters can help soften the sound. 1st and 2nd refer to the filter order. LPF stands for "low-pass filter", and the kHz value is the cutoff frequency.
 
-`Core Specific` - Filters for specific cores. Currently there is only one core-specific filter, which replicates the filtering of one model of Super Nintendo.
+`Core Specific` - Filters for specific cores. For example, a filter replicating the filtering of one model of Super Nintendo — check the repository for the current list.
 
 `General LPF` - More generalized low-pass filters with higher cutoff frequencies than the arcade filters (10-20 kHz vs 2-8 kHz).
 

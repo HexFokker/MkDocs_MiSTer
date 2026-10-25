@@ -1,4 +1,4 @@
-There are many MiSTer FPGA cases to choose from: DIY project-box builds, retro-fitted old computer or console injection molded cases, 3D-printed designs, and manufactured aluminum heatsink cases. And remember, you can be creative and have fun with your case design of choice.
+There are many MiSTer FPGA cases to choose from: DIY project-box builds, retro-fitted old computer or console injection molded cases, 3D-printed designs, and manufactured aluminum heatsink cases.
 
 ## Get some ideas
 

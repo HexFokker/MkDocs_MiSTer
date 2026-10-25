@@ -24,7 +24,7 @@ Windows での接続の短い動画：
 1. **dialout** グループのメンバーであることを確認。
 2. シリアルポートはおそらく **/dev/ttyUSB0**。
 3. 設定：`stty -F /dev/ttyUSB0 115200 cs8 -cstopb -parenb -ixoff -ixon`
-4. 出力を見ながらファイルにも書き出す：`cat /dev/ttyUSB0 | tee mr.log`
+4. 出力を見ながらファイルにも書き出す：`cat /dev/ttyUSB0 | tee mr.log` — これはシリアル出力の読み取りと記録のみで、入力は送れません。対話セッション（ログインなど）には `screen /dev/ttyUSB0 115200` や `minicom` などのターミナルプログラムを使ってください。
 
 mr.log に画面に出たすべてのコピーが残ります。
 
