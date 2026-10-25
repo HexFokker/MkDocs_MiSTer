@@ -1,7 +1,7 @@
 まず、microSD カードにソフトウェアをインストールします。
 
 ## Mr. Fusion を microSD カードに書き込む { #flash-mr-fusion-to-your-microsd-card }
-Mr. Fusion はコンパクトなイメージで、[balenaEtcher](https://www.balena.io/etcher/){target=_blank}、[Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/){target=_blank}、[Apple Pi Baker](https://www.tweaking4all.com/software/macosx-software/applepi-baker-v2/){target=_blank}、あるいは [dd](https://en.wikipedia.org/wiki/Dd_%28Unix%29){target=_blank} のようなツールで、どんなサイズの SD カードにも書き込めます。
+Mr. Fusion はコンパクトなイメージで、[balenaEtcher](https://www.balena.io/etcher/){target=_blank}、[Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/){target=_blank}、[Apple Pi Baker](https://www.tweaking4all.com/software/macosx-software/applepi-baker-v2/){target=_blank}、あるいは [dd](https://en.wikipedia.org/wiki/Dd_%28Unix%29){target=_blank} のようなツールで、インストールとゲームに十分な容量を持つ対応 MicroSD カードに書き込めます。
 
 このガイドでは balenaEtcher を使います。[お使いのコンピューター向けの最新リリースをダウンロード](https://www.balena.io/etcher/){target=_blank}してインストールしてください。
 

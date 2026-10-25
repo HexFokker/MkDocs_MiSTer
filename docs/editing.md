@@ -5,7 +5,7 @@ hide:
 
 This guide shows how to edit this documentation site. It's similar to editing a wiki page, with a few extra steps. All edits are approved by the administrators of the MkDocs_MiSTer repository on GitHub.
 
-## How to edit/contribute to pages on this documentation site
+## Contributing changes
 
 First, you will need a GitHub account:
 
@@ -38,5 +38,3 @@ The pull request form will appear — your last chance to check your work before
 If a pull request is declined, respond respectfully and discuss the technical points with the maintainers:
 
 ![Be respectful and mindful of the goal of the documentation site](img/contrib7.png)
-
-Once you've edited a page this way, you should now know how to fork a repository, commit changes, and create a pull request on GitHub.

@@ -5,7 +5,7 @@ hide:
 
 Next, load the core for the system you want to play; this example uses the NES core. Select Console, then NES, and press Enter or the button you assigned as "A" on your controller. Once the core loads, you may need to press your assigned Menu button (or F12 on the keyboard) again to reopen the menu. Then select Load ROM and load your game.
 
-If the game has saves and the core offers an Autosave option, turn it on. The MiSTer has to be told when to write a save to the card: without Autosave, each time you save your progress in-game (Final Fantasy for the NES, for example), you must open the On-Screen Display and select "Save Backup RAM". With Autosave on, opening the menu is all that's needed, so turning it on keeps you from forgetting. See [Game saves](../basics/saves.md) for details.
+If the game has saves and the core uses the Backup RAM/OSD Autosave mechanism, you can enable its Autosave option so progress is written when you open the menu. Without Autosave, save your progress in-game (Final Fantasy for the NES, for example), then open the On-Screen Display and select "Save Backup RAM". Other cores may handle saving differently — check the core's documentation. See [Game saves](../basics/saves.md) for details.
 
 Settings you change in a core's menu are only kept if you save them. To keep Autosave on, switch to the core's secondary OSD menu (press right on the controller) and select "Save Settings".
 

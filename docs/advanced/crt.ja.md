@@ -25,7 +25,7 @@ MiSTer には2つのネイティブアナログ出力経路があります。I/O
     * **Direct Video** — ケーブルに sync-on-green 回路を追加します。[Direct Video - YPbPr 信号のセットアップ](directvideo.md#setup-for-ypbpr-signals)または[このフォーラムスレッド](https://misterfpga.org/viewtopic.php?f=33&t=1471){target=_blank}を参照。INI：`direct_video=1`、`composite_sync=1`、`vga_mode=ypbpr`
 
 * **VGA モニター（31 kHz）** — 標準の VGA ケーブル。
-    INI：`forced_scandoubler=1`（Direct Video では `direct_video=1` も追加）
+    INI：対応コアで `forced_scandoubler=1`（Direct Video では `direct_video=1` も追加）
 
 * **RGBS 入力の PVM/BVM** — RGB と独立したコンポジット同期信号を運ぶ標準の VGA-to-BNC ケーブルを使います。
     INI：`composite_sync=1`（Direct Video では `direct_video=1` も追加）
@@ -70,4 +70,4 @@ MiSTer には2つのネイティブアナログ出力経路があります。I/O
 
 * **民生テレビ** — 主に 15 kHz モデル（240p と 480i）。後期のモデルはより高いレートのコンポーネントや HDMI 入力を持つものもあります。入力対応は地域とモデルにより異なります。北米ではコンポジットが一般的で、欧州では RGB SCART がより一般的（ただし全てではない）でした。画質の順位はおおむね RF < コンポジット < S-Video < コンポーネント／RGB です。
 * **コンピューターモニター** — 31 kHz 向けに設計され、通常は VGA のみ。240p 信号は 31 kHz にスキャンダブルしてもジャッターやその他のアーティファクトが出ることがあります。一部の[マルチシンクモニター](https://en.wikipedia.org/wiki/Multisync_monitor){target=_blank}は 15 kHz もネイティブに受け付けるため、さまざまなコンソールやビデオタイミングに対応できる柔軟な選択肢となります。
-* **プロ用モニター** — Sony の PVM/BVM シリーズ、[放送用リファレンスモニター](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}、医療用ディスプレイなど：高い TVL の高品質な設計（実際のシャープさはモデルと状態に依存）、80年代半ば以降の多くのモデルでネイティブ RGB 入力、豊富な前面パネルの画像調整、修理しやすくシールドも良好。多くがマルチシンクで、50/60 Hz 対応はモデルにより異なります。接続性は広範で BNC 入力も含みます。モデルによって、3本（RGB＋sync-on-green）、4本（RGB＋コンポジット同期）、5本（RGB＋独立水平同期・垂直同期）の BNC を使います。中古品は高価で入手困難です。
+* **プロ用モニター** — Sony の PVM/BVM シリーズ、[放送用リファレンスモニター](https://en.wikipedia.org/wiki/Broadcast_reference_monitor){target=_blank}、医療用ディスプレイなど：高い TVL の高品質な設計（実際のシャープさはモデルと状態に依存）、80年代半ば以降の多くのモデルでネイティブ RGB 入力、豊富な前面パネルの画像調整、修理しやすくシールドも良好。多くがマルチシンクで、50/60 Hz 対応はモデルにより異なります。接続性は広範で BNC 入力も含みます。モデルによって、3本（RGB＋sync-on-green）、4本（RGB＋コンポジット同期）、5本（RGB＋独立水平同期・垂直同期）の BNC を使います。中古品は高めで、入手しやすさは地域によって異なります。

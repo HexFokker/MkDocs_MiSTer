@@ -1,7 +1,7 @@
 First, install the software onto your MicroSD card.
 
 ## Flash Mr. Fusion to your MicroSD card
-Mr. Fusion provides a compact image that you can download and flash onto an SD card of any size with a tool like [balenaEtcher](https://www.balena.io/etcher/){target=_blank}, [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/){target=_blank}, [Apple Pi Baker](https://www.tweaking4all.com/software/macosx-software/applepi-baker-v2/){target=_blank}, or even [dd](https://en.wikipedia.org/wiki/Dd_%28Unix%29){target=_blank}.
+Mr. Fusion provides a compact image that you can download and flash onto a supported MicroSD card with enough capacity for the install and your games, using a tool like [balenaEtcher](https://www.balena.io/etcher/){target=_blank}, [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/){target=_blank}, [Apple Pi Baker](https://www.tweaking4all.com/software/macosx-software/applepi-baker-v2/){target=_blank}, or even [dd](https://en.wikipedia.org/wiki/Dd_%28Unix%29){target=_blank}.
 
 This guide uses balenaEtcher — [download the latest release for your computer](https://www.balena.io/etcher/){target=_blank} and install it.
 
