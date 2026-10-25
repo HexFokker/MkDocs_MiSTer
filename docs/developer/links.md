@@ -19,7 +19,8 @@ Useful links for new and experienced developers:
 [USB Blaster for Debugging](https://github.com/MiSTer-devel/Main_MiSTer/wiki/USB-Blaster-(debugging)){target=_blank}
 
 ## Quartus Lite 17.0.2 Download Links
-Quartus Lite 17.0.2 (Windows/Linux) — the direct .tar URLs have been retired; download it from Intel's [FPGA Software Download Center](https://www.intel.com/content/www/us/en/collections/products/fpga/software/downloads.html?edition=lite){target=_blank} by selecting version 17.0 Lite.  
+[Quartus Lite 17.0.2 for Windows](https://download.altera.com/akdlm/software/acdsinst/17.0std.2/602/ib_tar/Quartus-lite-17.0.2.602-windows.tar){target=_blank}  
+[Quartus Lite 17.0.2 for Linux](https://download.altera.com/akdlm/software/acdsinst/17.0std.2/602/ib_tar/Quartus-lite-17.0.2.602-linux.tar){target=_blank}  
 [Quartus 17.0 Help](https://www.intel.com/content/www/us/en/programmable/quartushelp/17.0/index.htm#quartus/gl_quartus_welcome.htm){target=_blank}
 
 ## DE10-Nano Resources
