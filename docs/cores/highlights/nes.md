@@ -13,7 +13,7 @@ The NES could only show a limited number of sprites on screen at once. Some game
 ![type:video](videos/nes-flicker.mp4)
 
 ## Palettes
-The NES core has built-in palettes and can also load custom palettes. The NES has no native color palette, because it didn't output colors as red, green, and blue values like other consoles. Emulators therefore need palettes that approximate the original viewing experience as closely as possible. Since that experience sometimes varied depending on the TV, several palettes are available. This also makes fun and ridiculous palettes possible, such as RetroSho's Virtual Boy palette. For more on NES palettes, watch [this YouTube video by NesHacker](https://www.youtube.com/watch?v=7Co_8dC2zb8) (and read the pinned comment, as a few details were technically inaccurate).
+The NES core has built-in palettes and can also load custom palettes. The NES has no native color palette, because it didn't output colors as red, green, and blue values like other consoles. Emulators therefore need palettes that approximate the original viewing experience as closely as possible. Since that experience sometimes varied depending on the TV, several palettes are available. This also makes novelty palettes possible, such as RetroSho's Virtual Boy palette. For more on NES palettes, watch [this YouTube video by NesHacker](https://www.youtube.com/watch?v=7Co_8dC2zb8) (and read the pinned comment, as a few details were technically inaccurate).
 
 ### Palettes Example Video
 ![type:video](videos/palettes.mp4)

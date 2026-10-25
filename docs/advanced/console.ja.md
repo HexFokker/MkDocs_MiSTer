@@ -5,7 +5,7 @@ DE10-Nano ボードにはコンソールポートがあります。ネットワ�
 ![UART port location](img/layout_top.jpg)
 
 ## Windows で接続
-**UART-to-USB（USB mini type B）** コネクター（micro-USB の隣）で DE10-Nano を PC に接続します。PC には仮想 COM ポートとして認識されます。任意のコンソールアプリで接続してください。おすすめは [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html){target=_blank} です。
+**UART-to-USB（USB mini type B）** コネクター（micro-USB の隣）で DE10-Nano を PC に接続します。PC には仮想 COM ポートとして認識されます。任意のシリアルコンソールアプリで接続してください（例：[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html){target=_blank}）。
 
 COM ポート設定を確認：
 

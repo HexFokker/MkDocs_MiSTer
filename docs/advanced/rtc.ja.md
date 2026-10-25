@@ -6,7 +6,7 @@
 
 このシンプルなボードは、インターネット接続なしで実時刻を供給します。2種類のバッテリーホルダーと複数の RTC IC に対応し、LTC コネクターに挿します。
 
-## 組み立ての注意点 { #assembly-notes }
+## 組み立てのコツ { #assembly-notes }
 
 * スルーホール型バッテリーホルダーを使う場合は、そのプラスチックのピンをすべて切り、ホルダーが基板に隙間なく完全に乗るようにしてください。さもないと I/O ボードに触れてショートする可能性があります。
 * スルーホール型ホルダーでは、ピンもできるだけ短く切ってください。基板の下に突き出るとショートの原因になります。
@@ -39,7 +39,7 @@
 
 ### 1. PCB を注文
 
-#### 承認済み PCB メーカー
+#### PCB メーカーの例
 
 * [PCBway](https://www.pcbway.com/setinvite.aspx?inviteid=43024){target=_blank} - [RTC v1.2 クイックオーダー](https://www.pcbway.com/project/shareproject/RTC_for_MiSTer_v1_2.html){target=_blank} - [RTC v1.3（温度センサー付き）クイックオーダー](https://www.pcbway.com/project/shareproject/W43024ASU40_rtc_1_3.html){target=_blank}
 * [EasyEDA](https://easyeda.com/){target=_blank}

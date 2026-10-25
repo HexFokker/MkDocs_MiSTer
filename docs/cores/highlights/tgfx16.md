@@ -1,4 +1,4 @@
-The [MiSTer TurboGrafx16 core](https://github.com/MiSTer-devel/TurboGrafx16_MiSTer){target=_blank} is an extremely accurate TurboGrafx-16 / PC-Engine implementation. Originally based on [Gregory "Torlus" Estrade's FPGAPCE](https://github.com/Torlus/FPGAPCE){target=_blank}, it has been pushed even further to a high degree of accuracy by MiSTer devs and PC-Engine experts. It supports the SuperGrafx, CD-ROM, and Arcade Card.
+The [MiSTer TurboGrafx16 core](https://github.com/MiSTer-devel/TurboGrafx16_MiSTer){target=_blank} is a TurboGrafx-16 / PC-Engine implementation. Originally based on [Gregory "Torlus" Estrade's FPGAPCE](https://github.com/Torlus/FPGAPCE){target=_blank}, it has been developed further by MiSTer devs and PC-Engine experts. It supports the SuperGrafx, CD-ROM, and Arcade Card.
 
 ## Controller Options
 

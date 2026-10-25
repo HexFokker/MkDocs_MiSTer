@@ -1,4 +1,4 @@
-Sony PlayStation（PSX）の MiSTer コアは、これまでで最も機能が充実し、開発も活発なコアです：
+Sony PlayStation（PSX）の MiSTer コア：
 
 * 豊富なコントローラーオプション
 * BIOS リージョンの自動切り替え

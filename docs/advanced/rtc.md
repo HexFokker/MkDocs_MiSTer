@@ -6,7 +6,7 @@ Some cores (ao486, Minimig) use a clock, so MiSTer provides them with the real t
 
 This simple board provides the real time without an Internet connection. It supports two types of battery holders and several types of RTC ICs, and plugs into the LTC connector.
 
-## Assembly notes
+## Assembly tips
 
 * If a through-hole battery holder is used, cut all its plastic pins and make sure the holder sits fully on the board, without gaps. Otherwise it may touch the I/O board and cause a short circuit.
 * For a through-hole holder, also cut the pins as short as possible, so they don't protrude under the board and cause a short circuit.
@@ -39,7 +39,7 @@ The following section walks you through creating your own MiSTer RTC Board: wher
 
 ### 1. Order PCB
 
-#### Approved PCB Manufacturers
+#### PCB manufacturer examples
 
 * [PCBway](https://www.pcbway.com/setinvite.aspx?inviteid=43024){target=_blank} - [Quick order RTC v1.2](https://www.pcbway.com/project/shareproject/RTC_for_MiSTer_v1_2.html){target=_blank} - [Quick order RTC v1.3 (with temp sensor)](https://www.pcbway.com/project/shareproject/W43024ASU40_rtc_1_3.html){target=_blank}
 * [EasyEDA](https://easyeda.com/){target=_blank}

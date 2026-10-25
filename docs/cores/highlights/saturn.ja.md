@@ -1,4 +1,4 @@
-Sega Saturn の MiSTer コアは、[srg320 (Sergey Dvodnenko)](https://www.patreon.com/srg320/){target=_blank} 氏が開発を始めたもので、Sega Saturn ライブラリーの大多数において実機に代わる現代的な選択肢です。
+Sega Saturn の MiSTer コアは、[srg320 (Sergey Dvodnenko)](https://www.patreon.com/srg320/){target=_blank} 氏が開発を始めたもので、Sega Saturn ライブラリーの大部分で実機を再現します。
 
 ## コントローラー／周辺機器対応
 

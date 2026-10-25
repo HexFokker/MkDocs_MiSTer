@@ -1,4 +1,4 @@
-[MiSTer TurboGrafx16 コア](https://github.com/MiSTer-devel/TurboGrafx16_MiSTer){target=_blank}は、極めて正確な TurboGrafx-16 / PC-Engine 実装です。元は [Gregory "Torlus" Estrade 氏の FPGAPCE](https://github.com/Torlus/FPGAPCE){target=_blank} をベースにし、MiSTer 開発者と PC-Engine 専門家によって高度な精度まで押し上げられました。SuperGrafx、CD-ROM、Arcade Card に対応しています。
+[MiSTer TurboGrafx16 コア](https://github.com/MiSTer-devel/TurboGrafx16_MiSTer){target=_blank}は、TurboGrafx-16 / PC-Engine 実装です。元は [Gregory "Torlus" Estrade 氏の FPGAPCE](https://github.com/Torlus/FPGAPCE){target=_blank} をベースにし、MiSTer 開発者と PC-Engine 専門家によってさらに開発が進められました。SuperGrafx、CD-ROM、Arcade Card に対応しています。
 
 ## コントローラーオプション
 

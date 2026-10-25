@@ -45,20 +45,15 @@ The Rev.0 Roland MT-32 used in testing needed the 'DELAYSYSEX' switch to prevent
 
 ## MidiLink
 
-The [MidiLink](https://github.com/bbond007/MiSTer_MidiLink){target=_blank} daemon (`midilink`) currently supports the following switches/options:
+The [MidiLink](https://github.com/MiSTer-devel/MidiLink_MiSTer){target=_blank} daemon (`midilink`) is included with MiSTer and supports several operating modes, selectable from the Menu core's Uartmode option or via command-line switches:
 
-```
-TESTSER  - this option sends a test message to the serial port once 
-           the daemon is started.  
+* **Local / MUNT** — MUNT soft synth running on the HPS ARM core (no USB MIDI adapter needed; MT-32/CM-32 ROMs go in `/media/fat/linux/mt32-rom-data`)
+* **Local / FSYNTH** — FluidSynth soft synth (soundfont set by `FSYNTH_SOUNDFONT` in MidiLink.INI)
+* **Remote / UDP** — direct MIDI connection to another MiSTer or computer
+* **Remote / TCP** — modem emulation with a subset of Hayes AT commands (115200 baud default)
+* **USBMIDI / SERMIDI** — USB MIDI adapter (e.g. Roland UM-ONE MK2), or a USB serial adapter as fallback
 
-TESTMIDI - this option sends a middle 'c' note to the MIDI device 
-           once the daemon is started. 
-
-QUIET    - this option suppresses MIDI debug output.  
-
-38400    - this option sets the serial speed to 38400 baud 
-           (default is 31250 baud) - used with ao486 core.
-```
+Default baud rate is 31250; the ao486 core uses 38400. See the [MidiLink README](https://github.com/MiSTer-devel/MidiLink_MiSTer){target=_blank} for the full switch list and MidiLink.INI options.
 
 ## MIDI adapters reported to work
 

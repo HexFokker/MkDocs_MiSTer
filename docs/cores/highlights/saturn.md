@@ -1,4 +1,4 @@
-The Sega Saturn MiSTer core, originally developed by [srg320 (Sergey Dvodnenko)](https://www.patreon.com/srg320/){target=_blank}, is a suitable modern replacement for the original hardware for the vast majority of the Sega Saturn library.
+The Sega Saturn MiSTer core, originally developed by [srg320 (Sergey Dvodnenko)](https://www.patreon.com/srg320/){target=_blank}, reproduces the original hardware for a large portion of the Sega Saturn library.
 
 ## Controller/Accessories Support
 

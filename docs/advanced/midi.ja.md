@@ -45,20 +45,15 @@ MPU-401 割り込みありで SoftMPU を起動：
 
 ## MidiLink
 
-[MidiLink](https://github.com/bbond007/MiSTer_MidiLink){target=_blank} デーモン（`midilink`）は現在、次のスイッチ／オプションに対応しています：
+[MidiLink](https://github.com/MiSTer-devel/MidiLink_MiSTer){target=_blank} デーモン（`midilink`）は MiSTer に同梱されており、複数の動作モードに対応します。Menu コアの Uartmode オプションまたはコマンドラインスイッチで選択できます：
 
-```
-TESTSER  - this option sends a test message to the serial port once 
-           the daemon is started.  
+* **Local / MUNT** — HPS ARM コア上で動く MUNT ソフトシンセ（USB MIDI アダプター不要。MT-32/CM-32 ROM は `/media/fat/linux/mt32-rom-data` に置く）
+* **Local / FSYNTH** — FluidSynth ソフトシンセ（サウンドフォントは MidiLink.INI の `FSYNTH_SOUNDFONT` で指定）
+* **Remote / UDP** — 別の MiSTer やコンピューターへの直接 MIDI 接続
+* **Remote / TCP** — Hayes AT コマンドのサブセットによるモデムエミュレーション（デフォルト 115200 baud）
+* **USBMIDI / SERMIDI** — USB MIDI アダプター（例：Roland UM-ONE MK2）、またはフォールバックとして USB シリアルアダプター
 
-TESTMIDI - this option sends a middle 'c' note to the MIDI device 
-           once the daemon is started. 
-
-QUIET    - this option suppresses MIDI debug output.  
-
-38400    - this option sets the serial speed to 38400 baud 
-           (default is 31250 baud) - used with ao486 core.
-```
+デフォルトのボーレートは 31250 です。ao486 コアは 38400 を使います。全スイッチと MidiLink.INI オプションは [MidiLink README](https://github.com/MiSTer-devel/MidiLink_MiSTer){target=_blank} を参照してください。
 
 ## 動作報告のある MIDI アダプター
 

@@ -1,4 +1,4 @@
-The Sony PlayStation (PSX) MiSTer core is the most feature-filled and heavily developed core so far:
+The Sony PlayStation (PSX) MiSTer core:
 
 * Multiple controller options
 * Automatic BIOS region swapping
