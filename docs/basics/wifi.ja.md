@@ -9,7 +9,7 @@ DE10-Nano にも MiSTer 拡張ボードにも WiFi は内蔵されていない�
 * CanaKit Raspberry Pi WiFi ドングル
 * Edimax EW-7612UAn v2 または EW-7811UN または EW-7822ULC
 * Netgear A6100 または A6150
-* D-link AC1300 MU-MIMO WiFi Nano USB Adapter@@KEEP@@ DWA-181
+* D-link AC1300 MU-MIMO Wi-Fi Nano USB Adapter DWA-181
 
 ただし、これらのアダプターの新しいハードウェアリビジョンは未対応のことがあるため、結果は異なる場合があります。上級ユーザーであればドライバーを自分でコンパイルすることも可能です。
 

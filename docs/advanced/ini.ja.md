@@ -66,7 +66,7 @@ MiSTer は最大4つの INI ファイルに対応しています。`MiSTer.ini` 
 
 `fb_terminal` - 1 のままが最善。CRT やアナログディスプレイでスクリプト実行に問題がある場合は、2 にするとターミナルがアナログ出力用サイズになります（0 でフレームバッファーターミナル自体を無効化）。
 
-`vga_sog` - Analog I/O Board 6.x の SoG スイッチが AUTO のとき sync-on-green を有効化。OVR 位置ではこの設定に関わらず SoG が強制オンになります。I/O Board 9.2 + AV Board 1.2 には物理 SoG スイッチがなく、フレームワークが sync-on-green を自動処理します。
+`vga_sog` - Analog I/O Board 6.x の SoG スイッチが AUTO のとき sync-on-green を有効化。OVR 位置ではこの設定に関わらず SoG が強制オンになります。I/O Board 9.2 + AV Board 1.2 には物理 SoG スイッチがなく、`vga_sog` 設定が構成どおりに有効になります。
 
 ## 音声設定
 

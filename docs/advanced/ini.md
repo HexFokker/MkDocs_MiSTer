@@ -66,7 +66,7 @@ Alternate INI files can also have custom names. The name appears on the OSD Info
 
 `fb_terminal` - Best left at 1. If you have issues running scripts on a CRT or analog display, set this to 2 to size the terminal for analog output, or 0 to disable the framebuffer terminal.
 
-`vga_sog` - Enables sync-on-green on the Analog I/O Board 6.x when the board's SoG switch is in AUTO; the OVR position forces SoG on regardless of this setting. On I/O Board 9.2 + AV Board 1.2 there is no physical SoG switch; the framework handles sync-on-green automatically.
+`vga_sog` - Enables sync-on-green on the Analog I/O Board 6.x when the board's SoG switch is in AUTO; the OVR position forces SoG on regardless of this setting. On I/O Board 9.2 + AV Board 1.2 there is no physical SoG switch; the `vga_sog` setting takes effect as configured.
 
 ## Audio Settings
 

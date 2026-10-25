@@ -2,14 +2,14 @@ WiFi is optional and simple to set up on the MiSTer. You'll need a compatible do
 
 ## Suggested WiFi Adapters
 
-Neither the DE10-Nano nor the MiSTer add-on boards have built-in WiFi, so you need a compatible USB WiFi adapter. Not all models are compatible — even adapters of the same model can vary by hardware revision. Adapters reported to work include: Adapters reported to work:
+Neither the DE10-Nano nor the MiSTer add-on boards have built-in WiFi, so you need a compatible USB WiFi adapter. Not all models are compatible — even adapters of the same model can vary by hardware revision. Adapters reported to work:
 
 * ASUS USB AC53 nano rev A1
 * TP-Link AC1300 Archer T3U or Nano AC600 Archer T2U
 * CanaKit Raspberry Pi WiFi dongle
 * Edimax EW-7612UAn v2 or EW-7811UN or EW-7822ULC
 * Netgear A6100 or A6150
-* D-link AC1300 MU-MIMO WiFi Nano USB Adapter@@KEEP@@ DWA-181
+* D-link AC1300 MU-MIMO Wi-Fi Nano USB Adapter DWA-181
 
 Your results may vary, because newer hardware revisions of these adapters may not be supported. Advanced users can compile their own drivers.
 
