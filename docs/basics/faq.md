@@ -12,7 +12,7 @@ Most MiSTer cores are as accurate as, if not more accurate than, those of any ot
 
 ### Does MiSTer have lag?
 
-It depends on your setup, but it ranges from imperceptibly low to around one frame. Zero latency is possible with certain equipment and tweaks; see [Input Latency](../advanced/lag.md) for a detailed explanation.
+It depends on your setup, but it ranges from imperceptibly low to around one frame. Near-zero latency is possible with certain equipment and tweaks; see [Input Latency](../advanced/lag.md) for a detailed explanation.
 
 ### When will MiSTer support cartridges or USB CD drives?
 
