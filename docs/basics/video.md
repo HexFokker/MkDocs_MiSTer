@@ -5,7 +5,7 @@ MiSTer offers several basic video customization features:
 * Video filters, including scanlines
 * Shadowmasks
 * Gamma correction
-* 5x overscan mode, which pushes a 1200p image into 1080p for square pixels and nearly the original overscan of a CRT, depending on the game's resolution
+* 5x overscan mode, which first crops the image to the effective number of lines, then integer-scales it 5x for square pixels on a 1080p display (with some overscan, depending on the game's resolution)
 
 ## Video Presets
 
@@ -41,7 +41,7 @@ The `video_mode` option sets the output resolution. The available presets are li
 ;14 - 2560x1440@60 (Pixel Repetition)
 ```
 
-For example, `video_mode=0` sets 1280x720@60. Most people will probably want 1920x1080@60, so my advice would be `video_mode=8`. The `ini-settings.sh` script also shows which value selects which resolution.
+For example, `video_mode=0` sets 1280x720@60. Most people will probably want 1920x1080@60, so `video_mode=8` is a common choice. The `ini-settings.sh` script also shows which value selects which resolution.
 
 For a detailed explanation of video modes, see [Advanced - Video Modes](../advanced/videomodes.md) (thanks to Wickerwaka).
 
@@ -90,14 +90,14 @@ Enabling VRR might give measurably smoother video: Ace reported that the repeate
 
 ### Core exceptions
 
-You can override settings for specific cores. For example, my monitor doesn't play nice with the low-lag setting on the Genesis core, so in my `MiSTer.ini` I added this section to the **end of the file**:
+You can override settings for specific cores. For example, if a monitor doesn't work well with the low-lag setting on the MegaDrive core, add this section to the **end of the file**:
 
 ```ini
-[Genesis]
+[MegaDrive]
 vsync_adjust=0
 ```
 
-Whatever `vsync_adjust` is set to in the main section, the Genesis core will now always use `vsync_adjust=0`, the most compatible mode. A wildcard applies one exception to multiple cores:
+Whatever `vsync_adjust` is set to in the main section, the MegaDrive core will now always use `vsync_adjust=0`, the most compatible mode. A wildcard applies one exception to multiple cores:
 
 ```ini
 [dkong*]
@@ -147,7 +147,7 @@ The pixels are now a bit smoother:
 
 [![MiSTer FPGA Horizontal Interpolation Medium filter horz filter: NES duck tales](img/interpolation-medium.png)](img/interpolation-medium.png){target=_blank}
 
-Interpolation also makes scrolling look smoother than sharper filters such as the default nearest neighbour.
+Interpolation also softens sharp pixel edges compared with the default nearest neighbour.
 
 For scanlines like those of a CRT (and of the scanline option in some emulators), set `Vert Filter:` the same way. It filters horizontal lines from top to bottom, i.e. vertically. Under `Vert Filter`'s `From File` option, select `Scanlines - Brighter.txt`. The options should now look like this:
 
@@ -161,7 +161,7 @@ With the scanline filter on, you might notice that some scanlines look darker th
 
 [![MiSTer FPGA Vertical Crop 5x mode 1080p to 1200p 216p to 5x with overscan](img/5x-vertical-crop.png)](img/5x-vertical-crop.png){target=_blank}
 
-A few lines at the top and bottom are cut off. This is fine: original CRTs cut off about the same amount, and most games keep no information at the top and bottom edges. The `Scanlines - Brighter.txt` scanlines are now evenly spaced, and the image should look a lot better.
+A few lines at the top and bottom are cut off. CRTs typically hid a similar overscan region, and most games keep no information at the edges — but cropping can lose content in games that use the full frame. The `Scanlines - Brighter.txt` scanlines are now evenly spaced, and the image should look a lot better.
 
 This video demonstrates 5x mode:
 
