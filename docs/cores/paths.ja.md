@@ -4,7 +4,7 @@
 `/media/fat/games/<CORE>` の形式です。`<CORE>` はそのシステムの[内部コア名](../developer/corenames.md)です。適切なフルパスは各コアの README を確認してください。
 
 ## 標準 USB コアパス
-`/media/usb<0..5>/games/<CORE>` の形式です。`<0..5>` は OS がマウントした USB ドライブの番号を示します。
+`/media/usb<0..5>/games/<CORE>` の形式です。`<0..5>` は各マウント済み USB ドライブのマウントインデックス（usb0、usb1、… usb5）を示します。
 
 ## 標準 CIFS コアパス
 `/media/fat/cifs/games/<CORE>` の形式です。
@@ -13,7 +13,7 @@
 後方互換性とテストのために、他にも有効なパスが存在します。できるだけ標準パスを使ってください。
 
 ## パスの優先順位
-コアパスには優先順位があります。`/games/PSX` フォルダーを含む USB ドライブを挿すと（`/media/usb<0..5>/games/PSX` としてマウント）、MiSTer PSX コアは microSD 上のローカル `/media/fat/games/PSX` ではなくそちらを参照します。[Main_MiSTer の file_io.cpp](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/file_io.cpp#L922){target=_blank} による優先順位（高→低）：
+コアパスには優先順位があります。`/games/PSX` フォルダーを含む USB ドライブを挿すと（`/media/usb<0..5>/games/PSX` としてマウント）、MiSTer PSX コアは microSD 上のローカル `/media/fat/games/PSX` ではなくそちらを参照します。[Main_MiSTer の file_io.cpp](https://github.com/MiSTer-devel/Main_MiSTer/blob/8328d9f0e162c663bcdcd695ee77b61ca6eab06a/file_io.cpp#L1060){target=_blank}（`findPrefixDir`）による優先順位（高→低）：
 
 マウントされた各 USB ドライブを順に（`usb0`、`usb1`、... `usb5`）：
 
@@ -29,4 +29,4 @@
 7. `/media/fat`
 8. `/media/fat/games`
 
-これらのどこにもコアのフォルダーが見つからない場合、コアが自動で作成するはずです。
+これらのどこにもコアのフォルダーが見つからない場合、MiSTer が MicroSD カード上に自動で作成します。

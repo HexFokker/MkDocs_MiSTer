@@ -81,6 +81,7 @@ These must be placed at the bottom of the configuration string:
 * `X` - Disables the OSD entirely.
 * `I,INFO1,INFO2,...,INFO255` - `INFO1-INFO255` lines to display as OSD info (top left corner of screen).
 * `DEFMRA,{mra name}` - default MRA (e.g. Puckman.mra) to be used when the core is uploaded via USB Blaster (debug)
+* `SS{base addr}:{savestate size}` - declares savestate support and the DDR region it uses, e.g. `MyCore;SS3E000000:1000;`. Four consecutive slots are mapped starting at the base; see [Savestates](savestates.md) for the address constraints and developer responsibilities.
 
 ## jn vs. jp and mapping conventions
 

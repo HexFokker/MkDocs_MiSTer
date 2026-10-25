@@ -81,6 +81,7 @@ MiSTer はキーボードの F12（または OSD ボタン）でトグルでき�
 * `X` - OSD を完全に無効化します。
 * `I,INFO1,INFO2,...,INFO255` - OSD 情報（画面左上）として表示する `INFO1-INFO255` 行。
 * `DEFMRA,{mra name}` - コアが USB Blaster 経由でアップロードされたとき（デバッグ）に使うデフォルト MRA（例：Puckman.mra）
+* `SS{base addr}:{savestate size}` - セーブステート対応とそれが使う DDR 領域を宣言（例：`MyCore;SS3E000000:1000;`）。ベースから4つの連続スロットがマップされます。アドレス制約と開発者の責任は [Savestates](savestates.md) を参照。
 
 ## jn と jp の違いとマッピング慣例
 

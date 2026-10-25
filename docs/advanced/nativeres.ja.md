@@ -46,7 +46,7 @@ hide:
 | Gaplus           | 20210611  | 289x224                   | 16.0                   | 60.8                | 6.14              |                                                    |
 | Gauntlet         | 20220313  | 336x240                   | 15.7                   | 59.7                | 7.16              |                                                    |
 | Gyruss           | 20211225  | 256x224                   | 16.0                   | 60.6                | 6.14              |                                                    |
-| IremM62          | 20210925  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
+| IremM62          | 20210925  |                           |                        |                     |                   | unknown（生のコア出力未測定） |
 | IronHorse        | 20211225  | 240x224                   | 16.0                   | 61.1                | 6.14              |                                                    |
 | Jackal           | 20211225  | 240x224                   | 16.0                   | 61.1                | 6.14              |                                                    |
 | Jailbreak        | 20211225  | 256x224                   | 16.0                   | 60.6                | 6.14              |                                                    |
@@ -54,11 +54,11 @@ hide:
 | LadyBug          | 20210927  | 240x192                   | 16.0                   | 61.2                | 5.00              |                                                    |
 | LunarLander      | 20210111  | 640x480                   | 31.3                   | 59.5                | 25.00             |                                                    |
 | MarioBros        | 20210925  | 256x224                   | 15.6                   | 59.2                | 6.00              |                                                    |
-| MCR1             | 20210820  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
-| MCR2             | 20210114  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
-| MCR3             | 20210112  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
-| MCR3Mono         | 20210114  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
-| MCR3Scroll       | 20210111  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
+| MCR1             | 20210820  |                           |                        |                     |                   | unknown（生のコア出力未測定） |
+| MCR2             | 20210114  |                           |                        |                     |                   | unknown（生のコア出力未測定） |
+| MCR3             | 20210112  |                           |                        |                     |                   | unknown（生のコア出力未測定） |
+| MCR3Mono         | 20210114  |                           |                        |                     |                   | unknown（生のコア出力未測定） |
+| MCR3Scroll       | 20210111  |                           |                        |                     |                   | unknown（生のコア出力未測定） |
 | MoonPatrol       | 20220322  | 240x248                   | 15.6                   | 55.4                | 6.00              |                                                    |
 | MrDo             | 20220313  | 248x192                   | 15.7                   | 59.9                | 4.90              |                                                    |
 | MysticMarathon   | 20220424  | 282x242                   | 15.6                   | 60.1                | 6.00              |                                                    |
@@ -85,20 +85,20 @@ hide:
 | SolomonsKey      | 20210116  | 257x224                   | 15.5                   | 60.0                | 6.00              |                                                    |
 | SpaceInvaders    | 20211201  | 260x224                   | 15.6                   | 59.6                | 5.00              |                                                    |
 | SpaceRace        | 20210228  | 374x246                   | 15.7                   | 60.1                | 7.16              |                                                    |
-| Sprint1          | 20201210  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
-| Sprint2          | 20201210  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
+| Sprint1          | 20201210  |                           |                        |                     |                   | unknown（生のコア出力未測定） |
+| Sprint2          | 20201210  |                           |                        |                     |                   | unknown（生のコア出力未測定） |
 | Subs             | 20220105  | 320x224                   | 15.8                   | 59.9                | 6.05              |                                                    |
-| SuperBreakout    | 20220520  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
+| SuperBreakout    | 20220520  |                           |                        |                     |                   | unknown（生のコア出力未測定） |
 | Tecmo            | 20200810  | 256x224                   | 15.6                   | 59.2                | 6.00              |                                                    |
 | TIAMC1           | 20210322  | 256x256                   | 15.6                   | 49.8                | 5.25              |                                                    |
 | TimePilot        | 20211225  | 256x224                   | 16.0                   | 60.6                | 6.14              |                                                    |
 | TimePilot84      | 20220227  | 253x224                   | 16.0                   | 60.6                | 6.14              |                                                    |
 | TraverseUSA      | 20201213  | 240x256                   | 15.6                   | 50.1                | 6.00              |                                                    |
 | TurkeyShoot      | 20220425  | 564x241                   | 15.6                   | 60.1                | 12.00             |                                                    |
-| Ultratank        | 20211118  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
+| Ultratank        | 20211118  |                           |                        |                     |                   | unknown（生のコア出力未測定） |
 | Vball            | 20210621  | 240x240                   | 15.0                   | 57.9                | 6.00              |                                                    |
 | Xevious          | 20220323  | 288x224                   | 15.6                   | 59.2                | 6.00              |                                                    |
-| Zaxxon           | 20210915  |                           |                        |                     |                   | Need to fill in later, raw core output unavailable |
+| Zaxxon           | 20210915  |                           |                        |                     |                   | unknown（生のコア出力未測定） |
 | ZigZag           | 20210117  | 256x225                   | 15.6                   | 59.2                | 6.00              |                                                    |
 
 ## コンソール

@@ -109,7 +109,7 @@ plugins:
             CRT Configuration Table: CRT設定表
             CRT Connections and Output Modes: CRT接続と出力モード
             Direct Video Adapter: Direct Videoアダプター
-            Core Default Resolutions: コアのデフォルト解像度
+            Historical Core Resolutions: コアのデフォルト解像度
             Audio Filters: オーディオフィルター
             MIDI Features: MIDI機能
             Multi-Button Mapping: 複数ボタンマッピング
@@ -243,7 +243,7 @@ nav:
       - CRT Configuration Table: advanced/crttable.md
       - CRT Connections and Output Modes: advanced/crt.md
       - Direct Video Adapter: advanced/directvideo.md
-      - Core Default Resolutions: advanced/nativeres.md
+      - Historical Core Resolutions: advanced/nativeres.md
     - Audio Filters: advanced/audio.md
     - MIDI Features: advanced/midi.md
     - Multi-Button Mapping: advanced/multibutton.md

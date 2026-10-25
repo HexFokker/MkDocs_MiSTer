@@ -174,13 +174,13 @@ These are block devices, so to read or write you first specify the block, then a
 
 There is no wait line, because it's assumed you'll write one block of data into DPRAM and it writes immediately. 
 
-To read data, set the sd_lba to the block number you want to seek to. Then set the correct bit in sd_rd to 1, and the HPS will respond by raising the correct bit in sd_ack, and keeping it high for the duration of the read. The HPS will then use sd_buff_addr and sd_buff_dout and sd_buff_wr to count from 0 to BLKSZ and send a byte per clock.  After reaching the last byte, it will clear the sd_ack.
+To read data, set the sd_lba to the block number you want to seek to. Then set the correct bit in sd_rd to 1, and the HPS will respond by raising the correct bit in sd_ack, and keeping it high for the duration of the read. The HPS will then use sd_buff_addr and sd_buff_dout and sd_buff_wr to send one byte per clock for the whole block (128 << BLKSZ bytes, i.e. the last address is the block size minus 1). After the last byte it will clear the sd_ack.
 
 To write data, set the sd_lba to the block number you want to seek to. Then set the correct bit in sd_wr to 1. Similar to a read, it will raise the sd_ack bit, and count the sd_buff_addr - the core will respond by setting each sd_buff_din to the data it wants to write. After the block is written (sd_buff_addr reaches the last byte of the block) sd_ack will be cleared.
 
 When the user unmounts the image from the OSD, img_mounted pulses again with img_size set to zero. That is how the core knows to unmount the current image.
 
-* `sd_lba[VDNUM]` - logical block address - this is the block we want to start accessing
+* `sd_lba[VDNUM]` - logical block address of the block to access; an unpacked array with one [31:0] element per mounted image (indices 0 to VDNUM-1)
 * `sd_blk_cnt` - number of blocks
 * `sd_rd` - read number of blocks starting at address
 * `sd_wr` - write number of blocks starting at address
@@ -223,7 +223,7 @@ Boot ROMs are automatically loaded using the `ioctl` lines. You can also have RO
 * `ioctl_dout` - data going to core from HPS (ROM)
 * `ioctl_din` - data going to HPS from core - e.g. to save NVRAM
 * `ioctl_upload` - indicate there is an active upload
-* `ioctl_upload_req` - set to 1 to ask the HPS to initiate an NVRAM save, for autosave, HPS only reads this when the OSD is open
+* `ioctl_upload_req` - ask the HPS to upload (save) backup data, used for autosave; the RTL only edge-detects this signal — when the HPS actually services it depends on the core's implementation
 * `ioctl_rd` - data is valid to read
 * `ioctl_file_ext` - this is the file extension as a string 
 * `ioctl_wait` - set this flag to 1 if the core isn't ready to process another byte from the HPS (flow control)
@@ -289,7 +289,7 @@ In BCD:
 
 The hps_io module has two ways of accessing the keyboard and mouse. It provides PS/2-compatible signals, useful for porting cores that expect a PS/2 keyboard, and an easier-to-use, more reliable interface.
 
-To use the new interface, `ps2_key[10]` is toggled with each keypress and `ps2_key[9]` indicates whether the key is pressed. The rest of the bits are standard PS/2 bits, with bit 8 being the extended bit.
+To use the new interface, `ps2_key[10]` toggles on each key press and release and `ps2_key[9]` indicates whether the key is pressed. The rest of the bits are standard PS/2 bits, with bit 8 being the extended bit.
 
 ### Setting PS2 Keyboard lights
 

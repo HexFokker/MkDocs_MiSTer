@@ -148,7 +148,7 @@ MiSTer repositories are self-contained, and the official updater script only fet
 Combine two options, autobooting a core and starting the core with a given ROM:
 
 * In `MiSTer.ini`, set `bootcore=NES_20201102.rbf` (or the core version you have), and comment out `;bootcore_timeout`.
-* In your NES games folder (e.g. `/media/fat/games/NES/`), copy the FDS BIOS as `boot0.rom` and the `.nes` ROM you want to boot as `boot1.rom`.
+* In your NES games folder (e.g. `/media/fat/games/NES/`), name the `.nes` ROM you want to boot `boot1.rom`. (Only FDS images need the FDS BIOS as `boot0.rom`; a plain NES cart boots from `boot1.rom` alone.)
 
 For more options, see the [NES core documentation](https://github.com/MiSTer-devel/NES_MiSTer#installation){target=_blank}.
 

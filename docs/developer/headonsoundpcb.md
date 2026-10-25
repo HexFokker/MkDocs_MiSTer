@@ -57,7 +57,7 @@ The amplitude halves every 28 ms, decaying exponentially from maximum:
 
 `Amplitude = MaxAmplitude * 0.976^time_in_milliseconds` (equivalently `Amax * 2^(-t/28ms)`; each audio-sample timestep multiplies the amplitude by a decay factor — see the implementation below)
 
-`MaxAmplitude` should be set to the highest number that fits — e.g. 32 bits — to keep precision. Normally I use fixed-point math with 32 bits of precision for multiplications like this. Later we convert to 16 bits for the output.
+`MaxAmplitude` should use a fixed-point width large enough to keep precision — the example uses 32 bits for these multiplications. Later we convert to 16 bits for the output.
 
 When the bonus pin is high, the pulse period is 0.002746 s and the pulse is high 75% of the time — equivalent to a loop of:
 

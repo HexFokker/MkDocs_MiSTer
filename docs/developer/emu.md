@@ -232,7 +232,7 @@ Some examples of SDRAM usage in existing cores:
 
 * Single-port direct usage: [Gameboy](https://github.com/MiSTer-devel/Gameboy_MiSTer/blob/master/rtl/sdram.sv){target=_blank}
 * Multi-port request/response: [Gameboy Advance](https://github.com/MiSTer-devel/GBA_MiSTer/blob/master/rtl/sdram.sv){target=_blank}
-* Complex bank machine: [JT Frame](https://github.com/jotego/jtframe/blob/master/hdl/sdram/jtframe_sdram_bank.v){target=_blank}
+* Complex bank machine: [JT Frame](https://github.com/jotego/jtcores/blob/master/modules/jtframe/doc/sdram.md){target=_blank}
 
 ```verilog
 	//SDRAM interface with lower latency

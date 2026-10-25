@@ -53,7 +53,7 @@ The [MidiLink](https://github.com/MiSTer-devel/MidiLink_MiSTer){target=_blank} d
 * **Remote / TCP** — modem emulation with a subset of Hayes AT commands (115200 baud default)
 * **USBMIDI / SERMIDI** — USB MIDI adapter (e.g. Roland UM-ONE MK2), or a USB serial adapter as fallback
 
-Default baud rate is 31250; the ao486 core uses 38400. See the [MidiLink README](https://github.com/MiSTer-devel/MidiLink_MiSTer){target=_blank} for the full switch list and MidiLink.INI options.
+Local and UDP MIDI modes default to 31250 baud (38400 for ao486); Remote/TCP modem mode defaults to 115200. See the [MidiLink README](https://github.com/MiSTer-devel/MidiLink_MiSTer){target=_blank} for the full switch list and MidiLink.INI options.
 
 ## MIDI adapters reported to work
 

@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-This is a list of other cores in the MiSTer GitHub repository that don't fit the console or computer categories. `boot.rom` is synonymous with `boot0.rom`.
+This is a list of other cores in the MiSTer GitHub repository that don't fit the console or computer categories. Boot ROM filenames differ per core — check each core's README.
 
 | Core Name   | Systems   | /games/ Folder  | BIOS  |
 | ----------- | --------- | --------------- | ----- |

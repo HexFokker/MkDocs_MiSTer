@@ -62,7 +62,7 @@
 
       ![inverting integrator](img/inverting_integrator.png)
 
-      または
+      同等の回路：
 
       ![inverting integrator 2](img/inverting_integrator_2.png)
 

@@ -56,7 +56,7 @@ Get this board if you want a few more options, like the features below. It is ty
   ![MiSTer FPGA Analog I/O Add-on Board](img/analogio.png){ align=center }
 </figure>
 
-Get this board instead of the Digital I/O board if you want simultaneous video output to a CRT and an HDMI display. If you only need analog output, the cheaper Digital I/O board suffices — and if you only use HDMI, no I/O board is needed at all.
+Get this board instead of the Digital I/O board if you want simultaneous video output to a CRT and an HDMI display. (If you only use HDMI, no I/O board is needed at all.)
 
 It has the same 3 buttons, 3 status LEDs, secondary MicroSD slot, User IO port, fan power header, and fan mounting holes as the Digital I/O board (see above), plus:
 

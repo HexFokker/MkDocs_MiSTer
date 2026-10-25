@@ -135,7 +135,7 @@ MiSTer のリポジトリーは自己完結しており、公式アップデー�
 コアの自動起動と、指定 ROM でのコア起動、2つの設定を組み合わせます：
 
 * `MiSTer.ini` で `bootcore=NES_20201102.rbf`（またはお持ちのコアのバージョン）を設定し、`;bootcore_timeout` をコメントアウトします。
-* NES の games フォルダー（例：`/media/fat/games/NES/`）に、FDS BIOS を `boot0.rom`、起動したい `.nes` ROM を `boot1.rom` として置きます。
+* NES の games フォルダー（例：`/media/fat/games/NES/`）に、起動したい `.nes` ROM を `boot1.rom` として置きます（FDS イメージの場合のみ FDS BIOS を `boot0.rom` として追加。通常の NES カートリッジは `boot1.rom` だけで起動します）。
 
 その他のオプションは [NES コアのドキュメント](https://github.com/MiSTer-devel/NES_MiSTer#installation){target=_blank}を参照。
 

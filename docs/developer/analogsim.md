@@ -62,7 +62,7 @@ The [Arcade-Battlezone](https://github.com/jopdorp/Arcade-BattleZone_MiSTer){tar
 
       ![inverting integrator](img/inverting_integrator.png)
 
-      or
+      or, equivalently:
 
       ![inverting integrator 2](img/inverting_integrator_2.png)
 

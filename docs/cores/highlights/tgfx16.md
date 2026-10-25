@@ -4,20 +4,9 @@ The [MiSTer TurboGrafx16 core](https://github.com/MiSTer-devel/TurboGrafx16_MiST
 
 The OSD lets you change which original controller your controller simulates. For example, Pachio-Kun was played with a pachinko-style controller that had an angled slider for aiming the pachinko balls; select Pachinko in the Special option and use an analog stick or paddle for this movement instead.
 
-The Turbo Tap controller is also supported. This is separate from MiSTer's built-in turbo feature: the Turbo Tap had a specific turbo frequency that suits some games better, and enabling this option makes the buttons use turbo at that controller's original rate.
+The core supports the TurboTap multitap adapter for multi-controller games, the 2-button 'turbo' joypad, and the 6-button joypad. For 2-button turbo, turbo fire is provided through alternate buttons (matching the original system): A/B are the normal buttons, X/Y are turbo level 1, and L/R are turbo level 2.
 
-Another option switches to the rarely used PC-Engine 6-button controller. The "HORI Fighting Commander PC" and a few other controllers had this I–VI button layout, each with turbo tap functionality. Only a select few games supported it:
-
-* Advanced Variable Geo
-* Art of Fighting
-* Asuka 120% Maxima Burning Fest
-* Fatal Fury 2
-* Fatal Fury Special
-* Flash Hiders
-* Flash Hiders Taikenban (Demo)
-* Kabuki Klash
-* World Heroes II
-* Ys IV - Dawn of Ys
+The 6-button option should only be enabled for games that support it — it is a small list, such as Street Fighter II, Fatal Fury, and Ys IV. See the [core README](https://github.com/MiSTer-devel/TurboGrafx16_MiSTer#joystick){target=_blank} for the current supported-game list.
 
 ## Arcade card
 

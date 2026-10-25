@@ -4,20 +4,9 @@
 
 OSD で、お使いのコントローラーがどの実機コントローラーをシミュレートするか変更できます。たとえば Pachio-Kun は、パチンコ球を狙う角度付きスライダーのあるパチンコ式コントローラーで遊ばれていました。Special オプションで Pachinko を選び、この動きには代わりにアナログスティックまたはパドルが使えます。
 
-Turbo Tap コントローラーにも対応しています。これは MiSTer 内蔵の連射機能とは別物です。Turbo Tap は一部のゲームに合う特定の連射周波数を持っており、このオプションを有効にするとボタンがそのコントローラー本来の速度で連射します。
+コアはマルチコントローラーゲーム向けの TurboTap マルチタップ、2ボタン "turbo" ジョイパッド、6ボタンジョイパッドに対応しています。2ボタンターボでは、代替ボタンで連射を提供します（実機と同じ）：A/B が通常ボタン、X/Y が連射レベル1、L/R が連射レベル2です。
 
-もう一つのオプションは、めったに使われなかった PC-Engine 6ボタンコントローラーへの切り替えです。"HORI Fighting Commander PC" など少数のコントローラーがこの I〜VI ボタン配置を持ち、各ボタンに連射機能がありました。対応したのは限られたゲームだけです：
-
-* Advanced Variable Geo
-* Art of Fighting
-* Asuka 120% Maxima Burning Fest
-* Fatal Fury 2
-* Fatal Fury Special
-* Flash Hiders
-* Flash Hiders Taikenban (Demo)
-* Kabuki Klash
-* World Heroes II
-* Ys IV - Dawn of Ys
+6ボタンオプションは対応ゲームでのみ有効にしてください。対応ゲームは少数のリスト（Street Fighter II、Fatal Fury、Ys IV など）に限られます。現在の対応ゲームリストは[コア README](https://github.com/MiSTer-devel/TurboGrafx16_MiSTer#joystick){target=_blank}を参照してください。
 
 ## Arcade Card
 

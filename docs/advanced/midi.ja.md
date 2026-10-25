@@ -53,7 +53,7 @@ MPU-401 割り込みありで SoftMPU を起動：
 * **Remote / TCP** — Hayes AT コマンドのサブセットによるモデムエミュレーション（デフォルト 115200 baud）
 * **USBMIDI / SERMIDI** — USB MIDI アダプター（例：Roland UM-ONE MK2）、またはフォールバックとして USB シリアルアダプター
 
-デフォルトのボーレートは 31250 です。ao486 コアは 38400 を使います。全スイッチと MidiLink.INI オプションは [MidiLink README](https://github.com/MiSTer-devel/MidiLink_MiSTer){target=_blank} を参照してください。
+Local と UDP MIDI モードのデフォルトは 31250 ボー（ao486 は 38400）で、Remote/TCP モデムモードのデフォルトは 115200 です。全スイッチと MidiLink.INI オプションは [MidiLink README](https://github.com/MiSTer-devel/MidiLink_MiSTer){target=_blank} を参照してください。
 
 ## 動作報告のある MIDI アダプター
 
