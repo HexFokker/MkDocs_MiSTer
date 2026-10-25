@@ -178,7 +178,7 @@ SNAC（Serial Native Accessory Converter）は、実機コントローラーを�
 
 * [MiSTerFPGA.co.uk の SNAC アダプター](https://misterfpga.co.uk/product/mister-snac-controller-adapters/){target=_blank}（[SNAC 延長ケーブル](https://misterfpga.co.uk/product/mister-snac-extension-cable/){target=_blank}との併用がおすすめ）
 * [UltimateMiSTer.com の SNAC アダプター](https://ultimatemister.com/product-category/mister-snac/){target=_blank}（[SNAC 延長ケーブル](https://ultimatemister.com/product/snac-extension-c64-iec-mt32-pi/){target=_blank}との併用がおすすめ）
-* [MiSTerAddons.com の SNAC V1](https://misteraddons.com/products/mister-fpga-serial-native-accessory-converter-snac){target=_blank}、[SNAC V2](https://misteraddons.com/products/snax){target=_blank}、[SNAC V3](https://misteraddons.com/products/snax64){target=_blank}。いずれも専用の[外付けコントローラーアダプター](https://misteraddons.com/products/hdmi-controller-adapters){target=_blank}を別途使用。
+* [MiSTerAddons.com の SNAC アダプター](https://misteraddons.com/products/snac){target=_blank}。いずれも専用の[外付けコントローラーアダプター](https://misteraddons.com/products/hdmi-controller-adapters){target=_blank}を別途使用。
 
 SNAC の詳細は[こちらのページ](https://github.com/blue212/SNAC){target=_blank}。
 

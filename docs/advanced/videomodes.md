@@ -53,7 +53,7 @@ video_mode=hact,hfp,hs,hbp,vact,vfp,vs,vbp,fpix
 Two further values can be appended to set the sync polarities directly: `hpol` then `vpol`, each `0` or `1` (11 values in total).
 `hact` and `vact` define the active (visible) size of the video mode in horizontal and vertical pixels, respectively. `hfp`, `hs`, and `hbp` define the duration of the horizontal front porch, sync, and back porch in pixels. `vfp`, `vs`, and `vbp` define the same properties for the vertical timing. Finally, `fpix` is the pixel clock frequency in kHz (pixel clocks are usually specified in MHz, so multiply the MHz value by 1000).
 
-MiSTer modelines are similar to XFree86 modelines, but the information is expressed slightly differently. You can convert an XFree86 modeline to a MiSTer one with morf77's [custom video mode tool](https://morf77.pythonanywhere.com/){target=_blank}, used together with a [modeline calculator](https://arachnoid.com/modelines/){target=_blank}.
+MiSTer modelines are similar to XFree86 modelines, but the information is expressed slightly differently. You can convert an XFree86 modeline to a MiSTer one with morf77's [custom video mode tool](https://github.com/morfeus77/MiSTerTools){target=_blank} (source; the hosted version is offline), used together with a [modeline calculator](https://arachnoid.com/modelines/){target=_blank}.
 
 ## Additional Flags
 Additional flags can be appended to custom modes and modelines:

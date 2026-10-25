@@ -36,7 +36,7 @@ Alternate INI files can also have custom names. The name appears on the OSD Info
 
 `fb_size` - Affects the scaling of content drawn to the Linux framebuffer, such as when you run scripts. Best left at 0 for automatic.
 
-`video_mode` - Sets the resolution for HDMI and VGA_Scaler output. This can be one of the premade values from 0-14 or a custom video mode. See the notes in the [.ini](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/MiSTer.ini){target=_blank} for custom video mode syntax. There is also a useful custom video mode tool by morf77 [available here](https://morf77.pythonanywhere.com/){target=_blank} which can be used in conjunction with a [modeline calculator](https://arachnoid.com/modelines/){target=_blank}.
+`video_mode` - Sets the resolution for HDMI and VGA_Scaler output. This can be one of the premade values from 0-14 or a custom video mode. See the notes in the [.ini](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/MiSTer.ini){target=_blank} for custom video mode syntax. There is also a useful custom video mode tool by morf77 ([source](https://github.com/morfeus77/MiSTerTools){target=_blank}; the hosted version is offline) which can be used in conjunction with a [modeline calculator](https://arachnoid.com/modelines/){target=_blank}.
 
 `hdr` - Configures the use of HDR. 0 - disabled, 1 - enables HDR using [HLG](https://en.wikipedia.org/wiki/Hybrid_log%E2%80%93gamma){target=_blank} (recommended for most users), 2 - enables HDR using the [DCI P3 color space](https://en.wikipedia.org/wiki/DCI-P3){target=_blank} (adjust color controls to taste; suggested: `video_saturation` set to 80).
 

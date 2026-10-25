@@ -191,7 +191,7 @@ SNAC (Serial Native Accessory Converter) connects original controllers directly 
 
 * [MiSTerFPGA.co.uk's SNAC adapters](https://misterfpga.co.uk/product/mister-snac-controller-adapters/){target=_blank} (best used with their [SNAC extension cable](https://misterfpga.co.uk/product/mister-snac-extension-cable/){target=_blank})
 * [UltimateMiSTer.com's SNAC Adapters](https://ultimatemister.com/product-category/mister-snac/){target=_blank} (best used with their [SNAC extension cable](https://ultimatemister.com/product/snac-extension-c64-iec-mt32-pi/){target=_blank})
-* [MiSTerAddons.com's SNAC V1](https://misteraddons.com/products/mister-fpga-serial-native-accessory-converter-snac){target=_blank}, [SNAC V2](https://misteraddons.com/products/snax){target=_blank}, and [SNAC V3](https://misteraddons.com/products/snax64){target=_blank}, all of which use [external controller adapters](https://misteraddons.com/products/hdmi-controller-adapters){target=_blank} made for them and sold separately.
+* [MiSTerAddons.com's SNAC adapters](https://misteraddons.com/products/snac){target=_blank}, all of which use [external controller adapters](https://misteraddons.com/products/hdmi-controller-adapters){target=_blank} made for them and sold separately.
 
 For details on SNAC, see [this page](https://github.com/blue212/SNAC){target=_blank}.
 

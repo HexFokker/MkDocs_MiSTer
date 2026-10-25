@@ -12,9 +12,7 @@ We talked about what we thought each part was, and decided to start with the car
 ## Finding real footage
 Searching the web for videos with the sounds, we found a couple, but the quality was bad:
 
-https://discord.com/channels/@me/950484205664612402/951108401801338890
-
-https://discord.com/channels/@me/950484205664612402/951139287745851425
+(The original footage links were private Discord messages and are no longer publicly accessible.)
 
 JimmyStones contacted the maker of the sound board to see if he had some tips. He seemed willing to help, but wasn't familiar enough with FPGAs to join the project. JimmyStones then found someone who owned a cabinet and obtained some good sound recordings, which gave us a way to validate our results.
 

@@ -36,7 +36,7 @@ MiSTer は最大4つの INI ファイルに対応しています。`MiSTer.ini` 
 
 `fb_size` - Linux フレームバッファーに描画される内容のスケーリングに影響（スクリプト実行時など）。自動の 0 のままが最善。
 
-`video_mode` - HDMI と VGA_Scaler 出力の解像度を設定。0-14 の既成値かカスタムビデオモード。カスタムビデオモードの構文は [.ini](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/MiSTer.ini){target=_blank} 内の注記を参照。morf77 氏の便利なカスタムビデオモードツールが[こちら](https://morf77.pythonanywhere.com/){target=_blank}にあり、[モデルライン計算ツール](https://arachnoid.com/modelines/){target=_blank}と併用できます。
+`video_mode` - HDMI と VGA_Scaler 出力の解像度を設定。0-14 の既成値かカスタムビデオモード。カスタムビデオモードの構文は [.ini](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/MiSTer.ini){target=_blank} 内の注記を参照。morf77 氏の便利なカスタムビデオモードツールは[ソース](https://github.com/morfeus77/MiSTerTools){target=_blank}が利用可能（ホスト版はオフライン）、[モデルライン計算ツール](https://arachnoid.com/modelines/){target=_blank}と併用できます。
 
 `hdr` - HDR の使用を設定。0 - 無効、1 - [HLG](https://en.wikipedia.org/wiki/Hybrid_log%E2%80%93gamma){target=_blank} による HDR を有効（ほとんどのユーザーに推奨）、2 - [DCI P3 色空間](https://en.wikipedia.org/wiki/DCI-P3){target=_blank}による HDR を有効（色調整はお好みで。推奨：`video_saturation` を 80 に）。
 

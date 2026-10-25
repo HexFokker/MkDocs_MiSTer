@@ -53,7 +53,7 @@ video_mode=hact,hfp,hs,hbp,vact,vfp,vs,vbp,fpix
 さらに2つの値を追加して同期極性を直接指定できます。`hpol`、続いて `vpol` で、それぞれ `0` または `1` です（合計11個の値）。
 `hact` と `vact` はそれぞれ水平・垂直の有効（表示）サイズをピクセルで定義します。`hfp`、`hs`、`hbp` は水平フロントポーチ・同期・バックポーチの期間をピクセルで定義します。`vfp`、`vs`、`vbp` は垂直タイミングの同じプロパティです。最後に `fpix` は kHz 単位のピクセルクロック周波数です（ピクセルクロックは通常 MHz で表記されるため、MHz 値に 1000 を掛けてください）。
 
-MiSTer モデルラインは XFree86 モデルラインに似ていますが、情報の表現が少し違います。morf77 氏の[カスタムビデオモードツール](https://morf77.pythonanywhere.com/){target=_blank}と[モデルライン計算ツール](https://arachnoid.com/modelines/){target=_blank}を組み合わせて、XFree86 モデルラインを MiSTer 用に変換できます。
+MiSTer モデルラインは XFree86 モデルラインに似ていますが、情報の表現が少し違います。morf77 氏の[カスタムビデオモードツール](https://github.com/morfeus77/MiSTerTools){target=_blank}（ソース。ホスト版はオフライン）と[モデルライン計算ツール](https://arachnoid.com/modelines/){target=_blank}を組み合わせて、XFree86 モデルラインを MiSTer 用に変換できます。
 
 ## 追加フラグ
 カスタムモードとモデルラインには追加フラグを付けられます：
