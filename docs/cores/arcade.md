@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-This is a list of the arcade cores on MiSTer. The Supported Games column lists only general game names, not all revisions/versions. [Alternative MRA files](https://github.com/MiSTer-devel/MRA-Alternatives_MiSTer/tree/master/_alternatives) run variations of these games on the same cores. The update script automatically downloads all the MRA files needed to play them.
+This is a list of the arcade cores on MiSTer. The Supported Games column lists only general game names, not all revisions/versions. [Alternative MRA files](https://github.com/MiSTer-devel/MRA-Alternatives_MiSTer/tree/master/_alternatives) run variations of these games on the same cores. The update script automatically downloads all the MRA files needed to play them. In the SDRAM column, ✔️ means the core requires an SDRAM board. This table is a manually maintained snapshot and may lag behind current releases.
 
 | Core Name                                                                          | Supported Games | SDRAM    |
 | ---------------------------------------------------------------------------------- | --------------- | -------- |

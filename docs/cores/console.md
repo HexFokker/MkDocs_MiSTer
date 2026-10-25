@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-This is a list of the console cores in the MiSTer GitHub repository. Boot ROM filenames and their meaning differ per core — check each core's README. (In the MiSTer framework, `boot.rom` is only a legacy fallback used when `boot0.rom` is absent.)
+This is a list of the console cores in the MiSTer GitHub repository. Boot ROM filenames and their meaning differ per core — check each core's README. (In the MiSTer framework, `boot.rom` is only a legacy fallback used when `boot0.rom` is absent.) In the SDRAM column, ✔️ means the core requires an SDRAM board. This table is a manually maintained snapshot and may lag behind current releases.
 
 | Core Name                                                                                      | Systems                                                                                                 | /games/ Folder          | BIOS                                                                                                                                          | SDRAM    |
 | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |

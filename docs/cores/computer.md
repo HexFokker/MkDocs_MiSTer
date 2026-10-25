@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-This is a list of the computer cores in the MiSTer GitHub repository.
+This is a list of the computer cores in the MiSTer GitHub repository. In the SDRAM column, ✔️ means the core requires an SDRAM board. This table is a manually maintained snapshot and may lag behind current releases.
 
 | Core Name                                                               | System                                                     | /games/ Folder   | SDRAM    |
 | ----------------------------------------------------------------------- | ---------------------------------------------------------- | ---------------- | -------- |
