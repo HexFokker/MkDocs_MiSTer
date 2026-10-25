@@ -8,7 +8,7 @@ No and no, although people who enjoy tinkering can get a lot more out of their M
 
 ### How does the accuracy of MiSTer cores compare to other FPGA options?
 
-Most MiSTer cores are as accurate as, if not more accurate than, those of any other major FPGA product available today. Most people would not be able to tell these cores apart from the original hardware.
+Accuracy varies by core. Many MiSTer cores are highly accurate recreations, but the degree varies — check each core's README and GitHub issues for its current state.
 
 ### Does MiSTer have lag?
 
@@ -34,11 +34,11 @@ Before savestates can be added, a core must either be written from scratch to su
 
 ### I heard the DE10-Nano board uses subsidized components. Is MiSTer doomed if that stops?
 
-No. The DE10-Nano is manufactured at a very large scale for students and is widely available. When it reaches end of life, the open-source cores and infrastructure will be ported to another widely available board.
+No. The DE10-Nano is manufactured at a very large scale for students and is widely available. If it reaches end of life, the open-source cores and infrastructure could be ported to another widely available board.
 
 ### I see a defect that some other people aren't seeing. Should I get a different DE10-Nano?
 
-No. Report the defect and wait for a fix. There is no magically better DE10-Nano.
+Report the defect and wait for a fix. If you suspect faulty hardware, also try the board-level troubleshooting steps (power supply, DIP switches, SDRAM seating).
 
 ### I found some other Cyclone-based dev board on sale and it has built-in WiFi. Can I use it for MiSTer?
 
