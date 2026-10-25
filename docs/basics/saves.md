@@ -2,19 +2,20 @@ Many MiSTer cores let you save your game, either by simulating the original hard
 
 ## Normal game saves
 
-MiSTer writes your in-game saves to the MicroSD card only when you open the On-Screen Display (OSD). To save:
+Cores keep in-game saves in backup memory and write them to the MicroSD card only on a trigger — opening the OSD with Autosave enabled, or selecting "Save Backup RAM" manually.
+
+Without Autosave:
 
 1. Save inside the game.
-2. Open the OSD and select "Save Backup RAM".
-3. In most cores, open the OSD again. You should see a "Saving..." pop-up; if you don't, your save probably wasn't written.
+2. Open the OSD and select "Save Backup RAM". This starts the write — you do not need to reopen the OSD to finish it. If you do open the OSD while a write is in progress or has just finished, you may see a "Saving..." message.
 
-While a save is being written with the OSD open, the yellow LED on the Digital I/O or Analog I/O board lights up, and it turns off when the save is complete.
+Do not power off, reset, or load another game while a save is being written. On many cores the board's yellow LED lights during a write, but the same LED also indicates other core states, so don't rely on it alone.
 
-Having to open the OSD takes some getting used to, but it is necessary. MicroSD cards survive only a limited number of writes before they begin to fail, and because these cores run in the FPGA, some of them may otherwise write to the card constantly, several times a second, without a *signal* telling them when to back up the save to a file.
+Deferring the write is necessary: MicroSD cards survive only a limited number of writes before they begin to fail, and without a *signal* telling the core when to back up the save to a file, some cores could otherwise write to the card constantly, several times a second.
 
 ## Autosave option
 
-Because of the MicroSD card's limited write endurance, almost no core autosaves by default: autosave could generate too many writes and make the card fail sooner. MiSTer's Autosave option only writes when you open the OSD, so it doesn't cause constant writes, and turning it on is still recommended in every core that offers it:
+Almost no core autosaves by default. MiSTer's Autosave uses the same deferred-write mechanism: opening the OSD writes any pending save data automatically, so it doesn't cause constant writes. Turning it on is recommended in every core that offers it:
 
 1. Open the OSD and turn on the Autosave option, if available.
 2. Press Right on your controller (or keyboard) to open the secondary OSD menu, and select "Save Settings".
