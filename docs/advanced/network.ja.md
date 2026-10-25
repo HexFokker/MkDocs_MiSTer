@@ -106,7 +106,7 @@ MiSTer に SSH で入り、展開した Tailscale ファイルを置いたディ
 
 MiSTer が Tailnet に参加したら、tailscale ディレクトリーに次の内容の `tailstart.sh` ファイルを作成：
 ```
-#/bin/sh
+#!/bin/sh
 
 /media/fat/linux/tailscale/tailscaled --tun=userspace-networking --statedir=/media/fat/linux/tailscale/.state/ > /dev/null 2>&1 &
 /media/fat/linux/tailscale/tailscale up --accept-routes > /dev/null 2>&1 &

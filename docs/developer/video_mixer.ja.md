@@ -27,6 +27,7 @@ module video_mixer
 	inout     [21:0] gamma_bus,
 
 	// color
+	// DWIDTH はユーザーパラメーターではなく、現在の RTL では HALF_DEPTH ? 3 : 7 の localparam です。
 	input [DWIDTH:0] R,
 	input [DWIDTH:0] G,
 	input [DWIDTH:0] B,

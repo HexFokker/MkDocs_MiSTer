@@ -1,4 +1,4 @@
-**注意：** このコアは、Nukeykt 氏によるデキャップチップ解析から開発された新しいハードウェア正確な MegaDrive コアに置き換わりつつあります。ターボとスプライト制限機能は現在 MegaDrive コアでは使えません。
+**注意：** このコアはアーカイブ済みでメンテナンスされていません。Nukeykt 氏によるデキャップチップ解析から開発されたハードウェア正確な MegaDrive コアがメンテナンスされている後継です。ターボとスプライト制限機能は現在 MegaDrive コアでは使えません。
 
 Genesis コアは [fpgagen](https://github.com/Torlus/fpgagen){target=_blank} コアの MiSTer への移植で、大幅な機能強化と追加がされています。オーディオフィルタリングオプションは [MDFourier](https://junkerhq.net/MDFourier/){target=_blank} による実機計測に基づいて調整されています。
 
