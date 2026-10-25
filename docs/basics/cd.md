@@ -2,12 +2,7 @@ CD image format support depends on the core. CUE/BIN and CHD are common, but som
 
 ## Will MiSTer ever support USB CD drives?
 
-The short answer is that USB CD drives are not supported and there is no public plan to add support. The long answer is that:
-
-1. There is too much hardware variation in CD drives and their drivers for support to be worth it.
-2. Everything added to the MiSTer's Linux image and Main binary must be very carefully considered, because the goal is to keep them lightweight.
-
-Drive support is also not a priority, as properly dumped CD-ROM images are bit-perfect where it counts (excluding randomized subchannel data and garbage-data fill-in).
+The short answer is that USB CD drives are not supported, and there is no public plan to add support.
 
 ## CUE/BIN folders and CHD files
 

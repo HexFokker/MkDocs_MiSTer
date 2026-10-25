@@ -21,4 +21,4 @@ Many more adapters work, and most adapters seem to work fine. However, some hard
 
 ## Bluetooth connection to MiSTer unstable?
 
-If your Bluetooth connection is unstable (for example, the controller randomly disconnects), try a USB extension cable or pigtail adapter to move the Bluetooth adapter away from the USB hub. For some users, the USB hub can add interference and disrupt certain adapters, such as the ASUS USB-BT500 in some cases. The root cause is not currently known.
+If your Bluetooth connection is unstable (for example, the controller randomly disconnects), try a USB extension cable or pigtail adapter to move the Bluetooth adapter away from the USB hub. For some users, the USB hub can add interference and disrupt certain adapters — the ASUS USB-BT500 has been reported in some cases. Whether this affects a given adapter can depend on its hardware revision.

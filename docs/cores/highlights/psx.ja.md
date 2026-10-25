@@ -47,13 +47,13 @@ PlayStation のメモリーカードファイル（.mcd または .sav）は OSD
 
 実機 PlayStation は開発者に多様な解像度を提供しており、画面外に画像を動かして画面を揺らすゲームもありました。どちらも解像度変化時に同期ずれやスケーリングの不安定を招くことがあります。Fixed Horizontal Blanks（HBlank）と Fixed Vertical Blanks（VBlank）オプションは映像出力を安定させます。同期に問題がある場合や解像度変化がおかしく見える場合に試してください。
 
-* **Fixed HBlank** は PSX 映像出力本来の 4:3 アスペクト比にすべてを収めます。元の解像度が欲しい場合はほぼすべての場面でオンにしてください。
+* **Fixed HBlank** は水平ブランキングを調整し、PSX 映像出力本来の 4:3 アスペクト比に画像を収めます。ゲームが正しく表示されない場合を除き、オンにしておいてください。
 * **Vertical Crop** は Fixed VBlank がオンのとき使えます。他のコアの 5x スケーリングに似たもので、多くの PSX ゲームは 224p か 216p を使うため、設定が2つあります。
 * **Horizontal Crop** は一部の PAL ゲーム向けです。自分に合うものを試してください。
 
 例：
 
-* **Metal Gear Solid** は Fixed HBlank の恩恵を受けます。Fixed VBlank をオンにしないと、一部シーンの画面揺れでモダンディスプレイが同期を失います。
+* **Metal Gear Solid** は Fixed VBlank の恩恵を受けます。これがないと、一部シーンの画面揺れでモダンディスプレイが同期を失うことがあります。
 * **Final Fantasy VII** は Fixed VBlank の恩恵を受けます。Fixed HBlank だけでは正しい 4:3 アスペクト比になりますが、ワールドマップからバトルに切り替わるとき解像度が目に見えて「ジャンプ」します。Fixed VBlank と Vertical Crop -> On (224/270) にすれば、この遷移でも違和感のある解像度・画面位置の変化は起きません：
 
 ![type:video](videos/psx-blanks-ff7.mp4)

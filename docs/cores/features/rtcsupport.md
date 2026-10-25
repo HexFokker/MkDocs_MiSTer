@@ -1,4 +1,4 @@
-MiSTer has Real-Time Clock support in many of its cores. If you have an Internet connection or the RTC board installed, these cores will show the correct date and time or utilise it.
+MiSTer has Real-Time Clock support in many of its cores. If the MiSTer has time set correctly — via network time sync or an RTC board — these cores will show the correct date and time. The core list below is a snapshot and may lag behind current releases; check each core's README.
 
 ## Cores with RTC support (and how to test each)
 

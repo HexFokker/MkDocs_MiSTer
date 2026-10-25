@@ -1,4 +1,4 @@
-The Super Nintendo Entertainment System (SNES) MiSTer core has many features, such as CPU and Super FX turbo modes, lightgun and mouse support, and a configurable WRAM initialization value. It also supports nearly every enhancement chip ever released. This very powerful core was primarily developed by [srg320](https://www.patreon.com/srg320){target=_blank}, who didn't even have the original hardware at the time.
+The Super Nintendo Entertainment System (SNES) MiSTer core has many features, such as CPU and Super FX turbo modes, lightgun and mouse support, and a configurable WRAM initialization value. It also supports many of the enhancement chips released for the console. This very powerful core was primarily developed by [srg320](https://www.patreon.com/srg320){target=_blank}, who didn't even have the original hardware at the time.
 
 ## Enhancement chip support
 Here are the currently supported SNES enhancement chips, with example games that used them:
@@ -30,7 +30,7 @@ The core also supports the Satellaview: place the BSX/BS-X ROM in the `./games/S
 ![type:video](videos/snes-bs-x.mp4)
 
 ## Super FX Turbo
-The Super FX Turbo option overclocks the Super FX chip so that games run a little faster. Combined with the Turbo CPU option, games like Star Fox get a higher framerate. However, the game then runs faster than intended, so your results may vary. Such hacks may also make bugs more likely, so please do not report bugs that occur while using Turbo options.
+The Super FX Turbo option overclocks the Super FX chip, which can raise the framerate in games like Star Fox. This is distinct from CPU Turbo, which overclocks the main CPU and changes the game speed. These make games run faster than intended, so results may vary. Such hacks may also make bugs more likely, so please do not report bugs that occur while using Turbo options.
 
 ### Super FX Turbo example video
 ![type:video](videos/snes-fx-turbo.mp4)

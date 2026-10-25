@@ -68,7 +68,7 @@ Sega Saturn の MiSTer コアは、[srg320 (Sergey Dvodnenko)](https://www.patre
 
 ### "Fast timings" { #fast-timings }
 
-コアを読み込んだ後、OSD メニュー `Hardware` の `Timing` オプションには次の設定があります：
+コアを読み込んだ後、OSD メニューの `Hardware` → `Timing` オプションには次の設定があります：
 
 - `Original`（デフォルト）
 - `Fast`（一般に "fast timings" と呼ばれる）

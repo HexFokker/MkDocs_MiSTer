@@ -68,7 +68,7 @@ This page documents a key option; see the core's OSD for the others.
 
 ### "Fast timings"
 
-After loading the core, the `Timing` option in the OSD menu `Hardware` offers these settings:
+After loading the core, the `Hardware` → `Timing` option in the OSD menu offers these settings:
 
 - `Original` (default)
 - `Fast` (commonly referred to as "fast timings")

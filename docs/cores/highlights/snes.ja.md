@@ -1,4 +1,4 @@
-Super Nintendo Entertainment System（SNES）の MiSTer コアには多くの機能があります。CPU と Super FX のターボモード、ライトガン・マウス対応、設定可能な WRAM 初期化値などです。リリースされた拡張チップのほぼすべてにも対応しています。この非常に強力なコアを主に開発したのは [srg320](https://www.patreon.com/srg320){target=_blank} 氏で、当時は実機すら持っていなかったそうです。
+Super Nintendo Entertainment System（SNES）の MiSTer コアには多くの機能があります。CPU と Super FX のターボモード、ライトガン・マウス対応、設定可能な WRAM 初期化値などです。コンソール向けにリリースされた多くの拡張チップに対応しています。この非常に強力なコアを主に開発したのは [srg320](https://www.patreon.com/srg320){target=_blank} 氏で、当時は実機すら持っていなかったそうです。
 
 ## 拡張チップ対応
 現在対応している SNES 拡張チップと、それを使ったゲームの例：
@@ -30,7 +30,7 @@ Super Nintendo Entertainment System（SNES）の MiSTer コアには多くの機
 ![type:video](videos/snes-bs-x.mp4)
 
 ## Super FX Turbo
-Super FX Turbo オプションは Super FX チップをオーバークロックし、ゲームを少し速く動かします。Turbo CPU オプションと組み合わせると、Star Fox のようなゲームでフレームレートが上がります。ただしゲームは意図より速く動くため、結果はまちまちです。この種のハックはバグを起こしやすくもするので、Turbo オプション使用中に発生したバグは報告しないでください。
+Super FX Turbo オプションは Super FX チップをオーバークロックし、Star Fox のようなゲームでフレームレートを上げられます。これは CPU Turbo とは別物で、CPU Turbo はメイン CPU をオーバークロックしてゲーム速度を変えます。これらはゲームを意図より速く動かすため、結果はまちまちです。この種のハックはバグを起こしやすくもするので、Turbo オプション使用中に発生したバグは報告しないでください。
 
 ### Super FX Turbo の例動画
 ![type:video](videos/snes-fx-turbo.mp4)

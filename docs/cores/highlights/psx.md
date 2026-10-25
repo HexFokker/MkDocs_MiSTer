@@ -47,13 +47,13 @@ Some games use a copy-protection scheme called "Libcrypt" and don't work unless 
 
 The original PlayStation gave software developers a wide variety of resolutions, and some games shake the screen by moving the image outside the screen bounds. Both can cause sync loss and unstable scaling when the resolution changes. The Fixed Horizontal Blanks (HBlank) and Fixed Vertical Blanks (VBlank) options stabilize the video output. If you have sync problems, or resolution changes don't look right, try these options.
 
-* **Fixed HBlank** also makes everything fit within the original 4:3 aspect ratio of the PSX video output, so turn it on in nearly all situations if you want the original resolution.
+* **Fixed HBlank** adjusts horizontal blanking and keeps the image within the original 4:3 aspect ratio of the PSX video output; leave it on unless a game displays incorrectly.
 * **Vertical Crop** becomes available when Fixed VBlank is on. It is similar to the 5x scaling in other cores; because many PSX games use either 224p or 216p, it has two settings.
 * **Horizontal Crop** is made for some PAL games; see what works best for you.
 
 Examples:
 
-* **Metal Gear Solid** benefits from Fixed HBlank: without Fixed VBlank turned on, the screen shaking in some scenes would make a modern display lose sync.
+* **Metal Gear Solid** benefits from Fixed VBlank: without it, the screen shaking in some scenes can make a modern display lose sync.
 * **Final Fantasy VII** benefits from Fixed VBlank. Fixed HBlank alone gives the proper 4:3 aspect ratio, but the resolution visibly "jumps" when the game switches from the world map to a battle. With Fixed VBlank and Vertical Crop -> On (224/270), this transition no longer causes a jarring change in resolution or screen position:
 
 ![type:video](videos/psx-blanks-ff7.mp4)
