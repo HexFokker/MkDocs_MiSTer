@@ -6,7 +6,7 @@ Some cores (ao486, Minimig) use a clock, so MiSTer provides them with the real t
 
 This simple board provides the real time without an Internet connection. It supports two types of battery holders and several types of RTC ICs, and plugs into the LTC connector.
 
-## Assembly tips
+## Assembly tips { #assembly-notes }
 
 * If a through-hole battery holder is used, cut all its plastic pins and make sure the holder sits fully on the board, without gaps. Otherwise it may touch the I/O board and cause a short circuit.
 * For a through-hole holder, also cut the pins as short as possible, so they don't protrude under the board and cause a short circuit.
