@@ -2,7 +2,7 @@ WiFi is optional and simple to set up on the MiSTer. You'll need a compatible do
 
 ## Suggested WiFi Adapters
 
-Neither the DE10-Nano nor the MiSTer add-on boards have built-in WiFi, so you need a compatible USB WiFi adapter. Not all models are compatible, so try to stick with decent name brands. Many users have found that most small ASUS, TP-Link, CanaKit, and Edimax USB adapters work out of the box. Adapters reported to work:
+Neither the DE10-Nano nor the MiSTer add-on boards have built-in WiFi, so you need a compatible USB WiFi adapter. Not all models are compatible — even adapters of the same model can vary by hardware revision. Adapters reported to work include: Adapters reported to work:
 
 * ASUS USB AC53 nano rev A1
 * TP-Link AC1300 Archer T3U or Nano AC600 Archer T2U
@@ -33,4 +33,4 @@ If the script doesn't work, you can try to set up WiFi manually. This method is 
 4. Rename `_wpa_supplicant.conf` to `wpa_supplicant.conf`.
 5. Reboot the MiSTer.
 
-After the reboot, the WiFi icon should appear at the top of the Main Menu's OSD. Be patient: the MiSTer is not very fast at connecting to WiFi — it's a simple device with simple capabilities — so this may take quite a while.
+After the reboot, the WiFi icon should appear at the top of the Main Menu's OSD. Be patient: the MiSTer is not very fast at connecting to WiFi — the connection can take a while to come up.

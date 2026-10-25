@@ -19,7 +19,7 @@ DOS tools are here: [dos_ftpd.zip](https://github.com/MiSTer-devel/ao486_MiSTer/
 * **Apple IIe**. Serial connection.
 
 OSD provides an option to switch between PPP and Console on these cores.
-Both console and PPP use 115200 baud, 8N1 mode, with hardware RTS/CTS flow control for stability.
+Console and PPP connections typically use 115200 baud, 8N1 mode, with hardware RTS/CTS flow control for stability — Minimig additionally supports 230400 baud.
 
 ## Console connection
 
