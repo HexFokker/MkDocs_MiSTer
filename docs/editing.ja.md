@@ -35,7 +35,7 @@ hide:
 
 ![Last chance to check your work, and then click "Create pull request"](img/contrib6.png)
 
-この例では、birdybrain というユーザーがとてもおかしな変更を送ったため、彼のプルリクエストは却下・クローズされました。彼はこれにかなり腹を立てて無礼な返信をしました。birdybrain のようにならないでください。敬意を持ち、目的を理解し、管理者と協力するようにしましょう：
+プルリクエストが却下された場合は、敬意を持って対応し、技術的な点をメンテナーと議論してください：
 
 ![Be respectful and mindful of the goal of the documentation site](img/contrib7.png)
 

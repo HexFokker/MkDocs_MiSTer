@@ -35,7 +35,7 @@ The pull request form will appear — your last chance to check your work before
 
 ![Last chance to check your work, and then click "Create pull request"](img/contrib6.png)
 
-In this example, user birdybrain submitted a very goofy change, so his pull request was denied and closed. He was quite upset by this and replied disrespectfully — don't be like birdybrain. Be respectful and understanding, and try to work with the administrators:
+If a pull request is declined, respond respectfully and discuss the technical points with the maintainers:
 
 ![Be respectful and mindful of the goal of the documentation site](img/contrib7.png)
 
