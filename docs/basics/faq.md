@@ -4,7 +4,7 @@ Answers to frequently asked questions about MiSTer. If something is missing, fee
 
 ### Is MiSTer hard to set up? Is it really only for technical people who like to tinker?
 
-No and no, although people who enjoy tinkering can get a lot more out of their MiSTer if they wish. The minimum setup only requires attaching an SDRAM board to a DE10-Nano and preparing an SD card. See [the Setup Guide](../setup/requirements.md) for details.
+No and no, although people who enjoy tinkering can get a lot more out of their MiSTer if they wish. The minimum setup is a DE10-Nano and a prepared MicroSD card; an SDRAM board is needed by many, though not all, cores. See [the Setup Guide](../setup/requirements.md) for details.
 
 ### How does the accuracy of MiSTer cores compare to other FPGA options?
 
@@ -16,7 +16,7 @@ It depends on your setup, but it ranges from imperceptibly low to around one fra
 
 ### When will MiSTer support cartridges or USB CD drives?
 
-Not currently, and there are no official plans. The project aims to give the original hardware experience without needing the original hardware. Supporting cartridges is physically impractical given the number of GPIO pins available from the FPGA. USB CD drives all have different drivers, latency, and buffering, and they would add unpredictable latency compared with the current method of loading CD games. See also [CD-based games](cd.md#will-mister-ever-support-usb-cd-drives).
+Not currently, and no official plans have been announced. The project aims to give the original hardware experience without needing the original hardware. Supporting cartridges is physically impractical given the number of GPIO pins available from the FPGA. USB CD drives all have different drivers, latency, and buffering, and they would add unpredictable latency compared with the current method of loading CD games. See also [CD-based games](cd.md#will-mister-ever-support-usb-cd-drives).
 
 ### Why doesn't MiSTer have a fancy GUI with cover art and metadata?
 
@@ -28,7 +28,7 @@ For several reasons:
 
 ### Will any MiSTer core ever get save states?
 
-A growing number of cores support savestates, including the Game Boy, GBA, Lynx, WonderSwan, NES, PSX, and SNES cores. Check each core's README for its current feature set.
+Savestate support varies by core — check each core's README for its current feature set.
 
 Before savestates can be added, a core must either be written from scratch to support them or be significantly reworked to support pausing. Adding savestates to an FPGA-based emulator is not as simple as adding them to a software emulator. There are no specific plans to add them to other cores at this time, but it may happen one day.
 
@@ -42,7 +42,7 @@ Report the defect and wait for a fix. If you suspect faulty hardware, also try t
 
 ### I found some other Cyclone-based dev board on sale and it has built-in WiFi. Can I use it for MiSTer?
 
-Generally, no. Someone may always take the time to port things to another board, but different pins and memory mean the cores won't simply work on it, and unless the board is a significant upgrade it would never get official support. Supporting another platform takes a lot of work, so there are no plans to support multiple unofficial hardware platforms.
+Generally, no. Someone may always take the time to port things to another board, but different pins and memory mean the cores won't simply work on it, and official support is unlikely unless the board is a significant upgrade. Supporting another platform takes a lot of work, so there are no plans to support multiple unofficial hardware platforms.
 
 ### Why use FPGA when other proven solutions exist, such as Raspberry Pi?
 
@@ -91,11 +91,7 @@ If you use a USB Hub add-on board with a lot of power-hungry peripherals (WiFi, 
 
 ### Does my MiSTer need cooling?
 
-A heatsink (passive cooling) is recommended. 22 mm × 22 mm is the ideal size, but 20 mm × 20 mm is more than enough and more common. Active cooling with a fan helps but is not strictly required. Some faster and more complex cores, such as ao486, SNES, N64, and PSX, may generate a lot of heat.
-
-### The DE10-Nano is rated for up to 100°C operation and it doesn't get nearly that hot. Do I really need a fan or heatsink?
-
-A number of complex cores (like ao486) benefit from a cooler chip, because heat can affect the tight timings they require. A heatsink is recommended to avoid any possible glitches, and a fan on top of it is even better. You won't damage your DE10-Nano if you use neither.
+A heatsink (passive cooling) is recommended. 22 mm × 22 mm is the ideal size, but 20 mm × 20 mm is more than enough and more common. Active cooling with a fan helps but is not strictly required. Some faster and more complex cores, such as ao486, SNES, N64, and PSX, generate a lot of heat, and heat can affect the tight timings those cores require — so a heatsink, ideally with a fan, is recommended for them.
 
 ### My fan is very loud, is there anything I can do about that?
 
@@ -135,7 +131,7 @@ Yes. The downloader script supports custom databases; see [this guide](https://g
 
 ### What are unstable cores? How do I install one?
 
-Unstable cores are built automatically from the latest commits to a core's repository, so they include the developers' most recent changes and are updated whenever new code is pushed. They may contain bugs or unfinished features, but they eventually mature into a stable release. The update scripts intentionally don't install them, but there are good reasons to install one, such as testing a bug fix or a new feature. Not every core has automated unstable builds.
+Unstable cores are built automatically from the latest commits to a core's repository, so they include the developers' most recent changes and are updated whenever new code is pushed. They may contain bugs or unfinished features, and they are not guaranteed to reach a stable release. The update scripts intentionally don't install them, but there are good reasons to install one, such as testing a bug fix or a new feature. Not every core has automated unstable builds.
 
 Unstable builds are uploaded to the [MiSTer-unstable-nightlies GitHub organization](https://github.com/MiSTer-unstable-nightlies), which hosts forks of the core repositories. Download them from the Releases tab of the core's repository. Ignore the `releases` folder in the repository's file tree: it contains the stable upstream builds. To install a build, copy its `.rbf` file to the appropriate folder on your MiSTer's MicroSD card. You may want to use a dedicated `/_Unstable/` folder to keep these builds separate from stable cores.
 
@@ -187,7 +183,7 @@ With no core loaded, plug in the controller and set it up in the Menu core, then
 
 ### What are the methods for connecting controllers to the serial port of the I/O add-on board?
 
-SNAC (Serial Native Accessory Converter) connects original controllers directly to supported cores (SNES, Genesis, NES, and TG16). SNAC adapters are sold online by various sellers:
+SNAC (Serial Native Accessory Converter) connects original controllers directly to the cores that support it (such as SNES, Genesis, NES, and TG16 — the list grows over time). SNAC adapters are sold online by various sellers:
 
 * [MiSTerFPGA.co.uk's SNAC adapters](https://misterfpga.co.uk/product/mister-snac-controller-adapters/){target=_blank} (best used with their [SNAC extension cable](https://misterfpga.co.uk/product/mister-snac-extension-cable/){target=_blank})
 * [UltimateMiSTer.com's SNAC Adapters](https://ultimatemister.com/product-category/mister-snac/){target=_blank} (best used with their [SNAC extension cable](https://ultimatemister.com/product/snac-extension-c64-iec-mt32-pi/){target=_blank})
@@ -208,7 +204,7 @@ MiSTer also supports several USB lightguns, such as the GunCon 2, GunCon 3, Gun4
 
 Each core requires its own calibration. Calibrate your gun from the distance you plan to play at, and use a white screen for best results.
 
-Never let the calibration value go below 0: saving a calibration with a negative value will likely make the core crash. To fix this, delete the core's lightgun calibration file from the "config" folder on your MiSTer's MicroSD card.
+Never let the calibration value go below 0: saving a calibration with a negative value may crash some cores. To fix this, delete the core's lightgun calibration file from the "config" folder on your MiSTer's MicroSD card.
 
 ## Video
 
@@ -236,11 +232,11 @@ Try setting `vsync_adjust` to 0 (this was the default setting), because your dis
 
 ### My CD games don't work! Help!
 
-Unzip them; CD games must not be zipped. Use ISO/WAV/BIN/IMG + CUE files or CHD. See [CD-based games](cd.md) for how to store them.
+Unzip them; CD games must not be zipped. Supported formats depend on the core — CUE/BIN and CHD are common; check the core's documentation. See [CD-based games](cd.md) for how to store them.
 
 ### How do I handle multidisc games? The core keeps resetting when I change to another disc!
 
-Put all discs of the game in the same subfolder; the core then shouldn't reset when you mount the next disc. See [Multi-disc games](cd.md#multi-disc-games) for an example.
+For most cores, keeping all discs of the game in the same subfolder lets you mount the next disc without a reset — but the exact procedure is core-specific. See [Multi-disc games](cd.md#multi-disc-games) for an example.
 
 ### What version of the CD card BIOS do I need for TurboGrafx-16 CD/PC Engine CD?
 
