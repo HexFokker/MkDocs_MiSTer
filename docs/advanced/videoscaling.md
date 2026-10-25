@@ -29,7 +29,7 @@ These modes, added by wickerwaka, dynamically change your `#!ini video_mode` to 
 #### vscale_mode=4 (Integer resolution scaling using the core's aspect ratio)
 If you have `#!ini video_mode=13` set in your [MiSTer.ini file](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/MiSTer.ini){target=_blank}, then you're telling the MiSTer to set your display to 2048x1536p at a 60 Hz refresh rate. 
 
-Take the 256x224 example, displayed at a 4:3 aspect ratio: you need a resolution that fits all of 256x224 integer-scaled at that ratio (like `#!ini vscale_mode=1` explained above). 2048x1536 is the maximum in either direction. 1536 is almost but not quite 7×224, so MiSTer uses 6 as the multiplier, giving a vertical resolution of 1344. The horizontal resolution has to keep the 4:3 ratio, so 256 scales by the equivalent amount — 1792 — I personally use an [aspect-ratio calculator](https://andrew.hedges.name/experiments/aspect_ratio/){target=_blank} to check.
+Take the 256x224 example, displayed at a 4:3 aspect ratio: you need a resolution that fits all of 256x224 integer-scaled at that ratio (like `#!ini vscale_mode=1` explained above). 2048x1536 is the maximum in either direction. 1536 is almost but not quite 7×224, so MiSTer uses 6 as the vertical multiplier, giving 1344. The horizontal resolution keeps the 4:3 ratio, so 256 scales by a different integer amount — 7, giving 1792 (horizontal and vertical multipliers need not be equal). An [aspect-ratio calculator](https://andrew.hedges.name/experiments/aspect_ratio/){target=_blank} helps verify.
 
 That looks like a lot of work, but vscale_mode=4 does all of the math for you.
 

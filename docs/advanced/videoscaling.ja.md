@@ -35,7 +35,7 @@ wickerwaka 氏が追加したこれらのモードは、`#!ini video_mode` を�
 
 [MiSTer.ini ファイル](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/MiSTer.ini){target=_blank}で `#!ini video_mode=13` を設定した場合、MiSTer にディスプレイを 60 Hz リフレッシュレートの 2048x1536p にするよう指示したことになります。
 
-256x224 の例を 4:3 アスペクト比で表示する場合：その比率で整数スケールした 256x224 全体が収まる解像度が必要です（上記 `#!ini vscale_mode=1` の説明どおり）。2048x1536 が各方向の最大です。1536 は 7×224 にあと少し届かないため、MiSTer は倍率に 6 を使い、垂直解像度は 1344 になります。水平解像度は 4:3 を維持しなければならず、256 が同じ割合でスケールして 1792 になります。確認には[アスペクト比計算ツール](https://andrew.hedges.name/experiments/aspect_ratio/){target=_blank}が便利です。
+256x224 の例を 4:3 アスペクト比で表示する場合：その比率で整数スケールした 256x224 全体が収まる解像度が必要です（上記 `#!ini vscale_mode=1` の説明どおり）。2048x1536 が各方向の最大です。1536 は 7×224 にあと少し届かないため、MiSTer は垂直倍率に 6 を使い、1344 になります。水平解像度は 4:3 を維持するため、256 は別の整数倍率 7 でスケールして 1792 になります（水平と垂直の倍率が同じとは限りません）。確認には[アスペクト比計算ツール](https://andrew.hedges.name/experiments/aspect_ratio/){target=_blank}が便利です。
 
 大掛かりに見えますが、vscale_mode=4 がすべての計算をやってくれます。
 
