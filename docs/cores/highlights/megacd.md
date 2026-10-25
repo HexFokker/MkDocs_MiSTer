@@ -20,7 +20,7 @@ To use MSU-MD or to play the Sega CD version of Pier Solar on the MiSTer core, t
 
 If you meet all of these conditions and the game still doesn't work, then there are a few likely explanations:
 
-1. Your ROM patch is actually an MD+ patch. MD+ is not currently supported.
+1. Your ROM patch is actually an MD+ patch. MD+ is not supported as of this writing — check the core's README for the current status.
 2. Your ROM is not patched at all.
 3. You didn't rename the cartridge's ROM to `cart.rom`.
 4. Your CUE file is incorrect.
