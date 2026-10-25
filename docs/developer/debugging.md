@@ -13,3 +13,12 @@ SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6003", MODE="0666"
 SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6010", MODE="0666"
 SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6810", MODE="0666"
 ```
+
+After creating the file, reload the rules and trigger them without rebooting:
+
+```sh
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+
+`MODE="0666"` grants access to every local user, which is convenient but permissive; for a tighter setup you can assign a dedicated group with `GROUP="plugdev"` (or another group your user belongs to) and `MODE="0664"`.

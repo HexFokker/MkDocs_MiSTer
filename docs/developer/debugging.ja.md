@@ -13,3 +13,12 @@ SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6003", MODE="0666"
 SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6010", MODE="0666"
 SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6810", MODE="0666"
 ```
+
+ファイル作成後、再起動なしでルールを再読み込み・適用：
+
+```sh
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+
+`MODE="0666"` はすべてのローカルユーザーにアクセスを許可するため便利ですが許可的です。より厳格にするなら、`GROUP="plugdev"`（またはユーザーが属する他のグループ）と `MODE="0664"` で専用グループを割り当てられます。
