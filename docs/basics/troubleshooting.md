@@ -9,7 +9,7 @@ Make sure the DIP switches are configured as shown:
 
 ### Lower DIP Switches
 
-If your I/O board is based on the 9.2 [I/O board](../assets/92_io_board.png) and [AV mezzanine board](../assets/92_av_board.png), you don't need to set any of the lower switches: the framework detects the configuration of these boards automatically. Settings for earlier boards are below.
+If you have the I/O Board 9.2 paired with the AV Board 1.2 mezzanine ([I/O board](../assets/92_io_board.png) and [AV board](../assets/92_av_board.png)), you don't need to set any of the lower switches: the framework detects the configuration of these boards automatically. Settings for earlier boards are below.
 
 ??? note "I/O boards before 9.2"
 
@@ -44,11 +44,11 @@ To check whether the MiSTer has booted, try connecting to it via [SSH or FTP](..
 
 ## Fixing missing certs
 
-If `wget` fails, you may be missing security certificate files. The default system ships without any, so `wget` can only download over HTTPS with `--no-check-certificate`. To install the certificates:
+If `wget` fails, you may be missing security certificate files. Some images ship without a working CA bundle, so `wget` may need `--no-check-certificate` for the initial download (this skips certificate verification — acceptable for fetching the CA bundle itself, but re-test normal HTTPS afterwards). To install the certificates:
 
 1. Open the Linux terminal with F9; log in as `root` with password `1`.
 2. `cd /etc/ssl/certs`
-3. `cp cacert.pem cacert.pem.bak` (back up the existing cert)
+3. If `cacert.pem` exists, back it up first: `cp cacert.pem cacert.pem.bak`
 4. `wget --no-check-certificate https://curl.se/ca/cacert.pem -O cacert.pem`
 
 If the download succeeded, `wget` now works normally.
@@ -57,13 +57,17 @@ If the download succeeded, `wget` now works normally.
 
 If the MiSTer has no Internet connection (for example, you can't update it) and `ip addr` shows two IP addresses on `wlan0`, the two addresses may be the cause. Some WiFi adapters seem to do this even on regular Linux computers; the underlying cause is not well understood. In many cases there is no Internet access if one of the two addresses is an "APIPA" address (169.254.x.x). To clear the problem temporarily, flush the addresses and request a fresh lease, then reconnect WiFi:
 
-`ip addr flush wlan0`
+```sh
+ip addr flush wlan0
+```
+
+Then reconnect to WiFi so a fresh lease is requested (toggle WiFi off/on, or reboot).
 
 The problem may come back when your DHCP lease expires and new addresses are assigned. On most home networks, the DHCP server is the router/modem.
 
 ## Fixing a corrupted Linux image on the MiSTer
 
-Sometimes MicroSD cards corrupt data over time. Rarely, it corrupts the MiSTer's Linux files. If you notice low-level problems such as the following (the list is not exhaustive):
+MicroSD cards occasionally corrupt data; in rare cases the corrupted files are the MiSTer's Linux files. If you notice low-level problems such as the following (the list is not exhaustive):
 
 * HDMI video output not working anymore
 * USB controllers and even keyboards not working
@@ -73,7 +77,7 @@ Sometimes MicroSD cards corrupt data over time. Rarely, it corrupts the MiSTer's
 
 then it is best to try re-downloading the Linux files and overwriting the old ones:
 
-1. Remove the MicroSD card from your MiSTer and insert it into your PC.
+1. Power off the MiSTer, then remove the MicroSD card and insert it into your PC.
 2. Download the latest sd-installer release archive (usually the .7z file at the bottom of the list) from [https://github.com/MiSTer-devel/SD-Installer-Win64_MiSTer](https://github.com/MiSTer-devel/SD-Installer-Win64_MiSTer){target=_blank} and unzip it on your PC.
 3. Copy the contents of the archive's `linux` folder over the `linux` folder on the MicroSD card, overwriting the existing files.
 

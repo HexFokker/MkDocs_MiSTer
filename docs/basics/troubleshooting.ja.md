@@ -9,7 +9,7 @@
 
 ### 下段の DIP スイッチ
 
-I/O ボードが 9.2 ベースの [I/O ボード](../assets/92_io_board.png)と [AV メザニンボード](../assets/92_av_board.png)なら、下段のスイッチは一切設定不要です。フレームワークがこれらのボード構成を自動検出します。それ以前のボードの設定は以下のとおりです。
+I/O Board 9.2 と AV Board 1.2 メザニンの組み合わせ（[I/O ボード](../assets/92_io_board.png)と[AV ボード](../assets/92_av_board.png)）なら、下段のスイッチは一切設定不要です。フレームワークがこれらのボード構成を自動検出します。それ以前のボードの設定は以下のとおりです。
 
 ??? note "9.2 より前の I/O ボード"
 
@@ -44,11 +44,11 @@ MiSTer が起動できたか確認するには、[SSH または FTP](../advanced
 
 ## 証明書がない場合の直し方
 
-`wget` が失敗する場合、セキュリティ証明書ファイルがない可能性があります。デフォルトのシステムには証明書が入っていないため、`wget` は `--no-check-certificate` を付けないと HTTPS でダウンロードできません。証明書をインストールするには：
+`wget` が失敗する場合、セキュリティ証明書ファイルがない可能性があります。イメージによっては動作する CA バンドルがないため、最初のダウンロードには `--no-check-certificate` が必要になることがあります（証明書検証をスキップします。CA バンドル自体の取得には許容できますが、後で通常の HTTPS も再テストしてください）。証明書をインストールするには：
 
 1. F9 で Linux ターミナルを開き、ユーザー `root`・パスワード `1` でログイン。
 2. `cd /etc/ssl/certs`
-3. `cp cacert.pem cacert.pem.bak`（既存証明書のバックアップ）
+3. `cacert.pem` が存在する場合は先にバックアップ：`cp cacert.pem cacert.pem.bak`
 4. `wget --no-check-certificate https://curl.se/ca/cacert.pem -O cacert.pem`
 
 ダウンロードが成功すれば `wget` は普通に動くようになります。
@@ -57,7 +57,11 @@ MiSTer が起動できたか確認するには、[SSH または FTP](../advanced
 
 MiSTer がインターネットに接続できず（たとえばアップデートできない）、`ip addr` で `wlan0` に2つの IP アドレスが表示される場合、これが原因かもしれません。一部の WiFi アダプターは普通の Linux コンピューターでもこうなることがあり、根本的な原因はよく分かっていません。2つのアドレスのうち一方が "APIPA" アドレス（169.254.x.x）の場合、多くのケースでインターネットに接続できません。一時的に直すには、アドレスをフラッシュして新しいリースを要求し、WiFi に再接続します：
 
-`ip addr flush wlan0`
+```sh
+ip addr flush wlan0
+```
+
+その後 WiFi に再接続して新しいリースを要求します（WiFi のオフ/オン、または再起動）。
 
 DHCP リースが切れて新しいアドレスが割り当てられると再発することがあります。一般的な家庭用ネットワークでは、DHCP サーバーはルーター／モデムです。
 
@@ -73,7 +77,7 @@ microSD カードは時間とともにデータが破損することがありま
 
 その場合は、Linux ファイルを再ダウンロードして上書きするのが最善です：
 
-1. MiSTer から microSD カードを抜き、PC に挿入。
+1. MiSTer の電源を切ってから microSD カードを抜き、PC に挿入。
 2. [https://github.com/MiSTer-devel/SD-Installer-Win64_MiSTer](https://github.com/MiSTer-devel/SD-Installer-Win64_MiSTer){target=_blank} から最新の sd-installer リリースアーカイブ（通常はリスト一番下の .7z）をダウンロードして PC で解凍。
 3. アーカイブ内の `linux` フォルダーの中身を、microSD カードの `linux` フォルダーに上書きコピー。
 
