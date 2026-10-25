@@ -162,7 +162,7 @@ _Please do not report issues in these experimental builds_.
 
 ## Error Messages
 
-If there is a problem recognized by the MiSTer PSX core, an error overlay is displayed, showing which error has occurred. You can hide these messages with the "Error Overlay" OSD option, which is on by default.
+If there is a problem recognized by the MiSTer PSX core, an error overlay is displayed, showing which error has occurred. You can hide these messages with the "Error Overlay" OSD option.
 
 List of error codes:
 
