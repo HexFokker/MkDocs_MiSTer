@@ -54,7 +54,7 @@ At the simplest level, provide a `CLK_VIDEO` and/or `CE_PIXEL` (`CE_PIXEL` can b
 
 Generally, the video signals should be at the emulated machine's native resolution; an old 8-bit computer, for example, generally outputs 15 kHz video. If the original device's native output was higher than 15 kHz, it's fine to output that natively through the VGA signals. The scaler uses `VGA_DE` (usually `assign VGA_DE = ~(HBlank | VBlank);`) to scale the image to HDMI according to the ini file settings.
 
-For users who want VGA-compatible output on the VGA port, MiSTer has a built-in scandoubler, which you usually include through the `video_mixer` or `arcade_video` module. It is controlled by the `forced_scandoubler` signal from `hps_io`. Some users run 15 kHz cores on 15 kHz monitors, so the core itself shouldn't have its own built-in scandoubler.
+For users who want VGA-compatible output on the VGA port, MiSTer has a built-in scandoubler, which you usually include through the `video_mixer` or `arcade_video` module. It is controlled by the `forced_scandoubler` signal from `hps_io`. Some users run 15 kHz cores on 15 kHz monitors, so a built-in core-level scandoubler is generally unnecessary — the framework provides one.
 
 ### Video Mixer
 

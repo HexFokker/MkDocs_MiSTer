@@ -1,6 +1,6 @@
 A common concern among retro enthusiasts is whether a device like MiSTer has _lag_ and whether it creates a less desirable experience than original hardware. 
 
-All electronic equipment exhibits some kind of _latency_, but it only becomes problematic if this latency causes frames to be missed. A frame is typically 16 ms for a system using a 60 frames per second (60 Hz) display.
+All electronic equipment exhibits some kind of _latency_, but it only becomes problematic if this latency causes frames to be missed. A frame is ~16.67 ms for a system using a 60 frames per second (60 Hz) display.
 
 Lag is only problematic in a few specific cases:
 

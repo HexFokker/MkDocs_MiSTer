@@ -1,20 +1,19 @@
 これはさまざまな MiSTer FPGA コアで使われる再現コンポーネントの一覧です。 手動メンテナンスのスナップショットであり、網羅的な目録ではありません。
 
-## AMI
-### POKEY Sound Chip
-
-* [Atari 5200 & 800](https://github.com/MiSTer-devel/Atari800_MiSTer){target=_blank}
-* [Arcade - A Tetris](https://github.com/MiSTer-devel/Arcade-ATetris_MiSTer){target=_blank}
-* [Arcade - Black Widow](https://github.com/MiSTer-devel/Arcade-BlackWidow_MiSTer){target=_blank}
-* [Arcade - Centipede](https://github.com/MiSTer-devel/Arcade-Centipede_MiSTer){target=_blank}
-* [Arcade - Food Fight](https://github.com/MiSTer-devel/Arcade-FoodFight_MiSTer){target=_blank} TG68
-
 ## AMP 
 ### IR3R60N Audio
 
 * [Gameboy Advance](https://github.com/MiSTer-devel/GBA_MiSTer){target=_blank}
 
 ## Atari
+### POKEY Sound Chip
+
+* [Atari 5200 & 800](https://github.com/MiSTer-devel/Atari800_MiSTer){target=_blank}
+* [Arcade - A Tetris](https://github.com/MiSTer-devel/Arcade-ATetris_MiSTer){target=_blank}
+* [Arcade - Black Widow](https://github.com/MiSTer-devel/Arcade-BlackWidow_MiSTer){target=_blank}
+* [Arcade - Centipede](https://github.com/MiSTer-devel/Arcade-Centipede_MiSTer){target=_blank}
+* [Arcade - Food Fight](https://github.com/MiSTer-devel/Arcade-FoodFight_MiSTer){target=_blank}
+
 ### ANTIC Alphanumeric Television Interface Controller
 
 * [Atari 5200 & 800](https://github.com/MiSTer-devel/Atari800_MiSTer){target=_blank}
@@ -185,7 +184,7 @@ See: [Cores supporting RTC](../cores/features/rtcsupport.md){target=_blank}
 
 ### PPU - Pixel Processing Unit
 
-* [NES](https://github.com/MiSTer-devel/NES_MiSTer){target=_blank} RP2A03G
+* [NES](https://github.com/MiSTer-devel/NES_MiSTer){target=_blank} RP2C02
 * [SNES](https://github.com/MiSTer-devel/SNES_MiSTer){target=_blank} S-PPU2
 
 ### S-SMP Audio

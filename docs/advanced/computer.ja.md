@@ -43,7 +43,7 @@ PPP を正しく動かすには、他のコアを起動する前に Menu コア�
 
 以下のすべての PPP ガイドは同じ最初のステップから始まります。MiSTer システムメニュー（++win+f12++）で "Uart Connection" を "PPP"、Baud を "115200" に設定して保存します。
 
-### MS-DNS 設定 { #ms-dns-configuration }
+### ms-dns 設定 { #ms-dns-configuration }
 
 Windows 95/98/NT は PPP 接続で DNS を自動取得せず、OS 側か MiSTer の SD カード上の `ppp_options` ファイルで手動設定が必要です。
 後者が良い方法で、複数の Windows マシンを自動設定できます。

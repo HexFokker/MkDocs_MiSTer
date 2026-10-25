@@ -184,7 +184,7 @@ No. High-performance, expensive keyboards and mice give no benefit on MiSTer, ma
 
 ## What about rumble support?
 
-Rumble (controller vibration) has recently been added to the Game Boy, Game Boy Advance, and PlayStation cores. For the PlayStation core, make sure your controller's rumble is supported: in the Menu core, hold "L" and press "X" or "Y" (SNES-style layout) to test each of the two motors. Rumble only works reliably with controllers in X-Input mode.
+Rumble (controller vibration) is supported in the Game Boy, Game Boy Advance, and PlayStation cores. For the PlayStation core, make sure your controller's rumble is supported: in the Menu core, hold "L" and press "X" or "Y" (SNES-style layout) to test each of the two motors. Rumble only works reliably with controllers in X-Input mode.
 
 ## What about PlayStation 3-5, Xbox 360 and Xbox One, Switch, and third party Bluetooth gamepads?
 

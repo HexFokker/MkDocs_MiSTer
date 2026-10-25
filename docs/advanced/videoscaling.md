@@ -24,7 +24,7 @@ This setting makes the final scaled resolution multiplier of the core's video ou
 This setting is similar to `#!ini vscale_mode=1`, but instead of whole-number increments (e.g. 2x, 3x, 4x, etc.), it scales in increments of 0.5 (e.g. 2x, 2.5x, 3x, 3.5x, 4x) or 0.25 (e.g. 2x, 2.25x, 2.5x, 2.75x, 3x). On some monitors this can greatly reduce shimmering (though not all) while using sharper filtering (or none at all). Test `vscale_mode=2` and `3` per core to see what looks best.
 
 ### vscale_mode=4 and 5 (Dynamically Scaled Video Mode)
-These modes, recently added by wickerwaka, dynamically change your `#!ini video_mode` to keep integer scaling while still filling the screen. They are ideal on a 2560x1440p or 4K display, where you can fill the screen vertically with very close to zero shimmering and video artifacts. If you don't want to learn how they work, just set one and test it.
+These modes, added by wickerwaka, dynamically change your `#!ini video_mode` to keep integer scaling while still filling the screen. They are ideal on a 2560x1440p or 4K display, where you can fill the screen vertically with very close to zero shimmering and video artifacts. If you don't want to learn how they work, just set one and test it.
 
 #### vscale_mode=4 (Integer resolution scaling using the core's aspect ratio)
 If you have `#!ini video_mode=13` set in your [MiSTer.ini file](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/MiSTer.ini){target=_blank}, then you're telling the MiSTer to set your display to 2048x1536p at a 60 Hz refresh rate. 

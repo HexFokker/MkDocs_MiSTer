@@ -43,7 +43,7 @@ For PPP to work correctly, make sure you see a network icon in the Menu core bef
 
 All of the PPP guides below start with the same first step: in the MiSTer System Menu (++win+f12++) set the "Uart Connection" to "PPP", Baud to "115200", and save it.
 
-### MS-DNS configuration
+### ms-dns configuration
 
 DNS is not acquired automatically by Windows 95/98/NT on a PPP connection
 and requires manual configuration either in the operating system or in the `ppp_options` file on your MiSTer's SD card.
