@@ -1,15 +1,15 @@
-MiSTer combines several compiled components: a customized minimal Linux kernel, a bootloader, the Main MiSTer binary written in C, and cores built on the MiSTer framework in VHDL, Verilog, and SystemVerilog. Compiling the full stack requires a variety of tools.
+MiSTer combines several compiled components: a customized minimal Linux kernel, a bootloader, the Main MiSTer binary written in C++, and cores built on the MiSTer framework in VHDL, Verilog, and SystemVerilog. Compiling the full stack requires a variety of tools.
 
 ## To compile MiSTer FPGA cores
 
-The vast majority of MiSTer FPGA cores currently use Quartus 17.0.2 for compilation. Download links for Windows and Linux:
+Most MiSTer FPGA cores use Quartus 17.0.2 for compilation (as of this writing). Download links for Windows and Linux:
 
 | Download URL                                                                                                                           | SHA1 Checksum                              |
 |----------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
 | [Linux](https://download.altera.com/akdlm/software/acdsinst/17.0std.2/602/ib_tar/Quartus-lite-17.0.2.602-linux.tar){target=_blank}     | `02aebab728d54e3ca8660d2646fdf93bc669b0ac` |
 | [Windows](https://download.altera.com/akdlm/software/acdsinst/17.0std.2/602/ib_tar/Quartus-lite-17.0.2.602-windows.tar){target=_blank} | `01d1f9cea037cf4b8c666da1193f94ba626b6fb3` |
 
-The Linux version is intended for Ubuntu 18.xx; you may have to download some missing dependencies if you use a newer version or another distribution.
+The Linux build is intended for Ubuntu 18.04 LTS; you may have to download some missing dependencies if you use a newer version or another distribution.
 
 Open the `.qpf` file of the MiSTer core you wish to compile in Quartus and press Compile (the play button).
 
@@ -68,20 +68,3 @@ colima start --cpu 4 --memory 8
 ```
 
 After the devcontainer is set up, you can proceed as before and run `make`.
-
-## MiSTer Linux Kernel
-
-Edit your sources file:
-
-```sh
-sudo nano /etc/apt/sources.list
-```
-
-Uncomment all of the lines which start with `deb-src` and then run the following:
-
-```sh
-sudo apt-get update
-sudo apt-get build-dep linux
-```
-
-To be continued — contributions welcome.

@@ -22,7 +22,7 @@ Then make some changes:
 * Inside the files, find the word "zxspectrum" and replace it with your project's name.
 * At the end of the *.qsf files you'll find the list of project files — remove files not related to your project.
 
-The initial set of files for the new project is now ready, and you can open the project in Quartus 17.0 or higher.
+The initial set of files for the new project is now ready, and you can open the project in Quartus 17.0.2 (standard MiSTer projects) — projects with a `*_Q13` Quartus project file use Quartus 13.x instead.
 
 Assuming you are porting an existing core to MiSTer, the top module entity should be renamed to `emu`. See zxspectrum.sv and its input/output signals:
 
@@ -187,7 +187,7 @@ Make sure you set the correct signed/unsigned mode, otherwise audio will be dist
 **SDRAM_\*** signals belong to SDR SDRAM memory. The core will require an SDRAM board if it uses these signals.
 
 ## HPS_IO
-The supplementary module `hps_io.v` is also required in the same entity (see `zxspectrum.sv`). It provides I/O control to and from the ARM side. Most signals are the same as or similar to MiST signals (the `user_io`+`data_io` or `mist_io` modules), so cores ported from MiST usually connect 1:1.
+The supplementary module `hps_io.sv` is also required in the same entity (see `zxspectrum.sv`). It provides I/O control to and from the ARM side. Most signals are the same as or similar to MiST signals (the `user_io`+`data_io` or `mist_io` modules), so cores ported from MiST usually connect 1:1.
 
 MiSTer has some changes/improvements over original MiST io modules:
 

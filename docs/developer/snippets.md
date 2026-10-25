@@ -2,7 +2,7 @@ Here are some useful HDL snippets as used throughout the MiSTer project, with so
 
 ## Simple Pixel Clock Divider Using Clock Enable Generator
 
-In any MiSTer core you develop you will need to attach a pixel clock to the `CE_PIXEL` signal. It's common to divide your video clock by 4 or 8, depending on the core. For simple division like this it is generally best practice to use a clock enable generator, as shown in [the Tropical Angel core](https://github.com/MiSTer-devel/Arcade-TropicalAngel_MiSTer/blob/master/Arcade-TropicalAngel.sv#L386-L391){target=_blank}.
+In any MiSTer core you develop, `CE_PIXEL` must be driven with a pixel clock-enable pulse — it is a clock enable, not a clock. It is common to assert it once every 4 or 8 video-clock cycles, depending on the core. For simple division like this it is generally best practice to use a clock enable generator, as shown in [the Tropical Angel core](https://github.com/MiSTer-devel/Arcade-TropicalAngel_MiSTer/blob/master/Arcade-TropicalAngel.sv#L386-L391){target=_blank}.
 
 ```sv
 reg ce_pix;

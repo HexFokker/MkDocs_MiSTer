@@ -1,4 +1,4 @@
-MiSTer は複数のコンパイル済みコンポーネントを組み合わせています。カスタマイズされた最小限の Linux カーネル、ブートローダー、C で書かれた Main MiSTer バイナリー、そして VHDL、Verilog、SystemVerilog で MiSTer フレームワーク上に構築されたコアです。フルスタックのコンパイルには多様なツールが必要です。
+MiSTer は複数のコンパイル済みコンポーネントを組み合わせています。カスタマイズされた最小限の Linux カーネル、ブートローダー、C++ で書かれた Main MiSTer バイナリー、そして VHDL、Verilog、SystemVerilog で MiSTer フレームワーク上に構築されたコアです。フルスタックのコンパイルには多様なツールが必要です。
 
 ## MiSTer FPGA コアのコンパイル
 
@@ -9,7 +9,7 @@ MiSTer は複数のコンパイル済みコンポーネントを組み合わせ�
 | [Linux](https://download.altera.com/akdlm/software/acdsinst/17.0std.2/602/ib_tar/Quartus-lite-17.0.2.602-linux.tar){target=_blank}     | `02aebab728d54e3ca8660d2646fdf93bc669b0ac` |
 | [Windows](https://download.altera.com/akdlm/software/acdsinst/17.0std.2/602/ib_tar/Quartus-lite-17.0.2.602-windows.tar){target=_blank} | `01d1f9cea037cf4b8c666da1193f94ba626b6fb3` |
 
-Linux 版は Ubuntu 18.xx 向けです。より新しいバージョンや他のディストリビューションを使う場合、不足する依存関係を別途ダウンロードする必要があるかもしれません。
+Linux 版は Ubuntu 18.04 LTS 向けです。より新しいバージョンや他のディストリビューションを使う場合、不足する依存関係を別途ダウンロードする必要があるかもしれません。
 
 コンパイルしたい MiSTer コアの `.qpf` ファイルを Quartus で開き、Compile（再生ボタン）を押します。
 
@@ -68,20 +68,3 @@ colima start --cpu 4 --memory 8
 ```
 
 devcontainer のセットアップ後は、前と同様に `make` を実行できます。
-
-## MiSTer Linux カーネル
-
-sources ファイルを編集：
-
-```sh
-sudo nano /etc/apt/sources.list
-```
-
-`deb-src` で始まる行をすべてコメント解除し、次を実行：
-
-```sh
-sudo apt-get update
-sudo apt-get build-dep linux
-```
-
-続きは後日。コントリビューション歓迎。

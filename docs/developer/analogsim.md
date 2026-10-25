@@ -12,7 +12,7 @@ The [Arcade-Battlezone](https://github.com/jopdorp/Arcade-BattleZone_MiSTer){tar
 2. Play the game in an emulator, paying extra attention to sounds that differ between the emulator and the video of the actual machine.
 3. Identify the digital and analog parts of the schematic.
 
-    * The digital parts run at the system clock speed, or sometimes at a separate clock source closer to the audible frequency spectrum. In Arcade Battlezone, for example, a 12 kHz input feeds a digital noise circuit whose output goes into an analog integrator circuit, producing the explosion sound (its implementation is listed at "inverting amplifier" below). The analog parts output at the audio sample rate, i.e. 48 kHz.
+    * The digital parts run at the system clock speed, or sometimes at a separate clock source closer to the audible frequency spectrum. In Arcade Battlezone, for example, a 12 kHz input feeds a digital noise circuit whose output goes into an analog integrator circuit, producing the explosion sound (its implementation is listed at "inverting amplifier" below). In the FPGA implementation, the digital models of these analog parts are updated at the audio sample rate (48 kHz).
 
 4. Implement all the digital parts. Common digital components in sound systems include:  
 
@@ -66,9 +66,9 @@ The [Arcade-Battlezone](https://github.com/jopdorp/Arcade-BattleZone_MiSTer){tar
 
       ![inverting integrator 2](img/inverting_integrator_2.png)
 
-      This is essentially a sign inversion of the sample, followed by a multiplication, with the result being stored in a reg.
+      A leaky integrator is essentially a sign inversion of the sample, followed by a multiplication, with the result stored in a register.
 
-      The multiplication is run repeatedly each audio clock cycle, resulting in a "release/decay" type amplifier envelope.
+      The multiplication runs repeatedly each audio clock cycle, producing a "release/decay" amplifier envelope.
      
       An example of an implementation of this can be found [here](https://github.com/jopdorp/Arcade-BattleZone_MiSTer/blob/6606cbce7760c60fc06e613292f731f76ffb18ba/rtl/noise_sound.sv#L52){target=_blank}
 
@@ -77,7 +77,7 @@ The [Arcade-Battlezone](https://github.com/jopdorp/Arcade-BattleZone_MiSTer){tar
 
       ![additive mixer](img/additive_mixer.jpg)
 
-      An additive mixer just adds up or averages two signals. If the resistance is higher for one signal than the other, this will result in a volume difference between them.
+      An additive mixer sums two signals (averaging is the same sum scaled by 1/2 — the gain differs, so pick whichever the circuit actually implements). If the resistance is higher for one signal than the other, this will result in a volume difference between them.
 
 7. For the parts that need more attention, note them and try to guess their function. [Differentiators](https://en.wikipedia.org/wiki/Operational_amplifier_applications#Inverting_differentiator){target=_blank} and [integrators](https://en.wikipedia.org/wiki/Operational_amplifier_applications#Inverting_integrator){target=_blank} combined with [555 timers](https://www.electronics-tutorials.ws/waveforms/555_oscillator.html){target=_blank}  and noise inputs can be tricky.
 8. Implement the mixers

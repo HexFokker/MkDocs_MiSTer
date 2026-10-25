@@ -2,7 +2,7 @@ MiSTer プロジェクト全体で使われる便利な HDL スニペットを�
 
 ## クロックイネーブルジェネレーターを使ったシンプルなピクセルクロック分周
 
-開発するどんな MiSTer コアでも、`CE_PIXEL` 信号にピクセルクロックを接続する必要があります。コアによってビデオクロックを4や8で割るのが一般的です。このようなシンプルな分周では、[Tropical Angel コア](https://github.com/MiSTer-devel/Arcade-TropicalAngel_MiSTer/blob/master/Arcade-TropicalAngel.sv#L386-L391){target=_blank}に示されるようなクロックイネーブルジェネレーターを使うのが一般にベストプラクティスです。
+開発するどんな MiSTer コアでも、`CE_PIXEL` にはピクセルクロックのイネーブルパルスを駆動する必要があります。これはクロックではなくクロックイネーブルです。コアによって、ビデオクロックの4または8サイクルごとに1回アサートするのが一般的です。このようなシンプルな分周では、[Tropical Angel コア](https://github.com/MiSTer-devel/Arcade-TropicalAngel_MiSTer/blob/master/Arcade-TropicalAngel.sv#L386-L391){target=_blank}に示されるようなクロックイネーブルジェネレーターを使うのが一般にベストプラクティスです。
 
 ```sv
 reg ce_pix;
