@@ -26,7 +26,7 @@ MiSTer は最大4つの INI ファイルに対応しています。`MiSTer.ini` 
 
 ## 一般映像設定 
 
-`vscale_mode` - 画面へのスケーリング方法を変更。0 は画面全体に画像をフィット、1 は 1:1 整数スケーリング、2 は 0.5 刻み、3 は 0.25 刻み。モード 4 と 5 は[ビデオスケーリング](videoscaling.md)を参照。
+`vscale_mode` - 画面へのスケーリング方法を変更。0 は画面全体に画像をフィット、1 は整数倍スケーリング、2 は 0.5 刻み、3 は 0.25 刻み。モード 4 と 5 は[ビデオスケーリング](videoscaling.md)を参照。
 
 `vscale_border` - 画面にオーバースキャンボーダーをピクセルで設定（0-399、0 で無効）。`vscale_mode` が 0 のときのみ適用されます。
 
@@ -58,7 +58,7 @@ MiSTer は最大4つの INI ファイルに対応しています。`MiSTer.ini` 
 
 `composite_sync` - 独立した水平同期の代わりに、VGA の HSync ピンに複合同期（CSYNC）を送出。特定の構成で必要。
 
-`vga_scaler` - スケーラー出力を Analog I/O ボードの VGA ポートに送出。通常、240p TV 信号と非互換のコンピューター CRT や他の 31 kHz ディスプレイで使用。
+`vga_scaler` - スケーラー出力を対応 I/O ボード（Analog I/O Board 6.x、または I/O Board 9.2 + AV Board）のアナログ映像ポートに送出。通常、240p TV 信号と非互換のコンピューター CRT や他の 31 kHz ディスプレイで使用。
 
 `menu_pal` - Menu コアを PAL モードで動かすよう強制。
 
@@ -66,7 +66,7 @@ MiSTer は最大4つの INI ファイルに対応しています。`MiSTer.ini` 
 
 `fb_terminal` - 1 のままが最善。CRT やアナログディスプレイでスクリプト実行に問題がある場合は、2 にするとターミナルがアナログ出力用サイズになります（0 でフレームバッファーターミナル自体を無効化）。
 
-`vga_sog` - Analog I/O ボードの SoG スイッチが AUTO のとき sync-on-green を有効化。OVR 位置ではこの設定に関わらず SoG が強制オンになります。
+`vga_sog` - Analog I/O Board 6.x の SoG スイッチが AUTO のとき sync-on-green を有効化。OVR 位置ではこの設定に関わらず SoG が強制オンになります。I/O Board 9.2 + AV Board 1.2 には物理 SoG スイッチがなく、フレームワークが sync-on-green を自動処理します。
 
 ## 音声設定
 

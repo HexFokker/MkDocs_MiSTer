@@ -1,6 +1,6 @@
 MGL files are shortcuts that load a game directly from the MiSTer Menu core. They can be placed in the root of the SD card to appear at the top of the menu, or in a menu folder — a regular folder prefixed with an underscore (`_`) that shows in the menu. You can create your own menu folders.
 
-Not all cores support MGL files, though all the most popular cores do. Console support is good, but computer cores generally don't work well with them, unless they have some mechanism to auto-boot a loaded game.
+Not all cores support MGL files; many of the widely used ones do. Console support is good, but computer cores generally don't work well with them, unless they have some mechanism to auto-boot a loaded game.
 
 ## MGL Format
 
@@ -96,7 +96,7 @@ Some MGL arguments for common cores:
 | Game Boy (Color)    | _Console/Gameboy      | 2     | 1       | f    |
 | Game Boy Advance    | _Console/GBA          | 2     | 1       | f    |
 | Game Gear           | _Console/SMS          | 1     | 2       | f    |
-| Genesis             | _Console/Genesis      | 1     | 1       | f    |
+| MegaDrive           | _Console/MegaDrive    | 1     | 1       | f    |
 | Master System       | _Console/SMS          | 1     | 1       | f    |
 | Sega CD             | _Console/MegaCD       | 1     | 0       | s    |
 | Neo Geo             | _Console/NeoGeo       | 1     | 1       | f    |

@@ -1,6 +1,6 @@
 MGL ファイルは、MiSTer の Menu コアからゲームを直接読み込むショートカットです。SD カードのルートに置けばメニュー最上部に表示され、アンダースコア（`_`）で始まるメニューフォルダー内に置くこともできます。メニューフォルダーは自分で作れます。
 
-すべてのコアが MGL ファイルに対応しているわけではありませんが、人気のコアはほぼ対応しています。コンソールの対応は良好ですが、コンピューターコアは、読み込んだゲームを自動起動する仕組みがない限り、一般的にうまく動きません。
+すべてのコアが MGL ファイルに対応しているわけではありませんが、広く使われている多くのコアは対応しています。コンソールの対応は良好ですが、コンピューターコアは、読み込んだゲームを自動起動する仕組みがない限り、一般的にうまく動きません。
 
 ## MGL フォーマット
 
@@ -96,7 +96,7 @@ MGL ファイルの例：
 | Game Boy (Color)    | _Console/Gameboy      | 2     | 1       | f    |
 | Game Boy Advance    | _Console/GBA          | 2     | 1       | f    |
 | Game Gear           | _Console/SMS          | 1     | 2       | f    |
-| Genesis             | _Console/Genesis      | 1     | 1       | f    |
+| MegaDrive           | _Console/MegaDrive    | 1     | 1       | f    |
 | Master System       | _Console/SMS          | 1     | 1       | f    |
 | Sega CD             | _Console/MegaCD       | 1     | 0       | s    |
 | Neo Geo             | _Console/NeoGeo       | 1     | 1       | f    |

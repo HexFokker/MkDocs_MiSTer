@@ -26,7 +26,7 @@ Alternate INI files can also have custom names. The name appears on the OSD Info
 
 ## General Video Settings 
 
-`vscale_mode` - Changes how the image is scaled to the screen. 0 fits the whole image to the screen, 1 uses 1:1 integer scaling, 2 scales in 0.5 steps, and 3 scales in 0.25 steps. Modes 4 and 5 are described in [Video Scaling](videoscaling.md).
+`vscale_mode` - Changes how the image is scaled to the screen. 0 fits the whole image to the screen, 1 uses integer-multiple scaling, 2 scales in 0.5 steps, and 3 scales in 0.25 steps. Modes 4 and 5 are described in [Video Scaling](videoscaling.md).
 
 `vscale_border` - Sets an overscan border on the screen in pixels (0-399; 0 disables). Only applies when `vscale_mode` is 0.
 
@@ -58,7 +58,7 @@ Alternate INI files can also have custom names. The name appears on the OSD Info
 
 `composite_sync` - Sends composite sync (CSYNC) on the VGA HSync pin instead of separate horizontal sync; needed for certain configurations.
 
-`vga_scaler` - Sends the scaler output to the VGA port on an Analog I/O board. This is usually used with computer CRTs and other 31 kHz displays that aren't compatible with 240p TV signals.
+`vga_scaler` - Sends the scaler output to the analog video port of a compatible I/O board (Analog I/O Board 6.x, or I/O Board 9.2 with AV Board). This is usually used with computer CRTs and other 31 kHz displays that aren't compatible with 240p TV signals.
 
 `menu_pal` - Forces the Menu core to run in PAL mode.
 
@@ -66,7 +66,7 @@ Alternate INI files can also have custom names. The name appears on the OSD Info
 
 `fb_terminal` - Best left at 1. If you have issues running scripts on a CRT or analog display, set this to 2 to size the terminal for analog output, or 0 to disable the framebuffer terminal.
 
-`vga_sog` - Enables sync-on-green on an Analog I/O board when the board's SoG switch is in AUTO; the OVR position forces SoG on regardless of this setting.
+`vga_sog` - Enables sync-on-green on the Analog I/O Board 6.x when the board's SoG switch is in AUTO; the OVR position forces SoG on regardless of this setting. On I/O Board 9.2 + AV Board 1.2 there is no physical SoG switch; the framework handles sync-on-green automatically.
 
 ## Audio Settings
 
