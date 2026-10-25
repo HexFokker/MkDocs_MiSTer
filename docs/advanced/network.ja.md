@@ -1,7 +1,7 @@
 MiSTer には高度なネットワーク機能がいくつかあります。
 
 ## ネットワークアクセス { #network-access }
-MiSTer ボードにはオンボード Ethernet ポート経由でアクセスできます。**FTP**、**SSH**、**SFTP** サービスが動いています。
+MiSTer ボードにはオンボード Ethernet ポート経由でアクセスできます。**FTP**、**SSH**、**SFTP** サービスが動いています。FTP は資格情報とデータを平文で送ることに注意してください。SFTP を優先し、セットアップ後は早めに root パスワードを変更してください。
 
 ユーザー名: **root**  パスワード: **1**
 
@@ -67,16 +67,12 @@ MiSTer は、別のコンピューターやサーバーのネットワーク共�
 ### CIFS 共有のトラブルシューティング
 [いくつかの未解決のバグ](https://bugzilla.samba.org/show_bug.cgi?id=12783)が原因で、特定のコア（少なくとも ao486 と NeoGeo）と特定の CIFS 共有設定の組み合わせで既知の問題があります。
 
-CIFS 共有からゲームを読み込むと特定のコアが起動しないが、SD や USB からは正常に動く場合、共有で Kernel Oplocks が有効か確認してください。有効なら、次のいずれかを行います：
-
-* 無効にする。
-* Samba サーバー上でグローバルに有効にする。
-* MiSTer のファイルを、Kernel Oplocks なしの MiSTer 専用共有に移す。
+CIFS 共有からゲームを読み込むと特定のコアが起動しないが、SD や USB からは正常に動く場合、共有で Kernel Oplocks が有効か確認してください。有効なら、その共有で無効にするか、MiSTer のファイルを Kernel Oplocks なしの MiSTer 専用共有に移してください。
 
 用途に最も合うものを選んでください。多くの NAS 機器には正当な理由で Kernel Oplocks がデフォルト有効になっています。共有が異なるプロトコル（CIFS と NFS など）で使われたり、NAS 上で動くソフトウェア（torrent クライアントなど）から使われたりする際の、ファイル同期不良・破損・データ損失を防ぐためです。
 
 ## RetroNAS
-Dan Mons 氏のプロジェクト RetroNAS は、レトロゲーム機器との互換性に特化したネットワークアタッチトストレージ（NAS）機器を簡単に構築できます。MiSTer は主要な対象の一つで、非常に良く動きます。必要なのは Raspberry Pi 4 か 5 と外部ストレージドライブだけです。注意：NAS はバックアップではありません！ 重要なデータを NAS だけに置くと失う可能性があります。プロジェクトには簡単な[インストールガイド](https://github.com/danmons/retronas/wiki/Installing-RetroNAS){target=_blank}、[MiSTer 専用手順](https://github.com/danmons/retronas/wiki/MiSTer-FPGA){target=_blank}、[インストール](https://www.youtube.com/watch?v=szA-MSabplc){target=_blank}と [MiSTer FPGA 専用設定](https://www.youtube.com/watch?v=OrTctA-5kqk){target=_blank}の YouTube 動画ガイドがあります。
+Dan Mons 氏のプロジェクト RetroNAS は、レトロゲーム機器との互換性に特化したネットワークアタッチトストレージ（NAS）機器を簡単に構築できます。MiSTer は主要な対象の一つで、非常に良く動きます。対応ハードウェアはプロジェクトの要件を確認してください。注意：NAS はバックアップではありません！ 重要なデータを NAS だけに置くと失う可能性があります。プロジェクトには簡単な[インストールガイド](https://github.com/danmons/retronas/wiki/Installing-RetroNAS){target=_blank}、[MiSTer 専用手順](https://github.com/danmons/retronas/wiki/MiSTer-FPGA){target=_blank}、[インストール](https://www.youtube.com/watch?v=szA-MSabplc){target=_blank}と [MiSTer FPGA 専用設定](https://www.youtube.com/watch?v=OrTctA-5kqk){target=_blank}の YouTube 動画ガイドがあります。
 
 ## Tailscale ネットワーキング
 
@@ -131,10 +127,10 @@ MiSTer が Tailnet に参加したら、tailscale ディレクトリーに次の
 
 ### MAC アドレス設定
 MAC アドレス（Media Access Control address）は、すべてのネットワークインターフェースのハードウェアに割り当てられたネットワークアドレスです。
-ネットワークスイッチがトラフィックの振り分け先を学習できるようにします。IP アドレスに似ていますが、ハードウェアに静的に割り当てられ、ローカルネットワーク内でのみ意味を持ちます。
+ネットワークスイッチがフレームを転送すべきポートを学習できるようにします。IP アドレスに似ていますが、ローカルネットワーク内でのみ意味を持ちます。
 
 IP アドレスと同様、ネットワークが正しく機能するには MAC アドレスも一意でなければなりません。
-しかし IP アドレスと違い、DHCP サーバーによる動的割り当てはできません。MAC アドレスは設計上静的です。
+しかし IP アドレスと違い、DHCP サーバーによる動的割り当てはできません。MAC アドレスはハードウェアまたはドライバーで設定されますが、上書きは可能です。
 
 [Mr Fusion](../setup/software.md#flash-mr-fusion-to-your-microsd-card) のようなインストーラーの中にはセットアップ時に MiSTer の MAC アドレスをランダム化するものがありますが、毎回同じ MAC アドレスを使うものもあります。
 その結果、2台以上の MiSTer がオンボード Ethernet ポートで全く同じ MAC アドレスを持つのはよくあることです。
@@ -179,7 +175,7 @@ MAC アドレスは `00`〜`FF` の範囲の2文字のセットが6つ、`:` 区
 
 #### ローカルネットワークにトップレベルドメインが割り当てられているか確認
 この機能を有効にする前に、
-ネットワークルーターがローカルネットワークのトップレベルドメイン（TLD）に対応していることを確認してください。
+ネットワークルーターがローカルドメイン名（DNS サフィックス）を提供していることを確認してください。
 
 `dhcpcd -U | less` を実行し、
 次のような `domain_name` エントリーが少なくとも1つあるか探します：
@@ -229,7 +225,7 @@ MiSTer に付けたい名前に変更してください。
 
 完了したら ++Ctrl+o++ で保存し ++Ctrl+x++ で終了。
 
-`hostname` を実行して名前が変わったことを確認し、
+`reboot` を実行（または `hostname -F /etc/hostname` で即時適用）してから `hostname` を実行し、名前が変わったことを確認します。それから、
 `reboot` を実行して新しいネットワーク設定で MiSTer を再起動します。
 
 #### 名前変更をテスト

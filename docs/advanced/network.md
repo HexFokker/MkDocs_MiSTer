@@ -1,7 +1,7 @@
 The MiSTer has several advanced networking features.
 
 ## Network access
-The MiSTer board can be accessed through the on-board Ethernet port. The system has **FTP**, **SSH**, and **SFTP** services running.
+The MiSTer board can be accessed through the on-board Ethernet port. The system has **FTP**, **SSH**, and **SFTP** services running. Note that FTP sends credentials and data in plaintext — prefer SFTP, and change the default root password soon after setup.
 
 User name: **root**  Password: **1**
 
@@ -70,16 +70,12 @@ The MiSTer can mount a network share from another computer or server as if it we
 ### CIFS Share Troubleshooting
 There is a known problem with certain cores (at least ao486 and NeoGeo) and certain CIFS share configurations, caused by [some open bugs](https://bugzilla.samba.org/show_bug.cgi?id=12783) in Samba.
 
-If certain cores don't start when loading games from a CIFS share, but work fine from SD or USB, check whether Kernel Oplocks are enabled on the share. If they are, do one of the following:
-
-* Disable them.
-* Enable them globally on your Samba server.
-* Move your MiSTer files to a separate share used only by the MiSTer, without Kernel Oplocks.
+If certain cores don't start when loading games from a CIFS share, but work fine from SD or USB, check whether Kernel Oplocks are enabled on the share. If they are, either disable them on that share or move your MiSTer files to a separate share used only by the MiSTer, without Kernel Oplocks.
 
 Choose whichever suits your use case best. Many NAS devices enable Kernel Oplocks by default for good reason: they should prevent bad file synchronization, corruption, and data loss when a share is used through different protocols (e.g. CIFS and NFS) or by software running on the NAS, such as a torrent client.
 
 ## RetroNAS
-RetroNAS, a project by Dan Mons, makes it easy to set up a network attached storage (NAS) device focused solely on compatibility with retro gaming devices. MiSTer is one of its primary focuses, and it works quite well. All you need is a Raspberry Pi 4 or 5 and an external storage drive. Remember: a NAS is not a backup! You could lose data if a NAS is the only place you keep important data. The project has a simple [installation guide](https://github.com/danmons/retronas/wiki/Installing-RetroNAS){target=_blank}, [MiSTer-specific instructions](https://github.com/danmons/retronas/wiki/MiSTer-FPGA){target=_blank}, and YouTube video guides for [installation](https://www.youtube.com/watch?v=szA-MSabplc){target=_blank} and [MiSTer FPGA-specific configuration](https://www.youtube.com/watch?v=OrTctA-5kqk){target=_blank}.
+RetroNAS, a project by Dan Mons, makes it easy to set up a network attached storage (NAS) device focused solely on compatibility with retro gaming devices. MiSTer is one of its primary focuses, and it works quite well. Check the project's requirements for supported hardware. Remember: a NAS is not a backup! You could lose data if a NAS is the only place you keep important data. The project has a simple [installation guide](https://github.com/danmons/retronas/wiki/Installing-RetroNAS){target=_blank}, [MiSTer-specific instructions](https://github.com/danmons/retronas/wiki/MiSTer-FPGA){target=_blank}, and YouTube video guides for [installation](https://www.youtube.com/watch?v=szA-MSabplc){target=_blank} and [MiSTer FPGA-specific configuration](https://www.youtube.com/watch?v=OrTctA-5kqk){target=_blank}.
 
 ## Tailscale Networking
 
@@ -135,10 +131,10 @@ For full documentation read [dhcpcd.conf (5)](https://man.archlinux.org/man/dhcp
 ### MAC address configuration
 A MAC address (Media Access Control address) is a network address assigned
 to the hardware of every network interface.
-It lets network switches learn where to route traffic — like an IP address, but statically assigned to hardware and only relevant within your local network.
+It lets network switches learn which port to forward frames to — like an IP address, but relevant only within your local network.
 
 Much like IP addresses, MAC addresses have to be unique for the network to function properly,  
-but unlike IP addresses, they cannot be dynamically assigned by a DHCP server — MAC addresses are static by design.
+but unlike IP addresses, they cannot be dynamically assigned by a DHCP server — they are not dynamically assigned by a DHCP server — a device's MAC address is set by its hardware or driver, though it can be overridden.
 
 Some installers like [Mr Fusion](../setup/software.md#flash-mr-fusion-to-your-microsd-card) 
 randomize the MiSTer's MAC address during setup, but others use the same MAC address every time.
@@ -184,7 +180,7 @@ This is recommended if possible as you will be able to copy and paste the comman
 
 #### Check your local network has a top-level domain assigned
 Before enabling this feature, you should be sure
-that your network router supports top-level domains (TLDs) in the local network.
+that your network router provides a local domain name (DNS suffix).
 
 To do this, run `dhcpcd -U | less`
 and look for at least one `domain_name` entry that looks like this:
@@ -193,7 +189,7 @@ domain_name=lan
 ```
 Remember the value after the `=` for later and press ++Q++ to return to the terminal.
 If you find more than one `domain_name` value, remember them all.
-If you have no `domain_name` value in the results then your network router is not offering a top level domain
+If you have no `domain_name` value in the results then your network router is not offering a local domain name
 and there's no point in proceeding.
 
 Alternatively, run this command to find and filter `domain_name` values for you:
@@ -235,7 +231,7 @@ You can choose any name, but for best compatibility with other network devices f
 
 Once done, save with ++Ctrl+o++ and exit with ++Ctrl+x++.
 
-Run `hostname` to confirm the MiSTer's name has changed, then
+Run `reboot` (or `hostname -F /etc/hostname` to apply it now), then run `hostname` to confirm the MiSTer's name has changed. After that,
 run `reboot` to restart the MiSTer with the new network settings applied.
 
 #### Test the name change
@@ -313,7 +309,7 @@ You can optionally specify any combination of options for an interface, here are
 |-------------------------------|---------------------------------------------------|
 | `static routers=`             | Manually specify routers/gateways to the Internet |
 | `static domain_name_servers=` | Manually specify DNS servers to resolve names     |
-| `ntp_servers=`                | Manually specify NTP servers to get time from     |
+| `static ntp_servers=`         | Manually specify NTP servers to get time from     |
 
 With these options specified, an interface configuration looks like:
 ```
@@ -321,7 +317,7 @@ interface eth0
 static ip_address=192.168.0.128/24
 static routers=192.168.0.1
 static domain_name_servers=8.8.8.8 1.1.1.1
-ntp_servers=192.168.0.1 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org
+static ntp_servers=192.168.0.1 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org
 ```
 
 Once done, save with ++Ctrl+o++ and exit with ++Ctrl+x++.
@@ -338,6 +334,6 @@ To revert all of your configuration, comment out every line you added like so:
 #static ip_address=192.168.0.128/24
 #static routers=192.168.0.1
 #static domain_name_servers=8.8.8.8 1.1.1.1
-#ntp_servers=192.168.0.1 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org
+#static ntp_servers=192.168.0.1 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org
 ```
 Just like before: save the file and reboot to apply the new settings.
