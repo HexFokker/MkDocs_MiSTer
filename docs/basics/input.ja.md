@@ -155,7 +155,7 @@ SNAC 経由の実機ライトガンのほか、MiSTer は GUN4IR、GunCon 2、Gu
 
 ### Atari 7800 ライトガンマッピング
 
-| XG-1 light gun | マッピング |
+| XG-1 lightgun | マッピング |
 | -------------- | ------- |
 | Trigger        | Fire 1  |
 

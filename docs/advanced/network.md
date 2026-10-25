@@ -288,7 +288,7 @@ If necessary, run `ip addr` instead to see the IP address currently assigned to 
        valid_lft 40368sec preferred_lft 34968sec
 ```
 There will be an additional entry
-for each USB Wi-Fi and/or Ethernet adapter MiSTer has recognized.
+for each USB WiFi and/or Ethernet adapter MiSTer has recognized.
 Take note of the interface name you want to change (they are case-sensitive) before proceeding.
 
 #### Assign a static IP address to an interface

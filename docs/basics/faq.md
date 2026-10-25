@@ -195,11 +195,11 @@ SNAC (Serial Native Accessory Converter) connects original controllers directly 
 
 For details on SNAC, see [this page](https://github.com/blue212/SNAC){target=_blank}.
 
-### What about light guns?
+### What about lightguns?
 
-Original light guns such as the NES Zapper are too timing-sensitive to work over USB, but they work fine in supported cores through the I/O board (SNAC, see above).
+Original lightguns such as the NES Zapper are too timing-sensitive to work over USB, but they work fine in supported cores through the I/O board (SNAC, see above).
 
-MiSTer also supports several USB light guns, such as the GunCon 2, GunCon 3, Gun4IR, and Sinden:
+MiSTer also supports several USB lightguns, such as the GunCon 2, GunCon 3, Gun4IR, and Sinden:
 
 * GunCon 2 requires a CRT and a way to tap into the sync signal.
 * GunCon 3 and Gun4IR work on all displays.
@@ -208,7 +208,7 @@ MiSTer also supports several USB light guns, such as the GunCon 2, GunCon 3, Gun
 
 Each core requires its own calibration. Calibrate your gun from the distance you plan to play at, and use a white screen for best results.
 
-Never let the calibration value go below 0: saving a calibration with a negative value will likely make the core crash. To fix this, delete the core's light gun calibration file from the "config" folder on your MiSTer's MicroSD card.
+Never let the calibration value go below 0: saving a calibration with a negative value will likely make the core crash. To fix this, delete the core's lightgun calibration file from the "config" folder on your MiSTer's MicroSD card.
 
 ## Video
 

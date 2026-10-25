@@ -45,9 +45,9 @@ Some computer cores make use of the Windows key (++win++) on your keyboard.
 | ----------- | ------------ |
 | ++win+f12++ | Open the OSD |
 
-### Light gun cores
+### Lightgun cores
 
-Some console cores make use of USB/BT light guns, such as the Guncon2, Guncon3, Gun4IR, Sinden, etc.
+Some console cores make use of USB/BT lightguns, such as the Guncon2, Guncon3, Gun4IR, Sinden, etc.
 
 [Read this guide](./input.md#using-a-lightgun){target=_blank} for more information.
 
@@ -55,7 +55,7 @@ Some console cores make use of USB/BT light guns, such as the Guncon2, Guncon3, 
 
 | Hotkey             | Description                                                              |
 | ------------------ | ------------------------------------------------------------------------ |
-| OSD Open + ++f10++ | Enters light gun calibration. For best results, use a white/bright image |
+| OSD Open + ++f10++ | Enters lightgun calibration. For best results, use a white/bright image |
 
 ### Cores that support savestates
 

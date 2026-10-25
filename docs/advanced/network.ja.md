@@ -280,7 +280,7 @@ DE10-Nano の MiSTer には常に少なくとも2つのネットワークイン�
     inet 10.0.0.221/24 brd 10.0.0.255 scope global dynamic noprefixroute eth0
        valid_lft 40368sec preferred_lft 34968sec
 ```
-MiSTer が認識した USB Wi-Fi および／または Ethernet アダプターごとに追加エントリーがあります。
+MiSTer が認識した USB WiFi および／または Ethernet アダプターごとに追加エントリーがあります。
 続行前に、変更したいインターフェース名（大文字小文字を区別）を控えてください。
 
 #### インターフェースに固定 IP アドレスを割り当て

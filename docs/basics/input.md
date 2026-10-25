@@ -155,7 +155,7 @@ The lightgun must be calibrated in each core:
 
 ### Atari 7800 Lightgun Mapping
 
-| XG-1 light gun | Mapping |
+| XG-1 lightgun | Mapping |
 | -------------- | ------- |
 | Trigger        | Fire 1  |
 

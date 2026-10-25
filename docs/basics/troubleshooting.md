@@ -55,7 +55,7 @@ If the download succeeded, `wget` now works normally.
 
 ## WiFi shows two IP addresses and no internet connection
 
-If the MiSTer has no Internet connection (for example, you can't update it) and `ip addr` shows two IP addresses on `wlan0`, the two addresses may be the cause. Some WiFi adapters seem to do this even on regular Linux computers; the underlying cause is not well understood. In many cases there is no Internet access if one of the two addresses is an "APIPA" address (169.254.x.x). To clear the problem temporarily, flush the addresses and request a fresh lease, then reconnect Wi-Fi:
+If the MiSTer has no Internet connection (for example, you can't update it) and `ip addr` shows two IP addresses on `wlan0`, the two addresses may be the cause. Some WiFi adapters seem to do this even on regular Linux computers; the underlying cause is not well understood. In many cases there is no Internet access if one of the two addresses is an "APIPA" address (169.254.x.x). To clear the problem temporarily, flush the addresses and request a fresh lease, then reconnect WiFi:
 
 `ip addr flush wlan0`
 

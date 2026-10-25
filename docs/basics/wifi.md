@@ -9,7 +9,7 @@ Neither the DE10-Nano nor the MiSTer add-on boards have built-in WiFi, so you ne
 * CanaKit Raspberry Pi WiFi dongle
 * Edimax EW-7612UAn v2 or EW-7811UN or EW-7822ULC
 * Netgear A6100 or A6150
-* D-link AC1300 MU-MIMO Wi-Fi Nano USB Adapter DWA-181
+* D-link AC1300 MU-MIMO WiFi Nano USB Adapter@@KEEP@@ DWA-181
 
 Your results may vary, because newer hardware revisions of these adapters may not be supported. Advanced users can compile their own drivers.
 

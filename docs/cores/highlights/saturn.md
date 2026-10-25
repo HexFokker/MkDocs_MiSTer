@@ -8,7 +8,7 @@ The Sega Saturn MiSTer core, originally developed by [srg320 (Sergey Dvodnenko)]
 
         - Control Pad (the default controller)
         - Mouse
-        - Light guns
+        - Lightguns
  
     - Not supported:
 
