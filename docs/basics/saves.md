@@ -1,4 +1,4 @@
-Many MiSTer cores support in-game saves, either by simulating the original hardware's save features or with savestates. Most cores don't have savestates, but a steadily increasing number do.
+Many MiSTer cores support in-game saves by simulating the original hardware's save features. Some cores also offer savestates — a separate mechanism that captures the full machine state; check each core's README for whether it supports them.
 
 ## In-game saves
 

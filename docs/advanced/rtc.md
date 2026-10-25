@@ -17,7 +17,7 @@ This simple board provides the real time without an Internet connection. It supp
 
 To save the real time to the RTC, connect the MiSTer to the Internet and let it run for about 15 minutes — or update it from the console (see the commands below).
 
-By default the time zone is UTC (GMT). To get your local time zone, do the following:
+By default the time zone is UTC. To get your local time zone, do the following:
 
 * Connect to MiSTer by FTP/SFTP.
 * Navigate to the `/usr/share/zoneinfo/posix` folder and find the file named after your place or time zone.

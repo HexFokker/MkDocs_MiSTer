@@ -1,4 +1,4 @@
-The [MiSTer.ini configuration file](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/MiSTer.ini){target=_blank} contains global settings, and can also store settings for specific cores. This page describes the global settings, then how to override them for individual cores, and finally some settings that apply only to specific cores.
+The [MiSTer.ini configuration file](https://github.com/MiSTer-devel/Main_MiSTer/blob/master/MiSTer.ini){target=_blank} contains global settings, and can also store settings for specific cores. This page describes the global settings, then core-specific override sections.
 
 ## Alternate MiSTer INI files
 
@@ -50,7 +50,7 @@ Alternate INI files can also have custom names. The name appears on the OSD Info
 
 ## Analog Video Settings
 
-`forced_scandoubler` - VGA output will always run in 31 kHz mode (scandoubled) if this setting is turned on, useful for computer CRTs.
+`forced_scandoubler` - On cores that support it, VGA output runs in 31 kHz mode (scandoubled) when this is turned on; useful for computer CRTs.
 
 `vga_mode` - Sets the VGA output format: `rgb` (default), `ypbpr`, `svideo`, `cvbs`, or `subcarrier` (for external encoder boards).
 
@@ -62,7 +62,7 @@ Alternate INI files can also have custom names. The name appears on the OSD Info
 
 `menu_pal` - Forces the Menu core to run in PAL mode.
 
-`direct_video` - Sends the core's unscaled native video over the HDMI port for HDMI-to-analog DAC adapters; only supported by certain Direct Video adapters with AG62xx chipsets. Set `direct_video=2` to enable it automatically only when a known adapter is detected via EDID. If you have color problems or no image, check `composite_sync` and `vga_mode=ypbpr`, and also try setting `hdmi_limited` to `1`. To use `vga_mode=ypbpr` with component cables, the Direct Video adapter needs a modification that combines HSYNC and Green (see [Direct Video](directvideo.md#setup-for-ypbpr-signals)).
+`direct_video` - Sends the core's unscaled native video over the HDMI port for HDMI-to-analog DAC adapters; requires a compatible adapter — Direct Video adapters with AG62xx chipsets (e.g. AG6200/AG6201) are the reported examples. Set `direct_video=2` to enable it automatically only when a known adapter is detected via EDID. If you have color problems or no image, check `composite_sync` and `vga_mode=ypbpr`, and also try setting `hdmi_limited` to `1`. To use `vga_mode=ypbpr` with component cables, the Direct Video adapter needs a modification that combines HSYNC and Green (see [Direct Video](directvideo.md#setup-for-ypbpr-signals)).
 
 `fb_terminal` - Best left at 1. If you have issues running scripts on a CRT or analog display, set this to 2 to size the terminal for analog output, or 0 to disable the framebuffer terminal.
 

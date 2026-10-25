@@ -50,7 +50,7 @@ MiSTer は最大4つの INI ファイルに対応しています。`MiSTer.ini` 
 
 ## アナログ映像設定
 
-`forced_scandoubler` - オンの場合、VGA 出力は常に 31 kHz モード（スキャンダブル）で動作。コンピューター CRT に便利。
+`forced_scandoubler` - 対応コアでオンの場合、VGA 出力は 31 kHz モード（スキャンダブル）で動作。コンピューター CRT に便利。
 
 `vga_mode` - VGA 出力フォーマットを設定：`rgb`（デフォルト）、`ypbpr`、`svideo`、`cvbs`、`subcarrier`（外部エンコーダーボード用）。
 
@@ -62,7 +62,7 @@ MiSTer は最大4つの INI ファイルに対応しています。`MiSTer.ini` 
 
 `menu_pal` - Menu コアを PAL モードで動かすよう強制。
 
-`direct_video` - HDMI ポート経由でコアのスケーリングなしネイティブ映像を送出し、HDMI→アナログ DAC アダプターで使用します。AG62xx チップセット搭載の特定の Direct Video アダプターのみ対応。`direct_video=2` にすると、EDID で既知のアダプターが検出された場合のみ自動的に有効になります。色の問題や映像が出ない場合は、`composite_sync` と `vga_mode=ypbpr` を確認し、`hdmi_limited` を `1` に設定するのも試してください。コンポーネントケーブルで `vga_mode=ypbpr` を使うには、Direct Video アダプターに HSYNC と Green を合成する改造が必要です（[Direct Video](directvideo.md#setup-for-ypbpr-signals)参照）。
+`direct_video` - HDMI ポート経由でコアのスケーリングなしネイティブ映像を送出し、HDMI→アナログ DAC アダプターで使用します。対応アダプターが必要です。AG62xx チップセット（AG6200/AG6201 など）搭載の Direct Video アダプターが報告例。`direct_video=2` にすると、EDID で既知のアダプターが検出された場合のみ自動的に有効になります。色の問題や映像が出ない場合は、`composite_sync` と `vga_mode=ypbpr` を確認し、`hdmi_limited` を `1` に設定するのも試してください。コンポーネントケーブルで `vga_mode=ypbpr` を使うには、Direct Video アダプターに HSYNC と Green を合成する改造が必要です（[Direct Video](directvideo.md#setup-for-ypbpr-signals)参照）。
 
 `fb_terminal` - 1 のままが最善。CRT やアナログディスプレイでスクリプト実行に問題がある場合は、2 にするとターミナルがアナログ出力用サイズになります（0 でフレームバッファーターミナル自体を無効化）。
 
