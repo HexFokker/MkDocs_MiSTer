@@ -22,3 +22,6 @@ module video_freak
 	input       [2:0] SCALE     //0 - normal, 1 - V-integer, 2 - HV-Integer-, 3 - HV-Integer+, 4 - HV-Integer
 );
 ```
+
+
+`VGA_DE_IN` はコアのディスプレイイネーブルで、このモジュールは変更した `VGA_DE` と調整済みの `VIDEO_ARX`/`VIDEO_ARY` アスペクト値を出力します。`CROP_SIZE` は垂直方向のクロップ高さを設定し、`CROP_OFF` はクロップしたウィンドウをずらす符号付きオフセット（-16 ～ +15）です。`SCALE` は整数スケーリングモードを選択します：0 = 通常、1 = 垂直整数、2 = HV 整数マイナス、3 = HV 整数プラス、4 = HV 整数。

@@ -18,13 +18,13 @@ Here are the currently supported SNES enhancement chips, with example games that
 * MSU-1 (CD-quality audio and data expansion used by ROM hacks)
 * S-RTC (Daikaijuu Monogatari II)
 
-Currently the only enhancement chips not supported are MX15001TFC (Nintendo Power Flash Cartridges), ST011 (Hayazashi Nidan Morita Shougi), and ST018 (Hayazashi Nidan Morita Shougi 2). This is mostly because the core is already near the limit of what the DE10-Nano's Cyclone V can fit.
+Enhancement chips not in the supported list include MX15001TFC (Nintendo Power Flash Cartridges), ST011 (Hayazashi Nidan Morita Shougi), and ST018 (Hayazashi Nidan Morita Shougi 2). Check the core's README for the current support list — FPGA space on the Cyclone V is tight.
 
 ### Enhancement chip example video
 ![type:video](videos/snes-chips.mp4)
 
 ## Satellaview Support
-The core also supports the Satellaview: place the BSX/BS-X ROM in the `./games/SNES/` folder and rename it to `bsx_bios.rom`. The core used to require patched ROMs, but now every original Satellaview ROM runs without patches, except those that required an Internet connection, extra peripherals, or similar.
+The core also supports the Satellaview: place the BSX/BS-X ROM in the `./games/SNES/` folder and rename it to `bsx_bios.rom`. The core used to require patched ROMs, but original Satellaview ROMs run without patches, except those that required an Internet connection, extra peripherals, or similar.
 
 ### BS-X Satellaview Example Video
 ![type:video](videos/snes-bs-x.mp4)

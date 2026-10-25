@@ -15,7 +15,7 @@ If your I/O board is based on the 9.2 [I/O board](../assets/92_io_board.png) and
 
     ![MiSTer FPGA DIP Switches Correct Analog I/O board Configuration - Big DIPS - Terasic DE10-Nano](img/dips2.png)
 
-    If you have a Digital I/O board and a 2nd SDRAM module, turn the first large DIP switch in the 2nd picture above On (up) and the rest Off (down):  
+    If you have a Digital I/O board and a 2nd SDRAM module, turn DIP switch SW3 On (up) and the rest Off (down), as in the 2nd picture above:  
     ![MiSTer FPGA DIP Switches Correct Digital I/O board Configuration - Big DIPS - Terasic DE10-Nano](img/dips3.png)  
     *Credit for 2nd and 3rd pictures goes to Nat from [MiSTerFPGA.co.uk](https://misterfpga.co.uk){target=_blank}*
 

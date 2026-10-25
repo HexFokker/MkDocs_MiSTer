@@ -18,13 +18,13 @@ Super Nintendo Entertainment System（SNES）の MiSTer コアには多くの機
 * MSU-1（ROM ハックで使われる CD 品質オーディオ・データ拡張）
 * S-RTC（Daikaijuu Monogatari II）
 
-現在対応していない拡張チップは、MX15001TFC（Nintendo Power Flash Cartridges）、ST011（Hayazashi Nidan Morita Shougi）、ST018（Hayazashi Nidan Morita Shougi 2）のみです。主な理由は、コアがすでに DE10-Nano の Cyclone V に収まる限界近くにあるためです。
+対応リストにない拡張チップには、MX15001TFC（Nintendo Power Flash Cartridges）、ST011（Hayazashi Nidan Morita Shougi）、ST018（Hayazashi Nidan Morita Shougi 2）があります。最新の対応状況はコアの README を確認してください。Cyclone V の FPGA スペースは限られています。
 
 ### 拡張チップの例動画
 ![type:video](videos/snes-chips.mp4)
 
 ## Satellaview 対応
-コアは Satellaview にも対応しています。BSX/BS-X ROM を `./games/SNES/` フォルダーに置き、`bsx_bios.rom` にリネームしてください。以前はパッチ適用済み ROM が必要でしたが、現在はインターネット接続や追加周辺機器などが必要だったものを除き、すべてのオリジナル Satellaview ROM がパッチなしで動きます。
+コアは Satellaview にも対応しています。BSX/BS-X ROM を `./games/SNES/` フォルダーに置き、`bsx_bios.rom` にリネームしてください。以前はパッチ適用済み ROM が必要でしたが、インターネット接続や追加周辺機器などが必要だったものを除き、オリジナルの Satellaview ROM はパッチなしで動きます。
 
 ### BS-X Satellaview の例動画
 ![type:video](videos/snes-bs-x.mp4)

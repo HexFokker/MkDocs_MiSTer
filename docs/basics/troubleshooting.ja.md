@@ -15,7 +15,7 @@ I/O ボードが 9.2 ベースの [I/O ボード](../assets/92_io_board.png)と 
 
     ![MiSTer FPGA DIP Switches Correct Analog I/O board Configuration - Big DIPS - Terasic DE10-Nano](img/dips2.png)
 
-    Digital I/O ボードで 2 枚目の SDRAM モジュールを搭載している場合、上の 2 枚目の写真の最初の大きな DIP スイッチを On（上）にし、残りを Off（下）にします：  
+    Digital I/O ボードで 2 枚目の SDRAM モジュールを搭載している場合、上の 2 枚目の写真のように DIP スイッチ SW3 を On（上）にし、残りを Off（下）にします：  
     ![MiSTer FPGA DIP Switches Correct Digital I/O board Configuration - Big DIPS - Terasic DE10-Nano](img/dips3.png)  
     *2 枚目と 3 枚目の写真は [MiSTerFPGA.co.uk](https://misterfpga.co.uk){target=_blank} の Nat 氏提供*
 
