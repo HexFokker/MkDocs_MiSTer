@@ -131,7 +131,7 @@ end
 
 ### Dip Switches
 
-Dip switch support in the latest version of MRA is used instead of the status bits. The DIP config string is listed in the core, and the core is responsible for reading up to 64 bits of DIP data sent via `ioctl_index` 254.
+DIP switch support is used instead of the status bits. The DIP config string is listed in the core, and the core is responsible for reading up to 64 bits of DIP data sent via `ioctl_index` 254.
 
 
 ```verilog
@@ -149,7 +149,7 @@ The value C9 will apply to DIP bits 23:16.
 
 The `dip` tag lets you add a DIP switch entry. The bit number (starting at 0) is based on how the core was written — MAME source code can often help you understand the bits. The numbering depends on the ROM used, the arcade core, and how things are laid out.
  
-* **bits**: bit numbers sent to the core in `ioctl_data`
+* **bits**: bit numbers sent to the core in `ioctl_dout`
 * **name**: title for the OSD
 * **ids**: title for each option in the OSD
 * **values**: if you want the values to be different from 0,1,2,3, you can reorder them

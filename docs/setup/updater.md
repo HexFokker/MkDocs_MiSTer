@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-You need to update the MiSTer after setting it up for the first time: a freshly installed card contains only the update script, no cores or arcade files, and its system files may be outdated.
+You need to update the MiSTer after setting it up for the first time: a freshly installed card contains only the update script and the Menu core — no platform cores or arcade files — and its system files may be outdated.
 
 The update needs an Internet connection. If your MiSTer has no wired connection, remove the MicroSD card, place the WiFi script in the `scripts` folder, and then follow the [WiFi tutorial](../basics/wifi.md#set-up-wifi-with-a-script).
 

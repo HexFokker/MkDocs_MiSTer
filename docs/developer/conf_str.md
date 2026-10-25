@@ -61,7 +61,7 @@ This tells other developers that `status[9:8]` are occupied and should not be us
 * `P{#}` - Prefix to place the option into specific `{#}` page. This is added before `O#` but after something like `d#`. (e.g. `"d5P1o2,Vertical Crop,Disabled,216p(5x);",` is correct and `"P1d5o2,Vertical Crop,Disabled,216p(5x);",` is incorrect and the menu options will not work.)
 * `R{Index},{Name}` - Same as `T` option but closes the OSD after selecting. Convenient for a reset option.
 * `S{Slot},{Ext}[,{Text}]` - Mount SD card button. 
-    * `{Slot}` - a value from 0-3. Up to four images can be mounted at the same time.
+    * `{Slot}` - a digit from 0-9. Up to ten images can be mounted at the same time (the hps_io VDNUM parameter supports 1-10)..
     * `{Ext}` - same as in `F` option.
     * (Optional) `{Text}` - The text that is displayed before the extensions like "Load RAM". If `{Text}` is not specified, then default is "Mount \*".
 * `T{Index},{Name}` - Trigger button. This is a simple button that pulses the specified `{Index}` bit in the status register HIGH. A perfect example is a reset button.

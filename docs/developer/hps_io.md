@@ -168,17 +168,17 @@ would set `status[1]` to 0 for NTSC and 1 for PAL.  See the [CONF_STR](conf_str.
 
 Hard drive images are loaded with the `S` option in the OSD. Up to 10 images can be mounted at once if `VDNUM` is set to 10; 1–10 are valid values. 
 
-When an image is mounted, a bit is set in img_mounted, and img_readonly and img_size become valid for that img_mounted bit. Save these values into registers if you'll need them later.
+img_mounted pulses for one clock when a mount or unmount event occurs: the bit for the affected device is set high for that cycle, and img_readonly and img_size are valid only while the bit is active. Save these values into registers if you'll need them later.
 
 These are block devices, so to read or write you first specify the block, then assert rd or wr — addresses start streaming through sd_buff_addr. 
 
 There is no wait line, because it's assumed you'll write one block of data into DPRAM and it writes immediately. 
 
-To read data, set the sb_lba to the block number you want to seek to. Then set the correct bit in sd_rd to 1, and the HPS will respond by raising the correct bit in sd_ack, and keeping it high for the duration of the read. The HPS will then use sd_buff_addr and sd_buff_dout and sd_buff_wr to count from 0 to BLKSZ and send a byte per clock.  After reaching the last byte, it will clear the sd_ack.
+To read data, set the sd_lba to the block number you want to seek to. Then set the correct bit in sd_rd to 1, and the HPS will respond by raising the correct bit in sd_ack, and keeping it high for the duration of the read. The HPS will then use sd_buff_addr and sd_buff_dout and sd_buff_wr to count from 0 to BLKSZ and send a byte per clock.  After reaching the last byte, it will clear the sd_ack.
 
-To write data, set the sb_lba to the block number you want to seek to. Then set the correct bit in sd_wr to 1. Similar to a read, it will raise the sd_ack bit, and count the sd_buff_addr - the core will respond by setting each sd_buff_din to the data it wants to write. After the block is written (sd_buff_addr reaches BLKSZ) sd_ack will be cleared.
+To write data, set the sd_lba to the block number you want to seek to. Then set the correct bit in sd_wr to 1. Similar to a read, it will raise the sd_ack bit, and count the sd_buff_addr - the core will respond by setting each sd_buff_din to the data it wants to write. After the block is written (sd_buff_addr reaches the last byte of the block) sd_ack will be cleared.
 
-When the user unmounts the image from the OSD, img_mounted will go high, and the img_size will be set to zero. That is how the core knows to unmount the current image.
+When the user unmounts the image from the OSD, img_mounted pulses again with img_size set to zero. That is how the core knows to unmount the current image.
 
 * `sd_lba[VDNUM]` - logical block address - this is the block we want to start accessing
 * `sd_blk_cnt` - number of blocks

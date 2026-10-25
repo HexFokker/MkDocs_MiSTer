@@ -1,12 +1,12 @@
 MiSTer defines a special API for fast savestate saving and loading. Enabling the savestate functionality on your core reserves a developer-specified section of DDR3 memory, which is used for fast savestate reads/writes. It does **NOT** provide any functionality for the actual saving/loading of all registers and memories in your project.
 
-**NOTE:** MiSTer is currently limited in the firmware to precisely four savestate slots. You cannot add more slots using this API.
+**NOTE:** MiSTer is limited in the firmware to four savestate slots. You cannot add more slots using this API.
 
 ## Setup
 
 As specified in the [Core Configuration String](conf_str.md), a core name definition can be followed by `SS{base addr}:{savestate size}`, which declares that the core uses savestates — e.g. `MyCore;SS3E000000:1000;`. This declares that savestates begin at `0x3E00_0000`, each allocated `0x1000` _bytes_. The actual size on disk for the savestate does not have to match this allocated size; it just must be less than or equal to it. You probably want to choose a power of two, so that savestate slots 1–3 start at nice addresses.
 
-**NOTE:** Most of the DDR controllers in various MiSTer projects hardcode the addresses to be in the `0x3000_0000` range, to give ample room to the MiSTer framework and CPU. The firmware enforces this: the base must be at least `0x2000_0000`, `base + size` must stay below `0x4000_0000`, and the size must not exceed 128 MiB — otherwise the `SS` declaration is ignored.
+**NOTE:** Most of the DDR controllers in various MiSTer projects hardcode the addresses to be in the `0x3000_0000` range, to give ample room to the MiSTer framework and CPU. The firmware enforces this: the base must be at least `0x2000_0000`, `base + size` must stay below `0x4000_0000`, and the size must not exceed 128 MiB — otherwise the `SS` declaration is ignored. Note that the firmware only validates `base + size`, while four consecutive slots of `size` bytes are mapped starting at `base`; the developer must ensure `base + 4*size` does not exceed the available DDR3 range.
 
 ## Usage
 

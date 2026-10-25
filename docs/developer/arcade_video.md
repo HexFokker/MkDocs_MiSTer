@@ -14,7 +14,7 @@ Set up the module with these parameters:
     * 24 : 8R 8G 8B
 * GAMMA - allow gamma controls
 
-`clk_video` needs to be 4x `ce_pix` and above 40 MHz.
+`clk_video` is the video clock (above 40 MHz); `ce_pix` is a clock-enable pulse, not a clock. A typical setup drives ce_pix once every 4 clk_video cycles.
 
 ```verilog
 

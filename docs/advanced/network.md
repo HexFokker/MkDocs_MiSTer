@@ -109,7 +109,7 @@ When that command finishes, paste the URL at the bottom of its output into your 
 
 Once the MiSTer is joined to the Tailnet, create a `tailstart.sh` file in the tailscale directory with the following contents:
 ```
-#/bin/sh
+#!/bin/sh
 
 /media/fat/linux/tailscale/tailscaled --tun=userspace-networking --statedir=/media/fat/linux/tailscale/.state/ > /dev/null 2>&1 &
 /media/fat/linux/tailscale/tailscale up --accept-routes > /dev/null 2>&1 &

@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-This chart shows each core's default native resolution, frequencies, and pixel clock at startup. These values are not static and are documented for reference only — this is not a compatibility list for your display.
+This chart shows each core's default native resolution, frequencies, and pixel clock at startup. These values are not static and are documented for reference only — this is not a compatibility list for your display. Most entries are historical measurements from 2020-2022 and may not match current core builds.
 
 ## Arcade
 
